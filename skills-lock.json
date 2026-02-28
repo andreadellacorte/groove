@@ -2,9 +2,39 @@
   "version": 1,
   "skills": {
     "bonfire": {
-      "source": "vieko/bonfire",
+      "source": "andreadellacorte/groove",
       "sourceType": "github",
       "computedHash": "d69cb21434aed89b6718ff01f87a0a1ec582c45ce0bdcb14bfbe92a423e90c0c"
+    },
+    "daily": {
+      "source": "andreadellacorte/groove",
+      "sourceType": "github",
+      "computedHash": "bce1e0d14d43ec46a5921552725ea14b5fc997da996f0e7cf478c3e6c0544c15"
+    },
+    "groove": {
+      "source": "andreadellacorte/groove",
+      "sourceType": "github",
+      "computedHash": "08b71b5c0f4fdec83c9b5836b3a3b8a01f9cf1157414062ae2fddc252a388b52"
+    },
+    "memory": {
+      "source": "andreadellacorte/groove",
+      "sourceType": "github",
+      "computedHash": "731b3f387998edff32419c038710d6f209a83a99bac6f5ad273a1a9f5b867766"
+    },
+    "skills": {
+      "source": "andreadellacorte/groove",
+      "sourceType": "github",
+      "computedHash": "d0aaddf33912c935fccdb8b1565a7124954452e682bbcf4eec3fbf16ca6f359d"
+    },
+    "task": {
+      "source": "andreadellacorte/groove",
+      "sourceType": "github",
+      "computedHash": "2cafc5ba4e025e6ae7798500c16061e3de7e8762318c537a391636df42f5dc8e"
+    },
+    "work": {
+      "source": "andreadellacorte/groove",
+      "sourceType": "github",
+      "computedHash": "ad9bc4860fa0004e6eb2df9beff3ef36643350f298a96e2d77344b32ccea770c"
     }
   }
 }
