@@ -1,5 +1,5 @@
 ---
-groove-version: 0.7.1
+groove-version: 0.7.2
 last-version-check: "2026-02-28"
 tasks: beans
 memory: .groove/memory/
