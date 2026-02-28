@@ -1,6 +1,6 @@
 # groove
 
-![groove](groove.png)
+<p align="center"><img src="groove.png" alt="groove" /></p>
 
 Compound engineering workflow skills for AI productivity — daily rhythm, task tracking, memory logs, solid tools and compound engineering loop.
 
