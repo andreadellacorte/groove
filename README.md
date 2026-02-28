@@ -1,5 +1,7 @@
 # groove
 
+![groove](groove.png)
+
 Compound engineering workflow skills for AI productivity — daily rhythm, task tracking, memory logs, solid tools and compound engineering loop.
 
 ```bash
