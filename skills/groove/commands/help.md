@@ -27,7 +27,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 **Quick reference**
 
 ```
-groove   install | prime | doctor | help
+groove   install | update | prime | doctor | help
 daily    startup | closeout | doctor
 work     brainstorm | plan | work | review | compound | doctor
 task     list | create | update | archive | analyse | install | config | doctor

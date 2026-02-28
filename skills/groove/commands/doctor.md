@@ -16,6 +16,11 @@ All groove sub-skill health checks are run and a consolidated summary is reporte
 ```
 groove doctor
 ─────────────────────────────────────
+groove
+  ✓ groove-version: 0.1.0
+  ✓ installed version: 0.1.0
+  ✓ up to date
+
 task
   ✓ .groove/index.md present
   ✓ tasks: beans
@@ -43,7 +48,11 @@ AGENTS.md
 
 ## Constraints
 
-- Run `task doctor`, `memory doctor`, `skills doctor` in sequence
+- Run version check first, then `task doctor`, `memory doctor`, `skills doctor` in sequence
+- Version check:
+  - Read `groove-version:` from `.groove/index.md` (if absent, treat as `0.1.0`)
+  - Read `version:` from `skills/groove/SKILL.md`
+  - If they differ: `✗ groove-version (<local>) behind installed (<installed>) — run: groove update`
 - Also check `AGENTS.md` for presence of `<!-- groove:prime:start -->` and `<!-- groove:task:start -->` sections
 - Collect all results before printing — do not interleave output with check progress
 - Each `✗` item must include a concrete remediation command on the same line

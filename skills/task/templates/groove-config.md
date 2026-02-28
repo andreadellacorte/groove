@@ -4,6 +4,7 @@ Scaffold this file at `.groove/index.md` (relative to git root) on first run of 
 
 ```markdown
 ---
+groove-version: 0.1.0
 tasks: beans
 sessions: bonfire
 finder: find-skills
@@ -20,6 +21,7 @@ guardrails:
 
 | Key | Default | Values | Purpose |
 |---|---|---|---|
+| `groove-version` | `0.1.0` | semver string | Tracks which groove version this config was last migrated to |
 | `tasks` | `beans` | `beans \| linear \| github \| none` | Task tracking backend |
 | `sessions` | `bonfire` | `bonfire \| none` | Session context backend |
 | `finder` | `find-skills` | `find-skills \| none` | Skill discovery backend |
