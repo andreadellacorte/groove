@@ -2,7 +2,7 @@
 
 All notable changes to groove will be documented in this file.
 
-## [0.2.0] - Unreleased
+## [0.2.0] - 2026-02-28
 
 ### Added
 - `/groove` unified entry point — single skill routing all sub-commands
