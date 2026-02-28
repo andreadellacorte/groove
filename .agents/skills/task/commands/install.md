@@ -21,6 +21,11 @@ The configured task backend is installed and verified reachable. User is informe
   - `github`: link to https://cli.github.com for install instructions; verify with `gh --version`
 - After install, run a simple reachability check (e.g., `beans version` or `gh auth status`)
 - If CLI is already installed, report current version and skip install
+- If `tasks: beans` and `.beans.yml` does not exist at git root:
+  - Derive `[PROJECT_PREFIX]` from the git repo name (last path component of `git remote get-url origin`, uppercased, non-alphanumeric stripped) — e.g. `groove` → `GRV`
+  - Scaffold `.beans.yml` from `skills/task/templates/beans-config.md` with the derived prefix
+  - Create `.groove/tasks/` directory if it does not exist
+  - Report the path written
 - If `tasks: beans`: run `beans prime`, capture output, and write it to `AGENTS.md` at git root:
   - Wrap in `<!-- groove:task:start -->` / `<!-- groove:task:end -->` fenced section
   - Replace section if it already exists; append if not; preserve all other `AGENTS.md` content
