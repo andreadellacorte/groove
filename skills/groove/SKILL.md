@@ -5,7 +5,7 @@ license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.3.0"
+  version: "0.3.1"
 ---
 
 # groove

@@ -2,6 +2,15 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.3.1] - 2026-02-28
+
+### Changed
+- `groove install` hardcodes groove-wide companion skills (e.g. `agent-browser`) instead of reading from `skills-lock.json`
+- Removed `skills-lock.json` from the groove repo — it is user-generated output, not maintained here
+
+### Fixed
+- Companion skill pattern clarified: groove-wide in `groove install`, backend-specific in sub-skill install commands
+
 ## [0.3.0] - 2026-02-28
 
 ### Added
