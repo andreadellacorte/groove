@@ -1,19 +1,28 @@
-# Session Review
+# Review Work
 
 ## Outcome
 
-Current work is reviewed via the configured `sessions` backend. Delegates entirely to the backend.
+Blindspots and gaps are identified, actionable improvements are offered.
 
 ## Acceptance Criteria
 
-- Backend review command is invoked with any provided arguments passed through
-- Review is performed by the backend (format determined by backend)
-- If backend is not installed, user is warned with a path to resolve it
+Findings are categorized by action:
+- **Fix Now**: Trivial effort, fix immediately
+- **Needs Spec**: Important, requires planning
+- **Create Issues**: Large effort or nice-to-have
 
 ## Constraints
 
-- Read `sessions:` from `.groove/index.md` frontmatter to determine backend
-- If `sessions: bonfire`, invoke `/bonfire review` — pass through any $ARGUMENTS
-- If `sessions: none`, print no-op message
-- If backend is configured but not installed, warn and offer to run `memory install`
-- Do not implement any review logic here — thin wrapper only
+- Sanitize topic (if provided) for safe use — strip path separators, special characters, and traversal patterns (`../`)
+- Read `memory:` from `.groove/index.md` for base path; reference specs from `<memory>/sessions/specs/`
+- Gather context: branch diff, session notes, relevant specs
+- Run analysis in isolated context (use general-purpose agent)
+- Fall back to direct review if subagent fails
+- Present findings with severity and effort estimates
+- Execute chosen action: fix directly, create spec via `groove memory session spec <topic>`, or create issues
+
+## Scope Options
+
+- No args: Review current branch vs main
+- `--session <name>`: Review work in a specific named session's context
+- Topic: Focus on specific area

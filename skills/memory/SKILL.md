@@ -10,7 +10,7 @@ metadata:
 
 # memory
 
-Two responsibilities in one skill: **log** (structured markdown memory files) and **session** (wrapper around a configurable sessions backend).
+Two responsibilities in one skill: **log** (structured markdown memory files) and **session** (named, parallel session tracking with start/resume/end lifecycle).
 
 ## Git Root Detection
 
@@ -37,11 +37,12 @@ All paths (`memory:` config value, log files) are relative to git root.
 
 | Command | Description |
 |---|---|
-| `session start` | Start session (delegates to configured backend) |
-| `session end` | End session (delegates to configured backend) |
-| `session spec` | Create outcome spec (delegates to configured backend) |
-| `session doc` | Create documentation (delegates to configured backend) |
-| `session review` | Review current work (delegates to configured backend) |
+| `session start [name]` | Start a new named session |
+| `session resume [name]` | Resume an existing active session |
+| `session end [name]` | End a session and capture work done |
+| `session spec <topic>` | Create an outcome spec |
+| `session doc <topic>` | Create documentation |
+| `session review` | Review current work |
 
 ### Other
 
@@ -60,6 +61,7 @@ All paths (`memory:` config value, log files) are relative to git root.
 | `log monthly` | → `commands/log/monthly.md` |
 | `log git` | → `commands/log/git.md` |
 | `session start` | → `commands/session/start.md` |
+| `session resume` | → `commands/session/resume.md` |
 | `session end` | → `commands/session/end.md` |
 | `session spec` | → `commands/session/spec.md` |
 | `session doc` | → `commands/session/doc.md` |
@@ -100,6 +102,7 @@ skills/memory/
 │   │   └── git.md
 │   ├── session/
 │   │   ├── start.md
+│   │   ├── resume.md
 │   │   ├── end.md
 │   │   ├── spec.md
 │   │   ├── doc.md

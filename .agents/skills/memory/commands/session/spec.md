@@ -1,19 +1,34 @@
-# Session Spec
+# Create Outcome Spec
 
 ## Outcome
 
-An outcome spec is created via the configured `sessions` backend. Delegates entirely to the backend.
+A complete outcome spec that defines what to build and how to verify it — the agent determines the procedure.
 
 ## Acceptance Criteria
 
-- Backend spec command is invoked with any provided arguments passed through
-- Spec is created by the backend (location and format determined by backend)
-- If backend is not installed, user is warned with a path to resolve it
+Spec file contains:
+- **Overview**: What to build and why
+- **Decisions**: Key technical choices with rationale
+- **Implementation Steps**: Concrete, ordered steps
+- **Edge Cases**: Error handling, boundary conditions
 
 ## Constraints
 
-- Read `sessions:` from `.groove/index.md` frontmatter to determine backend
-- If `sessions: bonfire`, invoke `/bonfire spec` — pass through any $ARGUMENTS
-- If `sessions: none`, print no-op message
-- If backend is configured but not installed, warn and offer to run `memory install`
-- Do not implement any spec logic here — thin wrapper only
+- Sanitize topic for use as filename — strip path separators, special characters, and traversal patterns (`../`)
+- Read `memory:` from `.groove/index.md` for base path; save spec to `<memory>/sessions/specs/`
+- Research codebase first (use Explore agent)
+- Interview user for decisions, edge cases, testing approach, scope
+- Assess scope: if the work has natural seams (independent components, sequential phases, separable concerns), recommend splitting into a parent spec with child specs
+  - **Parent spec**: Overview of the full feature, links to child specs, execution order if sequential
+  - **Child specs**: Each self-contained with its own Overview, Decisions, Steps, Edge Cases
+  - **Naming**: `<topic>.md` for single specs, `<topic>/index.md` + `<topic>/01-<part>.md` for split specs
+  - **User decides**: Present the split recommendation with rationale, user confirms or overrides
+- Write spec in isolated context (use general-purpose agent)
+- Verify all required sections exist before completing
+- Reference actual codebase patterns, not generic advice
+
+## Quality Signals
+
+- Decisions reference real code patterns
+- Steps include actual file paths and function names
+- Edge cases reflect discovered constraints

@@ -2,18 +2,24 @@
 
 ## Outcome
 
-Session is started and context is loaded. User knows what to work on. Delegates entirely to the configured `sessions` backend.
+A new named session is created. User knows what to work on. Session file is ready for updates throughout the session.
 
 ## Acceptance Criteria
 
-- Session backend is invoked successfully
-- User receives context from the backend (previous session state, open work, agenda)
-- If backend is not installed, user is warned with a path to resolve it
+- Session file created at `<memory>/sessions/<name>.md`
+- Session name is shown to user
+- User is asked what to work on this session
+- User is given the exact command to end the session
 
 ## Constraints
 
-- Read `sessions:` from `.groove/index.md` frontmatter to determine backend
-- If `sessions: bonfire`, invoke `/bonfire start` — pass through any $ARGUMENTS
-- If `sessions: none`, print no-op message: "Session management is disabled (sessions: none). Update .groove/index.md to enable."
-- If backend is configured but not installed, warn and offer to run `memory install`
-- Do not implement any session logic here — this is a thin wrapper only
+- Read `memory:` from `.groove/index.md` frontmatter for base path (default: `.groove/memory/`)
+- Get current branch: `git rev-parse --abbrev-ref HEAD`
+- Parse `$ARGUMENTS` for an optional session name:
+  - If provided, use it as-is — abort if that file already exists
+  - If not provided, auto-generate: `<branch>-<YYYY-MM-DD>-<N>` where N is the lowest integer (starting at 1) such that `<memory>/sessions/<name>.md` does not already exist
+- Get ISO timestamp: `date -u +"%Y-%m-%dT%H:%M:%SZ"` for frontmatter `started:` field
+- Create `<memory>/sessions/` directory if it does not exist (also create `specs/` and `docs/` subdirectories)
+- Ask user what to work on this session — use their answer as `<GOAL>`
+- Create session file from `templates/session.md`, substituting all placeholders
+- After creating the file, tell the user: "Session `<name>` started. End with: `groove memory session end <name>`"

@@ -1,19 +1,29 @@
-# Session Doc
+# Create Documentation
 
 ## Outcome
 
-Documentation is created via the configured `sessions` backend. Delegates entirely to the backend.
+Reference documentation that helps developers understand a system or feature.
 
 ## Acceptance Criteria
 
-- Backend doc command is invoked with any provided arguments passed through
-- Documentation is created by the backend (location and format determined by backend)
-- If backend is not installed, user is warned with a path to resolve it
+Doc file contains:
+- **Overview**: What it is and why it matters
+- **Key Files**: Important files with their roles
+- **How It Works**: Conceptual explanation of flow/behavior
+- **Gotchas**: Edge cases, pitfalls, things to watch out for
 
 ## Constraints
 
-- Read `sessions:` from `.groove/index.md` frontmatter to determine backend
-- If `sessions: bonfire`, invoke `/bonfire doc` — pass through any $ARGUMENTS
-- If `sessions: none`, print no-op message
-- If backend is configured but not installed, warn and offer to run `memory install`
-- Do not implement any doc logic here — thin wrapper only
+- Sanitize topic for use as filename — strip path separators, special characters, and traversal patterns (`../`)
+- Read `memory:` from `.groove/index.md` for base path; save doc to `<memory>/sessions/docs/`
+- Research codebase first (use Explore agent)
+- No user interview needed — code is the source of truth
+- Write doc in isolated context (use general-purpose agent)
+- Verify all required sections exist before completing
+- Document what code actually does, not assumptions
+
+## Quality Signals
+
+- File paths are accurate and exist
+- Explanations match actual code behavior
+- Gotchas reflect real issues found in code
