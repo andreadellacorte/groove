@@ -14,19 +14,20 @@ All pending migrations are applied to the user's local groove state in version o
 
 ## Steps
 
-1. Read `groove-version:` from `.groove/index.md` — if key absent, assume `0.1.0` and write it
-2. Read installed version from `version:` in `skills/groove/SKILL.md`
-3. If versions match: report "groove is up to date (v<version>)" and exit
-4. Read `migrations/index.md` — parse the migration table
-5. Filter rows where `From` >= local version and `To` <= installed version, in table order
-6. If no migrations found but versions differ: warn that no migration path exists and suggest reinstalling groove
-7. For each pending migration:
+1. Run `npx skills update` — pulls latest groove skill files (including new migration files)
+2. Read `groove-version:` from `.groove/index.md` — if key absent, assume `0.1.0` and write it
+3. Read installed version from `version:` in `skills/groove/SKILL.md`
+4. If versions match: report "groove is up to date (v<version>)" and exit
+5. Read `migrations/index.md` — parse the migration table
+6. Filter rows where `From` >= local version and `To` <= installed version, in table order
+7. If no migrations found but versions differ: warn that no migration path exists and suggest reinstalling groove
+8. For each pending migration:
    a. Report "Applying <from> → <to>: <description>"
    b. Read and execute the migration file
    c. Update `groove-version:` in `.groove/index.md` to the `To` version
    d. Report "✓ <from> → <to> applied"
-8. Run `groove prime` to refresh AGENTS.md
-9. Report summary: N migrations applied, now at v<version>
+9. Run `groove prime` to refresh AGENTS.md
+10. Report summary: N migrations applied, now at v<version>
 
 ## Constraints
 
