@@ -5,7 +5,7 @@ license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.4.1"
+  version: "0.5.0"
 ---
 
 # groove
@@ -48,6 +48,7 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `memory log monthly` | → `skills/memory/commands/log/monthly.md` |
 | `memory log git` | → `skills/memory/commands/log/git.md` |
 | `memory session start` | → `skills/memory/commands/session/start.md` |
+| `memory session resume` | → `skills/memory/commands/session/resume.md` |
 | `memory session end` | → `skills/memory/commands/session/end.md` |
 | `memory session spec` | → `skills/memory/commands/session/spec.md` |
 | `memory session doc` | → `skills/memory/commands/session/doc.md` |

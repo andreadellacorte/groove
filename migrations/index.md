@@ -9,6 +9,7 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | From | To | File | Description |
 |---|---|---|---|
 | 0.2.0 | 0.3.0 | 0.2.0-to-0.3.0.md | Add `last-version-check:` config key; write `.groove/.gitignore` from git strategy |
+| 0.4.0 | 0.5.0 | 0.4.0-to-0.5.0.md | Remove `sessions:` config key; create session directories for native multi-session tracking |
 
 ## Notes
 

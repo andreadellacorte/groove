@@ -2,6 +2,33 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.5.0] - 2026-02-28
+
+### Added
+- `groove memory session resume [name]` — resume an existing active session; lists active sessions if no name given
+- Native multi-session tracking: sessions stored as individual files at `<memory>/sessions/<name>.md`
+- Auto-naming for sessions: `<branch>-<YYYY-MM-DD>-<N>` when no name provided
+- Session template at `skills/memory/templates/session.md`
+- `groove doctor` now checks that the current directory is a git repo (bonfire and session management depend on it)
+
+### Changed
+- `groove memory session start/end` rewritten — now support named parallel sessions; `end` accepts `[name]` and prompts if absent
+- `groove memory session spec/doc/review` implemented directly in groove (no longer delegated to bonfire)
+- `groove memory install` simplified — creates session directories only, no external backend
+- `groove memory doctor` checks session directory structure instead of bonfire backend
+
+### Removed
+- Bonfire session backend — the `sessions:` config key in `.groove/index.md` is no longer read
+- Bonfire skill dependency
+
+### Migration
+
+Run `groove update` to apply the `0.4.0 → 0.5.0` migration automatically:
+- Removes the obsolete `sessions:` key from `.groove/index.md`
+- Creates `<memory>/sessions/specs/` and `<memory>/sessions/docs/` directories
+
+If you had bonfire installed, remove it: `npx skills remove bonfire`
+
 ## [0.4.0] - 2026-02-28
 
 ### Added
