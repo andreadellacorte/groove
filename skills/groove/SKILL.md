@@ -17,6 +17,9 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | $ARGUMENTS | Action |
 |---|---|
 | `help` | → `commands/help.md` |
+| `install` | → `commands/install.md` |
+| `prime` | → `commands/prime.md` |
+| `doctor` | → `commands/doctor.md` |
 | `daily help` | → `skills/daily/commands/help.md` |
 | `daily startup` | → `skills/daily/commands/startup.md` |
 | `daily closeout` | → `skills/daily/commands/closeout.md` |
@@ -27,6 +30,7 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `work review` | → `skills/work/commands/review.md` |
 | `work compound` | → `skills/work/commands/compound.md` |
 | `task help` | → `skills/task/commands/help.md` |
+| `task doctor` | → `skills/task/commands/doctor.md` |
 | `task list` | → `skills/task/commands/list.md` |
 | `task create` | → `skills/task/commands/create.md` |
 | `task update` | → `skills/task/commands/update.md` |
@@ -35,6 +39,7 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `task install` | → `skills/task/commands/install.md` |
 | `task config` | → `skills/task/commands/config.md` |
 | `memory help` | → `skills/memory/commands/help.md` |
+| `memory doctor` | → `skills/memory/commands/doctor.md` |
 | `memory log daily` | → `skills/memory/commands/log/daily.md` |
 | `memory log weekly` | → `skills/memory/commands/log/weekly.md` |
 | `memory log monthly` | → `skills/memory/commands/log/monthly.md` |
@@ -46,6 +51,7 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `memory session review` | → `skills/memory/commands/session/review.md` |
 | `memory install` | → `skills/memory/commands/install.md` |
 | `skills help` | → `skills/skills/commands/help.md` |
+| `skills doctor` | → `skills/skills/commands/doctor.md` |
 | `skills find` | → `skills/skills/commands/find.md` |
 | `skills add` | → `skills/skills/commands/add.md` |
 | `skills remove` | → `skills/skills/commands/remove.md` |

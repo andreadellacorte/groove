@@ -54,6 +54,7 @@ All paths (`memory:` config value, log files) are relative to git root.
 | $ARGUMENTS | Action |
 |---|---|
 | `help` | → `commands/help.md` |
+| `doctor` | → `commands/doctor.md` |
 | `log daily` | → `commands/log/daily.md` |
 | `log weekly` | → `commands/log/weekly.md` |
 | `log monthly` | → `commands/log/monthly.md` |

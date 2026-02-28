@@ -41,6 +41,7 @@ Memory path: `<memory value from .groove/index.md>`
 | Command | Description |
 |---|---|
 | `install` | Install configured sessions backend |
+| `doctor` | Check sessions backend is configured, installed, and reachable |
 
 **Key rules:**
 - Daily log is written at closeout only — never at startup

@@ -23,6 +23,7 @@ Current finder backend: `<finder value from .groove/index.md>`
 | `remove <name>` | Remove a skill, update `skills-lock.json` |
 | `install` | Install all configured backends in dependency order |
 | `check` | Check for updates to all installed skills |
+| `doctor` | Check finder backend is configured and installed |
 
 **Install order** (run by `install`):
 ```

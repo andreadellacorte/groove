@@ -39,6 +39,7 @@ All file paths (`.groove/index.md`, `.beans.yml`) are relative to git root.
 | $ARGUMENTS | Action |
 |---|---|
 | `help` | → `commands/help.md` |
+| `doctor` | → `commands/doctor.md` |
 | `list` | → `commands/list.md` |
 | `create` | → `commands/create.md` |
 | `update` | → `commands/update.md` |

@@ -37,6 +37,7 @@ git rev-parse --show-toplevel
 | $ARGUMENTS | Action |
 |---|---|
 | `help` | → `commands/help.md` |
+| `doctor` | → `commands/doctor.md` |
 | `find` | → `commands/find.md` |
 | `add <owner/repo>` | → `commands/add.md` |
 | `remove <name>` | → `commands/remove.md` |

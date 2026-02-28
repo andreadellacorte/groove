@@ -23,8 +23,9 @@ Current backend: `<tasks value from .groove/index.md>`
 | `update` | Update task status, body, or metadata |
 | `archive` | Archive all completed/scrapped tasks (user confirms) |
 | `analyse` | Summarise tasks by status — suitable for closeout and daily memory |
-| `install` | Install configured task backend |
+| `install` | Install configured task backend + write beans prime to AGENTS.md |
 | `config` | Show or update task backend config |
+| `doctor` | Check task backend is configured, installed, and reachable |
 
 **Backends:** `beans` (default) | `linear` | `github` | `none`
 
