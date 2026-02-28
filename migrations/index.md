@@ -18,7 +18,10 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 
 ## Adding a migration
 
-When releasing a new groove version:
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full versioning and migration guide.
+
+Quick steps:
 1. Create `migrations/<from>-to-<to>.md` following the outcome/criteria/constraints pattern
 2. Add a row to the table above
-3. Bump `version:` in `skills/groove/SKILL.md`
+3. Bump `metadata.version` in `skills/groove/SKILL.md`
+4. Add an entry to `CHANGELOG.md`

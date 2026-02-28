@@ -22,5 +22,5 @@ All configured skill backends are installed in dependency order. The configured 
   - If already installed: report version and skip
   - If not installed: install and confirm reachability
 - Finder backend install:
-  - `find-skills`: run `npx skills add vercel-labs/find-skills` (or appropriate source); verify with `find-skills --version` or equivalent
+  - `find-skills`: run `npx skills add https://github.com/vercel-labs/skills --skill find-skills`; verify by checking find-skills skill is available
 - Report a summary table at the end: backend | status | version
