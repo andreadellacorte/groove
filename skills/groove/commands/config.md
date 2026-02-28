@@ -20,10 +20,10 @@ Walk the user through each config key in order. For each key: show the current v
 | Key | Default | Options | Question to ask |
 |---|---|---|---|
 | `tasks` | `beans` | `beans \| linear \| github \| none` | "Which task backend? beans tracks tasks as markdown files in your repo." |
-| `sessions` | `bonfire` | `bonfire \| none` | "Which session backend? bonfire persists AI session context between conversations." |
-| `finder` | `find-skills` | `find-skills \| none` | "Which skill finder? find-skills lets you search the skills directory." |
 | `memory` | `.groove/memory/` | any path | "Where should groove store memory logs? (default: .groove/memory/)" |
-| `git` | `ignore-all` | `ignore-all \| hybrid \| commit-all` | "Git strategy for groove files? ignore-all keeps everything local, hybrid commits memory logs, commit-all commits everything." |
+| `git.memory` | `ignore-all` | `ignore-all \| hybrid \| commit-all` | "Git strategy for memory logs? ignore-all keeps them local, hybrid commits logs but ignores sessions, commit-all commits everything." |
+| `git.tasks` | `ignore-all` | `ignore-all \| commit-all` | "Git strategy for task files (.groove/tasks/)? ignore-all keeps them local, commit-all tracks them in git." |
+| `git.hooks` | `commit-all` | `ignore-all \| commit-all` | "Git strategy for hooks (.groove/hooks/)? commit-all shares hooks with the team, ignore-all keeps them local." |
 | `guardrails.default.require-confirmation` | `false` | `true \| false` | "Require confirmation before groove takes actions? (default: no)" |
 
 After all keys are confirmed:
@@ -36,29 +36,24 @@ After all keys are confirmed:
 ## Constraints
 
 - If `.groove/index.md` already exists, pre-fill each question with the current value
-- If run non-interactively (arguments provided), apply them without prompting: e.g. `groove config tasks=linear git=hybrid`
+- If run non-interactively (arguments provided), apply them without prompting: e.g. `groove config tasks=linear git.memory=hybrid`
 - Always write `groove-version:` matching the installed version from `skills/groove/SKILL.md`
 
 ### Git strategy → `.groove/.gitignore`
 
-After writing `.groove/index.md`, write `.groove/.gitignore` as follows:
+After writing `.groove/index.md`, generate `.groove/.gitignore` from the `git.*` sub-keys:
 
-**`ignore-all`** (default):
-```
-*
-!.gitignore
-```
+| Component | Strategy | Entry added to `.groove/.gitignore` |
+|---|---|---|
+| `git.memory` | `ignore-all` | `memory/` |
+| `git.memory` | `hybrid` | `memory/sessions/` |
+| `git.memory` | `commit-all` | _(none)_ |
+| `git.tasks` | `ignore-all` | `tasks/` |
+| `git.tasks` | `commit-all` | _(none)_ |
+| `git.hooks` | `ignore-all` | `hooks/` |
+| `git.hooks` | `commit-all` | _(none)_ |
 
-**`hybrid`** (commit memory logs, ignore session files):
-```
-memory/sessions/
-index.md
-```
+Write the generated entries to `.groove/.gitignore`, replacing the file entirely. If no entries are generated (all `commit-all`), write an empty file with a comment: `# groove git strategy: commit-all`.
 
-**`commit-all`** (track everything):
-```
-# groove git strategy: commit-all
-```
-
-- If `.groove/` is listed in the root `.gitignore`, warn the user: "Note: `.groove/` is in your root .gitignore — hybrid and commit-all strategies require removing it."
+- If `.groove/` is listed in the root `.gitignore`, warn the user: "Note: `.groove/` is in your root .gitignore — any commit-all strategies require removing it."
 - Do not modify the root `.gitignore` automatically — flag it for the user to resolve

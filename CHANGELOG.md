@@ -2,6 +2,30 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.6.0] - 2026-02-28
+
+### Added
+- Per-component git strategy: `git:` is now a mapping with `memory:`, `tasks:`, and `hooks:` sub-keys
+- Each sub-key independently controls what gets committed during daily closeout and what `.groove/.gitignore` ignores
+
+### Changed
+- `.groove/.gitignore` is now generated from per-component strategies instead of a single flat value
+- `git.hooks` defaults to `commit-all` (hooks are team-shareable by default)
+- Beans task path changed from `.beans` to `.groove/tasks` — tasks now live inside the groove directory tree
+- Daily closeout commit logic updated to stage per-component based on each `git.*` value
+
+### Removed
+- `finder:` config key — skill discovery uses `npx skills` / skills.sh directly; no config key needed
+- `sessions:` config key — fully removed (was already unused since 0.5.0)
+
+### Migration
+
+Run `groove update` to apply the `0.5.3 → 0.6.0` migration automatically:
+1. Converts flat `git: <value>` to `git.memory/tasks/hooks` sub-keys (all inherit old value)
+2. Removes obsolete `finder:` and `sessions:` keys
+3. Regenerates `.groove/.gitignore` from new sub-keys
+4. Updates `.beans.yml` to use `path: .groove/tasks`; creates `.groove/tasks/` directory
+
 ## [0.5.3] - 2026-02-28
 
 ### Fixed

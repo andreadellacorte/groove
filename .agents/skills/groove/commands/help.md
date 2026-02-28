@@ -21,7 +21,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `daily` | Bookend the workday |
 | `work` | Compound engineering loop |
 | `task` | Task tracking |
-| `memory` | Log files + session wrapper |
+| `memory` | Log files + session tracking |
 | `skills` | Skill management |
 
 **Quick reference**
@@ -32,7 +32,8 @@ daily    startup | closeout | doctor
 work     brainstorm | plan | work | review | compound | doctor
 task     list | create | update | archive | analyse | install | config | doctor
 memory   log daily | log weekly | log monthly | log git
-         session start | session end | session spec | session doc | session review
+         session start | session resume | session end
+         session spec | session doc | session review
          install | doctor
 skills   find | add | remove | install | check | doctor
 ```
@@ -40,11 +41,11 @@ skills   find | add | remove | install | check | doctor
 **Config** (`.groove/index.md`)
 
 ```
-tasks:    <value>   — task backend (beans | linear | github | none)
-sessions: <value>   — session backend (bonfire | none)
-finder:   <value>   — skill finder (find-skills | none)
-memory:   <value>   — log file path
-git:      <value>   — commit strategy (ignore-all | hybrid | commit-all)
+tasks:         <value>   — task backend (beans | linear | github | none)
+memory:        <value>   — log file path
+git.memory:    <value>   — memory commit strategy (ignore-all | hybrid | commit-all)
+git.tasks:     <value>   — tasks commit strategy (ignore-all | commit-all)
+git.hooks:     <value>   — hooks commit strategy (ignore-all | commit-all)
 ```
 
 Run `/groove <skill> help` for detailed commands and options.

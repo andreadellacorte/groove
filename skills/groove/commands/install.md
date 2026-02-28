@@ -25,13 +25,13 @@ Run in order:
 4. Scaffold hooks directory:
    - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
    - Report created / already-present
-5. Apply git strategy — write `.groove/.gitignore` based on `git:` value in `.groove/index.md` (see `commands/config.md` for rules)
+5. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `commands/config.md` for rules)
 6. `groove prime` — writes groove context to `AGENTS.md`
 7. If `tasks: beans`: run `beans prime`, write output to `<!-- groove:task:start -->` section of `AGENTS.md`
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks:`, `finder:`, `git:` config before running
+- Read `.groove/index.md` for `tasks:` and `git.*` config before running
 - If `.groove/index.md` does not exist, `groove config` is run first (step 1) to create it
 - Dependency order for backends must be respected: task → memory → finder → companions
 - Each step reports installed / already-present / failed

@@ -30,9 +30,8 @@ task
   ✓ beans reachable
 
 memory
-  ✓ sessions: bonfire
-  ✓ bonfire installed
   ✓ memory path exists (.groove/memory/)
+  ✓ session dirs exist (.groove/memory/sessions/)
 
 skills
   ✓ finder: find-skills
@@ -53,7 +52,7 @@ AGENTS.md
 - Git repo check:
   - Run `git rev-parse --is-inside-work-tree` in the current directory
   - If it succeeds: `✓ git repo: detected`
-  - If it fails: `✗ git repo: not a git repository — groove requires a git repo (bonfire depends on it)`
+  - If it fails: `✗ git repo: not a git repository — groove requires a git repo`
 - Version check:
   - Read `groove-version:` from `.groove/index.md` (if absent, treat as `0.1.0`)
   - Read `version:` from `skills/groove/SKILL.md`

@@ -55,16 +55,17 @@ Settings live in `.groove/index.md` frontmatter — created on first run.
 
 ```yaml
 ---
-groove-version: 0.1.0
+groove-version: 0.6.0
 tasks: beans               # beans | linear | github | none
-sessions: bonfire          # bonfire | none
-finder: find-skills        # find-skills | none
 memory: .groove/memory/
-git: ignore-all            # ignore-all | hybrid | commit-all
+git:
+  memory: ignore-all       # ignore-all | hybrid | commit-all
+  tasks: ignore-all        # ignore-all | commit-all
+  hooks: commit-all        # ignore-all | commit-all
 ---
 ```
 
-The `.groove/` directory is gitignored — config is local to each checkout.
+The `.groove/` directory is gitignored by default — tune per-component with `git.*` keys.
 
 ## Requirements
 

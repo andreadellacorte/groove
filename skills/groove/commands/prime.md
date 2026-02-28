@@ -22,9 +22,11 @@ Write the following block to `AGENTS.md`, replacing any existing `<!-- groove:pr
 groove is installed in this repo. Use `/groove <skill> <command>` for all workflow commands.
 
 ## Config
-tasks:    <tasks value>
-memory:   <memory value>
-git:      <git value>
+tasks:      <tasks value>
+memory:     <memory value>
+git.memory: <git.memory value>
+git.tasks:  <git.tasks value>
+git.hooks:  <git.hooks value>
 
 ## Key commands
 /groove daily startup         — start the workday
@@ -66,7 +68,7 @@ Before writing `AGENTS.md`, run a version check if `last-version-check:` in `.gr
 
 ## Constraints
 
-- Read `.groove/index.md` frontmatter to substitute `tasks:`, `memory:`, `git:` placeholders
+- Read `.groove/index.md` frontmatter to substitute `tasks:`, `memory:`, and `git.*` placeholders
 - If `AGENTS.md` does not exist, create it with only the groove:prime section
 - If the section already exists, replace it entirely — do not append
 - If the section does not exist, append it to the end of `AGENTS.md`
