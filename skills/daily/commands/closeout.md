@@ -31,3 +31,6 @@ The workday is wrapped up: git changes are analysed, memory files are written in
   - `hybrid`: commit memory files and any unstaged changes
   - `commit-all`: commit all changes including non-memory files
 - Last weekday detection: use local calendar date; handle gracefully if run on weekend
+- After all standard steps: check if `.groove/hooks/closeout.md` exists
+  - If it exists: read the `## Actions` section and execute each item in order; report completion per item
+  - If it does not exist: skip silently

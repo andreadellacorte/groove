@@ -22,3 +22,6 @@ The workday is prepared: yesterday's closeout is verified, tasks are consolidate
 - Do NOT write daily memory at startup — memory write happens at closeout only
 - Do NOT archive tasks during startup
 - Present task list in a scannable format before the user begins
+- After all standard steps: check if `.groove/hooks/startup.md` exists
+  - If it exists: read the `## Actions` section and execute each item in order; report completion per item
+  - If it does not exist: skip silently
