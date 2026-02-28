@@ -18,7 +18,9 @@ Compound engineering workflow system. Single entry point for all groove skills.
 |---|---|
 | `help` | → `commands/help.md` |
 | `install` | → `commands/install.md` |
+| `config` | → `commands/config.md` |
 | `update` | → `commands/update.md` |
+| `check` | → `commands/check.md` |
 | `prime` | → `commands/prime.md` |
 | `doctor` | → `commands/doctor.md` |
 | `daily help` | → `skills/daily/commands/help.md` |

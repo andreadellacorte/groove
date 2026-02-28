@@ -51,6 +51,19 @@ git:      <git value>
 <!-- groove:prime:end -->
 ```
 
+## Version check
+
+Before writing `AGENTS.md`, run a version check if `last-version-check:` in `.groove/index.md` is not today's date:
+
+1. Read `last-version-check:` from `.groove/index.md` — if absent or not today's date, proceed
+2. Fetch latest release from `https://api.github.com/repos/andreadellacorte/groove/releases/latest`
+3. If a newer version exists, prepend a notice to the groove:prime block:
+   ```
+   ⚠ New version of groove available: v<latest> — run: groove update
+   ```
+4. Update `last-version-check:` to today's date in `.groove/index.md`
+5. If the API call fails, skip silently — do not block prime
+
 ## Constraints
 
 - Read `.groove/index.md` frontmatter to substitute all `<value>` placeholders
@@ -58,4 +71,5 @@ git:      <git value>
 - If the section already exists, replace it entirely — do not append
 - If the section does not exist, append it to the end of `AGENTS.md`
 - Preserve all other content in `AGENTS.md` outside the fenced section
+- Version check runs at most once per day — gate on `last-version-check:` date
 - Report the path written and confirm success

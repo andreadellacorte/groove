@@ -16,17 +16,19 @@ All groove backends are installed in dependency order, companion skills from `sk
 
 Run in order:
 
-1. `groove skills install` — installs all backends (task → memory → finder)
-2. Install companion skills from `skills-lock.json`:
+1. If `.groove/index.md` does not exist, run `groove config` to create it
+2. `groove skills install` — installs all backends (task → memory → finder)
+3. Install companion skills from `skills-lock.json`:
    - For each entry: `npx skills add <source> --skill <skill>` (or `npx skills add <source>` if no `skill` key)
    - Report installed / already-present / failed per companion
-3. `groove prime` — writes groove context to `AGENTS.md`
-4. If `tasks: beans`: run `beans prime`, write output to `<!-- groove:task:start -->` section of `AGENTS.md`
+4. Apply git strategy — write `.groove/.gitignore` based on `git:` value in `.groove/index.md` (see `commands/config.md` for rules)
+5. `groove prime` — writes groove context to `AGENTS.md`
+6. If `tasks: beans`: run `beans prime`, write output to `<!-- groove:task:start -->` section of `AGENTS.md`
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks:`, `sessions:`, `finder:` config before running
-- If `.groove/index.md` does not exist, create from template first (prompt user for preferences)
+- Read `.groove/index.md` for `tasks:`, `sessions:`, `finder:`, `git:` config before running
+- If `.groove/index.md` does not exist, `groove config` is run first (step 1) to create it
 - Dependency order for backends must be respected: task → memory → finder → companions
 - Each step reports installed / already-present / failed
 - `AGENTS.md` update is additive per section — preserve all other content
