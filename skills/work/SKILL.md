@@ -34,12 +34,13 @@ git rev-parse --show-toplevel
 
 | $ARGUMENTS | Action |
 |---|---|
+| `help` | → `commands/help.md` |
 | `brainstorm` | → `commands/brainstorm.md` |
 | `plan` | → `commands/plan.md` |
 | `work` | → `commands/work.md` |
 | `review` | → `commands/review.md` |
 | `compound` | → `commands/compound.md` |
-| _(empty)_ | Show this help and available commands |
+| _(empty)_ | → `commands/help.md` |
 
 ## Stage Task Naming
 

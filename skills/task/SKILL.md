@@ -38,6 +38,7 @@ All file paths (`.groove/index.md`, `.beans.yml`) are relative to git root.
 
 | $ARGUMENTS | Action |
 |---|---|
+| `help` | → `commands/help.md` |
 | `list` | → `commands/list.md` |
 | `create` | → `commands/create.md` |
 | `update` | → `commands/update.md` |
@@ -45,7 +46,7 @@ All file paths (`.groove/index.md`, `.beans.yml`) are relative to git root.
 | `analyse` | → `commands/analyse.md` |
 | `install` | → `commands/install.md` |
 | `config` | → `commands/config.md` |
-| _(empty)_ | Show this help and available commands |
+| _(empty)_ | → `commands/help.md` |
 
 ## Bootstrap
 

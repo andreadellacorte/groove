@@ -53,6 +53,7 @@ All paths (`memory:` config value, log files) are relative to git root.
 
 | $ARGUMENTS | Action |
 |---|---|
+| `help` | → `commands/help.md` |
 | `log daily` | → `commands/log/daily.md` |
 | `log weekly` | → `commands/log/weekly.md` |
 | `log monthly` | → `commands/log/monthly.md` |
@@ -63,7 +64,7 @@ All paths (`memory:` config value, log files) are relative to git root.
 | `session doc` | → `commands/session/doc.md` |
 | `session review` | → `commands/session/review.md` |
 | `install` | → `commands/install.md` |
-| _(empty)_ | Show this help and available commands |
+| _(empty)_ | → `commands/help.md` |
 
 ## Bootstrap
 

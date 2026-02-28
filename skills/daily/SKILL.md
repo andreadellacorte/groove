@@ -33,9 +33,10 @@ All config reads use `.groove/index.md` at git root.
 
 | $ARGUMENTS | Action |
 |---|---|
+| `help` | → `commands/help.md` |
 | `startup` | → `commands/startup.md` |
 | `closeout` | → `commands/closeout.md` |
-| _(empty)_ | Show this help and available commands |
+| _(empty)_ | → `commands/help.md` |
 
 ## Bootstrap
 
