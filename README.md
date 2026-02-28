@@ -1,6 +1,6 @@
 # groove
 
-Compound engineering workflow skills for AI coding — daily rhythm, task tracking, memory logs, and the compound engineering loop.
+Compound engineering workflow skills for AI productivity — daily rhythm, task tracking, memory logs, solid tools and compound engineering loop.
 
 ```bash
 npx skills add andreadellacorte/groove
