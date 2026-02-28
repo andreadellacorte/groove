@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.5.3] - 2026-02-28
+
+### Fixed
+- `skills install`: removed stale `sessions:` config read; updated memory step description (no longer a "sessions backend")
+- `groove install`: added explicit `ls .agents/skills/agent-browser/SKILL.md` check so the agent doesn't improvise presence checks using the wrong path
+
 ## [0.5.2] - 2026-02-28
 
 ### Fixed

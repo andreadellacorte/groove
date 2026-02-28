@@ -7,7 +7,7 @@ All configured skill backends are installed in dependency order. The configured 
 ## Acceptance Criteria
 
 - `task install` is run first (task backend)
-- `memory install` is run second (sessions backend)
+- `memory install` is run second (creates session directories)
 - `finder` backend is installed last
 - Each step reports: installed / already-present / failed
 - No-op per backend if configured to `none`
@@ -15,7 +15,7 @@ All configured skill backends are installed in dependency order. The configured 
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks:`, `sessions:`, and `finder:` config
+- Read `.groove/index.md` for `tasks:` and `finder:` config
 - Dependency order must be respected: task → memory → finder
 - For each backend:
   - If `none`: skip with friendly message

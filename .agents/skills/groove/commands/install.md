@@ -19,7 +19,8 @@ Run in order:
 1. If `.groove/index.md` does not exist, run `groove config` to create it
 2. `groove skills install` — installs all backends (task → memory → finder)
 3. Install groove-wide companion skills:
-   - `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
+   - Check presence: `ls .agents/skills/agent-browser/SKILL.md`
+   - If absent: `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
    - Report installed / already-present / failed
 4. Scaffold hooks directory:
    - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
