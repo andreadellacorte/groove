@@ -22,10 +22,8 @@ Run in order:
    - `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
    - Report installed / already-present / failed
 4. Scaffold hooks directory:
-   - Create `.groove/hooks/` if it does not exist
-   - If `.groove/hooks/startup.md` does not exist: write it from `skills/daily/templates/hooks/startup.md`
-   - If `.groove/hooks/closeout.md` does not exist: write it from `skills/daily/templates/hooks/closeout.md`
-   - Report created / already-present per file
+   - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
+   - Report created / already-present
 5. Apply git strategy — write `.groove/.gitignore` based on `git:` value in `.groove/index.md` (see `commands/config.md` for rules)
 6. `groove prime` — writes groove context to `AGENTS.md`
 7. If `tasks: beans`: run `beans prime`, write output to `<!-- groove:task:start -->` section of `AGENTS.md`
@@ -45,6 +43,6 @@ Run in order:
   ✓ memory backend (bonfire)
   ✓ skills backend (find-skills)
   ✓ companion: agent-browser
-  ✓ hooks: .groove/hooks/startup.md, .groove/hooks/closeout.md
+  ✓ hooks: .groove/hooks/ ready
   ✓ AGENTS.md updated (groove:prime, groove:task)
   ```
