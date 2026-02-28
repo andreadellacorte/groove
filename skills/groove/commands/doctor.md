@@ -17,6 +17,7 @@ All groove sub-skill health checks are run and a consolidated summary is reporte
 groove doctor
 ─────────────────────────────────────
 groove
+  ✓ git repo: detected
   ✓ groove-version: 0.1.0
   ✓ installed version: 0.1.0
   ✓ up to date
@@ -48,7 +49,11 @@ AGENTS.md
 
 ## Constraints
 
-- Run version check first, then `task doctor`, `memory doctor`, `skills doctor` in sequence
+- Run git repo check first, then version check, then `task doctor`, `memory doctor`, `skills doctor` in sequence
+- Git repo check:
+  - Run `git rev-parse --is-inside-work-tree` in the current directory
+  - If it succeeds: `✓ git repo: detected`
+  - If it fails: `✗ git repo: not a git repository — groove requires a git repo (bonfire depends on it)`
 - Version check:
   - Read `groove-version:` from `.groove/index.md` (if absent, treat as `0.1.0`)
   - Read `version:` from `skills/groove/SKILL.md`

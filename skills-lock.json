@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "bonfire": {
+      "source": "vieko/bonfire",
+      "sourceType": "github",
+      "computedHash": "d69cb21434aed89b6718ff01f87a0a1ec582c45ce0bdcb14bfbe92a423e90c0c"
+    }
+  }
+}
