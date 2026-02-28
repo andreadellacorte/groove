@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.5.1] - 2026-02-28
+
+### Fixed
+- Moved `migrations/` into `skills/groove/migrations/` so migrations are included when groove is installed via `npx skills add` — previously `groove update` always reported "no migration path found"
+- Updated `memory help` to list `session resume` and remove bonfire references
+
 ## [0.5.0] - 2026-02-28
 
 ### Added

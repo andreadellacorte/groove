@@ -40,7 +40,7 @@ A migration handles changes to the user's local groove state — `.groove/index.
 
 ### Migration file format
 
-Create `migrations/<from>-to-<to>.md` following the outcome/criteria/constraints pattern:
+Create `skills/groove/migrations/<from>-to-<to>.md` following the outcome/criteria/constraints pattern:
 
 ```markdown
 # Migration: <from> → <to>
@@ -60,7 +60,7 @@ Create `migrations/<from>-to-<to>.md` following the outcome/criteria/constraints
 
 ### Register the migration
 
-Add a row to `migrations/index.md`:
+Add a row to `skills/groove/migrations/index.md`:
 
 ```markdown
 | 0.1.0 | 0.2.0 | 0.1.0-to-0.2.0.md | Description of what changes |
@@ -106,10 +106,12 @@ To add a groove-wide companion:
 groove/
 ├── CONTRIBUTING.md          ← you are here
 ├── CHANGELOG.md             ← update on every versioned release
-├── migrations/
-│   ├── index.md             ← register new migrations here
-│   └── <from>-to-<to>.md   ← one file per version step
 └── skills/
     └── groove/
-        └── SKILL.md         ← bump metadata.version here
+        ├── SKILL.md         ← bump metadata.version here
+        └── migrations/
+            ├── index.md     ← register new migrations here
+            └── <from>-to-<to>.md   ← one file per version step
 ```
+
+> Migrations live inside `skills/groove/` so they are installed alongside the skill via `npx skills add`.
