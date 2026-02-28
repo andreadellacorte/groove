@@ -23,8 +23,7 @@ groove install
 | `daily` | `startup`, `closeout` | Bookend the workday |
 | `work` | `brainstorm`, `plan`, `work`, `review`, `compound` | Reduce rework through structured stages |
 | `task` | `list`, `create`, `update`, `archive`, `analyse` | Task tracking — configurable backend |
-| `memory` | `log daily/weekly/monthly/git`, `session start/end/spec/doc/review` | Logs + session context |
-| `skills` | `find`, `add`, `remove`, `install`, `check` | Skill management |
+| `memory` | `log daily/weekly/monthly/git`, `session start/resume/end/spec/doc/review` | Logs + session context |
 
 ## Usage
 
@@ -43,6 +42,7 @@ groove install
 /groove task analyse          — summarise by status
 
 /groove memory session start  — start session
+/groove memory session resume — resume an existing session
 /groove memory log daily      — write daily closeout log
 
 /groove doctor                — check all backends are healthy
@@ -55,7 +55,7 @@ Settings live in `.groove/index.md` frontmatter — created on first run.
 
 ```yaml
 ---
-groove-version: 0.6.0
+groove-version: 0.7.2
 tasks: beans               # beans | linear | github | none
 memory: .groove/memory/
 git:
@@ -65,7 +65,7 @@ git:
 ---
 ```
 
-The `.groove/` directory is gitignored by default — tune per-component with `git.*` keys.
+Per-component `git.*` keys control what gets committed and what `.groove/.gitignore` ignores. Run `groove config` to set up interactively.
 
 ## Requirements
 
