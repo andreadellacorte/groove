@@ -6,7 +6,8 @@ All groove sub-skill health checks are run and a consolidated summary is reporte
 
 ## Acceptance Criteria
 
-- `task doctor`, `memory doctor`, and `skills doctor` are all run
+- `task doctor` and `memory doctor` are run
+- Companion skill presence is checked directly
 - Results are shown per sub-skill with pass/fail per check
 - Overall status is shown: all healthy, or N issues found
 - Each failure includes a specific remediation action
@@ -33,10 +34,9 @@ memory
   ✓ memory path exists (.groove/memory/)
   ✓ session dirs exist (.groove/memory/sessions/)
 
-skills
-  ✓ finder: find-skills
+companions
   ✓ find-skills installed
-  ✓ skills-lock.json present
+  ✓ agent-browser installed
 
 AGENTS.md
   ✓ groove:prime section present
@@ -48,7 +48,7 @@ AGENTS.md
 
 ## Constraints
 
-- Run git repo check first, then version check, then `task doctor`, `memory doctor`, `skills doctor` in sequence
+- Run git repo check first, then version check, then `task doctor`, `memory doctor`, companions check in sequence
 - Git repo check:
   - Run `git rev-parse --is-inside-work-tree` in the current directory
   - If it succeeds: `✓ git repo: detected`
@@ -57,6 +57,9 @@ AGENTS.md
   - Read `groove-version:` from `.groove/index.md` (if absent, treat as `0.1.0`)
   - Read `version:` from `skills/groove/SKILL.md`
   - If they differ: `✗ groove-version (<local>) behind installed (<installed>) — run: groove update`
+- Companions check:
+  - Check `ls .agents/skills/find-skills/SKILL.md` — if absent: `✗ find-skills not installed — run: groove install`
+  - Check `ls .agents/skills/agent-browser/SKILL.md` — if absent: `✗ agent-browser not installed — run: groove install`
 - Also check `AGENTS.md` for presence of `<!-- groove:prime:start -->` and `<!-- groove:task:start -->` sections
 - Collect all results before printing — do not interleave output with check progress
 - Each `✗` item must include a concrete remediation command on the same line

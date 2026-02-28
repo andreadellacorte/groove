@@ -22,7 +22,6 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `work` | Compound engineering loop |
 | `task` | Task tracking |
 | `memory` | Log files + session tracking |
-| `skills` | Skill management |
 
 **Quick reference**
 
@@ -35,7 +34,6 @@ memory   log daily | log weekly | log monthly | log git
          session start | session resume | session end
          session spec | session doc | session review
          install | doctor
-skills   find | add | remove | install | check | doctor
 ```
 
 **Config** (`.groove/index.md`)

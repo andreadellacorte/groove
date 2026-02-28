@@ -2,6 +2,17 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.7.0] - 2026-02-28
+
+### Removed
+- `skills/skills` wrapper skill — removed entirely; it provided no meaningful value without an access-control layer
+- All `skills *` routing from `groove` SKILL.md (`skills help`, `skills find`, `skills add`, `skills remove`, `skills install`, `skills check`, `skills doctor`)
+
+### Changed
+- `groove install`: replaces `groove skills install` call with direct steps — runs `task install`, `memory install`, then installs `find-skills` and `agent-browser` via `npx skills` directly
+- `groove doctor`: replaces `skills doctor` delegation with a direct **companions** check — verifies `find-skills` and `agent-browser` are present in `.agents/skills/`
+- `groove help`: removed `skills` from the skills table and quick reference
+
 ## [0.6.1] - 2026-02-28
 
 ### Fixed

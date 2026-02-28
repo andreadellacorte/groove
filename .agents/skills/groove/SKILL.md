@@ -1,11 +1,11 @@
 ---
 name: groove
-description: "Compound engineering workflow system. Use when: running any groove command. Routes to daily, work, task, memory, and skills sub-commands. Use 'groove help' for overview, 'groove <skill> help' for skill-specific help."
+description: "Compound engineering workflow system. Use when: running any groove command. Routes to daily, work, task, and memory sub-commands. Use 'groove help' for overview, 'groove <skill> help' for skill-specific help."
 license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.6.1"
+  version: "0.7.0"
 ---
 
 # groove
@@ -54,11 +54,4 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `memory session doc` | → `skills/memory/commands/session/doc.md` |
 | `memory session review` | → `skills/memory/commands/session/review.md` |
 | `memory install` | → `skills/memory/commands/install.md` |
-| `skills help` | → `skills/skills/commands/help.md` |
-| `skills doctor` | → `skills/skills/commands/doctor.md` |
-| `skills find` | → `skills/skills/commands/find.md` |
-| `skills add` | → `skills/skills/commands/add.md` |
-| `skills remove` | → `skills/skills/commands/remove.md` |
-| `skills install` | → `skills/skills/commands/install.md` |
-| `skills check` | → `skills/skills/commands/check.md` |
 | _(empty)_ | → `commands/help.md` |
