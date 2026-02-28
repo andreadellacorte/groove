@@ -2,6 +2,13 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.4.0] - 2026-02-28
+
+### Added
+- User-defined daily hooks — `groove install` creates `.groove/hooks/` (with `.gitkeep`)
+- `daily startup` and `daily closeout` execute `.groove/hooks/startup.md` / `.groove/hooks/closeout.md` if present, skip silently if not
+- Hook templates at `skills/daily/templates/hooks/` document the format
+
 ## [0.3.1] - 2026-02-28
 
 ### Changed
