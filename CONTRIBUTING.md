@@ -88,16 +88,13 @@ feat(0.2.0): add browser config key and agent-browser companion
 
 ## Adding a companion skill
 
-Companion skills are pre-seeded in `skills-lock.json` and installed by `groove install`. To add one:
+Companion skills are hardcoded in install commands — not tracked in `skills-lock.json` (which is user-generated output). There are two kinds:
 
-1. Add an entry to `skills-lock.json`:
-   ```json
-   "<skill-name>": {
-     "source": "https://github.com/<owner>/<repo>",
-     "skill": "<skill-name>",
-     "description": "<what it does>"
-   }
-   ```
+- **Groove-wide companions** (e.g. `agent-browser`) — add an explicit `npx skills add` step in `skills/groove/commands/install.md`
+- **Backend-specific companions** (e.g. `bonfire` for memory, `beans` for task, `find-skills` for skills) — add the install step in the relevant sub-skill's `commands/install.md`
+
+To add a groove-wide companion:
+1. Add a step in `skills/groove/commands/install.md` under "Install groove-wide companion skills"
 2. Update `README.md` if the companion is user-facing
 3. No version bump required unless a new config key is added
 
@@ -112,8 +109,7 @@ groove/
 ├── migrations/
 │   ├── index.md             ← register new migrations here
 │   └── <from>-to-<to>.md   ← one file per version step
-├── skills/
-│   └── groove/
-│       └── SKILL.md         ← bump metadata.version here
-└── skills-lock.json         ← add companion skills here
+└── skills/
+    └── groove/
+        └── SKILL.md         ← bump metadata.version here
 ```

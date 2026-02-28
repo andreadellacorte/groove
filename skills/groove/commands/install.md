@@ -2,12 +2,12 @@
 
 ## Outcome
 
-All groove backends are installed in dependency order, companion skills from `skills-lock.json` are installed, AGENTS.md is primed with groove and backend context, and the repo is ready for use.
+All groove backends are installed in dependency order, groove-wide companion skills are installed, AGENTS.md is primed with groove and backend context, and the repo is ready for use.
 
 ## Acceptance Criteria
 
 - All backends installed (task → memory → skills/finder)
-- All companion skills in `skills-lock.json` installed
+- Groove-wide companion skills installed (agent-browser)
 - `AGENTS.md` contains up-to-date `<!-- groove:prime:start -->` section
 - `AGENTS.md` contains up-to-date `<!-- groove:task:start -->` section (beans prime output, if `tasks: beans`)
 - User sees a summary of what was installed and what was written
@@ -18,9 +18,9 @@ Run in order:
 
 1. If `.groove/index.md` does not exist, run `groove config` to create it
 2. `groove skills install` — installs all backends (task → memory → finder)
-3. Install companion skills from `skills-lock.json`:
-   - For each entry: `npx skills add <source> --skill <skill>` (or `npx skills add <source>` if no `skill` key)
-   - Report installed / already-present / failed per companion
+3. Install groove-wide companion skills:
+   - `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
+   - Report installed / already-present / failed
 4. Apply git strategy — write `.groove/.gitignore` based on `git:` value in `.groove/index.md` (see `commands/config.md` for rules)
 5. `groove prime` — writes groove context to `AGENTS.md`
 6. If `tasks: beans`: run `beans prime`, write output to `<!-- groove:task:start -->` section of `AGENTS.md`
@@ -33,6 +33,7 @@ Run in order:
 - Each step reports installed / already-present / failed
 - `AGENTS.md` update is additive per section — preserve all other content
 - If any step fails, report it clearly but continue with remaining steps
+- Groove-wide companions are hardcoded here (not read from `skills-lock.json`); backend-specific skills are installed by their respective sub-skill install commands
 - Report a final summary:
   ```
   ✓ task backend (beans)
