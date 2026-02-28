@@ -40,7 +40,7 @@ All config reads use `.groove/index.md` at git root.
 
 ## Bootstrap
 
-Reads `.groove/index.md` for config. If not present, create from `skills/task/templates/groove-config.md` before proceeding.
+Reads `.groove/index.md` for config. If not present, create from `skills/groove/templates/index.md` before proceeding.
 
 ## Design Note
 

@@ -15,5 +15,5 @@ The current task backend configuration is shown to the user, or updated based on
 - Read and write `.groove/index.md` frontmatter `tasks:` key only
 - Valid values: `beans`, `linear`, `github`, `none`
 - Reject unknown backend values with a helpful error listing valid options
-- If `.groove/index.md` does not exist, create from `templates/groove-config.md` with defaults
+- If `.groove/index.md` does not exist, create from `skills/groove/templates/index.md` with defaults
 - Do not modify any other keys in `.groove/index.md`

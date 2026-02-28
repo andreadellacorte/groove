@@ -51,13 +51,13 @@ All file paths (`.groove/index.md`, `.beans.yml`) are relative to git root.
 
 ## Bootstrap
 
-If `.groove/index.md` does not exist at git root, create it from the template at `templates/groove-config.md` before proceeding. Ask user to confirm the defaults or provide overrides.
+If `.groove/index.md` does not exist at git root, create it from `skills/groove/templates/index.md` before proceeding. Ask user to confirm the defaults or provide overrides.
 
 ## File Structure
 
 ```
 .groove/
-└── index.md          # shared groove config (frontmatter: tasks, sessions, finder, memory, git)
+└── index.md          # shared groove config (frontmatter: tasks, memory, git.*)
 .beans.yml            # beans CLI config (at git root, owned by beans)
 skills/task/
 ├── SKILL.md
@@ -72,6 +72,5 @@ skills/task/
 ├── references/
 │   └── backends.md
 └── templates/
-    ├── beans-config.md
-    └── groove-config.md
+    └── beans-config.md
 ```

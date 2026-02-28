@@ -12,10 +12,6 @@ git:
   memory: ignore-all
   tasks: ignore-all
   hooks: commit-all
-guardrails:
-  default:
-    read-only: false
-    require-confirmation: false
 ---
 ```
 
@@ -30,12 +26,3 @@ guardrails:
 | `git.memory` | `ignore-all` | `ignore-all \| hybrid \| commit-all` | Git strategy for memory logs |
 | `git.tasks` | `ignore-all` | `ignore-all \| commit-all` | Git strategy for task files in `.groove/tasks/` |
 | `git.hooks` | `commit-all` | `ignore-all \| commit-all` | Git strategy for hooks in `.groove/hooks/` |
-| `guardrails` | see below | nested object | Per-tool confirmation settings |
-
-**git.memory options:**
-- `ignore-all`: memory files are gitignored (default — keeps logs local)
-- `hybrid`: memory logs committed, sessions ignored
-- `commit-all`: all memory files committed
-
-**Notes:**
-- After creating this file, run `groove install` to install all backends

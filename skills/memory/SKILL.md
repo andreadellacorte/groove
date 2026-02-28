@@ -71,7 +71,7 @@ All paths (`memory:` config value, log files) are relative to git root.
 
 ## Bootstrap
 
-If `.groove/index.md` does not exist, create from `skills/task/templates/groove-config.md` before proceeding.
+If `.groove/index.md` does not exist, create from `skills/groove/templates/index.md` before proceeding.
 
 If the `memory:` path does not exist, create the full directory structure:
 

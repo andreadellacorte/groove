@@ -24,7 +24,6 @@ Walk the user through each config key in order. For each key: show the current v
 | `git.memory` | `ignore-all` | `ignore-all \| hybrid \| commit-all` | "Git strategy for memory logs? ignore-all keeps them local, hybrid commits logs but ignores sessions, commit-all commits everything." |
 | `git.tasks` | `ignore-all` | `ignore-all \| commit-all` | "Git strategy for task files (.groove/tasks/)? ignore-all keeps them local, commit-all tracks them in git." |
 | `git.hooks` | `commit-all` | `ignore-all \| commit-all` | "Git strategy for hooks (.groove/hooks/)? commit-all shares hooks with the team, ignore-all keeps them local." |
-| `guardrails.default.require-confirmation` | `false` | `true \| false` | "Require confirmation before groove takes actions? (default: no)" |
 
 After all keys are confirmed:
 

@@ -2,6 +2,13 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.6.1] - 2026-02-28
+
+### Fixed
+- Moved `.groove/index.md` template from `skills/task/templates/groove-config.md` to `skills/groove/templates/index.md` — it belongs to groove core, not the task skill
+- Removed `guardrails.default.require-confirmation` config key — it was never read by any skill
+- Updated all bootstrap references across task, daily, and memory skills
+
 ## [0.6.0] - 2026-02-28
 
 ### Added
