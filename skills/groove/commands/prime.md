@@ -23,7 +23,6 @@ groove is installed in this repo. Use `/groove <skill> <command>` for all workfl
 
 ## Config
 tasks:    <tasks value>
-sessions: <sessions value>
 memory:   <memory value>
 git:      <git value>
 
@@ -38,7 +37,8 @@ git:      <git value>
 /groove task list             — show active, ready tasks
 /groove task create           — create a task
 /groove task analyse          — summarise tasks by status
-/groove memory session start  — start session (delegates to <sessions value>)
+/groove memory session start  — start session
+/groove memory session resume — resume an existing session
 /groove memory log daily      — write daily closeout log
 /groove skills add            — install a skill
 
@@ -66,7 +66,7 @@ Before writing `AGENTS.md`, run a version check if `last-version-check:` in `.gr
 
 ## Constraints
 
-- Read `.groove/index.md` frontmatter to substitute all `<value>` placeholders
+- Read `.groove/index.md` frontmatter to substitute `tasks:`, `memory:`, `git:` placeholders
 - If `AGENTS.md` does not exist, create it with only the groove:prime section
 - If the section already exists, replace it entirely — do not append
 - If the section does not exist, append it to the end of `AGENTS.md`

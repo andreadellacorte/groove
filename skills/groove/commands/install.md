@@ -30,7 +30,7 @@ Run in order:
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks:`, `sessions:`, `finder:`, `git:` config before running
+- Read `.groove/index.md` for `tasks:`, `finder:`, `git:` config before running
 - If `.groove/index.md` does not exist, `groove config` is run first (step 1) to create it
 - Dependency order for backends must be respected: task → memory → finder → companions
 - Each step reports installed / already-present / failed
@@ -40,7 +40,7 @@ Run in order:
 - Report a final summary:
   ```
   ✓ task backend (beans)
-  ✓ memory backend (bonfire)
+  ✓ memory backend — session dirs ready
   ✓ skills backend (find-skills)
   ✓ companion: agent-browser
   ✓ hooks: .groove/hooks/ ready

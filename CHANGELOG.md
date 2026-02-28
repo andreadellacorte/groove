@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.5.2] - 2026-02-28
+
+### Fixed
+- `groove install` no longer references bonfire as memory backend; summary line updated to "memory backend — session dirs ready"
+- `groove prime` AGENTS.md template: removed `sessions:` config line; updated session start description; added `session resume` to key commands
+
 ## [0.5.1] - 2026-02-28
 
 ### Fixed
