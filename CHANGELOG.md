@@ -2,6 +2,15 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.3.0] - 2026-02-28
+
+### Added
+- `groove config` — interactive wizard to create/update `.groove/index.md` with guided defaults
+- `groove check` — standalone version check against latest GitHub release
+- `groove prime` now checks for new versions once per day (`last-version-check:` in config)
+- Git strategy enforcement — `groove install` and `groove config` write `.groove/.gitignore`
+- `last-version-check:` config key added to `.groove/index.md`
+
 ## [0.2.0] - 2026-02-28
 
 ### Added
