@@ -20,7 +20,7 @@ All pending migrations are applied to the user's local groove state in version o
 4. If versions match: report "groove is up to date (v<version>)" and exit
 5. Read `migrations/index.md` — parse the migration table
 6. Filter rows where `From` >= local version and `To` <= installed version, in table order
-7. If no migrations found but versions differ: warn that no migration path exists and suggest reinstalling groove
+7. If no migrations found but versions differ: update `groove-version:` in `.groove/index.md` directly to the installed version and report "no state migrations needed — version bumped to v<version>"
 8. For each pending migration:
    a. Report "Applying <from> → <to>: <description>"
    b. Read and execute the migration file

@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.7.2] - 2026-02-28
+
+### Fixed
+- `groove update`: no longer warns "no migration path found" when versions differ but no migration is registered — patch releases with no config changes now correctly bump `groove-version:` directly
+
 ## [0.7.1] - 2026-02-28
 
 ### Fixed
