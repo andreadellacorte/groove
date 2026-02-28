@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.7.1] - 2026-02-28
+
+### Fixed
+- `groove install`: corrected `find-skills` install URL (`nicholasgasior/find-skills` → `vercel-labs/skills --skill find-skills`)
+- `task install`: corrected beans repo URL (`andreadellacorte/beans` → `hmans/beans`) and version command (`--version` → `beans version`)
+
 ## [0.7.0] - 2026-02-28
 
 ### Removed
