@@ -23,9 +23,10 @@ Run in order:
    - **find-skills**: check `ls .agents/skills/find-skills/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
    - **agent-browser**: check `ls .agents/skills/agent-browser/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
    - Report each as installed / already-present / failed
-5. Scaffold hooks directory:
+5. Scaffold hooks and cache directories:
    - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
-   - Report created / already-present
+   - Create `.groove/.cache/` if it does not exist (with a `.gitkeep`)
+   - Report each as created / already-present
 6. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `commands/config.md` for rules)
 7. Write the session bootstrap to `AGENTS.md`:
    - Replace any existing `<!-- groove:prime:start -->` / `<!-- groove:prime:end -->` section with:

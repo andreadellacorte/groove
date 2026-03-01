@@ -2,6 +2,22 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.3] - 2026-03-01
+
+### Changed
+- `last-version-check:` moved out of `.groove/index.md` into `.groove/.cache/last-version-check` (plain text file) — cache data no longer lives in the config file
+- `.groove/.cache/` directory is now created by `groove install` with a `.gitkeep`; its contents are always gitignored regardless of git strategy
+- `groove prime` and `groove check` read/write `.groove/.cache/last-version-check` instead of the `index.md` key
+- `groove config` always appends `.cache/*` / `!.cache/.gitkeep` to `.groove/.gitignore`
+
+### Migration
+
+Run `groove update` — the `0.8.2 → 0.8.3` migration will:
+1. Create `.groove/.cache/` with `.gitkeep`
+2. Move any existing `last-version-check:` value to `.groove/.cache/last-version-check`
+3. Remove `last-version-check:` from `.groove/index.md`
+4. Append cache gitignore rules to `.groove/.gitignore`
+
 ## [0.8.2] - 2026-03-01
 
 ### Fixed

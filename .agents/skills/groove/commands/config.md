@@ -54,5 +54,12 @@ After writing `.groove/index.md`, generate `.groove/.gitignore` from the `git.*`
 
 Write the generated entries to `.groove/.gitignore`, replacing the file entirely. If no entries are generated (all `commit-all`), write an empty file with a comment: `# groove git strategy: commit-all`.
 
+Always append these lines at the end of `.groove/.gitignore`, regardless of strategy:
+```
+# cache — always local
+.cache/*
+!.cache/.gitkeep
+```
+
 - If `.groove/` is listed in the root `.gitignore`, warn the user: "Note: `.groove/` is in your root .gitignore — any commit-all strategies require removing it."
 - Do not modify the root `.gitignore` automatically — flag it for the user to resolve

@@ -55,19 +55,19 @@ git.hooks:  <git.hooks value>
 
 ## Version check
 
-Before outputting context, check if `last-version-check:` in `.groove/index.md` is not today's date:
+Before outputting context, check if `.groove/.cache/last-version-check` does not contain today's date:
 
-1. Read `last-version-check:` from `.groove/index.md` — if absent or not today's date, proceed
+1. Read `.groove/.cache/last-version-check` — if absent or not today's date, proceed
 2. Fetch latest release from `https://api.github.com/repos/andreadellacorte/groove/releases/latest`
 3. If a newer version exists, prepend to the output:
    ```
    ⚠ New version of groove available: v<latest> — run: /groove update
    ```
-4. Update `last-version-check:` to today's date in `.groove/index.md`
+4. Write today's date to `.groove/.cache/last-version-check`
 5. If the API call fails, skip silently — do not block prime
 
 ## Constraints
 
 - Read `.groove/index.md` frontmatter to substitute `tasks:`, `memory:`, and `git.*` placeholders
-- Output to conversation only — do not write to AGENTS.md or any file (except updating `last-version-check:`)
-- Version check runs at most once per day — gate on `last-version-check:` date
+- Output to conversation only — do not write to AGENTS.md or any other file (except updating `.groove/.cache/last-version-check`)
+- Version check runs at most once per day — gate on `.groove/.cache/last-version-check` date

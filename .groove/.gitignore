@@ -1,1 +1,5 @@
 # groove git strategy: commit-all
+
+# cache — always local
+.cache/*
+\!.cache/.gitkeep

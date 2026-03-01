@@ -1,6 +1,5 @@
 ---
-groove-version: 0.8.1
-last-version-check: "2026-03-01"
+groove-version: 0.8.3
 tasks: beans
 memory: .groove/memory/
 git:
