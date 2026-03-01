@@ -2,6 +2,17 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.4] - 2026-03-01
+
+### Fixed
+- Migration `0.8.3 → 0.8.4` rewrites both AGENTS.md sections to the v0.8.x format — existing installs that ran `groove install` before v0.8.1 no longer need manual AGENTS.md cleanup
+
+### Migration
+
+Run `groove update` — the `0.8.3 → 0.8.4` migration rewrites:
+- `<!-- groove:prime:start -->` → 2-line session bootstrap
+- `<!-- groove:task:start -->` → 2-line beans stub
+
 ## [0.8.3] - 2026-03-01
 
 ### Changed
