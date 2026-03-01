@@ -14,6 +14,7 @@ All pending migrations are applied to the user's local groove state in version o
 ## Steps
 
 1. Run `npx skills add andreadellacorte/groove --yes` — pulls latest groove skill files and refreshes the lock entry (more reliable than `npx skills update` which requires a pre-populated folder hash)
+   - After this step, **re-read this file (`commands/update.md`) from disk** before continuing — the skill refresh may have updated the update command itself, and the remainder of these steps must reflect the latest version
 2. Read `groove-version:` from `.groove/index.md` — if key absent, assume `0.1.0` and write it
 3. Read installed version from `version:` in `skills/groove/SKILL.md`
 4. If versions match: report "groove is up to date (v<version>)" and exit

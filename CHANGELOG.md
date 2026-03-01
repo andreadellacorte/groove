@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.6] - 2026-03-01
+
+### Fixed
+- `groove update` now re-reads `commands/update.md` from disk after `npx skills add` completes — ensures the agent executes the latest update logic when the update command itself has changed between versions
+
 ## [0.8.5] - 2026-03-01
 
 ### Fixed
