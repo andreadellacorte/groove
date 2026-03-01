@@ -2,6 +2,21 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.1] - 2026-03-01
+
+### Fixed
+- `groove prime` now writes a 2-line bootstrap instruction to `AGENTS.md` instead of embedding the full workflow context — agents load context on demand by running `/groove prime` at session start
+- `task install` now writes a minimal 2-line stub to `AGENTS.md` instead of the full `beans prime` output — full beans reference available via `beans prime` on demand
+- `groove install` step 8 removed — it was calling `beans prime` directly, bypassing the stub written by `task install` in step 2
+
+### Migration
+
+No config changes. If you ran `groove install` or `groove prime` on v0.8.0, re-run the following to update your `AGENTS.md` to the new format:
+```
+groove prime
+groove task install
+```
+
 ## [0.8.0] - 2026-03-01
 
 ### Added
