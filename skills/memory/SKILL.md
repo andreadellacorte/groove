@@ -8,6 +8,8 @@ metadata:
   version: "0.1.0"
 ---
 
+<!-- groove:managed — do not edit; changes will be overwritten by groove update -->
+
 # memory
 
 Two responsibilities in one skill: **log** (structured markdown memory files) and **session** (named, parallel session tracking with start/resume/end lifecycle).

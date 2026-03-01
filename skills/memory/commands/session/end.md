@@ -25,3 +25,7 @@ The named session is captured and closed. Work done, decisions, and next steps a
   - Populate `## Next Steps` with remaining work or follow-ups (skip section if none)
   - Set `status: ended` in frontmatter
 - Do not delete the session file — keep it for historical reference
+- After updating the session file, ask: "Any workflow insights from this session to capture in
+  learned memory? Name a topic (e.g. `patterns`, `tools`) or press enter to skip"
+- If user provides a topic and content: append to `.groove/memory/learned/<topic>.md` under a
+  `## <YYYY-MM-DD>` heading; create the file with a `# <Topic>` heading if it does not exist

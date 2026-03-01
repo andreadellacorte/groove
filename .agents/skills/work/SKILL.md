@@ -8,6 +8,8 @@ metadata:
   version: "0.1.0"
 ---
 
+<!-- groove:managed — do not edit; changes will be overwritten by groove update -->
+
 # work
 
 The compound engineering loop — five discrete stages that systematically reduce rework by front-loading clarity and back-loading lessons. Each stage can be run independently or in sequence.

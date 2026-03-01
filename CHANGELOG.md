@@ -2,6 +2,18 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.0] - 2026-03-01
+
+### Added
+- `<!-- groove:managed -->` comment in all five skill `SKILL.md` files — signals to agents that these files are owned by `groove update` and must not be edited directly
+- `## Constraints` section in the `groove prime` block template — emitted into `AGENTS.md` on every `groove prime` run; instructs agents not to edit `skills/` or `.agents/skills/`, and clarifies that `.groove/` is the user zone
+- `<memory>/learned/` directory — created by `groove memory install` alongside session dirs; serves as the cold/long-term tier for workflow insights
+- Workflow learning routing in `work compound` — after the compound checklist, detects lessons about AI workflow, agent behaviour, or engineering process and (if confirmed) appends them to `.groove/memory/learned/<topic>.md`; skips silently if no workflow lessons found
+- Optional learned memory prompt in `memory session end` — after closing a session, asks "Any workflow insights to capture?" and writes to `.groove/memory/learned/<topic>.md` if user provides a topic
+
+### Changed
+- `AGENTS.md` updated (re-primed) to include the new `## Constraints` section
+
 ## [0.7.2] - 2026-02-28
 
 ### Fixed

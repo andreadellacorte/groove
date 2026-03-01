@@ -8,6 +8,8 @@ metadata:
   version: "0.1.0"
 ---
 
+<!-- groove:managed — do not edit; changes will be overwritten by groove update -->
+
 # task
 
 Backend-agnostic task management skill for groove. Reads backend config from `.groove/index.md` and routes all commands to the appropriate CLI or API.

@@ -8,6 +8,8 @@ metadata:
   version: "0.1.0"
 ---
 
+<!-- groove:managed — do not edit; changes will be overwritten by groove update -->
+
 # daily
 
 Thin orchestrator for the daily rhythm. Bookends the workday by calling `task` and `memory` skills in the right order. Does not duplicate their logic.

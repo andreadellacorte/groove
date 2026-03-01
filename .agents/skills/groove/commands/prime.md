@@ -50,6 +50,10 @@ git.hooks:  <git.hooks value>
 - Task completion requires "Summary of Changes" in body before marking done
 - Archive is always user-triggered — never automatic during closeout
 - 80% of compound loop value is in plan and review — do not skip them
+
+## Constraints
+- Do not edit files under `skills/` or `.agents/skills/` — managed by groove update, changes will be overwritten
+- User zone: `.groove/` is yours — config, hooks, memory, and learned insights are all safe to edit
 <!-- groove:prime:end -->
 ```
 
