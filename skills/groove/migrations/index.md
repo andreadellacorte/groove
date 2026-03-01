@@ -13,6 +13,7 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | 0.5.3 | 0.6.0 | 0.5.3-to-0.6.0.md | Split flat `git:` into `git.memory/tasks/hooks` sub-keys; remove `finder:` and `sessions:`; move beans tasks to `.groove/tasks/` |
 | 0.8.2 | 0.8.3 | 0.8.2-to-0.8.3.md | Move `last-version-check:` out of `index.md` into `.groove/.cache/last-version-check`; create `.cache/` directory; gitignore `.cache/*` |
 | 0.8.3 | 0.8.4 | 0.8.3-to-0.8.4.md | Rewrite AGENTS.md sections to v0.8.x format: 2-line groove:prime bootstrap and 2-line groove:task stub |
+| 0.8.6 | 0.8.7 | 0.8.6-to-0.8.7.md | Remove redundant beans prime line from groove:prime bootstrap in AGENTS.md |
 
 ## Notes
 

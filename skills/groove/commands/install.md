@@ -32,12 +32,10 @@ Run in order:
    - Replace any existing `<!-- groove:prime:start -->` / `<!-- groove:prime:end -->` section with:
      ```
      <!-- groove:prime:start -->
-     **Run at the start of every session, in order:**
-     1. `/groove prime` — loads groove workflow context into the conversation
-     2. `beans prime` — loads task backend context into the conversation
+     **Run at the start of every session:**
+     `/groove prime` — loads groove workflow context into the conversation
      <!-- groove:prime:end -->
      ```
-   - Omit line 2 if `tasks: none`
    - If section absent, append to end of `AGENTS.md`; preserve all other content
 8. `task install` already wrote the `<!-- groove:task:start -->` stub in step 2 — no additional AGENTS.md write needed here
 

@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.7] - 2026-03-01
+
+### Fixed
+- `groove:prime` bootstrap no longer mentions `beans prime` — that's already covered by the `groove:task` section; each section now covers its own domain without overlap
+- Migration `0.8.6 → 0.8.7` removes the redundant line from existing `AGENTS.md` files
+
 ## [0.8.6] - 2026-03-01
 
 ### Fixed
