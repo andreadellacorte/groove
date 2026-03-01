@@ -9,7 +9,7 @@
     "daily": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "fbc7f2674ba2c27fba3e55955fe9183b627769799908705107a9f8b246813776"
+      "computedHash": "ea130a3085c5fdcdb8315b729be49f6cc51e6bae5e1944edc2fce525a6ae3e9d"
     },
     "find-skills": {
       "source": "andreadellacorte/groove",
@@ -19,12 +19,12 @@
     "groove": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "2820420a9a250f2cc063a3f0fc547fb1ae8a040292aed0f942b90f4a168d3ebe"
+      "computedHash": "119ac9db25bc175ab9b83f47011a94800f7cf8e0975a2bc28320674eeb76ff3c"
     },
     "memory": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "0c79f1bf92b3fa7a9099c216f4d1bcd947ee2f63a09bb27dc6b3a55b137faf46"
+      "computedHash": "092c904784dff704f23754ea59e3961112a12d86b0c3ea13a8a66ece74134b5c"
     },
     "skills": {
       "source": "andreadellacorte/groove",
@@ -34,12 +34,12 @@
     "task": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "0b4929bdfeb4f9a6077a95849c46e0a567e42cb14af3fee166f7acaf6608e9da"
+      "computedHash": "d49873b1e574cbab606d5fad3b6c18494c4b341bb90caf141721978bf2326bc2"
     },
     "work": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "ad9bc4860fa0004e6eb2df9beff3ef36643350f298a96e2d77344b32ccea770c"
+      "computedHash": "6eab19a3416302e5272e32f11ea779ac3574a17dc18d5ceab553d8e5d85399b1"
     }
   }
 }

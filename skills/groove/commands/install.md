@@ -2,13 +2,13 @@
 
 ## Outcome
 
-All groove backends are installed in dependency order, groove-wide companion skills are installed, AGENTS.md is primed with groove and backend context, and the repo is ready for use.
+All groove backends are installed in dependency order, groove-wide companion skills are installed, AGENTS.md contains the session bootstrap, and the repo is ready for use.
 
 ## Acceptance Criteria
 
 - Task and memory backends installed
 - Companion skills installed (find-skills, agent-browser)
-- `AGENTS.md` contains up-to-date `<!-- groove:prime:start -->` section
+- `AGENTS.md` contains the `<!-- groove:prime:start -->` session bootstrap
 - `AGENTS.md` contains a `<!-- groove:task:start -->` stub (if `tasks: beans`)
 - User sees a summary of what was installed and what was written
 
@@ -27,7 +27,17 @@ Run in order:
    - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
    - Report created / already-present
 6. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `commands/config.md` for rules)
-7. `groove prime` — writes groove context to `AGENTS.md`
+7. Write the session bootstrap to `AGENTS.md`:
+   - Replace any existing `<!-- groove:prime:start -->` / `<!-- groove:prime:end -->` section with:
+     ```
+     <!-- groove:prime:start -->
+     **Run at the start of every session, in order:**
+     1. `/groove prime` — loads groove workflow context into the conversation
+     2. `beans prime` — loads task backend context into the conversation
+     <!-- groove:prime:end -->
+     ```
+   - Omit line 2 if `tasks: none`
+   - If section absent, append to end of `AGENTS.md`; preserve all other content
 8. `task install` already wrote the `<!-- groove:task:start -->` stub in step 2 — no additional AGENTS.md write needed here
 
 ## Constraints

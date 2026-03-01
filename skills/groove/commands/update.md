@@ -2,14 +2,13 @@
 
 ## Outcome
 
-All pending migrations are applied to the user's local groove state in version order. `.groove/index.md` reflects the current installed groove version. AGENTS.md is refreshed.
+All pending migrations are applied to the user's local groove state in version order. `.groove/index.md` reflects the current installed groove version.
 
 ## Acceptance Criteria
 
 - `groove-version:` in `.groove/index.md` matches `version:` in `skills/groove/SKILL.md` after update
 - Each pending migration was applied in order
 - `groove-version:` updated after each successful migration (partial progress is recoverable)
-- `groove prime` re-run after all migrations complete (AGENTS.md reflects any config changes)
 - If already up to date, reports clearly and exits
 
 ## Steps
@@ -26,8 +25,7 @@ All pending migrations are applied to the user's local groove state in version o
    b. Read and execute the migration file
    c. Update `groove-version:` in `.groove/index.md` to the `To` version
    d. Report "✓ <from> → <to> applied"
-9. Run `groove prime` to refresh AGENTS.md
-10. Report summary: N migrations applied, now at v<version>
+9. Report summary: N migrations applied, now at v<version>
 
 ## Constraints
 

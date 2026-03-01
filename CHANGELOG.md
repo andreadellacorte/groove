@@ -2,6 +2,17 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.2] - 2026-03-01
+
+### Fixed
+- `groove prime` now outputs workflow context to the conversation only — it no longer writes to `AGENTS.md`
+- `groove install` now owns the `<!-- groove:prime:start -->` bootstrap section in `AGENTS.md` directly, rather than delegating to `groove prime`
+- `groove update` no longer calls `groove prime` after migrations — AGENTS.md bootstrap is static and managed by install/migrations only
+
+### Migration
+
+No config changes. No action needed.
+
 ## [0.8.1] - 2026-03-01
 
 ### Fixed
