@@ -2,29 +2,29 @@
   "version": 1,
   "skills": {
     "agent-browser": {
-      "source": "vercel-labs/agent-browser",
+      "source": "andreadellacorte/groove",
       "sourceType": "github",
       "computedHash": "2f771f8eb25f9856d2169a4de4766de94e2bdbff999f42c458c8f1e2ca405c03"
     },
     "daily": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "bce1e0d14d43ec46a5921552725ea14b5fc997da996f0e7cf478c3e6c0544c15"
+      "computedHash": "fbc7f2674ba2c27fba3e55955fe9183b627769799908705107a9f8b246813776"
     },
     "find-skills": {
-      "source": "vercel-labs/skills",
+      "source": "andreadellacorte/groove",
       "sourceType": "github",
       "computedHash": "6412eb4eb3b91595ebab937f0c69501240e7ba761b3d82510b5cf506ec5c7adc"
     },
     "groove": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "08b71b5c0f4fdec83c9b5836b3a3b8a01f9cf1157414062ae2fddc252a388b52"
+      "computedHash": "2820420a9a250f2cc063a3f0fc547fb1ae8a040292aed0f942b90f4a168d3ebe"
     },
     "memory": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "731b3f387998edff32419c038710d6f209a83a99bac6f5ad273a1a9f5b867766"
+      "computedHash": "0c79f1bf92b3fa7a9099c216f4d1bcd947ee2f63a09bb27dc6b3a55b137faf46"
     },
     "skills": {
       "source": "andreadellacorte/groove",
@@ -34,7 +34,7 @@
     "task": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "2cafc5ba4e025e6ae7798500c16061e3de7e8762318c537a391636df42f5dc8e"
+      "computedHash": "0b4929bdfeb4f9a6077a95849c46e0a567e42cb14af3fee166f7acaf6608e9da"
     },
     "work": {
       "source": "andreadellacorte/groove",
