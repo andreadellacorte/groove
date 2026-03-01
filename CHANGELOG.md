@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.5] - 2026-03-01
+
+### Fixed
+- `groove update` migration filter now uses `To > local version AND To <= installed version` — the `From` field is informational only and no longer gates execution; migrations now apply correctly across any version gap (e.g. 0.7.1 → 0.8.5 now runs all 0.8.x migrations)
+
 ## [0.8.4] - 2026-03-01
 
 ### Fixed

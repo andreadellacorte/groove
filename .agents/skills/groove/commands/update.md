@@ -18,7 +18,7 @@ All pending migrations are applied to the user's local groove state in version o
 3. Read installed version from `version:` in `skills/groove/SKILL.md`
 4. If versions match: report "groove is up to date (v<version>)" and exit
 5. Read `migrations/index.md` — parse the migration table
-6. Filter rows where `From` >= local version and `To` <= installed version, in table order
+6. Filter rows where `To` > local version AND `To` <= installed version, in table order — the `From` field is informational only and does not gate execution
 7. If no migrations found but versions differ: update `groove-version:` in `.groove/index.md` directly to the installed version and report "no state migrations needed — version bumped to v<version>"
 8. For each pending migration:
    a. Report "Applying <from> → <to>: <description>"
@@ -29,7 +29,7 @@ All pending migrations are applied to the user's local groove state in version o
 
 ## Constraints
 
-- Never skip a migration — apply every step in sequence even if from/to seem far apart
+- Never skip a migration — apply every matching migration in table order even if `From` does not match local version exactly
 - Update `groove-version:` after each individual migration, not only at the end
 - If a migration fails: stop, report the failure and current version, do not continue
 - Do not modify skill files — `npx skills update` handles that; this command only migrates local state

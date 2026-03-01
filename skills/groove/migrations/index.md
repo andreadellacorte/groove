@@ -2,7 +2,7 @@
 
 Ordered registry of all groove migrations. Each entry maps a from-version to a to-version with the migration file that handles the transition.
 
-`groove update` reads this file to determine which migrations to run, filters to those between the user's current `groove-version:` and the installed groove version, and runs them in order.
+`groove update` reads this file to determine which migrations to run. It selects all rows where `To` > local `groove-version:` AND `To` <= installed version, then runs them in table order. The `From` field is informational only — it does not gate execution, so migrations apply correctly across any version gap.
 
 ## Format
 
