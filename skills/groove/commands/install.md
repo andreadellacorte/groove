@@ -9,7 +9,7 @@ All groove backends are installed in dependency order, groove-wide companion ski
 - Task and memory backends installed
 - Companion skills installed (find-skills, agent-browser)
 - `AGENTS.md` contains up-to-date `<!-- groove:prime:start -->` section
-- `AGENTS.md` contains up-to-date `<!-- groove:task:start -->` section (beans prime output, if `tasks: beans`)
+- `AGENTS.md` contains a `<!-- groove:task:start -->` stub (if `tasks: beans`)
 - User sees a summary of what was installed and what was written
 
 ## Steps
@@ -28,7 +28,7 @@ Run in order:
    - Report created / already-present
 6. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `commands/config.md` for rules)
 7. `groove prime` — writes groove context to `AGENTS.md`
-8. If `tasks: beans`: run `beans prime`, write output to `<!-- groove:task:start -->` section of `AGENTS.md`
+8. `task install` already wrote the `<!-- groove:task:start -->` stub in step 2 — no additional AGENTS.md write needed here
 
 ## Constraints
 
