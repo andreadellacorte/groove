@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.8] - 2026-03-01
+
+### Changed
+- `groove:task` stub wording: "Run `beans prime` to load the full beans CLI reference" (imperative, not conditional)
+
 ## [0.8.7] - 2026-03-01
 
 ### Fixed

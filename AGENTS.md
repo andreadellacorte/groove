@@ -5,5 +5,5 @@
 
 <!-- groove:task:start -->
 Task backend: beans — use `/groove task` commands for all task management.
-Run `beans prime` if you need the full beans CLI reference.
+Run `beans prime` to load the full beans CLI reference.
 <!-- groove:task:end -->

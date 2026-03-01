@@ -31,7 +31,7 @@ The configured task backend is installed and verified reachable. User is informe
   - Stub content:
     ```
     Task backend: beans — use `/groove task` commands for all task management.
-    Run `beans prime` if you need the full beans CLI reference.
+    Run `beans prime` to load the full beans CLI reference.
     ```
   - Replace section if it already exists; append if not; preserve all other `AGENTS.md` content
   - Report the path written
