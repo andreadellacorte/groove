@@ -2,13 +2,12 @@
 
 ## Outcome
 
-A concise groove context prompt is written to the `<!-- groove:prime:start -->` section of `AGENTS.md` at the git root. Any AI agent working in the repo will automatically have groove context without needing to run prime each session.
+A bootstrap instruction is written to the `<!-- groove:prime:start -->` section of `AGENTS.md` at the git root, telling agents which commands to run at session start and in what order.
 
 ## Acceptance Criteria
 
 - `AGENTS.md` exists at git root (created if absent)
 - The `<!-- groove:prime:start -->` / `<!-- groove:prime:end -->` section is present and up to date
-- Section content reflects current `.groove/index.md` config values
 - Running prime again updates the section in place — does not duplicate it
 
 ## Output format
@@ -17,45 +16,13 @@ Write the following block to `AGENTS.md`, replacing any existing `<!-- groove:pr
 
 ```
 <!-- groove:prime:start -->
-# Groove Workflow Context
-
-groove is installed in this repo. Use `/groove <skill> <command>` for all workflow commands.
-
-## Config
-tasks:      <tasks value>
-memory:     <memory value>
-git.memory: <git.memory value>
-git.tasks:  <git.tasks value>
-git.hooks:  <git.hooks value>
-
-## Key commands
-/groove daily startup         — start the workday
-/groove daily closeout        — end the workday
-/groove work brainstorm       — clarify scope (YAGNI enforced)
-/groove work plan             — research codebase, write implementation plan
-/groove work work             — execute the plan
-/groove work review           — evaluate output, decide accept/rework
-/groove work compound         — document lessons into existing project files
-/groove task list             — show active, ready tasks
-/groove task create           — create a task
-/groove task analyse          — summarise tasks by status
-/groove memory session start  — start session
-/groove memory session resume — resume an existing session
-/groove memory log daily      — write daily closeout log
-/groove skills add            — install a skill
-
-## Conventions
-- Stage tasks: "YYYY-MM-DD, N. Stage" (e.g. 2026-02-28, 1. Brainstorm)
-- Memory logs: <memory value>daily/, weekly/, monthly/, git/
-- Task completion requires "Summary of Changes" in body before marking done
-- Archive is always user-triggered — never automatic during closeout
-- 80% of compound loop value is in plan and review — do not skip them
-
-## Constraints
-- Do not edit files under `skills/` or `.agents/skills/` — managed by groove update, changes will be overwritten
-- User zone: `.groove/` is yours — config, hooks, memory, and learned insights are all safe to edit
+**Run at the start of every session, in order:**
+1. `/groove prime` — loads groove workflow context into the conversation
+2. `beans prime` — loads task backend context into the conversation
 <!-- groove:prime:end -->
 ```
+
+Omit line 2 if `tasks: none`.
 
 ## Version check
 
@@ -72,7 +39,7 @@ Before writing `AGENTS.md`, run a version check if `last-version-check:` in `.gr
 
 ## Constraints
 
-- Read `.groove/index.md` frontmatter to substitute `tasks:`, `memory:`, and `git.*` placeholders
+- Read `tasks:` from `.groove/index.md` frontmatter to determine whether to include line 2
 - If `AGENTS.md` does not exist, create it with only the groove:prime section
 - If the section already exists, replace it entirely — do not append
 - If the section does not exist, append it to the end of `AGENTS.md`
