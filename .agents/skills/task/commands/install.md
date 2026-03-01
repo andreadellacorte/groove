@@ -9,7 +9,7 @@ The configured task backend is installed and verified reachable. User is informe
 - Backend CLI is available in PATH after install
 - User is shown a confirmation with the installed version or a reachability check
 - No-op if `tasks: none`
-- If `tasks: beans`: `AGENTS.md` contains an up-to-date `<!-- groove:task:start -->` section with `beans prime` output
+- If `tasks: beans`: `AGENTS.md` contains a `<!-- groove:task:start -->` stub pointing to `beans prime`
 
 ## Constraints
 
@@ -26,7 +26,12 @@ The configured task backend is installed and verified reachable. User is informe
   - Scaffold `.beans.yml` from `skills/task/templates/beans-config.md` with the derived prefix
   - Create `.groove/tasks/` directory if it does not exist
   - Report the path written
-- If `tasks: beans`: run `beans prime`, capture output, and write it to `AGENTS.md` at git root:
+- If `tasks: beans`: write a minimal stub to `AGENTS.md` at git root:
   - Wrap in `<!-- groove:task:start -->` / `<!-- groove:task:end -->` fenced section
+  - Stub content:
+    ```
+    Task backend: beans — use `/groove task` commands for all task management.
+    Run `beans prime` if you need the full beans CLI reference.
+    ```
   - Replace section if it already exists; append if not; preserve all other `AGENTS.md` content
   - Report the path written
