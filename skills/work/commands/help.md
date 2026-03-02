@@ -21,8 +21,13 @@ Print the following:
 | `work` | Execute the plan, track progress in task backend |
 | `review` | Evaluate output, identify lessons, decide accept/rework |
 | `compound` | Document lessons, update rules/templates/docs |
+| `spec <topic>` | Create outcome spec (overview, decisions, steps, edge cases) |
+| `audit` | Review current branch for blindspots; fix now / needs spec / create issues |
 
 **Stage order:** brainstorm → plan → work → review → compound
+
+**spec** — planning artifact; writes to `<memory>/specs/`. Use before or alongside plan.
+**audit** — branch-level review (diff vs main, specs); categorizes findings and can trigger fixes or `work spec`.
 
 **brainstorm** — scope clarification, YAGNI enforced. No planning yet.
 **plan** — codebase research first, then concrete steps with file paths and function names.

@@ -16,7 +16,8 @@ All memory health checks pass. User knows if the memory file structure is correc
 2. `memory:` key is present and has a valid path
 3. Memory base path exists (e.g. `.groove/memory/`)
 4. Memory log subdirectories exist: `daily/`, `weekly/`, `monthly/`, `git/`
-5. Session directories exist: `sessions/`, `sessions/specs/`, `sessions/docs/`
+5. Specs directory exists: `specs/` (used by `groove work spec`)
+6. Session directories exist (optional): `sessions/`, `sessions/specs/`, `sessions/docs/`
 
 ## Remediation hints
 
@@ -25,7 +26,7 @@ All memory health checks pass. User knows if the memory file structure is correc
 | `.groove/index.md` missing | `groove task config` (any skill bootstraps config) |
 | Memory path missing | `groove memory log daily` (will create on first run) |
 | Log subdirectory missing | `groove memory log daily` |
-| Session directories missing | `groove memory install` |
+| Specs or session directories missing | `groove memory install` |
 
 ## Constraints
 

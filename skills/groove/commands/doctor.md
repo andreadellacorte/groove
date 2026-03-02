@@ -37,6 +37,7 @@ memory
 companions
   ✓ find-skills installed
   ✓ agent-browser installed
+  ✓ pdf-to-markdown installed
 
 AGENTS.md
   ✓ groove:prime section present
@@ -60,6 +61,7 @@ AGENTS.md
 - Companions check:
   - Check `ls .agents/skills/find-skills/SKILL.md` — if absent: `✗ find-skills not installed — run: groove install`
   - Check `ls .agents/skills/agent-browser/SKILL.md` — if absent: `✗ agent-browser not installed — run: groove install`
+  - Check `ls .agents/skills/pdf-to-markdown/SKILL.md` — if absent: `✗ pdf-to-markdown not installed — run: groove install`
 - Also check `AGENTS.md` for presence of `<!-- groove:prime:start -->` and `<!-- groove:task:start -->` sections
 - Collect all results before printing — do not interleave output with check progress
 - Each `✗` item must include a concrete remediation command on the same line

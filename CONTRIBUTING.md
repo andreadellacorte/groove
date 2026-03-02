@@ -88,14 +88,19 @@ feat(0.2.0): add browser config key and agent-browser companion
 
 ## Adding a companion skill
 
-Companion skills are hardcoded in install commands — not tracked in `skills-lock.json` (which is user-generated output). There are two kinds:
+Companion skills are not listed in the core surface (help table, prime, main README Skills table). They are hardcoded in install and doctor — not tracked in `skills-lock.json` (which is user-generated output).
 
-- **Groove-wide companions** (e.g. `agent-browser`) — add an explicit `npx skills add` step in `skills/groove/commands/install.md`
-- **Backend-specific companions** (e.g. `bonfire` for memory, `beans` for task, `find-skills` for skills) — add the install step in the relevant sub-skill's `commands/install.md`
+Companions can be **downloaded** (third-party, `npx skills add <url>`) or **embedded** (in-repo under `.agents/skills/<name>/`). In both cases: do not add to the main help table, prime, or main README Skills table; do add to install (and doctor); optionally document in the README "Companions" section.
+
+**Groove-wide companions** (e.g. `agent-browser`, `find-skills`, `pdf-to-markdown`) — add an explicit step in `skills/groove/commands/install.md` and a check in `skills/groove/commands/doctor.md`:
+- **Downloaded:** step is `npx skills add <url> --skill <name>` when absent
+- **Embedded:** step is `npx skills add andreadellacorte/groove --skill <name>` when absent (skill lives in this repo)
+
+**Backend-specific companions** (e.g. `bonfire` for memory, `beans` for task) — add the install step in the relevant sub-skill's `commands/install.md`.
 
 To add a groove-wide companion:
-1. Add a step in `skills/groove/commands/install.md` under "Install groove-wide companion skills"
-2. Update `README.md` if the companion is user-facing
+1. Add a step in `skills/groove/commands/install.md` under "Install companion skills" and a check in `skills/groove/commands/doctor.md` under "Companions check"
+2. Add a row to the "Companions" section in `README.md` if user-facing
 3. No version bump required unless a new config key is added
 
 ---

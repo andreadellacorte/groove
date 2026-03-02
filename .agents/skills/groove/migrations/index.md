@@ -15,6 +15,8 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | 0.8.3 | 0.8.4 | 0.8.3-to-0.8.4.md | Rewrite AGENTS.md sections to v0.8.x format: 2-line groove:prime bootstrap and 2-line groove:task stub |
 | 0.8.6 | 0.8.7 | 0.8.6-to-0.8.7.md | Remove redundant beans prime line from groove:prime bootstrap in AGENTS.md |
 | 0.8.7 | 0.8.8 | 0.8.7-to-0.8.8.md | Update groove:task stub wording: "to load" instead of "if you need" |
+| 0.8.8 | 0.8.9 | 0.8.8-to-0.8.9.md | Move spec files from `<memory>/sessions/specs/` to `<memory>/specs/` |
+| 0.8.9 | 0.9.0 | 0.8.9-to-0.9.0.md | Remove obsolete `.agents/skills/skills` directory (skills wrapper removed in 0.7.0) |
 
 ## Notes
 

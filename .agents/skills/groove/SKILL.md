@@ -5,7 +5,7 @@ license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.8.9"
+  version: "0.9.0"
 ---
 
 <!-- groove:managed — do not edit; changes will be overwritten by groove update -->
@@ -34,6 +34,8 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `work work` | → `skills/work/commands/work.md` |
 | `work review` | → `skills/work/commands/review.md` |
 | `work compound` | → `skills/work/commands/compound.md` |
+| `work spec` | → `skills/work/commands/spec.md` |
+| `work audit` | → `skills/work/commands/audit.md` |
 | `task help` | → `skills/task/commands/help.md` |
 | `task doctor` | → `skills/task/commands/doctor.md` |
 | `task list` | → `skills/task/commands/list.md` |
@@ -52,8 +54,6 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `memory session start` | → `skills/memory/commands/session/start.md` |
 | `memory session resume` | → `skills/memory/commands/session/resume.md` |
 | `memory session end` | → `skills/memory/commands/session/end.md` |
-| `memory session spec` | → `skills/memory/commands/session/spec.md` |
 | `memory session doc` | → `skills/memory/commands/session/doc.md` |
-| `memory session review` | → `skills/memory/commands/session/review.md` |
 | `memory install` | → `skills/memory/commands/install.md` |
 | _(empty)_ | → `commands/help.md` |

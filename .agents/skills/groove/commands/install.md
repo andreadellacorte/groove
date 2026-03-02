@@ -20,9 +20,9 @@ Run in order:
 2. Run `task install` — installs the configured task backend (e.g. beans)
 3. Run `memory install` — creates session directories
 4. Install companion skills:
-   - **find-skills**: check `ls .agents/skills/find-skills/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
-   - **agent-browser**: check `ls .agents/skills/agent-browser/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
-   - **pdf-to-markdown**: check `ls .agents/skills/pdf-to-markdown/SKILL.md`; if absent: `npx skills add andreadellacorte/groove --skill pdf-to-markdown`
+   - **find-skills** (downloaded): check `ls .agents/skills/find-skills/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
+   - **agent-browser** (downloaded): check `ls .agents/skills/agent-browser/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
+   - **pdf-to-markdown** (embedded): check `ls .agents/skills/pdf-to-markdown/SKILL.md`; if absent: `npx skills add andreadellacorte/groove --skill pdf-to-markdown`
    - Report each as installed / already-present / failed
 5. Scaffold hooks and cache directories:
    - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)

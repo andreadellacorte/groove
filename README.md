@@ -25,6 +25,16 @@ groove install
 | `task` | `list`, `create`, `update`, `archive`, `analyse` | Task tracking — configurable backend |
 | `memory` | `log daily/weekly/monthly/git`, `session start/resume/end/spec/doc/review` | Logs + session context |
 
+## Companions
+
+Companions extend groove and are not listed in the core skills table above. Installed and checked by `groove install` / `groove doctor`:
+
+| Companion | Purpose |
+|---|---|
+| `find-skills` | Discover and install agent skills |
+| `agent-browser` | Browser automation for AI agents |
+| `pdf-to-markdown` | Convert PDFs to Markdown (npx-based) |
+
 ## Usage
 
 ```

@@ -2,7 +2,15 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.9.0] - 2026-03-02
+
+### Migration
+- Migration `0.8.9 → 0.9.0`: remove obsolete `.agents/skills/skills` directory (the former skills wrapper skill removed in 0.7.0; new installs never had it, existing installs are now cleaned up)
+
 ## [0.8.9] - 2026-03-02
+
+### Migration
+- Migration `0.8.8 → 0.8.9`: move spec files from `<memory>/sessions/specs/` to `<memory>/specs/`
 
 ### Added
 - **pdf-to-markdown** — embedded companion skill: convert PDFs to Markdown (npx-based, no local node_modules). Installed and checked by `groove install` / `groove doctor`.

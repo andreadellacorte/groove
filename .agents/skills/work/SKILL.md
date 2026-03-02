@@ -31,6 +31,8 @@ git rev-parse --show-toplevel
 | `work` | Execute the plan, track progress in task backend |
 | `review` | Evaluate output, identify lessons, decide accept/rework |
 | `compound` | Document lessons, update rules/templates/docs |
+| `spec <topic>` | Create outcome spec (overview, decisions, steps, edge cases) |
+| `audit` | Review current branch for blindspots; fix now / needs spec / create issues |
 
 ## $ARGUMENTS Routing
 
@@ -42,6 +44,8 @@ git rev-parse --show-toplevel
 | `work` | → `commands/work.md` |
 | `review` | → `commands/review.md` |
 | `compound` | → `commands/compound.md` |
+| `spec` | → `commands/spec.md` |
+| `audit` | → `commands/audit.md` |
 | _(empty)_ | → `commands/help.md` |
 
 ## Stage Task Naming

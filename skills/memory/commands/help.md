@@ -25,16 +25,14 @@ Memory path: `<memory value from .groove/index.md>`
 | `log monthly` | `<memory>/monthly/YYYY-MM.md` (last weekday of month) |
 | `log git` | `<memory>/git/YYYY-MM-DD-GIT-N.md` |
 
-**Session commands** — named parallel session tracking
+**Session commands** — optional; for named parallel contexts (e.g. multiple chats). Outcome spec and branch review are under **work**: `groove work spec <topic>`, `groove work audit`.
 
 | Command | Description |
 |---|---|
 | `session start [name]` | Start a new named session |
 | `session resume [name]` | Resume an existing active session |
 | `session end [name]` | End session, capture work done |
-| `session spec <topic>` | Create outcome spec |
-| `session doc <topic>` | Create documentation |
-| `session review` | Review current work |
+| `session doc <topic>` | Create documentation (scoped to session) |
 
 **Other**
 
