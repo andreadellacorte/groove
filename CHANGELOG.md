@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.8.9] - 2026-03-02
+
+### Added
+- **pdf-to-markdown** — embedded companion skill: convert PDFs to Markdown (npx-based, no local node_modules). Installed and checked by `groove install` / `groove doctor`.
+
 ## [0.8.8] - 2026-03-01
 
 ### Changed
