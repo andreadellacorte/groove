@@ -103,9 +103,10 @@ Returns JSON on success:
 
 ## OCR Setup (Optional)
 
-For scanned PDF support, install additional dependencies:
+OCR mode is wired into the skill but not yet implemented. If you want to prepare your environment or extend it yourself, install the OCR dependencies so Node can resolve them:
 
 ```bash
+cd .agents/skills/pdf-to-markdown
 npm install tesseract.js pdfjs-dist canvas
 ```
 
