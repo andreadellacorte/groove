@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.9.1] - 2026-03-02
+
+### Fixed
+- `groove update` now verifies installed skill version against GitHub `releases/latest` after `npx skills add`; if the add step left an older version on disk (cached or default branch), the user is warned and told to run `npx skills add andreadellacorte/groove@v<latest> --yes` then update again — avoids falsely reporting "up to date" when a newer release exists
+
 ## [0.9.0] - 2026-03-02
 
 ### Migration
