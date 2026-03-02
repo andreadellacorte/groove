@@ -24,6 +24,7 @@ groove install
 | `work` | `brainstorm`, `plan`, `work`, `review`, `compound` | Reduce rework through structured stages |
 | `task` | `list`, `create`, `update`, `archive`, `analyse` | Task tracking — configurable backend |
 | `memory` | `log daily/weekly/monthly/git`, `session start/resume/end/spec/doc/review` | Logs + session context |
+| `pdf-to-markdown` | (run script) | Convert PDF to Markdown (npx, no local node_modules) |
 
 ## Usage
 
