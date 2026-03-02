@@ -7,7 +7,7 @@ All groove backends are installed in dependency order, groove-wide companion ski
 ## Acceptance Criteria
 
 - Task and memory backends installed
-- Companion skills installed (find-skills, agent-browser)
+- Companion skills installed (find-skills, agent-browser, pdf-to-markdown)
 - `AGENTS.md` contains the `<!-- groove:prime:start -->` session bootstrap
 - `AGENTS.md` contains a `<!-- groove:task:start -->` stub (if `tasks: beans`)
 - User sees a summary of what was installed and what was written
@@ -22,6 +22,7 @@ Run in order:
 4. Install companion skills:
    - **find-skills**: check `ls .agents/skills/find-skills/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
    - **agent-browser**: check `ls .agents/skills/agent-browser/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
+   - **pdf-to-markdown**: check `ls .agents/skills/pdf-to-markdown/SKILL.md`; if absent: `npx skills add andreadellacorte/groove --skill pdf-to-markdown`
    - Report each as installed / already-present / failed
 5. Scaffold hooks and cache directories:
    - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
@@ -47,13 +48,14 @@ Run in order:
 - Each step reports installed / already-present / failed
 - `AGENTS.md` update is additive per section — preserve all other content
 - If any step fails, report it clearly but continue with remaining steps
-- Companion skills (find-skills, agent-browser) are hardcoded here, not read from any config file
+- Companion skills (find-skills, agent-browser, pdf-to-markdown) are hardcoded here, not read from any config file
 - Report a final summary:
   ```
   ✓ task backend (beans)
   ✓ memory backend — session dirs ready
   ✓ companion: find-skills
   ✓ companion: agent-browser
+  ✓ companion: pdf-to-markdown
   ✓ hooks: .groove/hooks/ ready
   ✓ AGENTS.md updated (groove:prime, groove:task)
   ```
