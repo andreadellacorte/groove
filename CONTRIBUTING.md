@@ -25,6 +25,18 @@ groove uses [semantic versioning](https://semver.org). The version lives in two 
 2. Add an entry to `CHANGELOG.md`
 3. If a migration is needed, write it (see below)
 
+### Publish release
+
+`groove check`, `groove prime`, and `groove update` use GitHub's `releases/latest` API as the source of truth for "latest version". A tag alone does not create a release; without a release, version checks can be wrong or fail. After bumping, publish both a tag and a GitHub Release:
+
+1. Commit and push.
+2. Create and push the tag: `git tag vX.Y.Z` then `git push origin vX.Y.Z`.
+3. Create a GitHub Release for that tag: **Releases → Draft a new release**, choose the tag, paste the relevant CHANGELOG section as release notes, publish. Or: `gh release create vX.Y.Z --notes "<paste from CHANGELOG>"`.
+
+Release notes: copy from `CHANGELOG.md` from `## [X.Y.Z]` down to (but not including) the next `## [`.
+
+**Backfilling existing tags:** If you have tags that never got a GitHub Release, create a release for each: list tags without a release (e.g. compare `gh release list` with `git tag -l 'v*'`), then for each missing one run `gh release create <tag> --notes "<paste from CHANGELOG>"` or use the Releases UI. Do them in ascending version order (oldest first) so the highest version is published last and becomes `releases/latest`.
+
 ---
 
 ## Writing a migration

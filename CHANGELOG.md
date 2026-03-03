@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.9.4] - 2026-03-03
+
+### Added
+- CONTRIBUTING: "Publish release" subsection — tag + GitHub Release for each version so `groove check` / `groove prime` / `groove update` see correct latest; backfill procedure for existing tags.
+
 ## [0.9.2] - 2026-03-02
 
 ### Changed
