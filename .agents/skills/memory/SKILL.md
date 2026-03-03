@@ -1,6 +1,6 @@
 ---
 name: memory
-description: "Daily/weekly/monthly/git log population and optional session context. Use when: (1) writing daily end log; (2) rolling up weekly/monthly memory; (3) recording git summary; (4) starting/ending optional named sessions; (5) session doc. NOT for: task management (use task); compound loop or specs/audit (use work)."
+description: "Daily/weekly/monthly/git log population. Use when: (1) writing daily end log; (2) rolling up weekly/monthly memory; (3) recording git summary. NOT for: task management (use task); compound loop or specs/audit (use work)."
 license: MIT
 allowed-tools: Bash(git:*) Bash(mkdir:*) Bash(npx:*) Read Write Edit Glob AskUserQuestion
 metadata:
@@ -12,7 +12,7 @@ metadata:
 
 # memory
 
-Two responsibilities in one skill: **log** (structured markdown memory files) and **session** (optional named context with start/resume/end lifecycle). For single-stream workflow, daily + tasks + work are enough; sessions are for multiple parallel contexts (e.g. two chats). Outcome specs and branch review live under **work** (`work spec`, `work audit`).
+Structured markdown memory files for daily, weekly, monthly, and git logs. Outcome specs and branch review live under **work** (`work:spec`, `work:audit`).
 
 ## Git Root Detection
 
@@ -36,20 +36,11 @@ All paths (`memory:` config value, log files) are relative to git root.
 | `log monthly` | Roll up monthly memory from daily files |
 | `log git` | Write git summary to `<memory>/git/YYYY-MM-DD-GIT-N.md` |
 
-### Session Commands (optional)
-
-| Command | Description |
-|---|---|
-| `session start [name]` | Start a new named session |
-| `session resume [name]` | Resume an existing active session |
-| `session end [name]` | End a session and capture work done |
-| `session doc <topic>` | Create documentation (scoped to session) |
-
 ### Other
 
 | Command | Description |
 |---|---|
-| `install` | Install configured sessions backend |
+| `install` | Create memory directories (daily, weekly, monthly, git, specs, learned) |
 
 ## $ARGUMENTS Routing
 
@@ -62,10 +53,6 @@ All paths (`memory:` config value, log files) are relative to git root.
 | `log weekly` | → `commands/log/weekly.md` |
 | `log monthly` | → `commands/log/monthly.md` |
 | `log git` | → `commands/log/git.md` |
-| `session start` | → `commands/session/start.md` |
-| `session resume` | → `commands/session/resume.md` |
-| `session end` | → `commands/session/end.md` |
-| `session doc` | → `commands/session/doc.md` |
 | `install` | → `commands/install.md` |
 | _(empty)_ | → `commands/help.md` |
 
@@ -89,8 +76,10 @@ mkdir -p <memory>/daily <memory>/weekly <memory>/monthly <memory>/git
 │   └── YYYY-Www.md
 ├── monthly/
 │   └── YYYY-MM.md
-└── git/
-    └── YYYY-MM-DD-GIT-N.md
+├── git/
+│   └── YYYY-MM-DD-GIT-N.md
+├── specs/
+└── learned/
 
 skills/memory/
 ├── SKILL.md
@@ -100,11 +89,8 @@ skills/memory/
 │   │   ├── weekly.md
 │   │   ├── monthly.md
 │   │   └── git.md
-│   ├── session/
-│   │   ├── start.md
-│   │   ├── resume.md
-│   │   ├── end.md
-│   │   └── doc.md
+│   ├── init/
+│   │   └── daily.md
 │   └── install.md
 └── templates/
     └── log/

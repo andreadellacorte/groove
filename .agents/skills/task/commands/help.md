@@ -11,7 +11,7 @@ Print the following, substituting the live `tasks:` value from `.groove/index.md
 **groove task** — backend-agnostic task management
 
 ```
-/groove task <command>
+/groove:task:<command>
 ```
 
 Current backend: `<tasks value from .groove/index.md>`
@@ -34,8 +34,8 @@ Current backend: `<tasks value from .groove/index.md>`
 - Completion requires a "Summary of Changes" in the task body before marking done
 - Archive is always user-triggered — never automatic during daily end
 
-Run `/groove task config <backend>` to change backend.
-Run `/groove help` for all skills.
+Run `/groove:task:config` to change backend.
+Run `/groove:help` for all skills.
 
 ---
 

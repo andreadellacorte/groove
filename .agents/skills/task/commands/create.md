@@ -2,14 +2,14 @@
 
 ## Outcome
 
-A task is created in the configured backend with a title, type, parent reference, and initial status. The task ID is returned for reference. Non-trivial tasks have a rich body with sections, links, and checklists.
+A task is created in the configured backend with a title, type, status, optional parent, and (for non-trivial tasks) a rich body. The task ID is returned for reference. This command is the single source of truth for how tasks are created — other skills (work compound, daily, etc.) that need to create tasks must follow this spec and call the task skill rather than defining their own creation rules.
 
 ## Acceptance Criteria
 
 - Task exists in backend with all required fields populated
 - Task ID is shown to user after creation
-- Non-trivial tasks (feature work, bugs, plans) have structured body content
-- Parent task or epic is set where context suggests one exists
+- Non-trivial tasks (feature work, bugs, plans, stage tasks) have a rich body — never create with an empty body when the task represents real work or a stage
+- Parent is set when context suggests one (e.g. stage task under a daily or work epic)
 
 ## Constraints
 
@@ -20,8 +20,10 @@ A task is created in the configured backend with a title, type, parent reference
 - Default status is `in-progress` (not `todo`) — tasks are created when work is being done
 - Do not auto-mark any task as completed during creation
 - Backend mappings:
-  - `beans`: `beans create "<title>" -t <type> --parent <id> -s in-progress`
+  - `beans`: `beans create "<title>" -t <type> --parent <id> -s in-progress`; body via `beans update <id> -d "<body>"` or by editing the task file under `.groove/tasks/` if the backend is file-based
   - `linear`: create issue via linear CLI or MCP with appropriate team/project
-  - `github`: `gh issue create --title "<title>" --milestone <milestone>`
-- For non-trivial tasks, prompt for body sections: Context, Goal, Acceptance Criteria, Links
+  - `github`: `gh issue create --title "<title>" --body "<body>" --milestone <milestone>`
+- **Body (standard):** For any non-trivial task, always supply a body. Use the backend’s body/description field (or task file content). Standard body sections: **Context** (what work or session this task belongs to), **Goal** (what “done” means at a high level), **Acceptance Criteria** (checklist of concrete conditions), **Links** (to CHANGELOG, specs, learned files, or other artifacts). Omit a section only if it truly does not apply.
+- **Type:** Use the backend’s types (e.g. beans: `task`, `bug`, `feature`, `epic`, `milestone`). Stage and bookend tasks (daily Start/End, work stages such as "YYYY-MM-DD, Compound — topic") use type `task` when the backend has no `chore` (e.g. beans).
+- **Hierarchy:** Set parent when the task is part of a larger unit (e.g. a daily, an epic). If the caller does not specify a parent, infer from context when possible.
 - Always echo the created task ID and title back to the user

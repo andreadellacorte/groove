@@ -30,7 +30,7 @@ The configured task backend is installed and verified reachable. User is informe
   - Wrap in `<!-- groove:task:start -->` / `<!-- groove:task:end -->` fenced section
   - Stub content:
     ```
-    Task backend: beans — use `/groove task` commands for all task management.
+    Task backend: beans — use `/groove:task` commands for all task management.
     Run `beans prime` to load the full beans CLI reference.
     ```
   - Replace section if it already exists; append if not; preserve all other `AGENTS.md` content

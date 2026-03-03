@@ -8,10 +8,10 @@ Print the following, substituting live config values from `.groove/index.md`:
 
 ---
 
-**groove memory** — log files and session tracking
+**groove memory** — log files
 
 ```
-/groove memory <command>
+/groove:memory:<command>
 ```
 
 Memory path: `<memory value from .groove/index.md>`
@@ -20,36 +20,25 @@ Memory path: `<memory value from .groove/index.md>`
 
 | Command | Output file |
 |---|---|
-| `init daily` | Create today's `<memory>/daily/YYYY-MM-DD.md` with start-of-day structure (called from daily start) |
-| `log daily` | `<memory>/daily/YYYY-MM-DD.md` |
-| `log weekly` | `<memory>/weekly/YYYY-Www.md` (last weekday of week) |
-| `log monthly` | `<memory>/monthly/YYYY-MM.md` (last weekday of month) |
-| `log git` | `<memory>/git/YYYY-MM-DD-GIT-N.md` |
-
-**Session commands** — optional; for named parallel contexts (e.g. multiple chats). Outcome spec and branch review are under **work**: `groove work spec <topic>`, `groove work audit`.
-
-| Command | Description |
-|---|---|
-| `session start [name]` | Start a new named session |
-| `session resume [name]` | Resume an existing active session |
-| `session end [name]` | End session, capture work done |
-| `session doc <topic>` | Create documentation (scoped to session) |
+| `init:daily` | Create today's `<memory>/daily/YYYY-MM-DD.md` with start-of-day structure (called from daily start) |
+| `log:daily` | `<memory>/daily/YYYY-MM-DD.md` |
+| `log:weekly` | `<memory>/weekly/YYYY-Www.md` (last weekday of week) |
+| `log:monthly` | `<memory>/monthly/YYYY-MM.md` (last weekday of month) |
+| `log:git` | `<memory>/git/YYYY-MM-DD-GIT-N.md` |
 
 **Other**
 
 | Command | Description |
 |---|---|
-| `install` | Create session directories |
+| `install` | Create memory directories |
 | `doctor` | Check memory configuration and directory structure |
 
 **Key rules:**
-- Daily log is written at daily end only — never at daily start; daily start creates the day file via `init daily`
+- Daily log is written at daily end only — never at daily start; daily start creates the day file via `init:daily`
 - "Done today" bullets must be sourced from completed tasks and git diff — not vague summaries
 - Weekly/monthly logs roll up from daily files — do not duplicate raw detail
-- Sessions are stored as individual files at `<memory>/sessions/<name>.md`
-- Auto-naming: `<branch>-<YYYY-MM-DD>-<N>` when no name is provided
 
-Run `/groove help` for all skills.
+Run `/groove:help` for all skills.
 
 ---
 

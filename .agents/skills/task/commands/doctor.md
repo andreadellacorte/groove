@@ -33,10 +33,10 @@ All task backend health checks pass. User knows if the task backend is correctly
 
 | Failure | Remediation |
 |---|---|
-| `.groove/index.md` missing | `groove task config beans` |
-| Backend not installed | `groove task install` |
-| `.beans.yml` missing | `groove task install` (will scaffold) |
-| Backend unreachable | Check auth / network, re-run `groove task install` |
+| `.groove/index.md` missing | `groove:task:config` or `groove:config` |
+| Backend not installed | `groove:task:install` |
+| `.beans.yml` missing | `groove:task:install` (will scaffold) |
+| Backend unreachable | Check auth / network, re-run `groove:task:install` |
 | `AGENTS.md` section missing | `groove install` |
 
 ## Constraints

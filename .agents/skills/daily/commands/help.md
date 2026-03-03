@@ -11,7 +11,7 @@ Print the following:
 **groove daily** — start and end rituals
 
 ```
-/groove daily <command>
+/groove:daily:<command>
 ```
 
 | Command | Description |
@@ -34,10 +34,10 @@ Print the following:
 
 **Notes:**
 - `daily` is a thin orchestrator — it calls `task` and `memory`, does not duplicate their logic
-- Archive tasks separately with `/groove task archive` — never run automatically during end
+- Archive tasks separately with `/groove:task:archive` — never run automatically during end
 - Memory is written at end only; daily start creates the day file and reviews yesterday
 
-Run `/groove help` for all skills.
+Run `/groove:help` for all skills.
 
 ---
 

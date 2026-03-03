@@ -1,6 +1,6 @@
 ---
 name: task
-description: "Backend-agnostic task management. Use when: (1) creating, listing, updating, or archiving tasks; (2) analysing task status; (3) setting up task backend. NOT for: memory population (use memory); session management (use memory session)."
+description: "Backend-agnostic task management. Use when: (1) creating, listing, updating, or archiving tasks; (2) analysing task status; (3) setting up task backend. NOT for: memory population (use memory); memory logs (use memory)."
 license: MIT
 allowed-tools: Bash(beans:*) Bash(gh:*) Bash(linear:*) Read Write Edit AskUserQuestion
 metadata:

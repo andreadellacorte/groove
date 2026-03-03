@@ -50,13 +50,13 @@ git rev-parse --show-toplevel
 
 ## Stage Task Naming
 
-Each stage creates or updates a task in the configured backend (if `tasks != none`). Tasks follow the naming convention:
+Each stage creates or updates a task in the configured backend (if `tasks != none`). Tasks follow the naming convention (no stage numbers):
 
 ```
-YYYY-MM-DD, <N>. <Stage>
+YYYY-MM-DD, <Stage>
 ```
 
-e.g. `2026-02-28, 1. Brainstorm`, `2026-02-28, 2. Plan`
+e.g. `2026-02-28, Brainstorm`, `2026-02-28, Plan`, `2026-02-28, Compound — <topic>`
 
 Tasks are created under the relevant workstream epic if one exists.
 

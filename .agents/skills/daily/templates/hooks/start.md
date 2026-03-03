@@ -1,6 +1,6 @@
 # Start Hooks
 
-Custom actions to run at the end of `groove daily start`, after the standard steps complete.
+Custom actions to run at the end of `groove:daily:start`, after the standard steps complete.
 
 Add your own bullets below. Each will be executed in order.
 

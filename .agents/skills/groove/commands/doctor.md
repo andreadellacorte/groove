@@ -32,7 +32,7 @@ task
 
 memory
   ✓ memory path exists (.groove/memory/)
-  ✓ session dirs exist (.groove/memory/sessions/)
+  ✓ memory dirs exist (.groove/memory/daily/, weekly/, monthly/, git/)
 
 companions
   ✓ find-skills installed

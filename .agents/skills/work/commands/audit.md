@@ -19,7 +19,7 @@ Findings are categorized by action:
 - Run analysis in isolated context (use general-purpose agent)
 - Fall back to direct review if subagent fails
 - Present findings with severity and effort estimates
-- Execute chosen action: fix directly, create spec via `groove work spec <topic>`, or create issues
+- Execute chosen action: fix directly, create spec via `groove:work:spec <topic>`, or create issues
 
 ## Scope Options
 

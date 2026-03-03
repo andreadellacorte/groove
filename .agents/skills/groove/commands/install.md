@@ -18,7 +18,7 @@ Run in order:
 
 1. If `.groove/index.md` does not exist, run `groove config` to create it
 2. Run `task install` — installs the configured task backend (e.g. beans)
-3. Run `memory install` — creates session directories
+3. Run `memory install` — creates memory directories
 4. Install companion skills:
    - **find-skills** (downloaded): check `ls .agents/skills/find-skills/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
    - **agent-browser** (downloaded): check `ls .agents/skills/agent-browser/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
@@ -34,7 +34,7 @@ Run in order:
      ```
      <!-- groove:prime:start -->
      **Run at the start of every session:**
-     `/groove prime` — loads groove workflow context into the conversation
+     `/groove:prime` — loads groove workflow context into the conversation
      <!-- groove:prime:end -->
      ```
    - If section absent, append to end of `AGENTS.md`; preserve all other content
@@ -52,7 +52,7 @@ Run in order:
 - Report a final summary:
   ```
   ✓ task backend (beans)
-  ✓ memory backend — session dirs ready
+  ✓ memory backend — memory dirs ready
   ✓ companion: find-skills
   ✓ companion: agent-browser
   ✓ companion: pdf-to-markdown

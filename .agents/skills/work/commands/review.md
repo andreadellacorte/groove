@@ -11,7 +11,7 @@ The artifact is reviewed for correctness, quality, and fit to plan. Lessons are 
 - Accept or rework decision is stated with rationale
 - Lessons are noted for `work compound`
 - Review notes appended to stage task body
-- Stage task created in backend: `YYYY-MM-DD, 4. Review`
+- Stage task created in backend: `YYYY-MM-DD, Review`
 
 ## Constraints
 
@@ -20,4 +20,4 @@ The artifact is reviewed for correctness, quality, and fit to plan. Lessons are 
 - If rework: note specific gaps and link back to which plan step was missed or unclear
 - If accept: still note what worked well and what could be improved next time
 - Do not skip review even for small changes — capture something
-- Create stage task in backend if `tasks != none`
+- Create stage task via **task** skill if `tasks != none` (title `YYYY-MM-DD, Review`)

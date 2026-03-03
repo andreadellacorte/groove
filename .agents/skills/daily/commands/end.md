@@ -23,7 +23,7 @@ The workday is wrapped up: git changes are analysed, memory files are written in
   3. `memory log weekly` (only if last weekday of week, or explicit request)
   4. `memory log monthly` (only if last weekday of month, or explicit request)
 - Call `task analyse` to get task summary for daily memory population
-- Call `task create` to create end task titled `YYYY-MM-DD End` with type `chore`, status `in-progress`
+- Create end task via **task** skill if `tasks != none` (title `YYYY-MM-DD End`)
   - User marks this task done when they're finished — do not auto-complete
 - Do NOT archive tasks during end — that is user-triggered only
 - Git commit strategy (per component):
