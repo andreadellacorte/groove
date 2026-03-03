@@ -28,6 +28,8 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 
 ## Adding a migration
 
+Only add a migration when local user state must change — i.e. `.groove/index.md` keys, memory directory structure, or `AGENTS.md` sections. Skill renames, wording changes, and new commands do **not** need a migration.
+
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full versioning and migration guide.
 
 Quick steps:

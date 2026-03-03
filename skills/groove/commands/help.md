@@ -27,7 +27,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 |---|---|
 | `/groove-work-brainstorm` | Clarify scope through dialogue |
 | `/groove-work-plan` | Write implementation plan |
-| `/groove-work-work` | Execute the plan |
+| `/groove-work-exec` | Execute the plan |
 | `/groove-work-review` | Evaluate output |
 | `/groove-work-compound` | Capture lessons |
 | `/groove-work-spec [topic]` | Create outcome spec |

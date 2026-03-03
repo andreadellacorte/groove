@@ -24,7 +24,7 @@ groove install
 | `/groove-daily-end` | End the workday |
 | `/groove-work-brainstorm` | Clarify scope through dialogue |
 | `/groove-work-plan` | Write implementation plan |
-| `/groove-work-work` | Execute the plan |
+| `/groove-work-exec` | Execute the plan |
 | `/groove-work-review` | Evaluate output |
 | `/groove-work-compound` | Capture lessons |
 | `/groove-work-spec [topic]` | Create outcome spec |
@@ -52,7 +52,7 @@ Companions extend groove and are not listed in the core skills table above. Inst
 
 /groove-work-brainstorm       — clarify scope
 /groove-work-plan             — write implementation plan
-/groove-work-work             — execute the plan
+/groove-work-exec             — execute the plan
 /groove-work-review           — evaluate output
 /groove-work-compound         — capture lessons
 
