@@ -22,7 +22,7 @@ Synthesised from scope observations across all three comparisons:
 
 - **A lean, markdown-only engineering workflow companion** — no runtime, no Bun, no TypeScript; portable, lightweight, installs anywhere Claude Code runs
 - **Project-scoped, not global** — `.groove/` lives in the repo; PAI-style global installs (`~/.claude/`) are out of scope
-- **Opinionated daily rhythm** — the startup/closeout ceremony is a core differentiator; no other compared tool has it
+- **Opinionated daily rhythm** — the start/end ceremony is a core differentiator; no other compared tool has it
 - **Explicit 5-stage compound loop** — the most structured development workflow of any compared tool; "80% of value in plan and review" is baked in
 - **Predictable explicit invocation** — `/groove <skill> <command>` is more predictable than auto-discovery; keep it
 - **Backend-agnostic task abstraction** — beans/linear/github/none is unique; no other tool has an abstraction layer over task backends
@@ -36,7 +36,7 @@ Synthesised from scope observations across all three comparisons:
 | Ordered migration runner with dual versioning | night-market + PAI | Unique; enables safe config evolution across any version gap |
 | Per-component git strategy (memory/tasks/hooks) | night-market + PAI + bonfire | Unique; teams need different sharing strategies per component |
 | Explicit 5-stage compound loop | night-market + PAI + bonfire | Most opinionated and structured workflow; core value prop |
-| Structured daily rituals (startup/closeout) | night-market + PAI + bonfire | No other tool has an explicit daily ceremony |
+| Structured daily rituals (start/end) | night-market + PAI + bonfire | No other tool has an explicit daily ceremony |
 | Learned memory tier (`learned/<topic>.md`) | night-market + PAI | Unique long-term insight accumulation; no other tool has this cold tier |
 | Multi-tier memory roll-ups (daily→weekly→monthly) | night-market + PAI + bonfire | No other tool has this temporal pyramid |
 | Config wizard + interactive setup | night-market + PAI | Unique guided configuration; lowers barrier to entry |

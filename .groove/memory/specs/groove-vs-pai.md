@@ -94,7 +94,7 @@
 |---|---|---|
 | Development loop | 5 stages: brainstorm → plan → work → review → compound | The Algorithm: 7 phases — observe → think → plan → build → execute → verify → learn |
 | Enforcement | Advisory — SKILL.md constraints interpreted by Claude | PreToolUse hooks enforce security checks; Algorithm phases tracked in PRD frontmatter |
-| Daily rituals | startup + closeout with memory logs, task analysis, git commit | Not present — SessionStart/SessionEnd hooks handle context loading/capture |
+| Daily rituals | start + end with memory logs, task analysis, git commit | Not present — SessionStart/SessionEnd hooks handle context loading/capture |
 | Spec creation | `memory session spec <topic>` → structured markdown spec | PRD format — YAML frontmatter with atomic criteria, decisions, verification evidence |
 | Task tracking | Backend-agnostic: beans / linear / github / none | Work registry at `MEMORY/WORK/`; PRD files are task units |
 | Workflow learnings | compound detects AI/process lessons → `learned/` | `WorkCompletionLearning` hook captures lessons automatically on every SessionEnd |
@@ -224,7 +224,7 @@ Things PAI does not have that groove should preserve:
 1. **Explicit migration system** — PAI's installer merges settings manually and avoids breaking changes; groove's ordered migration runner handles config evolution safely across any version gap.
 2. **Git strategy per component** — Fine-grained `git.memory/tasks/hooks` control; PAI has no equivalent.
 3. **Explicit 5-stage compound loop** — Brainstorm→plan→work→review→compound with per-stage constraints; PAI's Algorithm is similar (7 phases) but groove's stages are more opinionated about _when_ to run each.
-4. **Structured daily rituals** — Startup/closeout with daily→weekly→monthly roll-up chain; PAI has no equivalent scheduled closeout.
+4. **Structured daily rituals** — Start/end with daily→weekly→monthly roll-up chain; PAI has no equivalent scheduled end ritual.
 5. **Backend-agnostic task layer** — beans / linear / github / none abstraction; PAI ties task tracking to PRD files and WORK/ memory only.
 6. **Session spec/doc creation** — `memory session spec` and `memory session doc` produce structured artefacts scoped to the current session; PAI generates PRDs but not session-scoped specs.
 7. **groovebook (planned)** — PR-based shared learning commons; no equivalent exists in PAI.

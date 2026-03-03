@@ -2,6 +2,19 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.9.2] - 2026-03-02
+
+### Changed
+- Daily commands renamed: `startup` / `closeout` → `start` / `end`. Use `groove daily start` and `groove daily end`.
+- Hook files renamed: `.groove/hooks/startup.md` and `closeout.md` → `start.md` and `end.md`.
+
+### Added
+- **Daily start** now reviews yesterday's daily memory (shows summary; warns if missing or no end section) and creates today's daily memory file with a start-of-day structure.
+- **memory init daily** — creates today's `<memory>/daily/YYYY-MM-DD.md` with start-of-day template (Plan for today). Called from daily start; at daily end, `memory log daily` appends the closeout sections.
+
+### Migration
+- If you have custom `.groove/hooks/startup.md` or `closeout.md`, rename them to `start.md` and `end.md` so the new daily commands run them. No migration script; manual rename only.
+
 ## [0.9.1] - 2026-03-02
 
 ### Fixed
@@ -139,13 +152,13 @@ groove task install
 
 ### Added
 - Per-component git strategy: `git:` is now a mapping with `memory:`, `tasks:`, and `hooks:` sub-keys
-- Each sub-key independently controls what gets committed during daily closeout and what `.groove/.gitignore` ignores
+- Each sub-key independently controls what gets committed during daily end and what `.groove/.gitignore` ignores
 
 ### Changed
 - `.groove/.gitignore` is now generated from per-component strategies instead of a single flat value
 - `git.hooks` defaults to `commit-all` (hooks are team-shareable by default)
 - Beans task path changed from `.beans` to `.groove/tasks` — tasks now live inside the groove directory tree
-- Daily closeout commit logic updated to stage per-component based on each `git.*` value
+- Daily end commit logic updated to stage per-component based on each `git.*` value
 
 ### Removed
 - `finder:` config key — skill discovery uses `npx skills` / skills.sh directly; no config key needed
@@ -208,7 +221,7 @@ If you had bonfire installed, remove it: `npx skills remove bonfire`
 
 ### Added
 - User-defined daily hooks — `groove install` creates `.groove/hooks/` (with `.gitkeep`)
-- `daily startup` and `daily closeout` execute `.groove/hooks/startup.md` / `.groove/hooks/closeout.md` if present, skip silently if not
+- `daily start` and `daily end` execute `.groove/hooks/start.md` / `.groove/hooks/end.md` if present, skip silently if not
 - Hook templates at `skills/daily/templates/hooks/` document the format
 
 ## [0.3.1] - 2026-02-28
@@ -252,7 +265,7 @@ If you had bonfire installed, remove it: `npx skills remove bonfire`
 
 ### Added
 - Initial release
-- `daily` skill — startup and closeout rituals
+- `daily` skill — start and end rituals
 - `work` skill — compound engineering loop
 - `task` skill — backend-agnostic task management
 - `memory` skill — log population and session wrapper

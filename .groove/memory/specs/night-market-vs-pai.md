@@ -102,7 +102,7 @@
 | Spec creation | spec-kit plugin; attune:project-init scaffolds requirements | PRD format — binary-testable ISC checkboxes |
 | TDD enforcement | imbue: PreToolUse blocks file writes until tests exist | Not present as a dedicated workflow feature |
 | Code review | pensive: NASA Power of 10 safety patterns; tracks failure rates per command | Not present as dedicated skill; security review via Fabric patterns |
-| Daily rituals | `/catchup` reads recent git history at session start | SessionStart hooks (LoadContext, KittyEnvPersist); no closeout ritual |
+| Daily rituals | `/catchup` reads recent git history at session start | SessionStart hooks (LoadContext, KittyEnvPersist); no end ritual |
 | Actions/pipelines | Not present | Atomic Actions + Pipelines + Flows on cron schedule (UNIX pipe model) |
 | Fabric patterns | Not present | 237 pre-built workflows (extraction, summarization, analysis, creation, security) |
 | Workflow learnings | pensive tracks stability metrics; no explicit user-facing capture ritual | `WorkCompletionLearning` hook captures lessons automatically on every SessionEnd |

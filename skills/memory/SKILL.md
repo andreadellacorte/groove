@@ -1,6 +1,6 @@
 ---
 name: memory
-description: "Daily/weekly/monthly/git log population and optional session context. Use when: (1) writing daily closeout log; (2) rolling up weekly/monthly memory; (3) recording git summary; (4) starting/ending optional named sessions; (5) session doc. NOT for: task management (use task); compound loop or specs/audit (use work)."
+description: "Daily/weekly/monthly/git log population and optional session context. Use when: (1) writing daily end log; (2) rolling up weekly/monthly memory; (3) recording git summary; (4) starting/ending optional named sessions; (5) session doc. NOT for: task management (use task); compound loop or specs/audit (use work)."
 license: MIT
 allowed-tools: Bash(git:*) Bash(mkdir:*) Bash(npx:*) Read Write Edit Glob AskUserQuestion
 metadata:
@@ -30,7 +30,8 @@ All paths (`memory:` config value, log files) are relative to git root.
 
 | Command | Description |
 |---|---|
-| `log daily` | Write daily closeout log to `<memory>/daily/YYYY-MM-DD.md` |
+| `init daily` | Create today's daily memory file with start-of-day structure (called from daily start) |
+| `log daily` | Write daily end log to `<memory>/daily/YYYY-MM-DD.md` |
 | `log weekly` | Roll up weekly memory from daily files |
 | `log monthly` | Roll up monthly memory from daily files |
 | `log git` | Write git summary to `<memory>/git/YYYY-MM-DD-GIT-N.md` |
@@ -56,6 +57,7 @@ All paths (`memory:` config value, log files) are relative to git root.
 |---|---|
 | `help` | → `commands/help.md` |
 | `doctor` | → `commands/doctor.md` |
+| `init daily` | → `commands/init/daily.md` |
 | `log daily` | → `commands/log/daily.md` |
 | `log weekly` | → `commands/log/weekly.md` |
 | `log monthly` | → `commands/log/monthly.md` |

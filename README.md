@@ -20,7 +20,7 @@ groove install
 
 | Skill | Commands | Purpose |
 |---|---|---|
-| `daily` | `startup`, `closeout` | Bookend the workday |
+| `daily` | `start`, `end` | Bookend the workday |
 | `work` | `brainstorm`, `plan`, `work`, `review`, `compound` | Reduce rework through structured stages |
 | `task` | `list`, `create`, `update`, `archive`, `analyse` | Task tracking — configurable backend |
 | `memory` | `log daily/weekly/monthly/git`, `session start/resume/end/spec/doc/review` | Logs + session context |
@@ -38,8 +38,8 @@ Companions extend groove and are not listed in the core skills table above. Inst
 ## Usage
 
 ```
-/groove daily startup         — start the workday
-/groove daily closeout        — end the workday
+/groove daily start           — start the workday
+/groove daily end             — end the workday
 
 /groove work brainstorm       — clarify scope
 /groove work plan             — write implementation plan
@@ -53,7 +53,7 @@ Companions extend groove and are not listed in the core skills table above. Inst
 
 /groove memory session start  — start session
 /groove memory session resume — resume an existing session
-/groove memory log daily      — write daily closeout log
+/groove memory log daily      — write daily end log
 
 /groove doctor                — check all backends are healthy
 /groove update                — apply pending migrations

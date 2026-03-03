@@ -92,7 +92,7 @@
 | Compound loop | Explicit 5 stages: brainstorm → plan → work → review → compound | attune: brainstorm → plan → work → review → execute (similar structure; lighter constraints) |
 | TDD enforcement | Not present | imbue: PreToolUse hook blocks file writes until tests exist — enforced, not advisory |
 | Code review | Not present as built-in | pensive: NASA Power of 10 safety patterns; tracks command usage frequency and failure rates |
-| Daily rituals | startup (task load, hook) + closeout (memory logs, git commit, hook) | `/catchup` reads recent git history at session start; no closeout ritual |
+| Daily rituals | start (task load, hook) + end (memory logs, git commit, hook) | `/catchup` reads recent git history at session start; no end ritual |
 | Spec creation | `memory session spec <topic>` → structured spec file at `sessions/specs/` | spec-kit plugin; `attune:project-init` scaffolds requirements |
 | Plan docs | Templated brainstorm + implementation plan with codebase research | spec-kit task breakdown into 2-5 minute resumable chunks |
 | Workflow learnings | `work compound` detects AI/process lessons → `.groove/memory/learned/<topic>.md` | pensive tracks failure rates and flags unstable workflows; no explicit capture ritual |
@@ -163,7 +163,7 @@ Things night-market does not have that groove should preserve and develop:
 2. **Git strategy per component** — fine-grained control over what gets committed (`git.memory/tasks/hooks`) is unique; useful for teams with different sharing conventions.
 3. **Explicit 5-stage compound loop** — more opinionated and constraint-enforcing than attune's lifecycle; the "80% of value in plan and review" insight is baked into the skill.
 4. **Learned memory tier** — `.groove/memory/learned/<topic>.md` as an explicit cold-tier for workflow insights with routing from both compound and session end; not present in night-market.
-5. **Daily rituals with structured log roll-ups** — startup/closeout with daily→weekly→monthly roll-up chain; no equivalent in night-market.
+5. **Daily rituals with structured log roll-ups** — start/end with daily→weekly→monthly roll-up chain; no equivalent in night-market.
 6. **Config wizard + version tracking** — `/groove config` wizard and `groove-version:` migration gating is more robust than night-market's version management.
 7. **groovebook (planned)** — a shared PR-based commons for cross-user workflow learnings; no equivalent exists.
 

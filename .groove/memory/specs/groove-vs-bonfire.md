@@ -57,8 +57,8 @@
 | Doc creation | `groove memory session doc <topic>` | `/bonfire doc <topic>` |
 | Review | Not present as standalone command | `/bonfire review` — blindspot detection, categorized by Fix Now / Needs Spec / Create Issues |
 | Config | `groove config` | `/bonfire config` |
-| Daily startup | `groove daily startup` | Not present |
-| Daily closeout | `groove daily closeout` | Not present |
+| Daily start | `groove daily start` | Not present |
+| Daily end | `groove daily end` | Not present |
 | Work stages | `groove work brainstorm/plan/work/review/compound` | Not present |
 | Task management | `groove task create/list/update/archive/analyse` | Not present |
 | Update/migrate | `groove update` | Not present |
@@ -177,14 +177,14 @@ Both tools have spec and doc creation — this is the most direct overlap.
 
 | Dimension | groove | bonfire |
 |---|---|---|
-| Daily startup | `groove daily startup` — load tasks, check yesterday's closeout, run hook | Not present |
-| Daily closeout | `groove daily closeout` — write memory logs, git commit per strategy, run hook | Not present |
+| Daily start | `groove daily start` — review yesterday, create today's daily memory, load tasks, run hook | Not present |
+| Daily end | `groove daily end` — write memory logs, git commit per strategy, run hook | Not present |
 | Work stages | 5 explicit stages: brainstorm → plan → work → review → compound | Implicit: start → work → end |
 | Stage tasks | Each stage creates a task in the configured backend | Not present |
 | Review | `groove work review` — evaluate output against plan, identify lessons | `/bonfire review` — blindspot detection on branch diff; Fix Now / Needs Spec / Create Issues |
 | Compound/learning | `groove work compound` — update project files, detect workflow learnings | Not present |
 | Workflow learnings | compound + session end prompt → `learned/<topic>.md` | Not present; mature knowledge graduates to CLAUDE.md |
-| Hooks | `.groove/hooks/startup.md` and `closeout.md` — custom user-defined actions | Not present |
+| Hooks | `.groove/hooks/start.md` and `end.md` — custom user-defined actions | Not present |
 
 ---
 
@@ -195,7 +195,7 @@ Both tools have spec and doc creation — this is the most direct overlap.
 1. **Compound engineering loop** — 5 explicit stages (brainstorm→plan→work→review→compound) with per-stage constraints; bonfire has no equivalent structured workflow
 2. **Multi-tier memory** — daily/weekly/monthly roll-up captures knowledge at different timescales; bonfire has a single living document
 3. **Task management** — beans/linear/github/none abstraction with full task lifecycle; bonfire has only an optional issues link
-4. **Daily rituals** — startup/closeout with hooks, task analysis, git commit; bonfire has no daily ceremony
+4. **Daily rituals** — start/end with hooks, task analysis, git commit; bonfire has no daily ceremony
 5. **Workflow learning accumulation** — `learned/<topic>.md` cold tier populated from compound + session end; bonfire has no dedicated long-term insight tier
 6. **Formal migration system** — ordered migration runner handles config evolution across any version gap; bonfire auto-detects key changes but has no runner
 7. **Per-component git strategy** — independent `git.memory`, `git.tasks`, `git.hooks`; bonfire has a single global strategy

@@ -27,8 +27,8 @@ git.tasks:  <git.tasks value>
 git.hooks:  <git.hooks value>
 
 ## Key commands
-/groove daily startup         — start the workday
-/groove daily closeout        — end the workday
+/groove daily start           — start the workday
+/groove daily end             — end the workday
 /groove work brainstorm       — clarify scope (YAGNI enforced)
 /groove work plan             — research codebase, write implementation plan
 /groove work work             — execute the plan
@@ -39,13 +39,13 @@ git.hooks:  <git.hooks value>
 /groove task analyse          — summarise tasks by status
 /groove memory session start  — start session
 /groove memory session resume — resume an existing session
-/groove memory log daily      — write daily closeout log
+/groove memory log daily      — write daily end log
 
 ## Conventions
 - Stage tasks: "YYYY-MM-DD, N. Stage" (e.g. 2026-02-28, 1. Brainstorm)
 - Memory logs: <memory value>daily/, weekly/, monthly/, git/
 - Task completion requires "Summary of Changes" in body before marking done
-- Archive is always user-triggered — never automatic during closeout
+- Archive is always user-triggered — never automatic during end
 - 80% of compound loop value is in plan and review — do not skip them
 
 ## Constraints

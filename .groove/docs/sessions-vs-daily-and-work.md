@@ -6,11 +6,11 @@ Groove has three ways to scope “what I’m doing”:
 
 | Concept | Purpose |
 |--------|--------|
-| **Daily** | Time-bound bookends: startup (agenda, tasks) and closeout (memory, tasks, commit). |
+| **Daily** | Time-bound bookends: start (agenda, tasks) and end (memory, tasks, commit). |
 | **Tasks** | What to do — list, create, update, archive. |
 | **Sessions** | Named conversation context with start/resume/end and a session file. |
 
-For a single workstream, **daily + tasks + work** is enough: you start the day, work through tasks with the compound loop (brainstorm → plan → work → review → compound), and close out. Sessions add an extra layer (named context, session file) that overlaps with “today’s tasks” and closeout.
+For a single workstream, **daily + tasks + work** is enough: you start the day, work through tasks with the compound loop (brainstorm → plan → work → review → compound), and close out. Sessions add an extra layer (named context, session file) that overlaps with “today’s tasks” and end.
 
 So: **sessions are optional.** Use them only when you need multiple parallel contexts (e.g. two chats, two features) and want a named file per context. For most use, ignore session start/resume/end and rely on daily + tasks + work.
 
