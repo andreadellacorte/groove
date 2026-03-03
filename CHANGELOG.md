@@ -2,6 +2,24 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.10.0] - 2026-03-03
+
+### Added
+- 24 individual per-command skills under the `groove-*` namespace: `groove-daily-start`, `groove-daily-end`, `groove-work-brainstorm`, `groove-work-plan`, `groove-work-work`, `groove-work-review`, `groove-work-compound`, `groove-work-spec`, `groove-work-audit`, `groove-utilities-task-list`, `groove-utilities-task-create`, `groove-utilities-task-update`, `groove-utilities-task-archive`, `groove-utilities-task-analyse`, `groove-utilities-task-install`, `groove-utilities-task-config`, `groove-utilities-task-doctor`, `groove-utilities-memory-log-daily`, `groove-utilities-memory-log-weekly`, `groove-utilities-memory-log-monthly`, `groove-utilities-memory-log-git`, `groove-utilities-memory-init-daily`, `groove-utilities-memory-install`, `groove-utilities-memory-doctor`. Each appears as a separate entry in Claude Code's skill picker.
+
+### Removed
+- Standalone `daily`, `work`, `task`, `memory` skills — no longer registered as top-level skills. Their command content is now inlined directly into each `groove-*` SKILL.md.
+- `commands/` directories under `skills/daily/`, `skills/work/`, `skills/task/`, `skills/memory/` — content moved into per-command SKILL.md files.
+
+### Changed
+- `groove` skill now routes only top-level commands (`help`, `install`, `config`, `update`, `check`, `prime`, `doctor`). Sub-skill routing removed.
+- Each `groove-*` skill is fully self-contained — no indirection through a parent SKILL.md or separate command files.
+- Internal cross-references updated from `groove:skill:command` format to `/groove-skill-name` format.
+
+### Migration
+- `groove update` bumps `groove-version:` to `0.10.0`.
+- `AGENTS.md` `<!-- groove:task:start -->` stub updated to reference `/groove-utilities-task-*` skills (if still using old format).
+
 ## [0.9.4] - 2026-03-03
 
 ### Added

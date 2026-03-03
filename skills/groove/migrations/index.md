@@ -17,6 +17,7 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | 0.8.7 | 0.8.8 | 0.8.7-to-0.8.8.md | Update groove:task stub wording: "to load" instead of "if you need" |
 | 0.8.8 | 0.8.9 | 0.8.8-to-0.8.9.md | Move spec files from `<memory>/sessions/specs/` to `<memory>/specs/` |
 | 0.8.9 | 0.9.0 | 0.8.9-to-0.9.0.md | Remove obsolete `.agents/skills/skills` directory (skills wrapper removed in 0.7.0) |
+| 0.9.4 | 0.10.0 | 0.9.4-to-0.10.0.md | Standalone `daily`, `work`, `task`, `memory` skills removed. All workflow commands now individual `groove-*` skills. No `.groove/index.md` config changes needed. |
 
 ## Notes
 

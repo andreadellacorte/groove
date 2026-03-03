@@ -11,27 +11,52 @@ Print the following, substituting live config values from `.groove/index.md` whe
 **groove** — compound engineering workflow
 
 ```
-/groove:help   /groove:prime   /groove:<skill>:<command>
+/groove   /groove help   /groove prime   /groove update   /groove doctor
 ```
 
-**Skills**
+**Daily**
 
 | Skill | Purpose |
 |---|---|
-| `daily` | Bookend the workday |
-| `work` | Compound engineering loop |
-| `task` | Task tracking |
-| `memory` | Log files |
+| `/groove-daily-start` | Start the workday |
+| `/groove-daily-end` | End the workday |
 
-**Quick reference**
+**Work**
 
-```
-groove   :help | :install | :config | :update | :check | :prime | :doctor
-daily    :help | :start | :end
-work     :help | :brainstorm | :plan | :work | :review | :compound | :spec | :audit
-task     :help | :list | :create | :update | :archive | :analyse | :install | :config | :doctor
-memory   :help | :doctor | :init:daily | :log:daily | :log:weekly | :log:monthly | :log:git | :install
-```
+| Skill | Purpose |
+|---|---|
+| `/groove-work-brainstorm` | Clarify scope through dialogue |
+| `/groove-work-plan` | Write implementation plan |
+| `/groove-work-work` | Execute the plan |
+| `/groove-work-review` | Evaluate output |
+| `/groove-work-compound` | Capture lessons |
+| `/groove-work-spec [topic]` | Create outcome spec |
+| `/groove-work-audit` | Review branch for blindspots |
+
+**Utilities — Tasks**
+
+| Skill | Purpose |
+|---|---|
+| `/groove-utilities-task-list` | List active tasks |
+| `/groove-utilities-task-create` | Create a task |
+| `/groove-utilities-task-update` | Update a task |
+| `/groove-utilities-task-archive` | Archive a task |
+| `/groove-utilities-task-analyse` | Analyse task status |
+| `/groove-utilities-task-install` | Set up task backend |
+| `/groove-utilities-task-config` | Configure task backend |
+| `/groove-utilities-task-doctor` | Check task backend health |
+
+**Utilities — Memory**
+
+| Skill | Purpose |
+|---|---|
+| `/groove-utilities-memory-log-daily` | Write daily log entry |
+| `/groove-utilities-memory-log-weekly` | Roll up weekly log |
+| `/groove-utilities-memory-log-monthly` | Roll up monthly log |
+| `/groove-utilities-memory-log-git` | Record git activity |
+| `/groove-utilities-memory-init-daily` | Initialise today's memory file |
+| `/groove-utilities-memory-install` | Set up memory backend |
+| `/groove-utilities-memory-doctor` | Check memory backend health |
 
 **Config** (`.groove/index.md`)
 
@@ -42,8 +67,6 @@ git.memory:    <value>   — memory commit strategy (ignore-all | hybrid | commi
 git.tasks:     <value>   — tasks commit strategy (ignore-all | commit-all)
 git.hooks:     <value>   — hooks commit strategy (ignore-all | commit-all)
 ```
-
-Run `/groove:<skill>:help` for detailed commands and options.
 
 ---
 
