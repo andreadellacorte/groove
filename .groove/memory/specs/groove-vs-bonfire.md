@@ -50,20 +50,16 @@
 | Dimension | groove | bonfire |
 |---|---|---|
 | Total commands | ~26 across 5 sub-skills | 6 |
-| Invocation prefix | `/groove <skill> <command>` | `/bonfire <command>` |
-| Session start | `groove memory session start` | `/bonfire start` |
-| Session end | `groove memory session end` | `/bonfire end` |
-| Spec creation | `groove memory session spec <topic>` | `/bonfire spec <topic>` |
-| Doc creation | `groove memory session doc <topic>` | `/bonfire doc <topic>` |
-| Review | Not present as standalone command | `/bonfire review` — blindspot detection, categorized by Fix Now / Needs Spec / Create Issues |
-| Config | `groove config` | `/bonfire config` |
-| Daily start | `groove daily start` | Not present |
-| Daily end | `groove daily end` | Not present |
-| Work stages | `groove work brainstorm/plan/work/review/compound` | Not present |
-| Task management | `groove task create/list/update/archive/analyse` | Not present |
-| Update/migrate | `groove update` | Not present |
-| Health check | `groove doctor` | Not present |
-| Context load | `groove prime` | Not present (implicit on `/bonfire start`) |
+| Invocation prefix | `/groove:<skill>:<command>` | `/bonfire <command>` |
+| Config | `groove:config` | `/bonfire config` |
+| Daily start | `groove:daily:start` | Not present |
+| Daily end | `groove:daily:end` | Not present |
+| Work stages | `groove:work:brainstorm` / plan / work / review / compound | Not present |
+| Task management | `groove:task:create` / list / update / archive / analyse | Not present |
+| Memory logs | `groove:memory:log:daily` etc. | Not present |
+| Update/migrate | `groove:update` | Not present |
+| Health check | `groove:doctor` | Not present |
+| Context load | `groove:prime` | Not present (implicit on `/bonfire start`) |
 
 ---
 
@@ -71,9 +67,9 @@
 
 | Dimension | groove | bonfire |
 |---|---|---|
-| Install command | `npx skills add andreadellacorte/groove` + `/groove install` | `npx skills add vieko/bonfire` |
-| Bootstrap required | Yes — `/groove install` orchestrates backends, memory dirs, AGENTS.md, companions | No — auto-initializes `.bonfire/` on first `/bonfire start` |
-| Config wizard | `groove config` — interactive, guided | `/bonfire config` — interactive, lightweight |
+| Install command | `npx skills add andreadellacorte/groove` + `/groove:install` | `npx skills add vieko/bonfire` |
+| Bootstrap required | Yes — `/groove:install` orchestrates backends, memory dirs, AGENTS.md, companions | No — auto-initializes `.bonfire/` on first `/bonfire start` |
+| Config wizard | `groove:config` — interactive, guided | `/bonfire config` — interactive, lightweight |
 | Post-install steps | Choose task backend (beans/linear/github/none), configure git strategies, install companions | None — ready immediately |
 | Platform compat | Agent Skills-compatible platforms | 20+ platforms (Claude Code, Cursor, Cline, Amp, Junie, OpenCode, OpenHands, Goose, etc.) |
 | Dependencies | Node.js; optional: beans, linear CLI, gh CLI | None |
@@ -118,8 +114,8 @@ Both tools have spec and doc creation — this is the most direct overlap.
 
 | Dimension | groove | bonfire |
 |---|---|---|
-| Spec command | `groove memory session spec <topic>` | `/bonfire spec <topic>` |
-| Doc command | `groove memory session doc <topic>` | `/bonfire doc <topic>` |
+| Spec command | `groove:work:spec <topic>` | `/bonfire spec <topic>` |
+| Doc command | (outcome docs under work/memory) | `/bonfire doc <topic>` |
 | Spec path | `<memory>/sessions/specs/<topic>.md` (fixed) | Configurable via `specs:` key (default `.bonfire/specs/`) |
 | Doc path | `<memory>/sessions/docs/<topic>.md` (fixed) | Configurable via `docs:` key (default `.bonfire/docs/`) |
 | Spec sections | Overview, Decisions, Implementation Steps, Edge Cases | Overview, Decisions, Implementation Steps, Edge Cases |
@@ -138,7 +134,7 @@ Both tools have spec and doc creation — this is the most direct overlap.
 
 | Dimension | groove | bonfire |
 |---|---|---|
-| Upgrade command | `groove update` — pulls latest via `npx skills add`, applies pending migrations | Not present — `npx skills add vieko/bonfire` re-installs; no migration runner |
+| Upgrade command | `groove:update` — pulls latest via `npx skills add`, applies pending migrations | Not present — `npx skills add vieko/bonfire` re-installs; no migration runner |
 | Migration system | Ordered runner: `migrations/index.md` table; filter `To > local AND To <= installed`; idempotent | Not present — backward-compat design; breaking config keys auto-detected on next run |
 | Version tracking | Dual: skill `version:` in SKILL.md + user `groove-version:` in `.groove/index.md` | Skill `version:` in SKILL.md only |
 | Breaking changes | Handled via migrations (v5.5.0 example: `linear: true/false` → `issues: true/false`) | Config keys auto-migrate on detection (e.g. `linear:` → `issues:` in v5.0.0) |
@@ -151,8 +147,8 @@ Both tools have spec and doc creation — this is the most direct overlap.
 
 | Dimension | groove | bonfire |
 |---|---|---|
-| AGENTS.md | Managed 2-line bootstrap: `Run /groove prime` + `Run beans prime` stubs | Minimal: table of commands + design principles; notes "this repo uses bonfire" |
-| Context loading | On-demand: `/groove prime` loads workflow context into conversation | Implicit: `/bonfire start` reads and summarises `index.md` into context |
+| AGENTS.md | Managed 2-line bootstrap: `Run /groove:prime` + `Run beans prime` stubs | Minimal: table of commands + design principles; notes "this repo uses bonfire" |
+| Context loading | On-demand: `/groove:prime` loads workflow context into conversation | Implicit: `/bonfire start` reads and summarises `index.md` into context |
 | Managed sections | `<!-- groove:managed -->` prevents edits to skills/ | Not present |
 | Allowed-tools | Per-skill in SKILL.md frontmatter (git, beans, gh, npx, mkdir, etc.) | Bash (git, mkdir, rm), Read, Write, Edit, Glob, Grep, AskUserQuestion |
 | Sub-agents | General-purpose Explore agent for plan/spec research | Explore agent for spec/doc/review research; isolated general-purpose agent for writing |
@@ -165,7 +161,7 @@ Both tools have spec and doc creation — this is the most direct overlap.
 
 | Dimension | groove | bonfire |
 |---|---|---|
-| Built-in tasks | Yes — `groove task` sub-skill | No |
+| Built-in tasks | Yes — `groove:task` sub-skill | No |
 | Backends | beans (local markdown), linear, github, none | Not applicable |
 | Task lifecycle | create, list, update, archive, analyse | Not applicable |
 | Issues integration | Via `tasks: github` backend | `issues: true/false` — optional link to tracker; no task CRUD |
@@ -177,12 +173,12 @@ Both tools have spec and doc creation — this is the most direct overlap.
 
 | Dimension | groove | bonfire |
 |---|---|---|
-| Daily start | `groove daily start` — review yesterday, create today's daily memory, load tasks, run hook | Not present |
-| Daily end | `groove daily end` — write memory logs, git commit per strategy, run hook | Not present |
+| Daily start | `groove:daily:start` — review yesterday, create today's daily memory, load tasks, run hook | Not present |
+| Daily end | `groove:daily:end` — write memory logs, git commit per strategy, run hook | Not present |
 | Work stages | 5 explicit stages: brainstorm → plan → work → review → compound | Implicit: start → work → end |
 | Stage tasks | Each stage creates a task in the configured backend | Not present |
-| Review | `groove work review` — evaluate output against plan, identify lessons | `/bonfire review` — blindspot detection on branch diff; Fix Now / Needs Spec / Create Issues |
-| Compound/learning | `groove work compound` — update project files, detect workflow learnings | Not present |
+| Review | `groove:work:review` — evaluate output against plan, identify lessons | `/bonfire review` — blindspot detection on branch diff; Fix Now / Needs Spec / Create Issues |
+| Compound/learning | `groove:work:compound` — update project files, detect workflow learnings | Not present |
 | Workflow learnings | compound + session end prompt → `learned/<topic>.md` | Not present; mature knowledge graduates to CLAUDE.md |
 | Hooks | `.groove/hooks/start.md` and `end.md` — custom user-defined actions | Not present |
 

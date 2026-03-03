@@ -11,7 +11,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 **groove** — compound engineering workflow
 
 ```
-/groove <skill> <command>
+/groove:help   /groove:prime   /groove:<skill>:<command>
 ```
 
 **Skills**
@@ -21,18 +21,16 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `daily` | Bookend the workday |
 | `work` | Compound engineering loop |
 | `task` | Task tracking |
-| `memory` | Log files + session tracking |
+| `memory` | Log files |
 
 **Quick reference**
 
 ```
-groove   install | config | update | check | prime | doctor | help
-daily    start | end | doctor
-work     brainstorm | plan | work | review | compound | spec | audit | doctor
-task     list | create | update | archive | analyse | install | config | doctor
-memory   init daily | log daily | log weekly | log monthly | log git
-         session start | session resume | session end | session doc
-         install | doctor
+groove   :help | :install | :config | :update | :check | :prime | :doctor
+daily    :help | :start | :end
+work     :help | :brainstorm | :plan | :work | :review | :compound | :spec | :audit
+task     :help | :list | :create | :update | :archive | :analyse | :install | :config | :doctor
+memory   :help | :doctor | :init:daily | :log:daily | :log:weekly | :log:monthly | :log:git | :install
 ```
 
 **Config** (`.groove/index.md`)
@@ -45,7 +43,7 @@ git.tasks:     <value>   — tasks commit strategy (ignore-all | commit-all)
 git.hooks:     <value>   — hooks commit strategy (ignore-all | commit-all)
 ```
 
-Run `/groove <skill> help` for detailed commands and options.
+Run `/groove:<skill>:help` for detailed commands and options.
 
 ---
 

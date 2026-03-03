@@ -1,6 +1,6 @@
 ---
 name: groove
-description: "Compound engineering workflow system. Use when: running any groove command. Routes to daily, work, task, and memory sub-commands. Use 'groove help' for overview, 'groove <skill> help' for skill-specific help."
+description: "Compound engineering workflow system. Use when: running any groove command. Routes to daily, work, task, and memory sub-commands. Use 'groove:help' for overview, 'groove:<skill>:help' for skill-specific help."
 license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
 metadata:
@@ -16,6 +16,8 @@ Compound engineering workflow system. Single entry point for all groove skills.
 
 ## $ARGUMENTS Routing
 
+Normalize space-separated arguments to colon-separated before lookup (e.g. `work brainstorm` → `work:brainstorm`) so both `/groove work brainstorm` and `/groove:work:brainstorm` resolve.
+
 | $ARGUMENTS | Action |
 |---|---|
 | `help` | → `commands/help.md` |
@@ -25,36 +27,32 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `check` | → `commands/check.md` |
 | `prime` | → `commands/prime.md` |
 | `doctor` | → `commands/doctor.md` |
-| `daily help` | → `skills/daily/commands/help.md` |
-| `daily start` | → `skills/daily/commands/start.md` |
-| `daily end` | → `skills/daily/commands/end.md` |
-| `work help` | → `skills/work/commands/help.md` |
-| `work brainstorm` | → `skills/work/commands/brainstorm.md` |
-| `work plan` | → `skills/work/commands/plan.md` |
-| `work work` | → `skills/work/commands/work.md` |
-| `work review` | → `skills/work/commands/review.md` |
-| `work compound` | → `skills/work/commands/compound.md` |
-| `work spec` | → `skills/work/commands/spec.md` |
-| `work audit` | → `skills/work/commands/audit.md` |
-| `task help` | → `skills/task/commands/help.md` |
-| `task doctor` | → `skills/task/commands/doctor.md` |
-| `task list` | → `skills/task/commands/list.md` |
-| `task create` | → `skills/task/commands/create.md` |
-| `task update` | → `skills/task/commands/update.md` |
-| `task archive` | → `skills/task/commands/archive.md` |
-| `task analyse` | → `skills/task/commands/analyse.md` |
-| `task install` | → `skills/task/commands/install.md` |
-| `task config` | → `skills/task/commands/config.md` |
-| `memory help` | → `skills/memory/commands/help.md` |
-| `memory doctor` | → `skills/memory/commands/doctor.md` |
-| `memory init daily` | → `skills/memory/commands/init/daily.md` |
-| `memory log daily` | → `skills/memory/commands/log/daily.md` |
-| `memory log weekly` | → `skills/memory/commands/log/weekly.md` |
-| `memory log monthly` | → `skills/memory/commands/log/monthly.md` |
-| `memory log git` | → `skills/memory/commands/log/git.md` |
-| `memory session start` | → `skills/memory/commands/session/start.md` |
-| `memory session resume` | → `skills/memory/commands/session/resume.md` |
-| `memory session end` | → `skills/memory/commands/session/end.md` |
-| `memory session doc` | → `skills/memory/commands/session/doc.md` |
-| `memory install` | → `skills/memory/commands/install.md` |
+| `daily:help` | → `skills/daily/commands/help.md` |
+| `daily:start` | → `skills/daily/commands/start.md` |
+| `daily:end` | → `skills/daily/commands/end.md` |
+| `work:help` | → `skills/work/commands/help.md` |
+| `work:brainstorm` | → `skills/work/commands/brainstorm.md` |
+| `work:plan` | → `skills/work/commands/plan.md` |
+| `work:work` | → `skills/work/commands/work.md` |
+| `work:review` | → `skills/work/commands/review.md` |
+| `work:compound` | → `skills/work/commands/compound.md` |
+| `work:spec` | → `skills/work/commands/spec.md` |
+| `work:audit` | → `skills/work/commands/audit.md` |
+| `task:help` | → `skills/task/commands/help.md` |
+| `task:doctor` | → `skills/task/commands/doctor.md` |
+| `task:list` | → `skills/task/commands/list.md` |
+| `task:create` | → `skills/task/commands/create.md` |
+| `task:update` | → `skills/task/commands/update.md` |
+| `task:archive` | → `skills/task/commands/archive.md` |
+| `task:analyse` | → `skills/task/commands/analyse.md` |
+| `task:install` | → `skills/task/commands/install.md` |
+| `task:config` | → `skills/task/commands/config.md` |
+| `memory:help` | → `skills/memory/commands/help.md` |
+| `memory:doctor` | → `skills/memory/commands/doctor.md` |
+| `memory:init:daily` | → `skills/memory/commands/init/daily.md` |
+| `memory:log:daily` | → `skills/memory/commands/log/daily.md` |
+| `memory:log:weekly` | → `skills/memory/commands/log/weekly.md` |
+| `memory:log:monthly` | → `skills/memory/commands/log/monthly.md` |
+| `memory:log:git` | → `skills/memory/commands/log/git.md` |
+| `memory:install` | → `skills/memory/commands/install.md` |
 | _(empty)_ | → `commands/help.md` |

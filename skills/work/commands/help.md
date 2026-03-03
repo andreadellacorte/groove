@@ -11,7 +11,7 @@ Print the following:
 **groove work** — compound engineering loop
 
 ```
-/groove work <command>
+/groove:work:<command>
 ```
 
 | Command | Description |
@@ -46,7 +46,7 @@ YYYY-MM-DD, 5. Compound
 
 **Frustration detection:** if you find yourself fixing the same thing repeatedly, run `compound` immediately — do not wait for end of session.
 
-Run `/groove help` for all skills.
+Run `/groove:help` for all skills.
 
 ---
 

@@ -24,7 +24,7 @@ Synthesised from scope observations across all three comparisons:
 - **Project-scoped, not global** — `.groove/` lives in the repo; PAI-style global installs (`~/.claude/`) are out of scope
 - **Opinionated daily rhythm** — the start/end ceremony is a core differentiator; no other compared tool has it
 - **Explicit 5-stage compound loop** — the most structured development workflow of any compared tool; "80% of value in plan and review" is baked in
-- **Predictable explicit invocation** — `/groove <skill> <command>` is more predictable than auto-discovery; keep it
+- **Predictable explicit invocation** — `/groove:<skill>:<command>` is more predictable than auto-discovery; keep it
 - **Backend-agnostic task abstraction** — beans/linear/github/none is unique; no other tool has an abstraction layer over task backends
 
 ---
@@ -60,7 +60,7 @@ Ordered by signal strength (how many comparisons surfaced it) and alignment with
 
 - Bonfire's `/bonfire review` is the sharpest gap: branch-diff-based analysis, findings categorised as Fix Now / Needs Spec / Create Issues with effort estimates; no equivalent in groove
 - Groove's `work review` is subjective (evaluate output against plan); it doesn't look at the actual diff
-- **groove-scoped implementation**: Add a `groove work review` step that runs `git diff <base>...HEAD` and `git log --oneline <base>..HEAD`; feeds into the review analysis; findings categorised by the same Fix Now / Needs Spec / Create Issues pattern. Fits naturally into the existing `work review` command; no new command needed.
+- **groove-scoped implementation**: Add a `groove:work:review` step that runs `git diff <base>...HEAD` and `git log --oneline <base>..HEAD`; feeds into the review analysis; findings categorised by the same Fix Now / Needs Spec / Create Issues pattern. Fits naturally into the existing `work review` command; no new command needed.
 
 **C. Session health check at end**
 
@@ -83,7 +83,7 @@ Ordered by signal strength (how many comparisons surfaced it) and alignment with
 
 - PAI's TELOS (10 files: MISSION, GOALS, PROJECTS, BELIEFS, etc.) eliminates re-explaining context across sessions
 - Groove has no user-context layer that survives across sessions
-- **groove-scoped implementation**: A single optional `.groove/IDENTITY.md` free-form file; `groove prime` checks for it and includes it in conversation context output if present. No new config key; presence of file = enabled.
+- **groove-scoped implementation**: A single optional `.groove/IDENTITY.md` free-form file; `groove:prime` checks for it and includes it in conversation context output if present. No new config key; presence of file = enabled.
 
 **F. Multi-platform documentation**
 
@@ -129,6 +129,6 @@ groove is not: a personal AI OS (PAI), a plugin marketplace (night-market), or a
 | v0.9.1 | Branch-diff analysis in `work review` (Fix Now / Needs Spec / Create Issues) | 1B |
 | v0.9.2 | Session health check in `memory session end` (orphaned specs, long-running sessions) | 1C |
 | v0.9.3 | Configurable `specs:` and `docs:` paths in `.groove/index.md` | 1D |
-| v0.10.0 | TELOS-lite: `.groove/IDENTITY.md` surfaced by `groove prime` | 2E |
+| v0.10.0 | TELOS-lite: `.groove/IDENTITY.md` surfaced by `groove:prime` | 2E |
 | v0.10.1 | Session rating signal → `learned/signals.md` | 2G |
 | — | Multi-platform README docs | 2F (no version bump needed) |

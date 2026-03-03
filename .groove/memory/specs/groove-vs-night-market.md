@@ -36,7 +36,7 @@
 | Dimension | groove | claude-night-market |
 |---|---|---|
 | Total commands | ~26 across 5 sub-skills | 114 across 16 plugins |
-| Invocation | Explicit only: `/groove <skill> <command>` | Explicit (`/command`) OR auto-invoked when Claude matches task context to skill description |
+| Invocation | Explicit only: `/groove:<skill>:<command>` | Explicit (`/command`) OR auto-invoked when Claude matches task context to skill description |
 | Auto-discovery | Not present — user must know and type the command | Yes — `attune v1.4.0` enhanced auto-matching; Claude evaluates skill frontmatter |
 | Keyboard shortcuts | Not present | Supported (e.g. resume screen with preview and rename shortcut) |
 | Command scope | Compound: one entry point routes everything | Flat: each plugin adds its own namespace; no cross-plugin routing |
@@ -48,9 +48,9 @@
 
 | Dimension | groove | claude-night-market |
 |---|---|---|
-| Method | `npx skills add andreadellacorte/groove` + `/groove install` | `/plugin marketplace add athola/claude-night-market` or `npx skills add` |
+| Method | `npx skills add andreadellacorte/groove` + `/groove:install` | `/plugin marketplace add athola/claude-night-market` or `npx skills add` |
 | Granularity | All-or-nothing — groove ships as a unit | Selective — install individual plugins; plugins are self-contained |
-| Post-install setup | `/groove install` orchestrates task backend, memory dirs, companions, AGENTS.md | No orchestration step; each plugin self-installs |
+| Post-install setup | `/groove:install` orchestrates task backend, memory dirs, companions, AGENTS.md | No orchestration step; each plugin self-installs |
 | Scaffolding | `groove config` wizard → `.groove/index.md` with guided defaults | `attune:project-init` detects project type and scaffolds config files |
 | Companion skills | find-skills, agent-browser (hardcoded in install) | Plugin-declared dependencies in `plugin.json`; shallow chains by design |
 | Workspace scaffolding | `groove install` creates `.groove/`, `.groove/hooks/`, `.groove/.cache/` | `attune:project-init` copies `.env`, detects package manager, installs deps |
@@ -61,12 +61,12 @@
 
 | Dimension | groove | claude-night-market |
 |---|---|---|
-| Upgrade command | `/groove update` — pulls latest via `npx skills add`, applies pending migrations | `/update-plugins` — recommends upgrades based on stability metrics; detects orphaned references |
+| Upgrade command | `/groove:update` — pulls latest via `npx skills add`, applies pending migrations | `/update-plugins` — recommends upgrades based on stability metrics; detects orphaned references |
 | Migration system | Ordered runner: `migrations/index.md` table; filter `To > local AND To <= installed`; idempotent per step | Not present — backward-compat design avoids breaking changes entirely |
 | Version tracking | Dual: skill `version:` in SKILL.md + user `groove-version:` in `.groove/index.md` | Per-plugin version in `plugin.json`; stability metrics tracked per command (failure rate, usage freq) |
 | Breaking changes | Handled via migrations (config key renames, dir moves, AGENTS.md rewrites) | Avoided by design; progressive loading preserves old configs |
 | CI drift | Not present | `/update-ci` reconciles pre-commit hooks and GitHub Actions with code changes |
-| Self-updating | `groove update` re-reads `update.md` from disk after pull (bootstrapping fix) | Not described |
+| Self-updating | `groove:update` re-reads `update.md` from disk after pull (bootstrapping fix) | Not described |
 
 ---
 
@@ -76,7 +76,7 @@
 |---|---|---|
 | Session files | Named markdown at `<memory>/sessions/<name>.md` with YAML frontmatter | Native Claude Code sessions + sanctum git workspace capture before resume |
 | Auto-naming | `<branch>-YYYY-MM-DD-N` when name not provided | Explicit by convention: `debugging-auth-401`, `feature-payment-milestone-2` |
-| Resume | `/groove memory session resume` — lists active sessions, user picks | `claude --resume [name]` or `claude --from-pr [number]` — PR-linked sessions |
+| Resume | Not present (memory session removed) | `claude --resume [name]` or `claude --from-pr [number]` — PR-linked sessions |
 | Memory tiers | Explicit: daily / weekly / monthly / git / sessions / learned/ | Implicit: session summaries, key results, work logs (no explicit tiers) |
 | Learned memory | `.groove/memory/learned/<topic>.md` — cold-tier for workflow insights | Not present as explicit tier |
 | Memory search | Not present — files are read manually | Hybrid: semantic (AI embedding) + lexical (keyword); auto-compaction on context fill |
@@ -105,7 +105,7 @@
 | Dimension | groove | claude-night-market |
 |---|---|---|
 | AGENTS.md | Managed bootstrap: 2-line groove:prime stub + 2-line task stub; full context loaded on-demand | Full AGENTS.md standard support; CLAUDE.md → AGENTS.md migration supported |
-| Context loading | On-demand: agent runs `/groove prime` to load workflow context into conversation | Progressive Disclosure Architecture — skills auto-discover without loading all documents |
+| Context loading | On-demand: agent runs `/groove:prime` to load workflow context into conversation | Progressive Disclosure Architecture — skills auto-discover without loading all documents |
 | Hook system | Not present | PreToolUse hooks: imbue (TDD), conserve (permissions); can block, approve, or modify tool calls |
 | Managed sections | `<!-- groove:managed -->` comment prevents agents editing `skills/` or `.agents/skills/` | Not needed — plugins installed to separate dir (`~/.claude/`) from user workspace |
 | Allowed-tools | Declared per-skill in SKILL.md frontmatter | Declared per-plugin in `plugin.json` |
@@ -119,7 +119,7 @@
 | Dimension | groove | claude-night-market |
 |---|---|---|
 | Config file | `.groove/index.md` YAML frontmatter — single source for all groove config | `.claude/settings.json` for hooks; `plugin.json` per plugin for plugin config |
-| Config wizard | `/groove config` — interactive, guided wizard with defaults | Not present |
+| Config wizard | `/groove:config` — interactive, guided wizard with defaults | Not present |
 | Git strategy | Per-component: `git.memory`, `git.tasks`, `git.hooks` (ignore-all / hybrid / commit-all) | Not present |
 | Cache | `.groove/.cache/` — always gitignored; `last-version-check` as plain text | Native Claude Code handles session state; no equivalent |
 | Task backends | beans / linear / github / none — abstraction layer; CLI mapped in `references/backends.md` | GitHub Issues (minister plugin); no abstraction layer |
@@ -164,7 +164,7 @@ Things night-market does not have that groove should preserve and develop:
 3. **Explicit 5-stage compound loop** — more opinionated and constraint-enforcing than attune's lifecycle; the "80% of value in plan and review" insight is baked into the skill.
 4. **Learned memory tier** — `.groove/memory/learned/<topic>.md` as an explicit cold-tier for workflow insights with routing from both compound and session end; not present in night-market.
 5. **Daily rituals with structured log roll-ups** — start/end with daily→weekly→monthly roll-up chain; no equivalent in night-market.
-6. **Config wizard + version tracking** — `/groove config` wizard and `groove-version:` migration gating is more robust than night-market's version management.
+6. **Config wizard + version tracking** — `/groove:config` wizard and `groove-version:` migration gating is more robust than night-market's version management.
 7. **groovebook (planned)** — a shared PR-based commons for cross-user workflow learnings; no equivalent exists.
 
 ---

@@ -38,7 +38,7 @@
 | Dimension | groove | PAI |
 |---|---|---|
 | Total commands | ~26 across 5 sub-skills | 338 workflows across 11 skill categories + 237 Fabric patterns |
-| Invocation | Explicit only: `/groove <skill> <command>` | Intent-matched ("USE WHEN" clause) OR explicit slash command |
+| Invocation | Explicit only: `/groove:<skill>:<command>` | Intent-matched ("USE WHEN" clause) OR explicit slash command |
 | Auto-discovery | Not present | Yes — Claude evaluates skill frontmatter and auto-triggers by context |
 | CLI tool | Not present | `bun algorithm.ts` (Algorithm loop) and `bun pai.ts` (actions/pipelines) for headless/scheduled use |
 | Keyboard shortcuts | Not present | Supported (e.g. resume screen with preview and rename) |
@@ -50,7 +50,7 @@
 
 | Dimension | groove | PAI |
 |---|---|---|
-| Method | `npx skills add andreadellacorte/groove` + `/groove install` | `git clone` + `cp -r .claude ~/` + `bash install.sh` |
+| Method | `npx skills add andreadellacorte/groove` + `/groove:install` | `git clone` + `cp -r .claude ~/` + `bash install.sh` |
 | Bootstrap | SKILL-based orchestration — groove install is itself a skill | Shell script installs Bun, Git, Claude Code, configures identity |
 | Post-install setup | `groove config` wizard → `.groove/index.md` | Interactive installer configures `settings.json` (identity, voice, preferences) |
 | OS support | macOS, Linux | macOS, Linux; Windows not supported |
@@ -63,7 +63,7 @@
 
 | Dimension | groove | PAI |
 |---|---|---|
-| Upgrade method | `/groove update` → `npx skills add` + ordered migration runner | Copy new Releases/ files + re-run `install.sh`; preserves USER/ |
+| Upgrade method | `/groove:update` → `npx skills add` + ordered migration runner | Copy new Releases/ files + re-run `install.sh`; preserves USER/ |
 | Migration system | Ordered runner: `migrations/index.md` table; `To > local AND To <= installed`; idempotent | Not present — backward-compat design; installer merges settings intelligently |
 | Version tracking | Dual: skill `version:` in SKILL.md + user `groove-version:` in `.groove/index.md` | `settings.json` tracks stats (sessions, files, workflows) but not config version |
 | Breaking changes | Handled via migrations (config key renames, dir moves, AGENTS.md rewrites) | Avoided by design; USER/ never overwritten |
@@ -84,7 +84,7 @@
 | Memory search | Not present | Hooks aggregate structured signals; no explicit full-text search described |
 | Context compaction | Not addressed | PreCompact hook available (not yet configured) |
 | Session naming | Auto: `<branch>-YYYY-MM-DD-N` or explicit | SessionAutoName hook generates names automatically |
-| Session resume | `/groove memory session resume` — lists active sessions | `claude --resume [name]` native Claude Code; `claude --from-pr [number]` |
+| Session resume | Not present (memory session removed) | `claude --resume [name]` native Claude Code; `claude --from-pr [number]` |
 
 ---
 
@@ -111,7 +111,7 @@
 | Dimension | groove | PAI |
 |---|---|---|
 | AGENTS.md | Managed bootstrap: 2-line groove:prime stub + 2-line task stub | Full CLAUDE.md / AGENTS.md with `CLAUDE.md.template` |
-| Context loading | On-demand via `/groove prime` | Lazy-load by intent: identity/TELOS/system docs load only when relevant |
+| Context loading | On-demand via `/groove:prime` | Lazy-load by intent: identity/TELOS/system docs load only when relevant |
 | Hook system | Not present | 22 hooks across 8 lifecycle events |
 | Managed sections | `<!-- groove:managed -->` prevents agents editing `skills/` | USER/ tier — personal customizations never overwritten by updates |
 | Allowed-tools | Per-skill in SKILL.md frontmatter | Three-tier allow/deny/ask for 338 workflows in settings.json |
@@ -127,7 +127,7 @@
 | Dimension | groove | PAI |
 |---|---|---|
 | Config file | `.groove/index.md` YAML frontmatter | `settings.json` (40 KB) — single source of truth: identity, hooks, permissions, stats |
-| Config wizard | `/groove config` — interactive, guided | Interactive `install.sh` prompts for identity and preferences |
+| Config wizard | `/groove:config` — interactive, guided | Interactive `install.sh` prompts for identity and preferences |
 | Git strategy | Per-component: `git.memory`, `git.tasks`, `git.hooks` (ignore-all/hybrid/commit-all) | Not present |
 | Task backends | beans / linear / github / none — abstraction layer | Not present — PRD files + WORK/ memory |
 | Identity config | Not present | `daidentity` block: AI name, color, voice, personality traits |

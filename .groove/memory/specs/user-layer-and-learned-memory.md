@@ -17,7 +17,7 @@ These features are tightly coupled: the boundary clarification defines what the 
 **D1: Don't-edit mechanism**
 
 - Rejected: directory restructuring — too breaking; changes paths across all existing grooves
-- Chosen: add a `<!-- groove:managed — do not edit; updated by groove update -->` HTML comment as the first line of the markdown body (after the closing `---` of frontmatter) of every `SKILL.md` in `skills/`; add a Constraints section to the `<!-- groove:prime:start -->` block written to `AGENTS.md` by `skills/groove/commands/prime.md`
+- Chosen: add a `<!-- groove:managed — do not edit; updated by groove:update -->` HTML comment as the first line of the markdown body (after the closing `---` of frontmatter) of every `SKILL.md` in `skills/`; add a Constraints section to the `<!-- groove:prime:start -->` block written to `AGENTS.md` by `skills/groove/commands/prime.md`
 
 Note on placement: HTML comments before frontmatter may confuse YAML parsers. The comment goes as the first line of the markdown body, after the closing `---` of frontmatter, not above it.
 
@@ -42,7 +42,7 @@ Note on placement: HTML comments before frontmatter may confuse YAML parsers. Th
 
 ### 1. Don't-edit notice in SKILL.md files
 
-Add `<!-- groove:managed — do not edit; updated by groove update -->` as the first line of the markdown body (after the closing `---` of frontmatter) of every `SKILL.md` in:
+Add `<!-- groove:managed — do not edit; updated by groove:update -->` as the first line of the markdown body (after the closing `---` of frontmatter) of every `SKILL.md` in:
 
 - `skills/daily/`
 - `skills/work/`
@@ -50,15 +50,15 @@ Add `<!-- groove:managed — do not edit; updated by groove update -->` as the f
 - `skills/memory/`
 - `skills/groove/`
 
-This is advisory only — `groove update` will overwrite skill files regardless. The comment makes the boundary visible to agents reading the file.
+This is advisory only — `groove:update` will overwrite skill files regardless. The comment makes the boundary visible to agents reading the file.
 
-### 2. Update groove prime output
+### 2. Update groove:prime output
 
 In `skills/groove/commands/prime.md`, add a Constraints section inside the `<!-- groove:prime:start -->` block written to `AGENTS.md`:
 
 ```markdown
 ## Constraints
-- Do not edit files under `skills/` or `.agents/skills/` — they are managed by groove update and changes will be overwritten
+- Do not edit files under `skills/` or `.agents/skills/` — they are managed by groove:update and changes will be overwritten
 - User zone: `.groove/` is yours — config, hooks, memory, and learned insights are all safe to edit
 ```
 
@@ -91,7 +91,7 @@ In `skills/memory/commands/session/end.md`, after setting `status: ended` in the
 ## Edge Cases
 
 - **Learned file doesn't exist**: create on first write with `# <Topic>\n` as the opening line, then append the dated heading and bullet
-- **User edits a skill file anyway**: advisory only — `groove update` will overwrite it; the `<!-- groove:managed -->` comment in the file and the Constraints section in `AGENTS.md` make this explicit in advance
+- **User edits a skill file anyway**: advisory only — `groove:update` will overwrite it; the `<!-- groove:managed -->` comment in the file and the Constraints section in `AGENTS.md` make this explicit in advance
 - **No workflow lessons in compound session**: skip the learned prompt entirely — no noise if there is nothing to route
 - **Compound runs on a non-groove project**: same behaviour — the `.groove/memory/learned/` path is derived from the `memory:` config key; if `.groove/` does not exist the step is skipped gracefully
 - **Topic naming**: free-form, lowercase, hyphenated (e.g. `anti-patterns`, `tool-usage`) — agent suggests a name, user can rename or override

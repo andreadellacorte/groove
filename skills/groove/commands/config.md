@@ -35,7 +35,7 @@ After all keys are confirmed:
 ## Constraints
 
 - If `.groove/index.md` already exists, pre-fill each question with the current value
-- If run non-interactively (arguments provided), apply them without prompting: e.g. `groove config tasks=linear git.memory=hybrid`
+- If run non-interactively (arguments provided), apply them without prompting: e.g. `groove:config tasks=linear git.memory=hybrid`
 - Always write `groove-version:` matching the installed version from `skills/groove/SKILL.md`
 
 ### Git strategy → `.groove/.gitignore`

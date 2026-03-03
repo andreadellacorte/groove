@@ -55,7 +55,7 @@
    # groovebook: andreadellacorte/groovebook
    ```
 7. Add `groovebook:` to `groove config` wizard as an optional step: "Point to a groovebook repo? (leave blank to skip)"
-8. Document the key in `groove help` output and README
+8. Document the key in `groove:help` output and README
 9. All groovebook commands read the key at runtime; if absent, they print a one-line setup hint and exit cleanly
 
 ### Phase 3 — publish command
@@ -108,5 +108,5 @@
 
 - Should the publish command fork the groovebook repo into the user's GitHub account, or require them to be a collaborator? Fork is more open; collaborator keeps the corpus cleaner.
 - Should `groove groovebook review` be agent-driven (agent reads PRs and synthesises a recommendation) or just a thin wrapper around `gh pr list` + `gh pr view`? Start thin; agent-driven review is a natural next step.
-- Long-term: could `groove prime` surface relevant groovebook learnings during session start (e.g. via `gh pr list --label accepted`)? Deferred — depends on a stable label/merge convention first.
+- Long-term: could `groove:prime` surface relevant groovebook learnings during session start (e.g. via `gh pr list --label accepted`)? Deferred — depends on a stable label/merge convention first.
 - GitHub Pages rendering: static listing of markdown files is fine to start; a curated index page per topic would improve browsability — worth a small CI step to auto-generate `learned/README.md` on merge.

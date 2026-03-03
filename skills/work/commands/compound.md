@@ -20,7 +20,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 - Compound actions checklist must include why each action matters, not just what it is
 - If user showed repeated fixes, confusion, or rework: capture the pattern and its trigger
 - Stage task created in backend: `YYYY-MM-DD, 5. Compound`
-- Create stage task in backend if `tasks != none`
+- Create stage task in backend if `tasks != none` via the **task** skill: call the task create command with title `YYYY-MM-DD, 5. Compound`, type task, and a full body. Follow the task skill's create command for body structure (Context, Goal, Acceptance Criteria, Links) and hierarchy — do not duplicate task-creation rules here.
 - After producing the compound actions checklist, identify any lesson that is about AI workflow,
   agent behaviour, tool usage, or engineering process — not specific to the codebase or product
 - If any such lesson is found:

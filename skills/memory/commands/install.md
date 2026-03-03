@@ -1,14 +1,13 @@
-# Initialize Sessions
+# Initialize Memory
 
 ## Outcome
 
-Session directories are created and ready for use.
+Memory directories are created and ready for use.
 
 ## Acceptance Criteria
 
-- `<memory>/specs/` directory exists (outcome specs; used by `groove work spec`)
-- `<memory>/sessions/specs/` directory exists (legacy)
-- `<memory>/sessions/docs/` directory exists
+- `<memory>/daily/`, `<memory>/weekly/`, `<memory>/monthly/`, `<memory>/git/` exist
+- `<memory>/specs/` directory exists (outcome specs; used by `groove:work:spec`)
 - `<memory>/learned/` directory exists
 - User is shown the initialized paths
 
@@ -17,7 +16,6 @@ Session directories are created and ready for use.
 - Read `memory:` from `.groove/index.md` frontmatter (default: `.groove/memory/`)
 - Create directories if they do not exist:
   ```bash
-  mkdir -p <memory>/specs <memory>/sessions/specs <memory>/sessions/docs <memory>/learned
+  mkdir -p <memory>/daily <memory>/weekly <memory>/monthly <memory>/git <memory>/specs <memory>/learned
   ```
 - Report the initialized paths to user
-- Inform user they can now run `groove memory session start`
