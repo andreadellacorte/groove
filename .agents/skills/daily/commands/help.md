@@ -8,7 +8,7 @@ Print the following:
 
 ---
 
-**groove daily** — startup and closeout rituals
+**groove daily** — start and end rituals
 
 ```
 /groove daily <command>
@@ -16,25 +16,26 @@ Print the following:
 
 | Command | Description |
 |---|---|
-| `startup` | Start the workday: verify yesterday's closeout, load tasks, prepare agenda |
-| `closeout` | End the workday: write memory, analyse tasks, commit if configured |
+| `start` | Start the workday: review yesterday, create today's daily memory, load tasks, prepare agenda |
+| `end` | End the workday: write memory, analyse tasks, commit if configured |
 
-**startup** — what it does:
-- Checks yesterday's daily memory file for a closeout entry (warns if missing, does not block)
+**start** — what it does:
+- Reviews yesterday's daily memory file (shows summary; warns if missing or no end section)
+- Creates today's daily memory file with start-of-day structure (`memory init daily`)
 - Runs `task analyse` to load current task state
-- Creates a startup task in the configured backend (`tasks != none`)
+- Creates a start task in the configured backend (`tasks != none`)
 - Presents task list so you know what to work on
 
-**closeout** — what it does:
+**end** — what it does:
 - Writes memory in order: `memory log git` → `memory log daily` → weekly (if last weekday) → monthly (if last weekday)
 - Runs `task analyse` for task summary
-- Creates a closeout task (`in-progress`) — you mark it done when finished
+- Creates an end task (`in-progress`) — you mark it done when finished
 - Commits if `git: hybrid` or `git: commit-all`
 
 **Notes:**
 - `daily` is a thin orchestrator — it calls `task` and `memory`, does not duplicate their logic
-- Archive tasks separately with `/groove task archive` — never run automatically during closeout
-- Memory is written at closeout only, not at startup
+- Archive tasks separately with `/groove task archive` — never run automatically during end
+- Memory is written at end only; daily start creates the day file and reviews yesterday
 
 Run `/groove help` for all skills.
 

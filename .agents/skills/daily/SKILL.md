@@ -1,6 +1,6 @@
 ---
 name: daily
-description: "Daily startup and closeout rituals. Use when: (1) starting the workday; (2) wrapping up the day. NOT for: mid-day task management (use task); compound loop (use work); memory directly (use memory)."
+description: "Daily start and end rituals. Use when: (1) starting the workday; (2) wrapping up the day. NOT for: mid-day task management (use task); compound loop (use work); memory directly (use memory)."
 license: MIT
 allowed-tools: Bash(git:*) Read Write Edit AskUserQuestion
 metadata:
@@ -28,16 +28,16 @@ All config reads use `.groove/index.md` at git root.
 
 | Command | Description |
 |---|---|
-| `startup` | Start the workday: verify yesterday's closeout, load tasks, prepare agenda |
-| `closeout` | End the workday: write memory, analyse tasks, commit if configured |
+| `start` | Start the workday: review yesterday, create today's daily memory, load tasks, prepare agenda |
+| `end` | End the workday: write memory, analyse tasks, commit if configured |
 
 ## $ARGUMENTS Routing
 
 | $ARGUMENTS | Action |
 |---|---|
 | `help` | → `commands/help.md` |
-| `startup` | → `commands/startup.md` |
-| `closeout` | → `commands/closeout.md` |
+| `start` | → `commands/start.md` |
+| `end` | → `commands/end.md` |
 | _(empty)_ | → `commands/help.md` |
 
 ## Bootstrap

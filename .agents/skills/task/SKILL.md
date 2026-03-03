@@ -32,7 +32,7 @@ All file paths (`.groove/index.md`, `.beans.yml`) are relative to git root.
 | `create` | Create task with title, type, parent, status |
 | `update` | Update task status, body, or metadata |
 | `archive` | Archive all completed/scrapped tasks (user confirms) |
-| `analyse` | Summarise tasks by status for closeout/daily memory |
+| `analyse` | Summarise tasks by status for daily end/daily memory |
 | `install` | Install configured task backend |
 | `config` | Show or update task backend configuration |
 

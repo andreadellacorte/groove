@@ -2,7 +2,7 @@
 
 ## Outcome
 
-A consolidated view of active, ready tasks from the configured backend is displayed to the user. Blocked and in-progress tasks are clearly distinguished. Output is suitable for startup context.
+A consolidated view of active, ready tasks from the configured backend is displayed to the user. Blocked and in-progress tasks are clearly distinguished. Output is suitable for daily start context.
 
 ## Acceptance Criteria
 

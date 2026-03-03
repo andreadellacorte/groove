@@ -5,7 +5,7 @@ license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.9.1"
+  version: "0.9.2"
 ---
 
 <!-- groove:managed — do not edit; changes will be overwritten by groove update -->
@@ -26,8 +26,8 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `prime` | → `commands/prime.md` |
 | `doctor` | → `commands/doctor.md` |
 | `daily help` | → `skills/daily/commands/help.md` |
-| `daily startup` | → `skills/daily/commands/startup.md` |
-| `daily closeout` | → `skills/daily/commands/closeout.md` |
+| `daily start` | → `skills/daily/commands/start.md` |
+| `daily end` | → `skills/daily/commands/end.md` |
 | `work help` | → `skills/work/commands/help.md` |
 | `work brainstorm` | → `skills/work/commands/brainstorm.md` |
 | `work plan` | → `skills/work/commands/plan.md` |
@@ -47,6 +47,7 @@ Compound engineering workflow system. Single entry point for all groove skills.
 | `task config` | → `skills/task/commands/config.md` |
 | `memory help` | → `skills/memory/commands/help.md` |
 | `memory doctor` | → `skills/memory/commands/doctor.md` |
+| `memory init daily` | → `skills/memory/commands/init/daily.md` |
 | `memory log daily` | → `skills/memory/commands/log/daily.md` |
 | `memory log weekly` | → `skills/memory/commands/log/weekly.md` |
 | `memory log monthly` | → `skills/memory/commands/log/monthly.md` |

@@ -22,7 +22,7 @@ Current backend: `<tasks value from .groove/index.md>`
 | `create` | Create task with title, type, parent, status |
 | `update` | Update task status, body, or metadata |
 | `archive` | Archive all completed/scrapped tasks (user confirms) |
-| `analyse` | Summarise tasks by status — suitable for closeout and daily memory |
+| `analyse` | Summarise tasks by status — suitable for daily end and daily memory |
 | `install` | Install configured task backend + write beans prime to AGENTS.md |
 | `config` | Show or update task backend config |
 | `doctor` | Check task backend is configured, installed, and reachable |
@@ -32,7 +32,7 @@ Current backend: `<tasks value from .groove/index.md>`
 **Key rules:**
 - Tasks are created with status `in-progress` by default (not `todo`)
 - Completion requires a "Summary of Changes" in the task body before marking done
-- Archive is always user-triggered — never automatic during closeout
+- Archive is always user-triggered — never automatic during daily end
 
 Run `/groove task config <backend>` to change backend.
 Run `/groove help` for all skills.

@@ -2,7 +2,7 @@
 
 ## Outcome
 
-`<memory>/daily/YYYY-MM-DD.md` is created or updated with a structured closeout entry. The file is written so that the next startup can verify yesterday had a closeout.
+`<memory>/daily/YYYY-MM-DD.md` is created or updated with a structured end entry. The file may already exist from daily start (start-of-day structure); if so, append the closeout sections. The file is written so that the next daily start can verify yesterday had an end.
 
 ## Acceptance Criteria
 
@@ -17,7 +17,7 @@
 ## Constraints
 
 - Use `memory:` path from `.groove/index.md` frontmatter for base directory
-- Write at closeout only — never called at startup
+- Write at daily end only — never called at daily start. File may already exist from daily start; append closeout sections rather than overwriting.
 - "Done today" must be sourced from: completed tasks (date-matched) and `git diff` output — not from incomplete work
 - If a completed task has no resolution in its body, ask user for a summary before writing the bullet
 - Use template at `templates/log/daily.md` for file structure

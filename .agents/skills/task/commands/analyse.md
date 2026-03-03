@@ -2,7 +2,7 @@
 
 ## Outcome
 
-Tasks are summarised by status. Milestones and epics are summarised. Completed tasks include enough resolution detail for memory population bullets. Output is suitable for closeout and daily memory.
+Tasks are summarised by status. Milestones and epics are summarised. Completed tasks include enough resolution detail for memory population bullets. Output is suitable for daily end and daily memory.
 
 ## Acceptance Criteria
 

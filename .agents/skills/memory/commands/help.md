@@ -20,6 +20,7 @@ Memory path: `<memory value from .groove/index.md>`
 
 | Command | Output file |
 |---|---|
+| `init daily` | Create today's `<memory>/daily/YYYY-MM-DD.md` with start-of-day structure (called from daily start) |
 | `log daily` | `<memory>/daily/YYYY-MM-DD.md` |
 | `log weekly` | `<memory>/weekly/YYYY-Www.md` (last weekday of week) |
 | `log monthly` | `<memory>/monthly/YYYY-MM.md` (last weekday of month) |
@@ -42,7 +43,7 @@ Memory path: `<memory value from .groove/index.md>`
 | `doctor` | Check memory configuration and directory structure |
 
 **Key rules:**
-- Daily log is written at closeout only — never at startup
+- Daily log is written at daily end only — never at daily start; daily start creates the day file via `init daily`
 - "Done today" bullets must be sourced from completed tasks and git diff — not vague summaries
 - Weekly/monthly logs roll up from daily files — do not duplicate raw detail
 - Sessions are stored as individual files at `<memory>/sessions/<name>.md`

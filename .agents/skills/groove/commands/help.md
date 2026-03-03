@@ -27,10 +27,10 @@ Print the following, substituting live config values from `.groove/index.md` whe
 
 ```
 groove   install | config | update | check | prime | doctor | help
-daily    startup | closeout | doctor
+daily    start | end | doctor
 work     brainstorm | plan | work | review | compound | spec | audit | doctor
 task     list | create | update | archive | analyse | install | config | doctor
-memory   log daily | log weekly | log monthly | log git
+memory   init daily | log daily | log weekly | log monthly | log git
          session start | session resume | session end | session doc
          install | doctor
 ```
