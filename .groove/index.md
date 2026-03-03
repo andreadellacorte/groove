@@ -1,5 +1,5 @@
 ---
-groove-version: 0.9.1
+groove-version: 0.9.2
 tasks: beans
 memory: .groove/memory/
 git:
