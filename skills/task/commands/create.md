@@ -24,6 +24,6 @@ A task is created in the configured backend with a title, type, status, optional
   - `linear`: create issue via linear CLI or MCP with appropriate team/project
   - `github`: `gh issue create --title "<title>" --body "<body>" --milestone <milestone>`
 - **Body (standard):** For any non-trivial task, always supply a body. Use the backend’s body/description field (or task file content). Standard body sections: **Context** (what work or session this task belongs to), **Goal** (what “done” means at a high level), **Acceptance Criteria** (checklist of concrete conditions), **Links** (to CHANGELOG, specs, learned files, or other artifacts). Omit a section only if it truly does not apply.
-- **Type:** Use the backend’s types (e.g. beans: `task`, `bug`, `feature`, `epic`, `milestone`). Stage tasks (e.g. “YYYY-MM-DD, 5. Compound”) are type `task`.
+- **Type:** Use the backend’s types (e.g. beans: `task`, `bug`, `feature`, `epic`, `milestone`). Stage and bookend tasks (daily Start/End, work stages such as "YYYY-MM-DD, Compound — topic") use type `task` when the backend has no `chore` (e.g. beans).
 - **Hierarchy:** Set parent when the task is part of a larger unit (e.g. a daily, an epic). If the caller does not specify a parent, infer from context when possible.
 - Always echo the created task ID and title back to the user

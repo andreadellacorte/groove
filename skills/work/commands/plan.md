@@ -10,7 +10,7 @@ The codebase is researched for relevant patterns and constraints. A concrete imp
 - Steps are ordered and specific enough to execute without ambiguity
 - File paths and function names are named where known
 - Edge cases are identified and handling is specified
-- Stage task created in backend: `YYYY-MM-DD, 2. Plan`
+- Stage task created in backend: `YYYY-MM-DD, Plan`
 
 ## Constraints
 
@@ -19,4 +19,4 @@ The codebase is researched for relevant patterns and constraints. A concrete imp
 - Use template at `templates/plan-doc.md` for doc output
 - Warn if no prior brainstorm exists — ask user to confirm scope before proceeding
 - Do not write code during plan — plan only
-- Create stage task in backend if `tasks != none`
+- Create stage task via **task** skill if `tasks != none` (title `YYYY-MM-DD, Plan`)

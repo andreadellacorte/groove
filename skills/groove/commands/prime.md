@@ -40,7 +40,7 @@ git.hooks:  <git.hooks value>
 /groove:memory:log:daily      — write daily end log
 
 ## Conventions
-- Stage tasks: "YYYY-MM-DD, N. Stage" (e.g. 2026-02-28, 1. Brainstorm)
+- Stage tasks: "YYYY-MM-DD, <Stage>" (no numbers; e.g. 2026-02-28, Brainstorm; 2026-02-28, Compound — topic)
 - Memory logs: <memory value>daily/, weekly/, monthly/, git/
 - Task completion requires "Summary of Changes" in body before marking done
 - Archive is always user-triggered — never automatic during end

@@ -10,7 +10,7 @@ Scope is clarified through dialogue. Key decisions and open questions are surfac
 - Key decisions are listed with rationale
 - Open questions are listed (not resolved — resolution happens in plan)
 - Output exists either as a brainstorm doc or as a task body in the backend
-- Stage task created in backend: `YYYY-MM-DD, 1. Brainstorm`
+- Stage task created in backend: `YYYY-MM-DD, Brainstorm`
 
 ## Constraints
 
@@ -20,4 +20,4 @@ Scope is clarified through dialogue. Key decisions and open questions are surfac
 - Do not start planning implementation here — that belongs in `work plan`
 - Ask clarifying questions before finalising scope; do not assume
 - If user provides $ARGUMENTS, use as the topic/title for the brainstorm
-- Create stage task in backend if `tasks != none`
+- Create stage task via **task** skill if `tasks != none` (title `YYYY-MM-DD, Brainstorm`)

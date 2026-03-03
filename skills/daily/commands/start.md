@@ -18,7 +18,7 @@ The workday is prepared: yesterday's end is reviewed, today's daily memory file 
 - **Review previous day:** Read yesterday's file at `<memory>/daily/YYYY-MM-DD.md` (yesterday's date). If it exists, show a short summary (e.g. "Done today" bullets, "Open/Next" carry-forward). If missing or no end section: warn user ("Yesterday had no end logged") — do NOT block start
 - **Create new day memory:** Call `memory init daily` to create today's file at `<memory>/daily/YYYY-MM-DD.md` with a start-of-day structure. If the file already exists, skip (idempotent)
 - Call `task analyse` to get current task state
-- Call `task create` to create a start task titled `YYYY-MM-DD Start` with type `chore`, status `in-progress`
+- Create start task via **task** skill if `tasks != none` (title `YYYY-MM-DD Start`)
 - Do NOT archive tasks during start
 - Present task list in a scannable format before the user begins
 - After all standard steps: check if `.groove/hooks/start.md` exists
