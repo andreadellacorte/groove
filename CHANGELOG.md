@@ -9,6 +9,10 @@ All notable changes to groove will be documented in this file.
 - `groove-daily-start` now shows git activity per day (commit count + titles) alongside memory file status, giving a fuller picture of recent work.
 - `recent_memory_days` template description updated to reflect business-day semantics and git context.
 
+### Removed
+- `groove-daily-start` no longer creates a startup task bean — the daily memory file is the canonical record of the day.
+- `groove-daily-end` no longer creates an end task bean — daily memory captures the closeout.
+
 ## [0.10.1] - 2026-03-04
 
 ### Added

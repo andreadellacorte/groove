@@ -11,7 +11,7 @@ metadata:
 
 ## Outcome
 
-The workday is wrapped up: git changes are analysed, memory files are written in order, tasks are analysed, an end task is created, and changes are committed based on per-component git strategy.
+The workday is wrapped up: git changes are analysed, memory files are written in order, tasks are analysed, and changes are committed based on per-component git strategy.
 
 ## Acceptance Criteria
 
@@ -20,7 +20,6 @@ The workday is wrapped up: git changes are analysed, memory files are written in
 - Weekly memory file written if today is the last weekday of the week
 - Monthly memory file written if today is the last weekday of the month
 - Tasks are analysed and summary is included in daily memory
-- End task is created in configured backend (if `tasks != none`) with status `in-progress`
 - Changes committed for any component whose git strategy allows it
 
 ## Constraints
@@ -32,8 +31,6 @@ The workday is wrapped up: git changes are analysed, memory files are written in
   3. `/groove-utilities-memory-log-weekly` (only if last weekday of week, or explicit request)
   4. `/groove-utilities-memory-log-monthly` (only if last weekday of month, or explicit request)
 - Call `/groove-utilities-task-analyse` to get task summary for daily memory population
-- Create end task via `/groove-utilities-task-create` if `tasks != none` (title `YYYY-MM-DD End`)
-  - User marks this task done when they're finished — do not auto-complete
 - Do NOT archive tasks during end — that is user-triggered only
 - Git commit strategy (per component):
   - `git.memory: ignore-all` — do not stage memory files
