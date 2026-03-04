@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.10.2] - 2026-03-04
+
+### Changed
+- `groove-daily-start` startup bean now includes task summary (in-progress + ready/high-priority items) and focus suggestion in its body, making it the durable record of "what to focus on today" — previously this information only appeared in the chat session.
+
 ## [0.10.1] - 2026-03-04
 
 ### Added
