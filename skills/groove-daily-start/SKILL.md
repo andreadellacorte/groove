@@ -24,11 +24,13 @@ The workday is prepared: yesterday's end is reviewed, today's daily memory file 
 ## Constraints
 
 - Read `.groove/index.md` for `tasks:`, `memory:`, and `recent_memory_days:` config
-- **Review recent days:** Check the last `recent_memory_days` daily memory files at `<memory>/daily/YYYY-MM-DD.md` (counting back from yesterday). For each date:
-  - `✓ YYYY-MM-DD — start + end logged` if both start-of-day and end sections exist
-  - `~ YYYY-MM-DD — start only, no end logged` if only start section present
-  - `✗ YYYY-MM-DD — missing` if file does not exist
-  - Show a one-line context from the file if present (e.g. first bullet from "Done today" or plan intent)
+- **Review recent days:** Identify the last `recent_memory_days` business days (Mon–Fri) counting back from yesterday (skip Saturday and Sunday). For each date:
+  - Check `<memory>/daily/YYYY-MM-DD.md`:
+    - `✓ YYYY-MM-DD — start + end logged` if both start-of-day and end sections exist
+    - `~ YYYY-MM-DD — start only, no end logged` if only start section present
+    - `✗ YYYY-MM-DD — missing` if file does not exist
+    - Show a one-line context from the file if present (e.g. first bullet from "Done today" or plan intent)
+  - Show git activity: run `git log --oneline --after="YYYY-MM-DD 00:00" --before="YYYY-MM-DD 23:59:59"` — display commit count and first few titles; skip silently if not in a git repo or no commits
   - Do NOT block start if files are missing or incomplete — just report
 - **Create new day memory:** Call `/groove-utilities-memory-init-daily` to create today's file at `<memory>/daily/YYYY-MM-DD.md` with a start-of-day structure. If the file already exists, skip (idempotent)
 - Call `/groove-utilities-task-analyse` to get current task state

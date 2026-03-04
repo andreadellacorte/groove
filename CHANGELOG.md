@@ -2,6 +2,13 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.10.2] - 2026-03-04
+
+### Changed
+- `groove-daily-start` recent days review now uses **business days** (Mon–Fri) instead of calendar days — weekends are skipped when counting back `recent_memory_days`.
+- `groove-daily-start` now shows git activity per day (commit count + titles) alongside memory file status, giving a fuller picture of recent work.
+- `recent_memory_days` template description updated to reflect business-day semantics and git context.
+
 ## [0.10.1] - 2026-03-04
 
 ### Added
