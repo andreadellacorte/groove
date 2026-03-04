@@ -2,7 +2,7 @@
 
 All notable changes to groove will be documented in this file.
 
-## [0.10.2] - 2026-03-04
+## [0.11.0] - 2026-03-04
 
 ### Changed
 - `groove-daily-start` recent days review now uses **business days** (Mon–Fri) instead of calendar days — weekends are skipped when counting back `recent_memory_days`.
