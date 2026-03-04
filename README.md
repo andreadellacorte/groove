@@ -11,17 +11,24 @@ npx skills add andreadellacorte/groove
 Then bootstrap your backends:
 
 ```bash
-groove install
+/groove-admin-install
 ```
 
 ---
 
 ## Skills
 
+**Daily**
+
 | Skill | Purpose |
 |---|---|
 | `/groove-daily-start` | Start the workday |
 | `/groove-daily-end` | End the workday |
+
+**Work**
+
+| Skill | Purpose |
+|---|---|
 | `/groove-work-brainstorm` | Clarify scope through dialogue |
 | `/groove-work-plan` | Write implementation plan |
 | `/groove-work-exec` | Execute the plan |
@@ -29,14 +36,40 @@ groove install
 | `/groove-work-compound` | Capture lessons |
 | `/groove-work-spec [topic]` | Create outcome spec |
 | `/groove-work-audit` | Review branch for blindspots |
+
+**Utilities — Tasks**
+
+| Skill | Purpose |
+|---|---|
 | `/groove-utilities-task-list` | List active tasks |
 | `/groove-utilities-task-create` | Create a task |
 | `/groove-utilities-task-analyse` | Analyse task status |
+
+**Utilities — Memory**
+
+| Skill | Purpose |
+|---|---|
 | `/groove-utilities-memory-log-daily` | Write daily memory log |
+
+**Utilities — Session**
+
+| Skill | Purpose |
+|---|---|
+| `/groove-utilities-prime` | Load workflow context into conversation |
+| `/groove-utilities-check` | Check if a newer version is available |
+
+**Admin**
+
+| Skill | Purpose |
+|---|---|
+| `/groove-admin-install` | Install backends and bootstrap AGENTS.md |
+| `/groove-admin-config` | Create or update `.groove/index.md` |
+| `/groove-admin-update` | Pull latest and apply migrations |
+| `/groove-admin-doctor` | Run all health checks |
 
 ## Companions
 
-Companions extend groove and are not listed in the core skills table above. Installed and checked by `groove install` / `groove doctor`:
+Companions extend groove and are not listed in the core skills table above. Installed and checked by `/groove-admin-install` / `/groove-admin-doctor`:
 
 | Companion | Purpose |
 |---|---|
@@ -62,8 +95,9 @@ Companions extend groove and are not listed in the core skills table above. Inst
 
 /groove-utilities-memory-log-daily — write daily end log
 
-/groove doctor                — check all backends are healthy
-/groove update                — apply pending migrations
+/groove-utilities-prime       — load workflow context
+/groove-admin-doctor          — check all backends are healthy
+/groove-admin-update          — apply pending migrations
 ```
 
 ## Config
@@ -72,9 +106,10 @@ Settings live in `.groove/index.md` frontmatter — created on first run.
 
 ```yaml
 ---
-groove-version: 0.10.0
+groove-version: 0.10.1
 tasks: beans               # beans | linear | github | none
 memory: .groove/memory/
+recent_memory_days: 5      # days of daily memory to review at startup
 git:
   memory: ignore-all       # ignore-all | hybrid | commit-all
   tasks: ignore-all        # ignore-all | commit-all
@@ -82,7 +117,7 @@ git:
 ---
 ```
 
-Per-component `git.*` keys control what gets committed and what `.groove/.gitignore` ignores. Run `groove config` to set up interactively.
+Per-component `git.*` keys control what gets committed and what `.groove/.gitignore` ignores. Run `/groove-admin-config` to set up interactively.
 
 ## Requirements
 

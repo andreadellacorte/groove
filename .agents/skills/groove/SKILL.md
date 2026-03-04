@@ -1,11 +1,11 @@
 ---
 name: groove
-description: "Groove engineering workflow system. Top-level setup and config. Use groove-daily-*, groove-work-*, groove-utilities-task-*, groove-utilities-memory-* for workflow commands."
+description: "Groove engineering workflow system. Top-level entry point. Use groove-daily-*, groove-work-*, groove-utilities-*, groove-admin-* for all workflow and admin commands."
 license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.10.0"
+  version: "0.10.1"
 ---
 
 <!-- groove:managed — do not edit; changes will be overwritten by groove update -->

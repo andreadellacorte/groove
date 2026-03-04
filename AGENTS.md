@@ -1,6 +1,6 @@
 <!-- groove:prime:start -->
 **Run at the start of every session:**
-`/groove prime` — loads groove workflow context into the conversation
+`/groove-utilities-prime` — loads groove workflow context into the conversation
 <!-- groove:prime:end -->
 
 <!-- groove:task:start -->

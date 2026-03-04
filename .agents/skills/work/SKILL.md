@@ -5,7 +5,6 @@ license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.1.0"
 ---
 
 <!-- groove:managed — do not edit; changes will be overwritten by groove update -->

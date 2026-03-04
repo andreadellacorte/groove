@@ -1,5 +1,5 @@
 ---
-name: groove-work-work
+name: groove-work-exec
 description: "Execute the implementation plan, track progress in the task backend. Use after planning."
 license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) AskUserQuestion
@@ -7,7 +7,7 @@ metadata:
   author: andreadellacorte
 ---
 
-# groove-work-work
+# groove-work-exec
 
 ## Outcome
 

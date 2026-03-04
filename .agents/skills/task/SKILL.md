@@ -5,7 +5,6 @@ license: MIT
 allowed-tools: Bash(beans:*) Bash(gh:*) Bash(linear:*) Read Write Edit AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.1.0"
 ---
 
 <!-- groove:managed — do not edit; changes will be overwritten by groove update -->

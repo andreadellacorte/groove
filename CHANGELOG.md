@@ -2,6 +2,18 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.10.1] - 2026-03-04
+
+### Added
+- 7 individual skills for groove top-level commands: `groove-admin-help`, `groove-admin-config`, `groove-admin-install`, `groove-admin-update`, `groove-admin-doctor` (admin namespace), `groove-utilities-prime`, `groove-utilities-check` (utilities namespace). Each appears as a separate entry in Claude Code's skill picker.
+- `recent_memory_days: 5` config key in `.groove/index.md` template — controls how many days of daily memory `groove-daily-start` reviews at startup (default 5).
+- `groove-daily-start` now reviews the last `recent_memory_days` days of memory files (presence, start-only vs start+end, one-line context each), replacing the previous yesterday-only check.
+
+### Changed
+- `groove` skill description updated to reference `groove-admin-*` and `groove-utilities-*` namespaces.
+- `AGENTS.md` session bootstrap updated: `/groove prime` → `/groove-utilities-prime`.
+- Internal cross-references updated to new skill names throughout (`/groove-admin-update`, `/groove-admin-install`, etc.).
+
 ## [0.10.0] - 2026-03-03
 
 ### Added

@@ -1,4 +1,15 @@
-# Groove Help
+---
+name: groove-admin-help
+description: "Display all groove skills and commands with live config values."
+license: MIT
+allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
+metadata:
+  author: andreadellacorte
+---
+
+<!-- groove:managed — do not edit; changes will be overwritten by groove update -->
+
+# groove-admin-help
 
 Display a structured overview of all groove skills and their commands.
 
@@ -69,7 +80,6 @@ Print the following, substituting live config values from `.groove/index.md` whe
 
 | Skill | Purpose |
 |---|---|
-| `/groove-admin-help` | Display all skills and commands |
 | `/groove-admin-install` | Install backends and bootstrap AGENTS.md |
 | `/groove-admin-config` | Create or update `.groove/index.md` |
 | `/groove-admin-update` | Pull latest and apply migrations |

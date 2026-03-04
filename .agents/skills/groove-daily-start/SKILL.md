@@ -23,8 +23,13 @@ The workday is prepared: yesterday's end is reviewed, today's daily memory file 
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks:` and `memory:` config
-- **Review previous day:** Read yesterday's file at `<memory>/daily/YYYY-MM-DD.md` (yesterday's date). If it exists, show a short summary (e.g. "Done today" bullets, "Open/Next" carry-forward). If missing or no end section: warn user ("Yesterday had no end logged") — do NOT block start
+- Read `.groove/index.md` for `tasks:`, `memory:`, and `recent_memory_days:` config
+- **Review recent days:** Check the last `recent_memory_days` daily memory files at `<memory>/daily/YYYY-MM-DD.md` (counting back from yesterday). For each date:
+  - `✓ YYYY-MM-DD — start + end logged` if both start-of-day and end sections exist
+  - `~ YYYY-MM-DD — start only, no end logged` if only start section present
+  - `✗ YYYY-MM-DD — missing` if file does not exist
+  - Show a one-line context from the file if present (e.g. first bullet from "Done today" or plan intent)
+  - Do NOT block start if files are missing or incomplete — just report
 - **Create new day memory:** Call `/groove-utilities-memory-init-daily` to create today's file at `<memory>/daily/YYYY-MM-DD.md` with a start-of-day structure. If the file already exists, skip (idempotent)
 - Call `/groove-utilities-task-analyse` to get current task state
 - Create start task via `/groove-utilities-task-create` if `tasks != none` (title `YYYY-MM-DD Start`)
