@@ -11,7 +11,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 **groove** — compound engineering workflow
 
 ```
-/groove   /groove help   /groove prime   /groove update   /groove doctor
+/groove   /groove-admin-help   /groove-utilities-prime   /groove-admin-install   /groove-admin-config   /groove-admin-update   /groove-utilities-check   /groove-admin-doctor
 ```
 
 **Daily**
@@ -27,7 +27,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 |---|---|
 | `/groove-work-brainstorm` | Clarify scope through dialogue |
 | `/groove-work-plan` | Write implementation plan |
-| `/groove-work-work` | Execute the plan |
+| `/groove-work-exec` | Execute the plan |
 | `/groove-work-review` | Evaluate output |
 | `/groove-work-compound` | Capture lessons |
 | `/groove-work-spec [topic]` | Create outcome spec |
@@ -57,6 +57,23 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-utilities-memory-init-daily` | Initialise today's memory file |
 | `/groove-utilities-memory-install` | Set up memory backend |
 | `/groove-utilities-memory-doctor` | Check memory backend health |
+
+**Utilities — Session**
+
+| Skill | Purpose |
+|---|---|
+| `/groove-utilities-prime` | Load workflow context into conversation |
+| `/groove-utilities-check` | Check if a newer version is available |
+
+**Admin**
+
+| Skill | Purpose |
+|---|---|
+| `/groove-admin-help` | Display all skills and commands |
+| `/groove-admin-install` | Install backends and bootstrap AGENTS.md |
+| `/groove-admin-config` | Create or update `.groove/index.md` |
+| `/groove-admin-update` | Pull latest and apply migrations |
+| `/groove-admin-doctor` | Run all health checks |
 
 **Config** (`.groove/index.md`)
 
