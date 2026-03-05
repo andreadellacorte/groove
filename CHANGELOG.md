@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.11.1] - 2026-03-05
+
+### Changed
+- `groove-daily-end`: removed in-skill git commit behaviour — no longer stages or commits; use `.groove/hooks/end.md` for commit actions if desired. Constraint "Do NOT archive tasks" replaced with "Do NOT modify tasks during end".
+- `groove-daily-start`: constraint "Do NOT archive tasks" replaced with "Do NOT modify tasks during start"; task-analyse call moved to top of Constraints.
+
 ## [0.11.0] - 2026-03-04
 
 ### Changed

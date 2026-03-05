@@ -1,7 +1,8 @@
 ---
-groove-version: 0.10.0
+groove-version: 0.11.0
 tasks: beans
 memory: .groove/memory/
+recent_memory_days: 5
 git:
   memory: commit-all
   tasks: commit-all

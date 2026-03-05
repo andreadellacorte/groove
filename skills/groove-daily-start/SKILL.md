@@ -23,6 +23,7 @@ The workday is prepared: recent days are reviewed, today's daily memory file is 
 ## Constraints
 
 - Read `.groove/index.md` for `tasks:`, `memory:`, and `recent_memory_days:` config
+- Call `/groove-utilities-task-analyse` to get current task state
 - **Review recent days:** Identify the last `recent_memory_days` business days (Mon–Fri) counting back from yesterday (skip Saturday and Sunday). For each date:
   - Check `<memory>/daily/YYYY-MM-DD.md`:
     - `✓ YYYY-MM-DD — start + end logged` if both start-of-day and end sections exist
@@ -32,8 +33,7 @@ The workday is prepared: recent days are reviewed, today's daily memory file is 
   - Show git activity: run `git log --oneline --after="YYYY-MM-DD 00:00" --before="YYYY-MM-DD 23:59:59"` — display commit count and first few titles; skip silently if not in a git repo or no commits
   - Do NOT block start if files are missing or incomplete — just report
 - **Create new day memory:** Call `/groove-utilities-memory-init-daily` to create today's file at `<memory>/daily/YYYY-MM-DD.md` with a start-of-day structure. If the file already exists, skip (idempotent)
-- Call `/groove-utilities-task-analyse` to get current task state
-- Do NOT archive tasks during start
+- Do NOT modify tasks during start
 - Present task list in a scannable format before the user begins
 - After all standard steps: check if `.groove/hooks/start.md` exists
   - If it exists: read the `## Actions` section and execute each item in order; report completion per item
