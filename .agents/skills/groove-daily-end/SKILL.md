@@ -30,7 +30,6 @@ The workday is wrapped up: git changes are analysed, memory files are written in
   2. `/groove-utilities-memory-log-daily`
   3. `/groove-utilities-memory-log-weekly` (only if last weekday of week, or explicit request)
   4. `/groove-utilities-memory-log-monthly` (only if last weekday of month, or explicit request)
-
 - Last weekday detection: use local calendar date; handle gracefully if run on weekend
 - Do NOT modify tasks during end
 - After all standard steps: check if `.groove/hooks/end.md` exists
