@@ -65,7 +65,6 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-utilities-memory-log-weekly` | Roll up weekly log |
 | `/groove-utilities-memory-log-monthly` | Roll up monthly log |
 | `/groove-utilities-memory-log-git` | Record git activity |
-| `/groove-utilities-memory-init-daily` | Initialise today's memory file |
 | `/groove-utilities-memory-install` | Set up memory backend |
 | `/groove-utilities-memory-doctor` | Check memory backend health |
 

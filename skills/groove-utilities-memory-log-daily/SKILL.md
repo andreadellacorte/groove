@@ -29,6 +29,6 @@ metadata:
 - Write at daily end only — never called at daily start. File may already exist from daily start; append closeout sections rather than overwriting.
 - "Done today" must be sourced from: completed tasks (date-matched) and `git diff` output — not from incomplete work
 - If a completed task has no resolution in its body, ask user for a summary before writing the bullet
-- Use template at `skills/memory/templates/log/daily.md` for file structure
+- Use template at `skills/groove-utilities-memory-log-daily/templates/daily.md` for file structure
 - If the directory `<memory>/daily/` does not exist, create it before writing
 - Vague entries ("worked on stuff") should trigger a clarification ask before writing

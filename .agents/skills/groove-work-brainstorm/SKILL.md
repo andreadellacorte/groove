@@ -24,7 +24,7 @@ Scope is clarified through dialogue. Key decisions and open questions are surfac
 ## Constraints
 
 - Read `tasks:` from `.groove/index.md` to determine backend
-- Use template at `skills/work/templates/brainstorm-doc.md` for doc output
+- Use template at `skills/groove-work-brainstorm/templates/brainstorm-doc.md` for doc output
 - Enforce YAGNI — scope is deliberately constrained at this stage; push back on scope creep
 - Do not start planning implementation here — that belongs in `/groove-work-plan`
 - Ask clarifying questions before finalising scope; do not assume

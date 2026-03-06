@@ -25,7 +25,7 @@ The codebase is researched for relevant patterns and constraints. A concrete imp
 
 - Read `tasks:` from `.groove/index.md` to determine backend
 - Use Explore agent for codebase research before writing the plan
-- Use template at `skills/work/templates/plan-doc.md` for doc output
+- Use template at `skills/groove-work-plan/templates/plan-doc.md` for doc output
 - Warn if no prior brainstorm exists — ask user to confirm scope before proceeding
 - Do not write code during plan — plan only
 - Create stage task via `/groove-utilities-task-create` if `tasks != none` (title `YYYY-MM-DD, Plan`)

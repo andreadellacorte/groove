@@ -29,5 +29,5 @@ metadata:
   - `git log --since=midnight --oneline` for commits
   - `git status --short` for current state
   - `git diff --stat HEAD` for changed files summary
-- Use template at `skills/memory/templates/log/git.md` for file structure
+- Use template at `skills/groove-utilities-memory-log-git/templates/git.md` for file structure
 - If no git changes since midnight, still write the file noting no changes

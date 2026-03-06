@@ -32,7 +32,7 @@ The configured task backend is installed and verified reachable. User is informe
 - If CLI is already installed, report current version and skip install
 - If `tasks: beans` and `.beans.yml` does not exist at git root:
   - Derive `[PROJECT_PREFIX]` from the git repo name (last path component of `git remote get-url origin`, uppercased, non-alphanumeric stripped) — e.g. `groove` → `GRV`
-  - Scaffold `.beans.yml` from `skills/task/templates/beans-config.md` with the derived prefix
+  - Scaffold `.beans.yml` from `skills/groove-utilities-task-install/templates/beans-config.md` with the derived prefix
   - Create `.groove/tasks/` directory if it does not exist
   - Report the path written
 - If `tasks: beans`: write a minimal stub to `AGENTS.md` at git root:

@@ -27,5 +27,5 @@ metadata:
 - Only run on the last weekday of the month, or when user explicitly requests
 - Roll up from that month's daily files in `<memory>/daily/`
 - If no daily files exist for the month, note that and exit gracefully
-- Use template at `skills/memory/templates/log/monthly.md` for file structure
+- Use template at `skills/groove-utilities-memory-log-monthly/templates/monthly.md` for file structure
 - If file already exists, update rather than overwrite
