@@ -2,16 +2,6 @@
 
 All notable changes to groove will be documented in this file.
 
-## [0.11.2] - 2026-03-06
-
-### Changed
-- Templates moved into their owning skills (`groove-utilities-memory-log-*`, `groove-utilities-task-install`, `groove-work-brainstorm`, `groove-work-plan`, `groove-daily-start`) — no user-facing behaviour change.
-- `groove` skill `commands/` directory removed; all routing now goes directly to individual `groove-admin-*` / `groove-utilities-*` skills.
-
-### Removed
-- `groove-utilities-memory-init-daily` skill — was an internal step called only from `groove-daily-start`; inlined into that skill.
-- Legacy `daily/`, `task/`, `work/`, `memory/` directories under `.agents/skills/` — were template containers with no `SKILL.md`; content already migrated in v0.10.0.
-
 ## [0.11.1] - 2026-03-05
 
 ### Changed
