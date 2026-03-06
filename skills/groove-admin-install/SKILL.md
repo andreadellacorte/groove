@@ -27,7 +27,7 @@ All groove backends are installed in dependency order, groove-wide companion ski
 
 Run in order:
 
-1. If `.groove/index.md` does not exist, run `/groove-admin-config` to create it
+1. If `.groove/index.md` does not exist, run `/groove-admin-config --defaults` to create it with all defaults (no prompts)
 2. Run `/groove-utilities-task-install` — installs the configured task backend (e.g. beans)
 3. Run `/groove-utilities-memory-install` — creates memory directories
 4. Install companion skills:

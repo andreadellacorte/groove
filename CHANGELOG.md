@@ -2,6 +2,14 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.11.3] - 2026-03-06
+
+### Changed
+- `groove-admin-install`: calls `groove-admin-config --defaults` on first run — no config prompts during install.
+- `groove-admin-config`: `--defaults` flag applies all defaults without prompting; key=value args now use defaults for unspecified keys.
+- `groove-utilities-task-install`: beans backend now initialised with `beans init` instead of manual template scaffolding; prefix derived from repo name and written back to the generated `.beans.yml`.
+- `groove-daily-start`: skips recent-days review when `<memory>/daily/` is empty (fresh install).
+
 ## [0.11.2] - 2026-03-06
 
 ### Changed

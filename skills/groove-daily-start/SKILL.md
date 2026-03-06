@@ -24,7 +24,7 @@ The workday is prepared: recent days are reviewed, today's daily memory file is 
 
 - Read `.groove/index.md` for `tasks:`, `memory:`, and `recent_memory_days:` config
 - Call `/groove-utilities-task-analyse` to get current task state
-- **Review recent days:** Identify the last `recent_memory_days` business days (Mon–Fri) counting back from yesterday (skip Saturday and Sunday). For each date:
+- **Review recent days:** If `<memory>/daily/` is empty (no files exist), skip this step entirely and note "Fresh install — no prior logs." Otherwise, identify the last `recent_memory_days` business days (Mon–Fri) counting back from yesterday (skip Saturday and Sunday). For each date:
   - Check `<memory>/daily/YYYY-MM-DD.md`:
     - `✓ YYYY-MM-DD — start + end logged` if both start-of-day and end sections exist
     - `~ YYYY-MM-DD — start only, no end logged` if only start section present

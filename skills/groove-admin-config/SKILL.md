@@ -24,7 +24,9 @@ metadata:
 
 ## Steps
 
-Walk the user through each config key in order. For each key: show the current value (or default if new), explain what it does, and ask to confirm or change.
+If `--defaults` is passed: skip all prompts, apply all defaults, and proceed directly to writing the config (step 1 of "After all keys are confirmed"). Report the defaults being applied.
+
+Otherwise, walk the user through each config key in order. For each key: show the current value (or default if new), explain what it does, and ask to confirm or change.
 
 ### Keys and defaults
 
@@ -46,7 +48,8 @@ After all keys are confirmed:
 ## Constraints
 
 - If `.groove/index.md` already exists, pre-fill each question with the current value
-- If run non-interactively (arguments provided), apply them without prompting: e.g. `groove-admin-config tasks=linear git.memory=hybrid`
+- If `--defaults` is passed, apply all defaults without any prompting — used by `groove-admin-install` for zero-friction first-time setup
+- If other arguments are provided (e.g. `tasks=linear git.memory=hybrid`), apply them without prompting and use defaults for any unspecified keys
 - Always write `groove-version:` matching the installed version from `skills/groove/SKILL.md`
 
 ### Git strategy → `.groove/.gitignore`
