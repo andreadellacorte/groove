@@ -1,6 +1,6 @@
 ---
 name: groove-daily-end
-description: "End the workday: write memory, analyse tasks, commit if configured. Use when wrapping up the day."
+description: "End the workday: write memory, analyse tasks, run end hook. Use when wrapping up the day."
 license: MIT
 allowed-tools: Bash(git:*) Read Write Edit AskUserQuestion
 metadata:
@@ -11,7 +11,7 @@ metadata:
 
 ## Outcome
 
-The workday is wrapped up: git changes are analysed, memory files are written in order, tasks are analysed, and changes are committed based on per-component git strategy.
+The workday is wrapped up: git changes are analysed, memory files are written in order, tasks are analysed, and the end hook is executed if present.
 
 ## Acceptance Criteria
 

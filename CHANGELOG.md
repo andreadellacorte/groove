@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.11.4] - 2026-03-06
+
+### Fixed
+- `groove-daily-end`: description and outcome wording no longer mention committing — stale copy from before v0.11.1 was causing agents to commit during daily end despite the constraint having been removed.
+
 ## [0.11.3] - 2026-03-06
 
 ### Changed
