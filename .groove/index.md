@@ -1,5 +1,5 @@
 ---
-groove-version: 0.11.2
+groove-version: 0.11.3
 tasks: beans
 memory: .groove/memory/
 recent_memory_days: 5
