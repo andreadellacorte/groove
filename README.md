@@ -36,6 +36,7 @@ Then bootstrap your backends:
 | `/groove-work-compound` | Capture lessons |
 | `/groove-work-spec [topic]` | Create outcome spec |
 | `/groove-work-audit` | Review branch for blindspots |
+| `/groove-work-doc [topic]` | Document how a component works |
 
 **Utilities — Tasks**
 

@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.7] - 2026-03-07
+
+### Added
+- `groove-work-doc`: new skill — create a "how does X work" documentation file (Overview, Key Files, How It Works, Gotchas). Complements `groove-work-spec` (what to build) with a reference doc format (how it works). Docs directory resolves to `<specs>/../docs/` or `<memory>/docs/`. Identified as a gap in groove-vs-bonfire comparison.
+
 ## [0.12.6] - 2026-03-07
 
 ### Added
