@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.15] - 2026-03-07
+
+### Added
+- Migration `0.11.5 → 0.12.0`: creates `<memory>/learned/`, `<memory>/mistakes.md`, and `<memory>/promises.md` if absent. Existing groove users running `/groove-admin-update` from v0.11.x will now get all v0.12.x memory structure scaffolded automatically.
+
 ## [0.12.14] - 2026-03-07
 
 ### Added
