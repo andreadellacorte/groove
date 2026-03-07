@@ -2,7 +2,7 @@
 name: groove-daily-end
 description: "End the workday: write memory, analyse tasks, run end hook. Use when wrapping up the day."
 license: MIT
-allowed-tools: Bash(git:*) Read Write Edit AskUserQuestion
+allowed-tools: Bash(git:*) Bash(find:*) Read Write Edit Glob AskUserQuestion
 metadata:
   author: andreadellacorte
 ---
@@ -32,6 +32,17 @@ The workday is wrapped up: git changes are analysed, memory files are written in
   4. `/groove-utilities-memory-log-monthly` (only if last weekday of month, or explicit request)
 - Last weekday detection: use local calendar date; handle gracefully if run on weekend
 - Do NOT modify tasks during end
+- **Spec health check**: after all memory steps and before the end hook, resolve the specs directory (`specs:` from config if set, otherwise `<memory>/specs/`):
+  - Glob all `*.md` files in the specs directory (including subdirectories)
+  - For each spec file, check if it has been modified in the last 30 days: run `find <specs-dir> -name "*.md" -mtime +30` — any files returned are stale candidates
+  - If stale specs found: report as a brief advisory (do not block):
+    ```
+    ⚠ Stale spec(s) — not modified in 30+ days:
+      - <filename> (last modified: <date>)
+      ...
+    Consider archiving, updating, or deleting specs that are no longer active.
+    ```
+  - If no stale specs or specs directory is empty: skip silently
 - After all standard steps: check if `.groove/hooks/end.md` exists
   - If it exists: read the `## Actions` section and execute each item in order; report completion per item
   - If it does not exist: skip silently

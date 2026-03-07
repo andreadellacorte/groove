@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.3] - 2026-03-07
+
+### Added
+- `groove-daily-end`: stale spec health check — after memory steps, scans the resolved specs directory for files not modified in 30+ days and reports them as an advisory before the end hook runs. Non-blocking. Implements Tier 1C (session health check) from the groove roadmap spec, adapted for the current architecture.
+
 ## [0.12.2] - 2026-03-07
 
 ### Added
