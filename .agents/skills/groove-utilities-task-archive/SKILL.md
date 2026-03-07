@@ -16,12 +16,14 @@ All completed and scrapped tasks are archived in the configured backend. The cou
 ## Acceptance Criteria
 
 - All completed/scrapped tasks are moved to archived state in backend
+- User is shown the scope of what will be archived and confirms before running
 - Count of archived tasks is reported after completion
 
 ## Constraints
 
 - Read `tasks:` from `.groove/index.md` to determine backend
 - If `tasks: none`, no-op with friendly message
+- Always show user what will be archived and ask for confirmation before proceeding
 - Never run automatically during daily end — only when user explicitly requests
 - Backend mappings:
   - `beans`: `beans archive` (archives all completed/scrapped — no single-task option)
