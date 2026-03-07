@@ -1,6 +1,9 @@
 ---
 groove-version: 0.11.3
 tasks: beans
+task:
+  list_limit: 15
+  analyse_limit: 30
 memory: .groove/memory/
 recent_memory_days: 5
 git:

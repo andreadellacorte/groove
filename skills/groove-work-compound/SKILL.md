@@ -9,6 +9,18 @@ metadata:
 
 # groove-work-compound
 
+## Scope
+
+**"This conversation" means the full chat thread** (all messages in the same chat where the user invoked compound). Lessons and compound actions come from work done or decided anywhere in that thread.
+
+**In scope:**
+- Work done earlier in the same chat: other skill runs (e.g. /ppp-weekly-report, /groove-work-plan), file or bean edits, decisions, review or planning discussion.
+- Any bean or work item the user or the thread refers to as part of the workflow (e.g. the epic or task this compound stage belongs to). Use those to ground lessons and actions.
+
+**Not in scope unless the user asks:** Daily memory, weekly summaries, or other docs (e.g. "compound on the whole day").
+
+**If no other work is visible** in the context when compound runs (e.g. the turn only shows the compound request): **ask** which session or work to compound on (e.g. "I only see the compound request. Which session should I compound on — e.g. the PPP run above, or something else?") instead of concluding "no work discussed."
+
 ## Outcome
 
 Lessons, root causes, and fixes are documented. Relevant project files are updated (rules, templates, docs, task bodies). A checklist of compound actions with done/pending status is produced.

@@ -22,10 +22,10 @@ Tasks are summarised by status. Milestones and epics are summarised. Completed t
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` to determine backend
+- Read `tasks:` and `task.analyse_limit` (optional; default 30) from `.groove/index.md`
 - If `tasks: none`, no-op with friendly message
 - Backend mappings:
-  - `beans`: `beans list --json`, then group and summarise by status field
+  - `beans`: (1) run `skills/groove-utilities-task-list/scripts/list-tasks-by-priority.sh [LIMIT]` for active tasks (LIMIT from `task.analyse_limit` or 30); (2) run `beans list --json --status completed` and `beans list --json --status scrapped` for completed/scrapped; merge, group by status, then summarise (milestones/epics and resolution detail as per acceptance criteria)
   - `linear`: fetch all assigned issues via linear CLI or MCP, group by state
   - `github`: `gh issue list --state all --assignee @me`, group by label/state
 - For completed tasks: include the body's "Summary of Changes" section if present
