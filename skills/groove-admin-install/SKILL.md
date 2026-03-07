@@ -45,9 +45,37 @@ Run in order:
    - Note: use `ln -sfn` (no-dereference) — `ln -sf` on an existing directory symlink follows the symlink and creates a nested symlink inside the target directory
    - Report: "✓ platform symlinks updated (.claude/skills/, .cursor/skills/)"
 6. Scaffold hooks and cache directories:
-   - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
+   - Create `.groove/hooks/` if it does not exist
    - Create `.groove/.cache/` if it does not exist (with a `.gitkeep`)
-   - Report each as created / already-present
+   - If `.groove/hooks/start.md` does not exist, create it with:
+     ```markdown
+     # Hook: Session Start
+
+     Runs automatically at the end of `/groove-daily-start`.
+     Add items to `## Actions` to automate session-start tasks.
+
+     ## Actions
+
+     <!-- Add actions here, one per line. Examples:
+     - Run `git fetch --all` to refresh remote refs
+     - Print "Good morning — groove is ready"
+     -->
+     ```
+   - If `.groove/hooks/end.md` does not exist, create it with:
+     ```markdown
+     # Hook: Session End
+
+     Runs automatically at the end of `/groove-daily-end`.
+     Add items to `## Actions` to automate session-end tasks.
+
+     ## Actions
+
+     <!-- Add actions here, one per line. Examples:
+     - Run `git push` to push today's commits
+     - Print "Session closed — see you tomorrow"
+     -->
+     ```
+   - Report hooks: created / already-present
 6. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `/groove-admin-config` for rules)
 7. Write the session bootstrap to `AGENTS.md`:
    - Replace any existing `<!-- groove:prime:start -->` / `<!-- groove:prime:end -->` section with:

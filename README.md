@@ -149,6 +149,29 @@ Per-component `git.*` keys control what gets committed and what `.groove/.gitign
 
 **Identity file**: create `.groove/IDENTITY.md` with free-form context (mission, goals, active projects) — `groove-utilities-prime` reads it and injects it into every session automatically.
 
+## Hooks
+
+groove has a lightweight markdown hook system — no runtime required. Two lifecycle points are available:
+
+| Hook file | Trigger |
+|---|---|
+| `.groove/hooks/start.md` | End of `/groove-daily-start` |
+| `.groove/hooks/end.md` | End of `/groove-daily-end` |
+
+Each hook file has a `## Actions` section. groove reads and executes each action in order when the hook fires. `/groove-admin-install` scaffolds both files with commented examples.
+
+Example `.groove/hooks/end.md`:
+
+```markdown
+# Hook: Session End
+
+## Actions
+
+- Run `git push` to push today's commits
+```
+
+Hooks follow the `git.hooks` git strategy — set `commit-all` to share hooks with the team, `ignore-all` to keep them local.
+
 ## Platform compatibility
 
 groove runs inside any AI coding assistant that supports Claude Code-style slash commands (`.claude/skills/` or `.agents/skills/` directories).
