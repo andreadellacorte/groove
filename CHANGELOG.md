@@ -2,6 +2,26 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.16] - 2026-03-07
+
+### Added
+- `groove-admin-claude-hooks`: new skill — install Claude Code native shell hooks into `.claude/settings.json`. Three hooks: `daily-end-reminder` (Stop event, reminds about `/groove-daily-end` during work hours), `git-activity-buffer` (PostToolUse/Bash, buffers git commit messages for memory logging), `block-managed-paths` (PreToolUse/Write+Edit, blocks edits to managed groove skill paths deterministically). Supports `--list` and `--disable <hook>`.
+- `groove-utilities-check`: bash fast-path at `scripts/check.sh` — compares installed version against GitHub releases API with no model round-trip. First reference implementation of the `scripts/` convention per Agent Skills specification.
+- `groove-admin-doctor`: Claude Code native hooks health check — verifies groove hook entries in `.claude/settings.json`; reports missing entries with `/groove-admin-claude-hooks` remediation.
+- `groove-utilities-memory-doctor`: checks 6–8 added for `learned/`, `mistakes.md`, `promises.md` (v0.12.x memory structure).
+- `groove-work-review`: branch-diff analysis step — runs `git log --oneline <base>...HEAD` and `git diff <base>...HEAD`; findings categorised as Fix Now / Needs Spec / Create Issues.
+- `groove-daily-end`: session rating prompt (1–5) after spec health check, appends to `learned/signals.md`. Retrospective hint on Fridays and last weekday of month.
+- `groove-admin-install`: hook scaffolding — creates `.groove/hooks/start.md` and `end.md` with `## Actions` section and commented examples on first install.
+- README: Hooks section documenting both markdown (advisory) and Claude Code native (deterministic) hook layers. `groove-admin-claude-hooks` added to Admin skills table.
+- CONTRIBUTING.md: bash fast-path convention — `scripts/` subdirectory per Agent Skills spec; `bash: true` metadata flag; when to add / not add scripts.
+- `groove-admin-config`: always writes `specs:` and `groovebook:` keys (even when blank) — no absent-means-default ambiguity.
+- Config template and README example: all keys explicit with values; `groove-version: 0.12.16`.
+
+### Fixed
+- `groove-admin-install`: duplicate step 6 renumbered to 7/8/9.
+- Binary PDF (`.groove/memory/references/`) removed from git tracking; `references/` added to `.groove/.gitignore`.
+- `groove-bash-skills.md` spec: all `SKILL.sh` references updated to `scripts/` convention.
+
 ## [0.12.15] - 2026-03-07
 
 ### Added
