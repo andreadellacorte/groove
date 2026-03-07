@@ -46,6 +46,8 @@ git.hooks:  <git.hooks value>
 /groove-work-exec             — execute the plan
 /groove-work-review           — evaluate output, decide accept/rework
 /groove-work-compound         — document lessons into existing project files
+/groove-work-spec             — create outcome spec (what to build)
+/groove-work-doc              — create reference doc (how it works)
 /groove-utilities-task-list   — show active, ready tasks
 /groove-utilities-task-create — create a task
 /groove-utilities-task-analyse — summarise tasks by status

@@ -2,6 +2,13 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.10] - 2026-03-07
+
+### Fixed
+- README: `groove-version` in config example updated to `0.12.9` (was stale at `0.12.6`)
+- README: platform compatibility table now marks Cursor/Cline/Amp as "Unverified" (not "Compatible") — honest about untested platforms
+- `groove-utilities-prime`: added `/groove-work-spec` and `/groove-work-doc` to key commands — both were missing, making them undiscoverable via prime
+
 ## [0.12.9] - 2026-03-07
 
 ### Added

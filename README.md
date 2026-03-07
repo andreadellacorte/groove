@@ -130,7 +130,7 @@ Settings live in `.groove/index.md` frontmatter — created on first run by `/gr
 
 ```yaml
 ---
-groove-version: 0.12.6
+groove-version: 0.12.9
 tasks: beans               # beans | linear | github | none
 memory: .groove/memory/
 recent_memory_days: 5      # days of daily memory to review at startup
@@ -154,9 +154,9 @@ groove runs inside any AI coding assistant that supports Claude Code-style slash
 | Platform | Status | Notes |
 |---|---|---|
 | Claude Code | Verified | Primary target; fully tested |
-| Cursor | Compatible | Skills directory recognised; slash commands work |
-| Cline | Compatible | Skills loaded from `.agents/skills/` |
-| Amp | Compatible | Skills directory supported |
+| Cursor | Unverified | Skills directory format compatible; not tested |
+| Cline | Unverified | `.agents/skills/` path recognised; not tested |
+| Amp | Unverified | Skills directory supported; not tested |
 
 ## Requirements
 
