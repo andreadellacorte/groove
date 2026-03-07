@@ -5,24 +5,21 @@ license: MIT
 allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
 metadata:
   author: andreadellacorte
-  version: "0.11.1"
+  version: "0.11.6"
 ---
 
 <!-- groove:managed — do not edit; changes will be overwritten by groove update -->
 
 # groove
 
-Groove engineering workflow system. Top-level entry point for setup, config, and meta-commands.
+Groove engineering workflow system. Use the individual skills directly:
 
-## $ARGUMENTS Routing
-
-| $ARGUMENTS | Action |
+| Command | Skill |
 |---|---|
-| `help` | → `commands/help.md` |
-| `install` | → `commands/install.md` |
-| `config` | → `commands/config.md` |
-| `update` | → `commands/update.md` |
-| `check` | → `commands/check.md` |
-| `prime` | → `commands/prime.md` |
-| `doctor` | → `commands/doctor.md` |
-| _(empty)_ | → `commands/help.md` |
+| Help | `/groove-admin-help` |
+| Install | `/groove-admin-install` |
+| Config | `/groove-admin-config` |
+| Update | `/groove-admin-update` |
+| Check | `/groove-utilities-check` |
+| Prime | `/groove-utilities-prime` |
+| Doctor | `/groove-admin-doctor` |

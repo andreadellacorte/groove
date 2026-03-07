@@ -31,10 +31,10 @@ The configured task backend is installed and verified reachable. User is informe
 - After install, run a simple reachability check (e.g., `beans version` or `gh auth status`)
 - If CLI is already installed, report current version and skip install
 - If `tasks: beans` and `.beans.yml` does not exist at git root:
-  - Derive `[PROJECT_PREFIX]` from the git repo name (last path component of `git remote get-url origin`, uppercased, non-alphanumeric stripped) — e.g. `groove` → `GRV`
-  - Scaffold `.beans.yml` from `skills/groove-utilities-task-install/templates/beans-config.md` with the derived prefix
-  - Create `.groove/tasks/` directory if it does not exist
-  - Report the path written
+  - Run `beans init` to initialise the task store and generate `.beans.yml` with beans defaults
+  - Derive `[PROJECT_PREFIX]` from the git repo name (last path component of `git remote get-url origin`, stripped of `.git`, uppercased, non-alphanumeric stripped) — e.g. `groove` → `GRV`; fall back to the directory name if no remote
+  - Update the `prefix:` field in the generated `.beans.yml` to the derived prefix (e.g. `GRV-`)
+  - Report the path written and the prefix used
 - If `tasks: beans`: write a minimal stub to `AGENTS.md` at git root:
   - Wrap in `<!-- groove:task:start -->` / `<!-- groove:task:end -->` fenced section
   - Stub content:
