@@ -18,7 +18,7 @@ A period retrospective is output to the conversation: session rating trend, recu
 ## Acceptance Criteria
 
 - Session ratings trend shown (if `learned/signals.md` has data)
-- Mistake patterns summarised (if `mistakes.md` has Resolved rows)
+- Mistake patterns summarised (from resolved incidents in task backend)
 - Top learnings listed by topic (from `learned/*.md` dated entries)
 - Workflow health summary: one sentence on overall trend
 - All output goes to conversation only
@@ -38,12 +38,11 @@ A period retrospective is output to the conversation: session rating trend, recu
    - Compute: count, average rating, trend (last 3 vs first 3 if enough data)
    - If no data: note "No session ratings recorded yet"
 
-4. **Mistakes** — read `<memory>/mistakes.md` if it exists:
-   - Parse Resolved table rows matching the date range
-   - Group by root cause keywords (look for common words across Root Cause column)
-   - Identify top recurring patterns (root causes that appear more than once)
-   - Count total resolved vs (if any) open incidents
-   - If no data: note "No incidents recorded yet"
+4. **Mistakes** — query the task backend for resolved incidents under "Groove Memory" → "Mistakes":
+   - `beans list --parent <mistakes-epic-id> -t bug -s completed` for resolved; `-s in-progress` for open
+   - Group by title keywords to identify recurring patterns
+   - Count total resolved vs open incidents
+   - If no task backend or no data: note "No incidents recorded yet"
 
 5. **Learnings** — glob `<memory>/learned/*.md` (exclude `signals.md`):
    - For each file: read and collect dated entries (`## YYYY-MM-DD` headings) within the date range

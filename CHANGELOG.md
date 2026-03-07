@@ -6,8 +6,8 @@ All notable changes to groove will be documented in this file.
 
 ### ✨ New Skills
 
-- `groove-utilities-memory-mistakes` — log a workflow mistake, identify root cause, apply fix, and graduate the lesson to `learned/<topic>.md`. Beans backend tracks incidents as bugs under "Groove Memory" → "Mistakes" epic.
-- `groove-utilities-memory-promises` — capture deferred items into `<memory>/promises.md` or beans backend ("Groove Memory" → "Promises" epic). Supports `--list` and `--resolve N`.
+- `groove-utilities-memory-mistakes` — log a workflow mistake, identify root cause, apply fix, and graduate the lesson to `learned/<topic>.md`. Tracked as bugs in the task backend under "Groove Memory" → "Mistakes" epic.
+- `groove-utilities-memory-promises` — capture deferred items as tasks in the backend under "Groove Memory" → "Promises" epic. Supports `--list` and `--resolve N`.
 - `groove-utilities-memory-retrospective` — analyse session ratings, recurring mistakes, and learnings over a period (`week` / `month` / `all`). Sparkline-based summary output.
 - `groove-utilities-memory-graduate` — promote a stable workflow insight from `learned/<topic>.md` into a permanent `<!-- groove:learned:start -->` section in AGENTS.md.
 - `groove-utilities-onboard` — generate `GROOVE.md` contributor onboarding guide at project root with live config values.
@@ -23,8 +23,8 @@ All notable changes to groove will be documented in this file.
 - `groove-work-compound` — checks `mistakes.md` for open incidents; scans for deferred promises; suggests groovebook publish and memory graduation when appropriate; session rating signal → `learned/signals.md`.
 - `groove-daily-start` — warns on open incidents in `mistakes.md` and open promises (non-blocking).
 - `groove-daily-end` — stale spec health check (30+ days); session rating prompt (1–5) → `learned/signals.md`; workflow insights prompt → `learned/<topic>.md`; retrospective hint on Fridays and end of month.
-- `groove-utilities-memory-doctor` — checks for `learned/`, `mistakes.md`, `promises.md`.
-- `groove-utilities-memory-install` — scaffolds `mistakes.md`, `promises.md`, and `learned/` on install.
+- `groove-utilities-memory-doctor` — checks for `learned/` directory.
+- `groove-utilities-memory-install` — scaffolds `learned/` directory on install.
 - `groove-admin-help` — all new skills, groovebook section (conditional), `specs:` and `groovebook:` in config block.
 - `groove-work-spec` and `groove-work-audit` — read `specs:` from config for spec directory.
 
@@ -32,7 +32,7 @@ All notable changes to groove will be documented in this file.
 
 - `groove-admin-config` — always writes `specs:` and `groovebook:` keys explicitly — no absent-means-default ambiguity.
 - `groove-admin-install` — hook scaffolding — creates `start.md` and `end.md` with `## Actions` and commented examples so the hook system is discoverable on first install.
-- Migration `0.11.5 → 0.12.0` — creates `learned/`, `mistakes.md`, `promises.md` for users upgrading from v0.11.x.
+- Migration `0.11.5 → 0.12.0` — creates `learned/` directory for users upgrading from v0.11.x.
 - Config template updated — all keys explicit with default values.
 
 ### 🏛️ Platform
