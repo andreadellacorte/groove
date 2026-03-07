@@ -2,6 +2,16 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.4] - 2026-03-07
+
+### Added
+- `groove-groovebook-publish`: new skill — publish a workflow learning to a configured groovebook repo as a GitHub PR. Prompts for learning text, redaction, topic, and skill area; forks repo, creates branch, writes `learned/<topic>/<date>-<slug>.md`, opens PR.
+- `groove-groovebook-review`: new skill — list open learning PRs in the groovebook repo; user picks one, reviews diff and body, submits approve/comment/request-changes via `gh pr review`.
+- `groove-work-compound`: if a workflow learning is captured and `groovebook:` is configured, suggests running `/groove-groovebook-publish`. Silent if groovebook is not set.
+- `groove-utilities-prime`: conditionally appends a `## Groovebook` section to the prime output when `groovebook:` is configured.
+- `groove-admin-config`: wizard now includes optional `groovebook:` step.
+- `groove/templates/index.md`: `groovebook:` commented optional key added with docs.
+
 ## [0.12.3] - 2026-03-07
 
 ### Added

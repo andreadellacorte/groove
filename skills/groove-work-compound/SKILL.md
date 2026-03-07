@@ -55,6 +55,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
     create the file with a `# <Topic>` heading if it does not exist; create the dated heading if absent
   - Add to compound checklist: "workflow learning → .groove/memory/learned/<topic>.md" (done/pending)
 - If no workflow lessons, skip this step entirely — no prompt, no noise
+- If a workflow learning was captured locally AND `groovebook:` is set in `.groove/index.md`: add a one-line suggestion after the checklist: "Learning captured → `.groove/memory/learned/<topic>.md`. Publish to groovebook? Run `/groove-groovebook-publish`." If `groovebook:` is absent: skip silently.
 - After the workflow learning step, prompt for an optional session rating:
   - Ask: "Rate this session (1–5): how well did the compound loop serve you? (enter to skip)"
   - If the user provides a rating: append to `<memory>/learned/signals.md` under a table; create the file with a header and table header row if it does not exist

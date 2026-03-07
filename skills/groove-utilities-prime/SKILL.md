@@ -64,6 +64,15 @@ git.hooks:  <git.hooks value>
 - User zone: `.groove/` is yours — config, hooks, memory, and learned insights are all safe to edit
 ```
 
+If `groovebook:` is set in `.groove/index.md`, append to the output:
+
+```
+## Groovebook
+groovebook: <groovebook value>
+/groove-groovebook-publish — publish a learning to the shared commons
+/groove-groovebook-review  — browse and review open learning PRs
+```
+
 ## Version check
 
 Before outputting context, check if `.groove/.cache/last-version-check` does not contain today's date:

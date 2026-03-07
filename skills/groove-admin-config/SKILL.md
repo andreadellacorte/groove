@@ -38,6 +38,7 @@ Otherwise, walk the user through each config key in order. For each key: show th
 | `git.memory` | `ignore-all` | `ignore-all \| hybrid \| commit-all` | "Git strategy for memory logs? ignore-all keeps them local, hybrid commits logs but ignores sessions, commit-all commits everything." |
 | `git.tasks` | `ignore-all` | `ignore-all \| commit-all` | "Git strategy for task files (.groove/tasks/)? ignore-all keeps them local, commit-all tracks them in git." |
 | `git.hooks` | `commit-all` | `ignore-all \| commit-all` | "Git strategy for hooks (.groove/hooks/)? commit-all shares hooks with the team, ignore-all keeps them local." |
+| `groovebook` | _(absent)_ | `<owner>/<repo>` or blank | "Groovebook repo for sharing workflow learnings? (e.g. `andreadellacorte/groovebook`). Leave blank to skip." |
 
 After all keys are confirmed:
 
@@ -50,6 +51,7 @@ After all keys are confirmed:
 
 - If `.groove/index.md` already exists, pre-fill each question with the current value
 - If the user leaves `specs:` blank (or it was not set previously), omit the `specs:` key from the written config entirely — absence means default
+- If the user leaves `groovebook:` blank, omit the `groovebook:` key entirely — absence means disabled
 - If `--defaults` is passed, apply all defaults without any prompting — used by `groove-admin-install` for zero-friction first-time setup
 - If other arguments are provided (e.g. `tasks=linear git.memory=hybrid`), apply them without prompting and use defaults for any unspecified keys
 - Always write `groove-version:` matching the installed version from `skills/groove/SKILL.md`
