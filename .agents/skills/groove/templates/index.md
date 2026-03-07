@@ -8,12 +8,12 @@ groove-version: 0.1.0
 tasks: beans
 memory: .groove/memory/
 recent_memory_days: 5
+specs: .groove/memory/specs/
+groovebook:
 git:
   memory: ignore-all
   tasks: ignore-all
   hooks: commit-all
-# specs: specs/   # optional: override where specs are saved (default: <memory>/specs/)
-# groovebook: andreadellacorte/groovebook   # optional: shared learning commons repo
 ---
 ```
 

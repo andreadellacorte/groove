@@ -136,12 +136,12 @@ groove-version: 0.12.15
 tasks: beans               # beans | linear | github | none
 memory: .groove/memory/
 recent_memory_days: 5      # days of daily memory to review at startup
+specs: .groove/memory/specs/  # where specs are saved; set to specs/ for project-root visibility
+groovebook:                # owner/repo of shared learning commons; leave blank to disable
 git:
   memory: ignore-all       # ignore-all | hybrid | commit-all
   tasks: ignore-all        # ignore-all | commit-all
   hooks: commit-all        # ignore-all | commit-all
-# specs: specs/            # optional: save specs to project root instead of <memory>/specs/
-# groovebook: owner/repo   # optional: shared learning commons repo
 ---
 ```
 

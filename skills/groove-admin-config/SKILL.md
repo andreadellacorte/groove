@@ -50,8 +50,7 @@ After all keys are confirmed:
 ## Constraints
 
 - If `.groove/index.md` already exists, pre-fill each question with the current value
-- If the user leaves `specs:` blank (or it was not set previously), omit the `specs:` key from the written config entirely — absence means default
-- If the user leaves `groovebook:` blank, omit the `groovebook:` key entirely — absence means disabled
+- Always write `specs:` and `groovebook:` keys to `.groove/index.md`, even if the user leaves them blank (blank value = disabled/default) — do not rely on key absence to signal defaults
 - If `--defaults` is passed, apply all defaults without any prompting — used by `groove-admin-install` for zero-friction first-time setup
 - If other arguments are provided (e.g. `tasks=linear git.memory=hybrid`), apply them without prompting and use defaults for any unspecified keys
 - Always write `groove-version:` matching the installed version from `skills/groove/SKILL.md`
