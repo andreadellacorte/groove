@@ -85,3 +85,4 @@ Create at `<memory>/mistakes.md` if it does not exist:
 - Root cause is required before resolving — do not skip the audit step
 - If the fix targets a `skills/` file: note that `skills/` is managed by groove:update and changes will be overwritten; redirect the fix to `.groove/memory/learned/anti-patterns.md` with a workaround note
 - After resolution, the Incident Log entry must be deleted — do not leave resolved entries in the log section
+- If the Resolved table exceeds 50 rows: move the oldest 25 rows to `<memory>/mistakes-archive.md` (append, create with same table header if absent), then delete them from `mistakes.md` — keep the file lean
