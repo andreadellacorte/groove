@@ -71,6 +71,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-utilities-memory-mistakes` | Log and resolve a workflow mistake |
 | `/groove-utilities-memory-promises` | Capture or resolve a deferred item |
 | `/groove-utilities-memory-retrospective [week\|month\|all]` | Analyse ratings, mistakes, learnings |
+| `/groove-utilities-memory-graduate [topic]` | Promote a stable lesson to AGENTS.md |
 
 **Utilities — Session**
 

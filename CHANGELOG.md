@@ -2,6 +2,17 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.12] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-graduate`: new skill — promote a stable workflow insight from `learned/<topic>.md` into a permanent `<!-- groove:learned:start -->` section in AGENTS.md. Marks source entry as `[graduated YYYY-MM-DD]`, never deletes it. Closes the "knowledge graduation" gap from groove-vs-bonfire comparison.
+- `groove-work-compound`: after a workflow learning is captured, suggests running `/groove-utilities-memory-graduate` if the lesson is stable enough for permanent injection.
+- `groove-utilities-prime`: `/groove-utilities-memory-graduate` added to key commands.
+- `groove-admin-help`, README: new skill listed.
+
+### Fixed
+- `.claude/skills/groove-*`: converted back to symlinks into `.agents/skills/` — no more file duplication; single source of truth is `.agents/skills/`.
+
 ## [0.12.11] - 2026-03-07
 
 ### Added

@@ -55,6 +55,7 @@ git.hooks:  <git.hooks value>
 /groove-utilities-memory-promises       — capture or resolve deferred items
 /groove-utilities-memory-mistakes        — log a mistake and resolve it
 /groove-utilities-memory-retrospective  — analyse ratings, mistakes, and learnings over a period
+/groove-utilities-memory-graduate       — promote a stable lesson to AGENTS.md permanently
 
 ## Conventions
 - Stage tasks: "YYYY-MM-DD, <Stage>" (no numbers; e.g. 2026-02-28, Brainstorm; 2026-02-28, Compound — topic)

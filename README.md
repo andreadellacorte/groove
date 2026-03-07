@@ -64,6 +64,7 @@ Then bootstrap your backends:
 | `/groove-utilities-memory-mistakes` | Log and resolve workflow mistakes |
 | `/groove-utilities-memory-promises` | Capture and resolve deferred items |
 | `/groove-utilities-memory-retrospective [week\|month\|all]` | Analyse ratings, mistakes, and learnings |
+| `/groove-utilities-memory-graduate [topic]` | Promote a stable lesson to AGENTS.md permanently |
 
 **Utilities — Session**
 
