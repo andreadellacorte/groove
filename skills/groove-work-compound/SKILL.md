@@ -36,6 +36,10 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 ## Constraints
 
 - Read `tasks:` and `memory:` from `.groove/index.md` to determine backend and memory base path
+- Before producing the compound actions checklist, check if `<memory>/mistakes.md` exists and has entries under "Incident Log" (i.e. not the "(Empty)" placeholder):
+  - If open incidents exist: process each using the log → fix → audit → summarise cycle from `/groove-utilities-memory-mistakes` before moving on
+  - Add to compound checklist: "mistakes.md: N incident(s) resolved → learned/<topic>" (done/pending)
+  - If no open incidents or file absent: skip silently
 - Output goes into existing project files — do not create new files unless necessary
 - Always run even if it seems like "nothing to capture" — capture that explicitly
 - Compound actions checklist must include why each action matters, not just what it is

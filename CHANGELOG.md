@@ -2,6 +2,15 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.2] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-mistakes`: new skill — log a workflow mistake, identify root cause, apply fix, and graduate the lesson to `learned/<topic>.md`. Stores incidents in `<memory>/mistakes.md` with a two-section format: Incident Log (open) + Resolved table (closed). `--list` flag shows open incidents without creating a new one.
+- `groove-work-compound`: checks `mistakes.md` for open incidents before producing the compound checklist; processes each via log → fix → audit → summarise.
+- `groove-daily-start`: warns if open incidents exist in `mistakes.md` (non-blocking).
+- `groove-utilities-prime`: `/groove-utilities-memory-mistakes` added to Key commands.
+- `groove-utilities-memory-install`: scaffolds `<memory>/mistakes.md` from template on install if absent.
+
 ## [0.12.1] - 2026-03-07
 
 ### Added

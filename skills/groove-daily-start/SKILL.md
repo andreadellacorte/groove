@@ -33,6 +33,9 @@ The workday is prepared: recent days are reviewed, today's daily memory file is 
   - Show git activity: run `git log --oneline --after="YYYY-MM-DD 00:00" --before="YYYY-MM-DD 23:59:59"` — display commit count and first few titles; skip silently if not in a git repo or no commits
   - Do NOT block start if files are missing or incomplete — just report
 - **Create new day memory:** Create today's file at `<memory>/daily/YYYY-MM-DD.md` using the template at `skills/groove-daily-start/templates/daily-start.md`. If the file already exists, skip (idempotent). Create `<memory>/daily/` if missing.
+- After the recent-days review, check if `<memory>/mistakes.md` exists and has entries under "Incident Log" (not the "(Empty)" placeholder):
+  - If open incidents: show inline warning: `⚠ N open incident(s) in mistakes.md — resolve at next /groove-work-compound`
+  - If none or file absent: skip silently
 - Do NOT modify tasks during start
 - Present task list in a scannable format before the user begins
 - After all standard steps: check if `.groove/hooks/start.md` exists

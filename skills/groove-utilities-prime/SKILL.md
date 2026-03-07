@@ -50,6 +50,7 @@ git.hooks:  <git.hooks value>
 /groove-utilities-task-create — create a task
 /groove-utilities-task-analyse — summarise tasks by status
 /groove-utilities-memory-log-daily — write daily end log
+/groove-utilities-memory-mistakes — log a mistake and resolve it
 
 ## Conventions
 - Stage tasks: "YYYY-MM-DD, <Stage>" (no numbers; e.g. 2026-02-28, Brainstorm; 2026-02-28, Compound — topic)
