@@ -85,6 +85,12 @@ AGENTS.md
     - If absent: `✗ .cursor/skills/ missing — run: /groove-admin-install`
     - If present: check each groove symlink as above
   - All symlinks healthy: `✓ platform symlinks (.claude/, .cursor/)`
+- Claude Code native hooks check (after platform symlinks):
+  - Check if `.claude/settings.json` exists
+  - If it exists: parse JSON and verify groove's hook entries are present (`daily-end-reminder`, `git-activity-buffer`, `block-managed-paths` commands in the `hooks` key)
+    - Each missing entry: `✗ .claude/settings.json missing groove hook <name> — run: /groove-admin-claude-hooks`
+  - If absent: `ℹ .claude/settings.json not present — run /groove-admin-claude-hooks to install native hooks (optional)`
+  - All present: `✓ Claude Code native hooks (daily-end-reminder, git-activity-buffer, block-managed-paths)`
 - Also check `AGENTS.md` for presence of `<!-- groove:prime:start -->` and `<!-- groove:task:start -->` sections
 - Collect all results before printing — do not interleave output with check progress
 - Each `✗` item must include a concrete remediation command on the same line

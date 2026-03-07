@@ -3,3 +3,4 @@
 # cache — always local
 .cache/*
 \!.cache/.gitkeep
+.groove/memory/references/

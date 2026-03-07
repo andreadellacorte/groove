@@ -83,6 +83,7 @@ Then bootstrap your backends:
 | `/groove-admin-update` | Pull latest and apply migrations |
 | `/groove-admin-help` | Show all commands with live config |
 | `/groove-admin-doctor` | Run all health checks |
+| `/groove-admin-claude-hooks` | Install Claude Code native shell hooks into `.claude/settings.json` |
 
 **Groovebook** *(opt-in — requires `groovebook:` in config)*
 
@@ -132,7 +133,7 @@ Settings live in `.groove/index.md` frontmatter — created on first run by `/gr
 
 ```yaml
 ---
-groove-version: 0.12.15
+groove-version: 0.12.16
 tasks: beans               # beans | linear | github | none
 memory: .groove/memory/
 recent_memory_days: 5      # days of daily memory to review at startup
@@ -151,16 +152,18 @@ Per-component `git.*` keys control what gets committed and what `.groove/.gitign
 
 ## Hooks
 
-groove has a lightweight markdown hook system — no runtime required. Two lifecycle points are available:
+groove has two hook layers:
+
+### Markdown hooks (advisory)
+
+User-defined actions executed by the agent at session start/end. No runtime required.
 
 | Hook file | Trigger |
 |---|---|
 | `.groove/hooks/start.md` | End of `/groove-daily-start` |
 | `.groove/hooks/end.md` | End of `/groove-daily-end` |
 
-Each hook file has a `## Actions` section. groove reads and executes each action in order when the hook fires. `/groove-admin-install` scaffolds both files with commented examples.
-
-Example `.groove/hooks/end.md`:
+Each hook file has a `## Actions` section. groove reads and executes each item in order. `/groove-admin-install` scaffolds both files with commented examples.
 
 ```markdown
 # Hook: Session End
@@ -171,6 +174,16 @@ Example `.groove/hooks/end.md`:
 ```
 
 Hooks follow the `git.hooks` git strategy — set `commit-all` to share hooks with the team, `ignore-all` to keep them local.
+
+### Claude Code native hooks (deterministic)
+
+Shell hooks wired into Claude Code's `.claude/settings.json` — run outside the model, unconditionally. Install with `/groove-admin-claude-hooks`.
+
+| Hook | Event | What it does |
+|---|---|---|
+| `daily-end-reminder` | `Stop` | Reminds about `/groove-daily-end` during work hours (16–21h) |
+| `git-activity-buffer` | `PostToolUse/Bash` | Buffers git commit messages for automatic memory logging |
+| `block-managed-paths` | `PreToolUse/Write+Edit` | Blocks edits to managed groove skill paths deterministically |
 
 ## Platform compatibility
 
