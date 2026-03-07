@@ -2,6 +2,18 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.11.5] - 2026-03-07
+
+### Added
+- Optional `task.list_limit` (default 15) and `task.analyse_limit` (default 30) in `.groove/index.md` for beans backend; task-list and task-analyse read these when present.
+- `groove-utilities-task-list`: `scripts/list-tasks-by-priority.sh` for beans — lists active tasks by priority (critical → deferred) up to limit; requires `jq`.
+- Migration `0.11.4-to-0.11.5`: adds `task:` block with `list_limit` and `analyse_limit` to existing `.groove/index.md`.
+
+### Changed
+- `groove-utilities-task-list` (beans): uses priority script instead of `beans list --json --ready`; output grouped by status (in-progress, todo, blocked).
+- `groove-utilities-task-analyse` (beans): uses priority script for active tasks, separate `beans list --status completed/scrapped` for completed/scrapped; respects `task.analyse_limit`.
+- `groove-work-compound`: new Scope section — "this conversation" means the full chat thread; in/out of scope clarified; when no other work is visible, ask which session to compound on instead of concluding "no work discussed."
+
 ## [0.11.4] - 2026-03-06
 
 ### Fixed

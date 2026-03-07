@@ -1,5 +1,5 @@
 ---
-groove-version: 0.11.3
+groove-version: 0.11.5
 tasks: beans
 task:
   list_limit: 15
