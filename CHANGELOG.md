@@ -2,6 +2,14 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.1] - 2026-03-07
+
+### Added
+- Optional `specs:` config key in `.groove/index.md` — overrides where specs are saved and read. Absent = default (`<memory>/specs/`). Allows teams to store specs at the project root (e.g. `specs/`) for visibility alongside code.
+- `groove-admin-config`: wizard now prompts for `specs:` path (optional, leave blank to use default); omits the key if blank.
+- `groove-utilities-prime`: config display now shows `specs:` value, or notes the default when absent.
+- `groove-work-spec` and `groove-work-audit`: both now read `specs:` from config and use it as the spec directory instead of the hardcoded `<memory>/specs/`.
+
 ## [0.12.0] - 2026-03-07
 
 ### Added

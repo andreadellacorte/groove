@@ -33,6 +33,7 @@ groove is installed in this repo. Use `/groove-*` skills for all workflow comman
 ## Config
 tasks:      <tasks value>
 memory:     <memory value>
+specs:      <specs value, or "(default: <memory>/specs/)" if absent>
 git.memory: <git.memory value>
 git.tasks:  <git.tasks value>
 git.hooks:  <git.hooks value>

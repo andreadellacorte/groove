@@ -34,6 +34,7 @@ Otherwise, walk the user through each config key in order. For each key: show th
 |---|---|---|---|
 | `tasks` | `beans` | `beans \| linear \| github \| none` | "Which task backend? beans tracks tasks as markdown files in your repo." |
 | `memory` | `.groove/memory/` | any path | "Where should groove store memory logs? (default: .groove/memory/)" |
+| `specs` | _(absent)_ | any path or blank | "Custom specs directory? Leave blank to use the default (<memory>/specs/). Set to e.g. `specs/` to store specs at the project root for team visibility." |
 | `git.memory` | `ignore-all` | `ignore-all \| hybrid \| commit-all` | "Git strategy for memory logs? ignore-all keeps them local, hybrid commits logs but ignores sessions, commit-all commits everything." |
 | `git.tasks` | `ignore-all` | `ignore-all \| commit-all` | "Git strategy for task files (.groove/tasks/)? ignore-all keeps them local, commit-all tracks them in git." |
 | `git.hooks` | `commit-all` | `ignore-all \| commit-all` | "Git strategy for hooks (.groove/hooks/)? commit-all shares hooks with the team, ignore-all keeps them local." |
@@ -48,6 +49,7 @@ After all keys are confirmed:
 ## Constraints
 
 - If `.groove/index.md` already exists, pre-fill each question with the current value
+- If the user leaves `specs:` blank (or it was not set previously), omit the `specs:` key from the written config entirely — absence means default
 - If `--defaults` is passed, apply all defaults without any prompting — used by `groove-admin-install` for zero-friction first-time setup
 - If other arguments are provided (e.g. `tasks=linear git.memory=hybrid`), apply them without prompting and use defaults for any unspecified keys
 - Always write `groove-version:` matching the installed version from `skills/groove/SKILL.md`

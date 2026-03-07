@@ -12,6 +12,7 @@ git:
   memory: ignore-all
   tasks: ignore-all
   hooks: commit-all
+# specs: specs/   # optional: override where specs are saved (default: <memory>/specs/)
 ---
 ```
 
@@ -23,6 +24,7 @@ git:
 | `tasks` | `beans` | `beans \| linear \| github \| none` | Task tracking backend |
 | `memory` | `.groove/memory/` | any path | Base path for log files |
 | `recent_memory_days` | `5` | positive integer | Number of recent business days (Mon–Fri) reviewed at startup, including memory file status and git activity |
+| `specs` | _(absent)_ | any path | Override where specs are saved and read; defaults to `<memory>/specs/` when absent |
 | `git.memory` | `ignore-all` | `ignore-all \| hybrid \| commit-all` | Git strategy for memory logs |
 | `git.tasks` | `ignore-all` | `ignore-all \| commit-all` | Git strategy for task files in `.groove/tasks/` |
 | `git.hooks` | `commit-all` | `ignore-all \| commit-all` | Git strategy for hooks in `.groove/hooks/` |
