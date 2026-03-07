@@ -61,6 +61,11 @@ The workday is wrapped up: git changes are analysed, memory files are written in
   - Ask: "Any workflow insights from today to capture in learned memory? Name a topic (e.g. `patterns`, `tools`) or press enter to skip."
   - If the user provides a topic and content: append to `<memory>/learned/<topic>.md` under a `## YYYY-MM-DD` heading; create the file with a `# <Topic>` heading if it does not exist; create the dated heading if not already present
   - If the user presses enter or provides no content: skip silently — do not nag
+- If today is Friday (last working day of week) or the last weekday of the month: after the workflow insights prompt, print a one-line suggestion (do not block or prompt further):
+  ```
+  💡 End of week — consider running /groove-utilities-memory-retrospective week for a trend summary.
+  ```
+  (Substitute `month` and "End of month" on the last weekday of the month.)
 - After all standard steps: check if `.groove/hooks/end.md` exists
   - If it exists: read the `## Actions` section and execute each item in order; report completion per item
   - If it does not exist: skip silently
