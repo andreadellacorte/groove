@@ -20,8 +20,8 @@ All notable changes to groove will be documented in this file.
 
 - `groove-utilities-prime` — IDENTITY.md support (`.groove/IDENTITY.md` → `## Identity` section); `## Steering` section with six behavioral rules; `specs:` in config display; groovebook section (conditional); all new skills added to Key commands.
 - `groove-work-review` — branch-diff analysis — runs `git log` + `git diff <base>...HEAD`; findings categorised as Fix Now / Needs Spec / Create Issues.
-- `groove-work-compound` — checks `mistakes.md` for open incidents; scans for deferred promises; suggests groovebook publish and memory graduation when appropriate; session rating signal → `learned/signals.md`.
-- `groove-daily-start` — warns on open incidents in `mistakes.md` and open promises (non-blocking).
+- `groove-work-compound` — checks for open mistake incidents in task backend; scans for deferred promises; suggests groovebook publish and memory graduation when appropriate; session rating signal → `learned/signals.md`.
+- `groove-daily-start` — warns on open incidents and open promises from task backend (non-blocking).
 - `groove-daily-end` — stale spec health check (30+ days); session rating prompt (1–5) → `learned/signals.md`; workflow insights prompt → `learned/<topic>.md`; retrospective hint on Fridays and end of month.
 - `groove-utilities-memory-doctor` — checks for `learned/` directory.
 - `groove-utilities-memory-install` — scaffolds `learned/` directory on install.

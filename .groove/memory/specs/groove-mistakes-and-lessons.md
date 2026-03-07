@@ -3,17 +3,19 @@
 **Session**: claude/loop-2026-03-07
 **Date**: 2026-03-07
 
+> **Implementation note (2026-03-07):** The final implementation uses the task backend exclusively (no `mistakes.md` file). Incidents are tracked as bugs under "Groove Memory" → "Mistakes" epic in the configured task backend. The spec below describes the original markdown-file design which was superseded.
+
 ---
 
 ## Overview
 
-**What**: A structured `.groove/memory/mistakes.md` file that tracks workflow errors made by the agent using a four-step cycle: **Log it → Fix it → Audit it → Summarise it**. When the agent makes a mistake (wrong format, wrong convention, wrong tool, repeated error) and the user corrects it, the agent logs the incident, fixes the root cause in the relevant memory or learned file, identifies the root cause, then moves the lesson to a resolved table. `groove-work-compound` processes open incidents at the end of each work cycle; `groove-daily-start` surfaces unresolved incidents as warnings before the day begins.
+**What**: A structured system that tracks workflow errors made by the agent using a four-step cycle: **Log it → Fix it → Audit it → Summarise it**. When the agent makes a mistake (wrong format, wrong convention, wrong tool, repeated error) and the user corrects it, the agent logs the incident, fixes the root cause in the relevant memory or learned file, identifies the root cause, then resolves the task. `groove-work-compound` processes open incidents at the end of each work cycle; `groove-daily-start` surfaces unresolved incidents as warnings before the day begins.
 
-**Why**: Groove's `learned/` memory captures forward-looking workflow insights from compound sessions, but has no mechanism for backward-looking error capture. Mistakes get corrected verbally, but the correction doesn't persist — so the agent repeats the same class of error across sessions. A dedicated mistakes file with an explicit resolution workflow closes this gap: errors get permanently fixed in the underlying memory files, and the incident is preserved with root cause for pattern analysis.
+**Why**: Groove's `learned/` memory captures forward-looking workflow insights from compound sessions, but has no mechanism for backward-looking error capture. Mistakes get corrected verbally, but the correction doesn't persist — so the agent repeats the same class of error across sessions. A dedicated mistake tracking workflow closes this gap: errors get permanently fixed in the underlying memory files, and the incident is preserved with root cause for pattern analysis.
 
 **Source**: Inspired by LifeBandit666's comment on r/ClaudeCode ("I built a persistent AI assistant...") describing their "Mistakes and Lessons" file pattern.
 
-**Scope**: New `.groove/memory/mistakes.md` file; new `groove-utilities-memory-mistakes` skill for explicit incident capture; integration into `groove-work-compound` (process open incidents) and `groove-daily-start` (surface warnings). No new config keys; presence of file = enabled.
+**Scope**: New `groove-utilities-memory-mistakes` skill for explicit incident capture; integration into `groove-work-compound` (process open incidents) and `groove-daily-start` (surface warnings). Requires a configured task backend.
 
 ---
 
