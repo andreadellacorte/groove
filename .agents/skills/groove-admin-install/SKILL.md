@@ -40,8 +40,9 @@ Run in order:
      - Create `.claude/skills/<name>` as a symlink → `../../.agents/skills/<name>` if not already a symlink
      - Create `.cursor/skills/<name>` as a symlink → `../../.agents/skills/<name>` if `.cursor/skills/` exists and entry is not already a symlink
    - Create `.cursor/skills/` if it does not exist (future-proof; no-op if Cursor is not in use)
-   - Run: `for skill in .agents/skills/groove*; do name=$(basename "$skill"); [ ! -L ".claude/skills/$name" ] && ln -sf "../../.agents/skills/$name" ".claude/skills/$name"; done`
-   - Run: `mkdir -p .cursor/skills && for skill in .agents/skills/groove*; do name=$(basename "$skill"); [ ! -L ".cursor/skills/$name" ] && ln -sf "../../.agents/skills/$name" ".cursor/skills/$name"; done`
+   - Run: `for skill in .agents/skills/groove*; do name=$(basename "$skill"); ln -sfn "../../.agents/skills/$name" ".claude/skills/$name"; done`
+   - Run: `mkdir -p .cursor/skills && for skill in .agents/skills/groove*; do name=$(basename "$skill"); ln -sfn "../../.agents/skills/$name" ".cursor/skills/$name"; done`
+   - Note: use `ln -sfn` (no-dereference) — `ln -sf` on an existing directory symlink follows the symlink and creates a nested symlink inside the target directory
    - Report: "✓ platform symlinks updated (.claude/skills/, .cursor/skills/)"
 6. Scaffold hooks and cache directories:
    - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
