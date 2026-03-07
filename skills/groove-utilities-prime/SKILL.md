@@ -33,10 +33,11 @@ groove is installed in this repo. Use `/groove-*` skills for all workflow comman
 ## Config
 tasks:      <tasks value>
 memory:     <memory value>
-specs:      <specs value, or "(default: <memory>/specs/)" if absent>
+specs:      <specs value, or "(default: <memory>/specs/)" when empty>
 git.memory: <git.memory value>
 git.tasks:  <git.tasks value>
 git.hooks:  <git.hooks value>
+groovebook: <groovebook value, or "(disabled)" when empty>
 
 ## Key commands
 /groove-daily-start           — start the workday
@@ -77,7 +78,7 @@ git.hooks:  <git.hooks value>
 - User zone: `.groove/` is yours — config, hooks, memory, and learned insights are all safe to edit
 ```
 
-If `groovebook:` is set in `.groove/index.md`, append to the output:
+If `groovebook:` in `.groove/index.md` is non-empty, append to the output:
 
 ```
 ## Groovebook

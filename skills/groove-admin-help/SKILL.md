@@ -90,7 +90,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-admin-help` | Show this help |
 | `/groove-admin-doctor` | Run all health checks |
 
-**Groovebook** *(only shown if `groovebook:` is set in `.groove/index.md`)*
+**Groovebook** *(only shown if `groovebook:` in `.groove/index.md` is non-empty)*
 
 | Skill | Purpose |
 |---|---|
@@ -102,11 +102,11 @@ Print the following, substituting live config values from `.groove/index.md` whe
 ```
 tasks:         <value>   — task backend (beans | linear | github | none)
 memory:        <value>   — memory log path
-specs:         <value>   — spec/doc directory (optional; default: <memory>/specs/)
+specs:         <value>   — spec/doc directory (`""` uses default: <memory>/specs/)
 git.memory:    <value>   — memory commit strategy (ignore-all | hybrid | commit-all)
 git.tasks:     <value>   — tasks commit strategy (ignore-all | commit-all)
 git.hooks:     <value>   — hooks commit strategy (ignore-all | commit-all)
-groovebook:    <value>   — shared learning commons repo (optional)
+groovebook:    <value>   — shared learning commons repo (`""` disables)
 ```
 
 ---

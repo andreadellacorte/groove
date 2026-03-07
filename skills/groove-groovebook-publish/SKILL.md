@@ -24,8 +24,8 @@ A learning from the current project is published to the configured groovebook re
 
 ## Steps
 
-1. Read `groovebook:` from `.groove/index.md`; if absent, exit with:
-   `groovebook is not configured. Add 'groovebook: <owner>/<repo>' to .groove/index.md to enable.`
+1. Read `groovebook:` from `.groove/index.md`; if empty (`""`), exit with:
+   `groovebook is disabled. Set 'groovebook: <owner>/<repo>' in .groove/index.md to enable.`
 
 2. Check `gh auth status`; if not authenticated, exit with:
    `Not authenticated with GitHub. Run: gh auth login`

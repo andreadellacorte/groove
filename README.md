@@ -83,7 +83,7 @@ Then bootstrap your backends:
 | `/groove-admin-help` | Show all commands with live config |
 | `/groove-admin-doctor` | Run all health checks |
 
-**Groovebook** *(opt-in — requires `groovebook:` in config)*
+**Groovebook** *(opt-in — set a non-empty `groovebook:` in config)*
 
 | Skill | Purpose |
 |---|---|
@@ -139,8 +139,8 @@ git:
   memory: ignore-all       # ignore-all | hybrid | commit-all
   tasks: ignore-all        # ignore-all | commit-all
   hooks: commit-all        # ignore-all | commit-all
-# specs: specs/            # optional: save specs to project root instead of <memory>/specs/
-# groovebook: owner/repo   # optional: shared learning commons repo
+specs: ""                 # spec/doc directory; set e.g. "specs/" to override default <memory>/specs/
+groovebook: ""            # shared learning commons repo; set owner/repo to enable
 ---
 ```
 

@@ -55,7 +55,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
     create the file with a `# <Topic>` heading if it does not exist; create the dated heading if absent
   - Add to compound checklist: "workflow learning → .groove/memory/learned/<topic>.md" (done/pending)
 - If no workflow lessons, skip this step entirely — no prompt, no noise
-- If a workflow learning was captured locally AND `groovebook:` is set in `.groove/index.md`: add a one-line suggestion after the checklist: "Learning captured → `.groove/memory/learned/<topic>.md`. Publish to groovebook? Run `/groove-groovebook-publish`." If `groovebook:` is absent: skip silently.
+- If a workflow learning was captured locally AND `groovebook:` in `.groove/index.md` is non-empty: add a one-line suggestion after the checklist: "Learning captured → `.groove/memory/learned/<topic>.md`. Publish to groovebook? Run `/groove-groovebook-publish`." If `groovebook:` is empty: skip silently.
 - After a workflow learning is captured, offer graduation: "Is this lesson stable enough to apply to every future session? Run `/groove-utilities-memory-graduate <topic>` to promote it to AGENTS.md permanently." — only suggest if the lesson was just confirmed, not every compound run.
 - After the workflow learning step, scan the conversation for deferred items — phrases like "we'll come back to", "do this later", "next time", "TODO", "skip for now", "won't fix today". If any are found: list them and ask "Capture any of these as promises? (numbers, or enter to skip)" — for each confirmed item, run `/groove-utilities-memory-promises <text>`. If none found: skip silently.
 - After the workflow learning step, prompt for an optional session rating:
