@@ -2,6 +2,13 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.8] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-promises`: beans backend support — when `tasks: beans`, promises are stored as tasks under a "Groove Memory" milestone → "Promises" epic hierarchy. Parent hierarchy is created idempotent on first use. Falls back to markdown mode when beans is not configured.
+- `groove-utilities-memory-mistakes`: beans backend support — when `tasks: beans`, incidents are tracked as bugs under "Groove Memory" → "Mistakes" epic. Audit trail row still written to `mistakes.md` Resolved table in both modes.
+- Created `andreadellacorte/groovebook` repository with README, CONTRIBUTING, PR template, and `learned/` corpus directory.
+
 ## [0.12.7] - 2026-03-07
 
 ### Added
