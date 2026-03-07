@@ -90,6 +90,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-admin-update` | Pull latest and apply migrations |
 | `/groove-admin-help` | Show this help |
 | `/groove-admin-doctor` | Run all health checks |
+| `/groove-admin-claude-hooks` | Install Claude Code native shell hooks into `.claude/settings.json` |
 
 **Groovebook** *(only shown if `groovebook:` is set in `.groove/index.md`)*
 
