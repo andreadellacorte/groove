@@ -41,7 +41,8 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-work-exec` | Execute the plan |
 | `/groove-work-review` | Evaluate output |
 | `/groove-work-compound` | Capture lessons |
-| `/groove-work-spec [topic]` | Create outcome spec |
+| `/groove-work-spec [topic]` | Create outcome spec (what to build) |
+| `/groove-work-doc [topic]` | Create reference doc (how it works) |
 | `/groove-work-audit` | Review branch for blindspots |
 
 **Utilities — Tasks**
@@ -67,6 +68,9 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-utilities-memory-log-git` | Record git activity |
 | `/groove-utilities-memory-install` | Set up memory backend |
 | `/groove-utilities-memory-doctor` | Check memory backend health |
+| `/groove-utilities-memory-mistakes` | Log and resolve a workflow mistake |
+| `/groove-utilities-memory-promises` | Capture or resolve a deferred item |
+| `/groove-utilities-memory-retrospective [week\|month\|all]` | Analyse ratings, mistakes, learnings |
 
 **Utilities — Session**
 
@@ -82,16 +86,26 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-admin-install` | Install backends and bootstrap AGENTS.md |
 | `/groove-admin-config` | Create or update `.groove/index.md` |
 | `/groove-admin-update` | Pull latest and apply migrations |
+| `/groove-admin-help` | Show this help |
 | `/groove-admin-doctor` | Run all health checks |
+
+**Groovebook** *(only shown if `groovebook:` is set in `.groove/index.md`)*
+
+| Skill | Purpose |
+|---|---|
+| `/groove-groovebook-publish` | Publish a workflow learning as a PR |
+| `/groove-groovebook-review` | Browse and review open learning PRs |
 
 **Config** (`.groove/index.md`)
 
 ```
 tasks:         <value>   — task backend (beans | linear | github | none)
-memory:        <value>   — log file path
+memory:        <value>   — memory log path
+specs:         <value>   — spec/doc directory (optional; default: <memory>/specs/)
 git.memory:    <value>   — memory commit strategy (ignore-all | hybrid | commit-all)
 git.tasks:     <value>   — tasks commit strategy (ignore-all | commit-all)
 git.hooks:     <value>   — hooks commit strategy (ignore-all | commit-all)
+groovebook:    <value>   — shared learning commons repo (optional)
 ```
 
 ---
