@@ -50,6 +50,7 @@ git.hooks:  <git.hooks value>
 /groove-utilities-task-create — create a task
 /groove-utilities-task-analyse — summarise tasks by status
 /groove-utilities-memory-log-daily — write daily end log
+/groove-utilities-memory-promises       — capture or resolve deferred items
 /groove-utilities-memory-mistakes        — log a mistake and resolve it
 /groove-utilities-memory-retrospective  — analyse ratings, mistakes, and learnings over a period
 

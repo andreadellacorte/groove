@@ -27,5 +27,6 @@ Memory directories are created and ready for use.
   ```bash
   mkdir -p <memory>/daily <memory>/weekly <memory>/monthly <memory>/git <memory>/specs <memory>/learned
   ```
+- Create `<memory>/promises.md` if it does not exist, using the template from `skills/groove-utilities-memory-promises/SKILL.md`; if it already exists, skip (idempotent)
 - Create `<memory>/mistakes.md` if it does not exist, using the template from `skills/groove-utilities-memory-mistakes/SKILL.md`; if it already exists, skip (idempotent)
 - Report the initialized paths to user

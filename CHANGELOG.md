@@ -2,6 +2,15 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.6] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-promises`: new skill — capture deferred items ("we'll come back to that") into `<memory>/promises.md`. Supports `--list` and `--resolve N`. Addresses the promise-tracking open problem from the Reddit second-brain discussion.
+- `groove-work-compound`: scans conversation for deferral phrases before the session rating prompt; surfaces them for explicit promise capture.
+- `groove-daily-start`: shows open promise count at startup alongside the mistakes warning.
+- `groove-utilities-prime`: `/groove-utilities-memory-promises` added to Key commands.
+- `groove-utilities-memory-install`: scaffolds `promises.md` on install.
+
 ## [0.12.5] - 2026-03-07
 
 ### Added
