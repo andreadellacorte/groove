@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.11.7] - 2026-03-07
+
+### Fixed
+- `groove-utilities-task-archive`: reinstated no-confirmation change in installed skill after `npx skills add` overwrote it with a cached copy.
+
 ## [0.11.6] - 2026-03-07
 
 ### Changed
