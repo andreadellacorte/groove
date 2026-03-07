@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.9] - 2026-03-07
+
+### Added
+- `groove-utilities-prime`: `## Steering` section added to prime output — six behavioral rules injected into every session: fix root causes, YAGNI, verify before shared-state ops, smallest diff, ask when blocked, read before editing. Closes the "AI Steering Rules" gap identified in groove-vs-pai comparison.
+
 ## [0.12.8] - 2026-03-07
 
 ### Added

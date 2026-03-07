@@ -61,6 +61,14 @@ git.hooks:  <git.hooks value>
 - Archive is always user-triggered — never automatic during end
 - 80% of compound loop value is in plan and review — do not skip them
 
+## Steering
+- Fix root causes, not symptoms — if a workaround is needed, note the root cause anyway
+- YAGNI — only make changes directly requested or clearly necessary; no unrequested refactors
+- Verify before acting on shared state — confirm before push, PR creation, or destructive ops
+- Smallest diff that solves the problem — prefer editing one file over touching five
+- When blocked, ask rather than brute-force — retrying the same failing action wastes context
+- Read before editing — understand existing code before proposing changes to it
+
 ## Constraints
 - Do not edit files under `skills/` or `.agents/skills/` — managed by groove update, changes will be overwritten
 - User zone: `.groove/` is yours — config, hooks, memory, and learned insights are all safe to edit
