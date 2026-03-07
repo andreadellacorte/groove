@@ -36,6 +36,7 @@ Then bootstrap your backends:
 | `/groove-work-compound` | Capture lessons |
 | `/groove-work-spec [topic]` | Create outcome spec |
 | `/groove-work-audit` | Review branch for blindspots |
+| `/groove-work-doc [topic]` | Document how a component works |
 
 **Utilities — Tasks**
 
@@ -43,13 +44,27 @@ Then bootstrap your backends:
 |---|---|
 | `/groove-utilities-task-list` | List active tasks |
 | `/groove-utilities-task-create` | Create a task |
+| `/groove-utilities-task-update` | Update a task |
+| `/groove-utilities-task-archive` | Archive a completed task |
 | `/groove-utilities-task-analyse` | Analyse task status |
+| `/groove-utilities-task-install` | Set up task backend |
+| `/groove-utilities-task-config` | Configure task backend |
+| `/groove-utilities-task-doctor` | Health check task backend |
 
 **Utilities — Memory**
 
 | Skill | Purpose |
 |---|---|
 | `/groove-utilities-memory-log-daily` | Write daily memory log |
+| `/groove-utilities-memory-log-weekly` | Roll up weekly log from daily entries |
+| `/groove-utilities-memory-log-monthly` | Roll up monthly log from weekly entries |
+| `/groove-utilities-memory-log-git` | Record git activity in memory |
+| `/groove-utilities-memory-install` | Set up memory backend |
+| `/groove-utilities-memory-doctor` | Health check memory backend |
+| `/groove-utilities-memory-mistakes` | Log and resolve workflow mistakes |
+| `/groove-utilities-memory-promises` | Capture and resolve deferred items |
+| `/groove-utilities-memory-retrospective [week\|month\|all]` | Analyse ratings, mistakes, and learnings |
+| `/groove-utilities-memory-graduate [topic]` | Promote a stable lesson to AGENTS.md permanently |
 
 **Utilities — Session**
 
@@ -65,7 +80,15 @@ Then bootstrap your backends:
 | `/groove-admin-install` | Install backends and bootstrap AGENTS.md |
 | `/groove-admin-config` | Create or update `.groove/index.md` |
 | `/groove-admin-update` | Pull latest and apply migrations |
+| `/groove-admin-help` | Show all commands with live config |
 | `/groove-admin-doctor` | Run all health checks |
+
+**Groovebook** *(opt-in — requires `groovebook:` in config)*
+
+| Skill | Purpose |
+|---|---|
+| `/groove-groovebook-publish` | Publish a workflow learning to the shared commons |
+| `/groove-groovebook-review` | Browse and review open learning PRs |
 
 ## Companions
 
@@ -94,6 +117,8 @@ Companions extend groove and are not listed in the core skills table above. Inst
 /groove-utilities-task-analyse — summarise by status
 
 /groove-utilities-memory-log-daily — write daily end log
+/groove-utilities-memory-mistakes  — log a workflow mistake
+/groove-utilities-memory-promises  — capture a deferred item
 
 /groove-utilities-prime       — load workflow context
 /groove-admin-doctor          — check all backends are healthy
@@ -102,11 +127,11 @@ Companions extend groove and are not listed in the core skills table above. Inst
 
 ## Config
 
-Settings live in `.groove/index.md` frontmatter — created on first run.
+Settings live in `.groove/index.md` frontmatter — created on first run by `/groove-admin-config`.
 
 ```yaml
 ---
-groove-version: 0.10.1
+groove-version: 0.12.9
 tasks: beans               # beans | linear | github | none
 memory: .groove/memory/
 recent_memory_days: 5      # days of daily memory to review at startup
@@ -114,10 +139,25 @@ git:
   memory: ignore-all       # ignore-all | hybrid | commit-all
   tasks: ignore-all        # ignore-all | commit-all
   hooks: commit-all        # ignore-all | commit-all
+# specs: specs/            # optional: save specs to project root instead of <memory>/specs/
+# groovebook: owner/repo   # optional: shared learning commons repo
 ---
 ```
 
-Per-component `git.*` keys control what gets committed and what `.groove/.gitignore` ignores. Run `/groove-admin-config` to set up interactively.
+Per-component `git.*` keys control what gets committed and what `.groove/.gitignore` ignores.
+
+**Identity file**: create `.groove/IDENTITY.md` with free-form context (mission, goals, active projects) — `groove-utilities-prime` reads it and injects it into every session automatically.
+
+## Platform compatibility
+
+groove runs inside any AI coding assistant that supports Claude Code-style slash commands (`.claude/skills/` or `.agents/skills/` directories).
+
+| Platform | Status | Notes |
+|---|---|---|
+| Claude Code | Verified | Primary target; fully tested |
+| Cursor | Unverified | Skills directory format compatible; not tested |
+| Cline | Unverified | `.agents/skills/` path recognised; not tested |
+| Amp | Unverified | Skills directory supported; not tested |
 
 ## Requirements
 

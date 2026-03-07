@@ -2,6 +2,102 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.12] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-graduate`: new skill — promote a stable workflow insight from `learned/<topic>.md` into a permanent `<!-- groove:learned:start -->` section in AGENTS.md. Marks source entry as `[graduated YYYY-MM-DD]`, never deletes it. Closes the "knowledge graduation" gap from groove-vs-bonfire comparison.
+- `groove-work-compound`: after a workflow learning is captured, suggests running `/groove-utilities-memory-graduate` if the lesson is stable enough for permanent injection.
+- `groove-utilities-prime`: `/groove-utilities-memory-graduate` added to key commands.
+- `groove-admin-help`, README: new skill listed.
+
+### Fixed
+- `.claude/skills/groove-*`: converted back to symlinks into `.agents/skills/` — no more file duplication; single source of truth is `.agents/skills/`.
+
+## [0.12.11] - 2026-03-07
+
+### Added
+- `groove-daily-end`: optional workflow-insights prompt after spec health check — "Any workflow insights from today?" appends to `<memory>/learned/<topic>.md`. Closes spec D4 from user-layer-and-learned-memory spec.
+- `groove-admin-help`: added `groove-work-doc`, `groove-utilities-memory-mistakes/promises/retrospective`, groovebook skills (conditional), and `specs:`/`groovebook:` keys to config block.
+
+### Fixed
+- Sync: `skills/` → `.agents/skills/` and `.claude/skills/` — all new skills and SKILL.md updates now reflected in installed copies. `.claude/skills/` converted from symlinks to real files.
+
+## [0.12.10] - 2026-03-07
+
+### Fixed
+- README: `groove-version` in config example updated to `0.12.9` (was stale at `0.12.6`)
+- README: platform compatibility table now marks Cursor/Cline/Amp as "Unverified" (not "Compatible") — honest about untested platforms
+- `groove-utilities-prime`: added `/groove-work-spec` and `/groove-work-doc` to key commands — both were missing, making them undiscoverable via prime
+
+## [0.12.9] - 2026-03-07
+
+### Added
+- `groove-utilities-prime`: `## Steering` section added to prime output — six behavioral rules injected into every session: fix root causes, YAGNI, verify before shared-state ops, smallest diff, ask when blocked, read before editing. Closes the "AI Steering Rules" gap identified in groove-vs-pai comparison.
+
+## [0.12.8] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-promises`: beans backend support — when `tasks: beans`, promises are stored as tasks under a "Groove Memory" milestone → "Promises" epic hierarchy. Parent hierarchy is created idempotent on first use. Falls back to markdown mode when beans is not configured.
+- `groove-utilities-memory-mistakes`: beans backend support — when `tasks: beans`, incidents are tracked as bugs under "Groove Memory" → "Mistakes" epic. Audit trail row still written to `mistakes.md` Resolved table in both modes.
+- Created `andreadellacorte/groovebook` repository with README, CONTRIBUTING, PR template, and `learned/` corpus directory.
+
+## [0.12.7] - 2026-03-07
+
+### Added
+- `groove-work-doc`: new skill — create a "how does X work" documentation file (Overview, Key Files, How It Works, Gotchas). Complements `groove-work-spec` (what to build) with a reference doc format (how it works). Docs directory resolves to `<specs>/../docs/` or `<memory>/docs/`. Identified as a gap in groove-vs-bonfire comparison.
+
+## [0.12.6] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-promises`: new skill — capture deferred items ("we'll come back to that") into `<memory>/promises.md`. Supports `--list` and `--resolve N`. Addresses the promise-tracking open problem from the Reddit second-brain discussion.
+- `groove-work-compound`: scans conversation for deferral phrases before the session rating prompt; surfaces them for explicit promise capture.
+- `groove-daily-start`: shows open promise count at startup alongside the mistakes warning.
+- `groove-utilities-prime`: `/groove-utilities-memory-promises` added to Key commands.
+- `groove-utilities-memory-install`: scaffolds `promises.md` on install.
+
+## [0.12.5] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-retrospective`: new skill — analyses session ratings trend, recurring mistake patterns, and captured learnings over a configurable period (`week` / `month` / `all`). Reads `learned/signals.md`, `mistakes.md`, and `learned/*.md`; outputs a sparkline-based summary to conversation only. Addresses the observability gap identified in groove-vs-night-market and groove-vs-pai comparisons.
+
+## [0.12.4] - 2026-03-07
+
+### Added
+- `groove-groovebook-publish`: new skill — publish a workflow learning to a configured groovebook repo as a GitHub PR. Prompts for learning text, redaction, topic, and skill area; forks repo, creates branch, writes `learned/<topic>/<date>-<slug>.md`, opens PR.
+- `groove-groovebook-review`: new skill — list open learning PRs in the groovebook repo; user picks one, reviews diff and body, submits approve/comment/request-changes via `gh pr review`.
+- `groove-work-compound`: if a workflow learning is captured and `groovebook:` is configured, suggests running `/groove-groovebook-publish`. Silent if groovebook is not set.
+- `groove-utilities-prime`: conditionally appends a `## Groovebook` section to the prime output when `groovebook:` is configured.
+- `groove-admin-config`: wizard now includes optional `groovebook:` step.
+- `groove/templates/index.md`: `groovebook:` commented optional key added with docs.
+
+## [0.12.3] - 2026-03-07
+
+### Added
+- `groove-daily-end`: stale spec health check — after memory steps, scans the resolved specs directory for files not modified in 30+ days and reports them as an advisory before the end hook runs. Non-blocking. Implements Tier 1C (session health check) from the groove roadmap spec, adapted for the current architecture.
+
+## [0.12.2] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-mistakes`: new skill — log a workflow mistake, identify root cause, apply fix, and graduate the lesson to `learned/<topic>.md`. Stores incidents in `<memory>/mistakes.md` with a two-section format: Incident Log (open) + Resolved table (closed). `--list` flag shows open incidents without creating a new one.
+- `groove-work-compound`: checks `mistakes.md` for open incidents before producing the compound checklist; processes each via log → fix → audit → summarise.
+- `groove-daily-start`: warns if open incidents exist in `mistakes.md` (non-blocking).
+- `groove-utilities-prime`: `/groove-utilities-memory-mistakes` added to Key commands.
+- `groove-utilities-memory-install`: scaffolds `<memory>/mistakes.md` from template on install if absent.
+
+## [0.12.1] - 2026-03-07
+
+### Added
+- Optional `specs:` config key in `.groove/index.md` — overrides where specs are saved and read. Absent = default (`<memory>/specs/`). Allows teams to store specs at the project root (e.g. `specs/`) for visibility alongside code.
+- `groove-admin-config`: wizard now prompts for `specs:` path (optional, leave blank to use default); omits the key if blank.
+- `groove-utilities-prime`: config display now shows `specs:` value, or notes the default when absent.
+- `groove-work-spec` and `groove-work-audit`: both now read `specs:` from config and use it as the spec directory instead of the hardcoded `<memory>/specs/`.
+
+## [0.12.0] - 2026-03-07
+
+### Added
+- `groove-utilities-prime`: IDENTITY.md support — if `.groove/IDENTITY.md` exists, its contents are appended to the prime output under a `## Identity` section. Free-form file; presence = enabled; no config key needed. Gives the agent persistent user context (mission, goals, projects) across sessions.
+- `groove-work-compound`: optional session rating signal — after the compound checklist, prompts "Rate this session (1–5)" and appends the result to `<memory>/learned/signals.md` as a dated table row. Lightweight, optional, skippable with enter.
+
 ## [0.11.7] - 2026-03-07
 
 ### Fixed

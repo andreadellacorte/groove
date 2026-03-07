@@ -26,8 +26,8 @@ Spec file contains:
 ## Constraints
 
 - Sanitize topic for use as filename — strip path separators, special characters, and traversal patterns (`../`)
-- Read `memory:` from `.groove/index.md` for base path; save spec to `<memory>/specs/`
-- Ensure `<memory>/specs/` exists (create if missing)
+- Read `memory:` and `specs:` from `.groove/index.md`; resolve spec directory as `<specs>` if `specs:` key is present, otherwise `<memory>/specs/`
+- Ensure the resolved specs directory exists (create if missing)
 - Research codebase first (use Explore agent)
 - Interview user for decisions, edge cases, testing approach, scope
 - Assess scope: if the work has natural seams (independent components, sequential phases, separable concerns), recommend splitting into a parent spec with child specs

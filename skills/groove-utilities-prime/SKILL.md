@@ -33,6 +33,7 @@ groove is installed in this repo. Use `/groove-*` skills for all workflow comman
 ## Config
 tasks:      <tasks value>
 memory:     <memory value>
+specs:      <specs value, or "(default: <memory>/specs/)" if absent>
 git.memory: <git.memory value>
 git.tasks:  <git.tasks value>
 git.hooks:  <git.hooks value>
@@ -45,10 +46,16 @@ git.hooks:  <git.hooks value>
 /groove-work-exec             — execute the plan
 /groove-work-review           — evaluate output, decide accept/rework
 /groove-work-compound         — document lessons into existing project files
+/groove-work-spec             — create outcome spec (what to build)
+/groove-work-doc              — create reference doc (how it works)
 /groove-utilities-task-list   — show active, ready tasks
 /groove-utilities-task-create — create a task
 /groove-utilities-task-analyse — summarise tasks by status
 /groove-utilities-memory-log-daily — write daily end log
+/groove-utilities-memory-promises       — capture or resolve deferred items
+/groove-utilities-memory-mistakes        — log a mistake and resolve it
+/groove-utilities-memory-retrospective  — analyse ratings, mistakes, and learnings over a period
+/groove-utilities-memory-graduate       — promote a stable lesson to AGENTS.md permanently
 
 ## Conventions
 - Stage tasks: "YYYY-MM-DD, <Stage>" (no numbers; e.g. 2026-02-28, Brainstorm; 2026-02-28, Compound — topic)
@@ -57,9 +64,26 @@ git.hooks:  <git.hooks value>
 - Archive is always user-triggered — never automatic during end
 - 80% of compound loop value is in plan and review — do not skip them
 
+## Steering
+- Fix root causes, not symptoms — if a workaround is needed, note the root cause anyway
+- YAGNI — only make changes directly requested or clearly necessary; no unrequested refactors
+- Verify before acting on shared state — confirm before push, PR creation, or destructive ops
+- Smallest diff that solves the problem — prefer editing one file over touching five
+- When blocked, ask rather than brute-force — retrying the same failing action wastes context
+- Read before editing — understand existing code before proposing changes to it
+
 ## Constraints
 - Do not edit files under `skills/` or `.agents/skills/` — managed by groove update, changes will be overwritten
 - User zone: `.groove/` is yours — config, hooks, memory, and learned insights are all safe to edit
+```
+
+If `groovebook:` is set in `.groove/index.md`, append to the output:
+
+```
+## Groovebook
+groovebook: <groovebook value>
+/groove-groovebook-publish — publish a learning to the shared commons
+/groove-groovebook-review  — browse and review open learning PRs
 ```
 
 ## Version check
@@ -74,6 +98,15 @@ Before outputting context, check if `.groove/.cache/last-version-check` does not
    ```
 4. Write today's date to `.groove/.cache/last-version-check`
 5. If the API call fails, skip silently — do not block prime
+
+## Identity context
+
+After outputting the main context block, check if `.groove/IDENTITY.md` exists:
+
+- If it exists: read it and append its contents to the output under a `## Identity` section header
+- If it does not exist: skip silently — no prompt, no hint
+
+The identity section is free-form — output the file contents verbatim. This gives the agent persistent user context (mission, goals, projects, beliefs) across sessions without re-explaining each time.
 
 ## Constraints
 
