@@ -26,15 +26,21 @@ All memory health checks pass. User knows if the memory file structure is correc
 3. Memory base path exists (e.g. `.groove/memory/`)
 4. Memory log subdirectories exist: `daily/`, `weekly/`, `monthly/`, `git/`
 5. Specs directory exists: `specs/` (used by `/groove-work-spec`)
+6. `learned/` directory exists (v0.12.x — warm memory tier)
+7. `mistakes.md` exists (v0.12.x — incident log)
+8. `promises.md` exists (v0.12.x — deferred items)
 
 ## Remediation hints
 
 | Failure | Remediation |
 |---|---|
-| `.groove/index.md` missing | `/groove config` (any skill bootstraps config) |
+| `.groove/index.md` missing | `/groove-admin-config` |
 | Memory path missing | `/groove-utilities-memory-log-daily` (will create on first run) |
 | Log subdirectory missing | `/groove-utilities-memory-log-daily` |
 | Specs directory missing | `/groove-utilities-memory-install` |
+| `learned/` missing | `/groove-admin-update` (migration 0.11.5→0.12.0 creates it) |
+| `mistakes.md` missing | `/groove-admin-update` |
+| `promises.md` missing | `/groove-admin-update` |
 
 ## Constraints
 
