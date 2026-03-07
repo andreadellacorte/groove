@@ -2,6 +2,15 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.11] - 2026-03-07
+
+### Added
+- `groove-daily-end`: optional workflow-insights prompt after spec health check — "Any workflow insights from today?" appends to `<memory>/learned/<topic>.md`. Closes spec D4 from user-layer-and-learned-memory spec.
+- `groove-admin-help`: added `groove-work-doc`, `groove-utilities-memory-mistakes/promises/retrospective`, groovebook skills (conditional), and `specs:`/`groovebook:` keys to config block.
+
+### Fixed
+- Sync: `skills/` → `.agents/skills/` and `.claude/skills/` — all new skills and SKILL.md updates now reflected in installed copies. `.claude/skills/` converted from symlinks to real files.
+
 ## [0.12.10] - 2026-03-07
 
 ### Fixed
