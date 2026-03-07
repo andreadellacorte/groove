@@ -36,7 +36,6 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 ## Constraints
 
 - Read `tasks:` and `memory:` from `.groove/index.md` to determine backend and memory base path
-- **Context window check**: before doing anything else, run `git log --oneline --since="today 00:00" 2>/dev/null | wc -l` to count today's commits; also run `git diff --name-only $(git merge-base HEAD main 2>/dev/null || echo HEAD~10)..HEAD 2>/dev/null | wc -l` to count files changed in this branch. If today_commits > 10 OR changed_files > 20, output a one-line advisory before proceeding: `⚠ Large session (N commits today, N files changed) — context quality may be degraded. Consider closing and resuming in a new session after compounding.` Do not block — compound continues regardless.
 - Before producing the compound actions checklist, check if `<memory>/mistakes.md` exists and has entries under "Incident Log" (i.e. not the "(Empty)" placeholder):
   - If open incidents exist: process each using the log → fix → audit → summarise cycle from `/groove-utilities-memory-mistakes` before moving on
   - Add to compound checklist: "mistakes.md: N incident(s) resolved → learned/<topic>" (done/pending)

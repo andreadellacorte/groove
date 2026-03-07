@@ -2,12 +2,6 @@
 
 All notable changes to groove will be documented in this file.
 
-## [0.12.3] - 2026-03-07
-
-### Added
-- `groove-work-compound`: context window awareness — checks today's commit count and files changed vs main before compounding; warns if > 10 commits or > 20 files changed. Non-blocking advisory.
-- `groove-daily-end`: context window awareness — checks today's commit count before writing memory; warns if > 15 commits. Non-blocking advisory.
-
 ## [0.12.2] - 2026-03-07
 
 ### Added
