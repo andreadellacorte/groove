@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.11.6] - 2026-03-07
+
+### Changed
+- `groove-utilities-task-archive`: removed confirmation prompt — archives immediately without asking.
+
 ## [0.11.5] - 2026-03-07
 
 ### Added
