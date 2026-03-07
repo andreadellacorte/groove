@@ -22,6 +22,7 @@ git:
 | Key | Default | Values | Purpose |
 |---|---|---|---|
 | `groove-version` | `0.1.0` | semver string | Tracks which groove version this config was last migrated to |
+| `bash` | _(absent)_ | `true` | (SKILL.md metadata only) Marks a skill as having a `SKILL.sh` bash fast-path alongside the markdown skill |
 | `tasks` | `beans` | `beans \| linear \| github \| none` | Task tracking backend |
 | `memory` | `.groove/memory/` | any path | Base path for log files |
 | `recent_memory_days` | `5` | positive integer | Number of recent business days (Mon–Fri) reviewed at startup, including memory file status and git activity |

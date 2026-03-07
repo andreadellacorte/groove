@@ -66,7 +66,7 @@ Skills that inherently need synthesis: `groove-work-brainstorm`, `groove-work-pl
 
 ### Phase 2 — Implement `groove-utilities-check` bash fast-path
 
-`groove-utilities-check/SKILL.sh`:
+`groove-utilities-check/scripts/check.sh`:
 ```bash
 #!/usr/bin/env bash
 # groove-utilities-check — compare installed vs latest GitHub release
