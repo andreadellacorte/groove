@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.5] - 2026-03-07
+
+### Added
+- `groove-utilities-memory-retrospective`: new skill — analyses session ratings trend, recurring mistake patterns, and captured learnings over a configurable period (`week` / `month` / `all`). Reads `learned/signals.md`, `mistakes.md`, and `learned/*.md`; outputs a sparkline-based summary to conversation only. Addresses the observability gap identified in groove-vs-night-market and groove-vs-pai comparisons.
+
 ## [0.12.4] - 2026-03-07
 
 ### Added
