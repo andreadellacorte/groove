@@ -35,7 +35,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` to determine backend
+- Read `tasks:` and `memory:` from `.groove/index.md` to determine backend and memory base path
 - Output goes into existing project files — do not create new files unless necessary
 - Always run even if it seems like "nothing to capture" — capture that explicitly
 - Compound actions checklist must include why each action matters, not just what it is
@@ -51,3 +51,8 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
     create the file with a `# <Topic>` heading if it does not exist; create the dated heading if absent
   - Add to compound checklist: "workflow learning → .groove/memory/learned/<topic>.md" (done/pending)
 - If no workflow lessons, skip this step entirely — no prompt, no noise
+- After the workflow learning step, prompt for an optional session rating:
+  - Ask: "Rate this session (1–5): how well did the compound loop serve you? (enter to skip)"
+  - If the user provides a rating: append to `<memory>/learned/signals.md` under a table; create the file with a header and table header row if it does not exist
+  - Format: `| YYYY-MM-DD | <rating>/5 | <one-line context from the session topic> |`
+  - If the user skips: do not mention it again

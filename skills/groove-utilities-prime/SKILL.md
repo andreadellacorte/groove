@@ -75,6 +75,15 @@ Before outputting context, check if `.groove/.cache/last-version-check` does not
 4. Write today's date to `.groove/.cache/last-version-check`
 5. If the API call fails, skip silently — do not block prime
 
+## Identity context
+
+After outputting the main context block, check if `.groove/IDENTITY.md` exists:
+
+- If it exists: read it and append its contents to the output under a `## Identity` section header
+- If it does not exist: skip silently — no prompt, no hint
+
+The identity section is free-form — output the file contents verbatim. This gives the agent persistent user context (mission, goals, projects, beliefs) across sessions without re-explaining each time.
+
 ## Constraints
 
 - Read `.groove/index.md` frontmatter to substitute `tasks:`, `memory:`, and `git.*` placeholders

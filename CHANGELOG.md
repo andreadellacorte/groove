@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.0] - 2026-03-07
+
+### Added
+- `groove-utilities-prime`: IDENTITY.md support — if `.groove/IDENTITY.md` exists, its contents are appended to the prime output under a `## Identity` section. Free-form file; presence = enabled; no config key needed. Gives the agent persistent user context (mission, goals, projects) across sessions.
+- `groove-work-compound`: optional session rating signal — after the compound checklist, prompts "Rate this session (1–5)" and appends the result to `<memory>/learned/signals.md` as a dated table row. Lightweight, optional, skippable with enter.
+
 ## [0.11.7] - 2026-03-07
 
 ### Fixed
