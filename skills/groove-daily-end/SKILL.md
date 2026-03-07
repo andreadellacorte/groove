@@ -24,6 +24,7 @@ The workday is wrapped up: git changes are analysed, memory files are written in
 ## Constraints
 
 - Read `.groove/index.md` for `tasks:`, `memory:`, and `git.*` config
+- **Context window check**: before writing any memory files, run `git log --oneline --since="today 00:00" 2>/dev/null | wc -l` to count today's commits. If today_commits > 15, output a one-line advisory: `⚠ Large session (N commits today) — if synthesis feels thin, consider starting tomorrow's session fresh rather than carrying this context forward.` Do not block — end proceeds regardless.
 - Call `/groove-utilities-task-analyse` to get task summary for daily memory population
 - Memory population order (must follow this sequence):
   1. `/groove-utilities-memory-log-git`
