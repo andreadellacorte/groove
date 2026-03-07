@@ -50,6 +50,10 @@ companions
   ✓ agent-browser installed
   ✓ pdf-to-markdown installed
 
+platform symlinks
+  ✓ .claude/skills/groove → ../../.agents/skills/groove
+  ✗ .cursor/skills/ missing — run: /groove-admin-install
+
 AGENTS.md
   ✓ groove:prime section present
   ✗ groove:task section missing — run: /groove-admin-install
@@ -73,6 +77,14 @@ AGENTS.md
   - Check `ls .agents/skills/find-skills/SKILL.md` — if absent: `✗ find-skills not installed — run: /groove-admin-install`
   - Check `ls .agents/skills/agent-browser/SKILL.md` — if absent: `✗ agent-browser not installed — run: /groove-admin-install`
   - Check `ls .agents/skills/pdf-to-markdown/SKILL.md` — if absent: `✗ pdf-to-markdown not installed — run: /groove-admin-install`
+- Platform symlinks check (after companions):
+  - For each `groove-*` directory in `.agents/skills/`: check that `.claude/skills/<name>` is a symlink pointing to `../../.agents/skills/<name>`
+    - If missing or not a symlink: `✗ .claude/skills/<name> not a symlink — run: /groove-admin-install`
+    - If symlink is broken (target doesn't exist): `✗ .claude/skills/<name> broken symlink — run: /groove-admin-install`
+  - Check if `.cursor/skills/` directory exists:
+    - If absent: `✗ .cursor/skills/ missing — run: /groove-admin-install`
+    - If present: check each groove symlink as above
+  - All symlinks healthy: `✓ platform symlinks (.claude/, .cursor/)`
 - Also check `AGENTS.md` for presence of `<!-- groove:prime:start -->` and `<!-- groove:task:start -->` sections
 - Collect all results before printing — do not interleave output with check progress
 - Each `✗` item must include a concrete remediation command on the same line

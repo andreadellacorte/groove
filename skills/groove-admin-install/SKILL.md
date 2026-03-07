@@ -35,7 +35,15 @@ Run in order:
    - **agent-browser** (downloaded): check `ls .agents/skills/agent-browser/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
    - **pdf-to-markdown** (embedded): check `ls .agents/skills/pdf-to-markdown/SKILL.md`; if absent: `npx skills add andreadellacorte/groove --skill pdf-to-markdown`
    - Report each as installed / already-present / failed
-5. Scaffold hooks and cache directories:
+5. Sync platform skill directories via symlinks:
+   - For each directory in `.agents/skills/` that starts with `groove`:
+     - Create `.claude/skills/<name>` as a symlink → `../../.agents/skills/<name>` if not already a symlink
+     - Create `.cursor/skills/<name>` as a symlink → `../../.agents/skills/<name>` if `.cursor/skills/` exists and entry is not already a symlink
+   - Create `.cursor/skills/` if it does not exist (future-proof; no-op if Cursor is not in use)
+   - Run: `for skill in .agents/skills/groove*; do name=$(basename "$skill"); [ ! -L ".claude/skills/$name" ] && ln -sf "../../.agents/skills/$name" ".claude/skills/$name"; done`
+   - Run: `mkdir -p .cursor/skills && for skill in .agents/skills/groove*; do name=$(basename "$skill"); [ ! -L ".cursor/skills/$name" ] && ln -sf "../../.agents/skills/$name" ".cursor/skills/$name"; done`
+   - Report: "✓ platform symlinks updated (.claude/skills/, .cursor/skills/)"
+6. Scaffold hooks and cache directories:
    - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
    - Create `.groove/.cache/` if it does not exist (with a `.gitkeep`)
    - Report each as created / already-present

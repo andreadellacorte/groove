@@ -2,6 +2,14 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.13] - 2026-03-07
+
+### Added
+- `groove-admin-install`: step 5 — after companion install, create `.claude/skills/groove-*` and `.cursor/skills/groove-*` symlinks pointing to `../../.agents/skills/<name>`. Creates `.cursor/skills/` if absent.
+- `groove-admin-update`: step 11 — re-sync platform symlinks after every update; removes stale symlinks for skills no longer in `.agents/skills/`.
+- `groove-admin-doctor`: platform symlinks check — verifies `.claude/skills/groove-*` and `.cursor/skills/groove-*` are valid symlinks; flags broken or missing symlinks with remediation command.
+- `.cursor/skills/`: created with symlinks to `.agents/skills/` — Cursor platform now wired up alongside Claude Code.
+
 ## [0.12.12] - 2026-03-07
 
 ### Added
