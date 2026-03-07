@@ -2,6 +2,11 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.14] - 2026-03-07
+
+### Added
+- `groove-utilities-onboard`: new skill — generates `GROOVE.md` at project root with live config values (task backend, memory path, specs path, conventions). Optionally appends a "## Using groove" section to existing `CONTRIBUTING.md`. Closes the contributor-onboarding gap identified in groove-vs-night-market comparison (night-market's `attune:project-init`).
+
 ## [0.12.13] - 2026-03-07
 
 ### Added

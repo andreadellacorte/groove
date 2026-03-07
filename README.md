@@ -72,6 +72,7 @@ Then bootstrap your backends:
 |---|---|
 | `/groove-utilities-prime` | Load workflow context into conversation |
 | `/groove-utilities-check` | Check if a newer version is available |
+| `/groove-utilities-onboard` | Generate GROOVE.md contributor onboarding guide |
 
 **Admin**
 
