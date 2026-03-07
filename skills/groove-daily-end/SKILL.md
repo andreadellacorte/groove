@@ -43,7 +43,21 @@ The workday is wrapped up: git changes are analysed, memory files are written in
     Consider archiving, updating, or deleting specs that are no longer active.
     ```
   - If no stale specs or specs directory is empty: skip silently
-- After the spec health check, prompt for workflow insights (optional):
+- After the spec health check, prompt for a session rating (optional):
+  - Ask: "Rate today's session (1–5) — how well did the compound loop serve you? (press enter to skip)"
+  - If the user provides a rating (1–5): append a line to `<memory>/learned/signals.md` in format:
+    ```
+    | YYYY-MM-DD | <rating>/5 | <one-sentence note if user adds one, otherwise blank> |
+    ```
+    If `signals.md` does not exist, create it first:
+    ```markdown
+    # Session Signals
+
+    | Date | Rating | Note |
+    |---|---|---|
+    ```
+  - If the user presses enter or provides no rating: skip silently
+- After the session rating, prompt for workflow insights (optional):
   - Ask: "Any workflow insights from today to capture in learned memory? Name a topic (e.g. `patterns`, `tools`) or press enter to skip."
   - If the user provides a topic and content: append to `<memory>/learned/<topic>.md` under a `## YYYY-MM-DD` heading; create the file with a `# <Topic>` heading if it does not exist; create the dated heading if not already present
   - If the user presses enter or provides no content: skip silently — do not nag
