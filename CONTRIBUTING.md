@@ -2,7 +2,7 @@
 
 ## Bash fast-path skills
 
-Some groove skills are purely mechanical — they read a config key, call an API, write a line. These do not need the model. A `SKILL.sh` alongside `SKILL.md` in the same skill directory marks a skill as having a bash fast-path.
+Some groove skills are purely mechanical — they read a config key, call an API, write a line. These do not need the model. A `scripts/` subdirectory alongside `SKILL.md` marks a skill as having a bash fast-path.
 
 ### Convention
 

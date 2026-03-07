@@ -76,8 +76,8 @@ Run in order:
      -->
      ```
    - Report hooks: created / already-present
-6. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `/groove-admin-config` for rules)
-7. Write the session bootstrap to `AGENTS.md`:
+7. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `/groove-admin-config` for rules)
+8. Write the session bootstrap to `AGENTS.md`:
    - Replace any existing `<!-- groove:prime:start -->` / `<!-- groove:prime:end -->` section with:
      ```
      <!-- groove:prime:start -->
@@ -86,7 +86,7 @@ Run in order:
      <!-- groove:prime:end -->
      ```
    - If section absent, append to end of `AGENTS.md`; preserve all other content
-8. `/groove-utilities-task-install` already wrote the `<!-- groove:task:start -->` stub in step 2 — no additional AGENTS.md write needed here
+9. `/groove-utilities-task-install` already wrote the `<!-- groove:task:start -->` stub in step 2 — no additional AGENTS.md write needed here
 
 ## Constraints
 

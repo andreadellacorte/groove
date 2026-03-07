@@ -24,7 +24,7 @@
 | Decision | Choice | Rationale |
 |---|---|---|
 | Conversion target | Skills that do no reasoning — only read config, run a command, write a file | Preserves the model for skills that need synthesis or judgment |
-| Pattern | `SKILL.sh` alongside `SKILL.md` in the same directory | Platform invokes bash first if present; falls back to SKILL.md if not |
+| Pattern | `scripts/` subdirectory alongside `SKILL.md` (per [Agent Skills spec](https://agentskills.io/specification)) | Platform invokes bash first if present; falls back to SKILL.md if not |
 | Frontmatter flag | Add `bash: true` to SKILL.md frontmatter as documentation | Makes the fast-path explicit for tooling and future skill-runner logic |
 | Markdown fallback | Always kept — bash script is an optimisation, not a replacement | Ensures skills work on platforms where bash is unavailable |
 | Scope boundary | Do NOT convert skills that prompt the user, synthesise memory, or require codebase reasoning | Those are model tasks; bash can't do them |
@@ -61,8 +61,8 @@ Skills that inherently need synthesis: `groove-work-brainstorm`, `groove-work-pl
 ### Phase 1 — Pattern and frontmatter
 
 1. Define the `bash:` frontmatter field in `skills/groove/templates/index.md` documentation — optional boolean, default false.
-2. Document the convention in `CONTRIBUTING.md`: if `SKILL.sh` exists alongside `SKILL.md`, the bash script is the fast-path; `SKILL.md` remains the fallback and the source of truth for what the skill does.
-3. Add `SKILL.sh` to the rsync pattern in skill-sync documentation.
+2. Document the convention in `CONTRIBUTING.md`: scripts go in `scripts/` subdirectory per [Agent Skills spec](https://agentskills.io/specification); `SKILL.md` remains the fallback and the source of truth for what the skill does.
+3. Add `scripts/` to the rsync pattern in skill-sync documentation.
 
 ### Phase 2 — Implement `groove-utilities-check` bash fast-path
 
@@ -87,7 +87,7 @@ fi
 
 ### Phase 3 — Implement `groove-utilities-memory-log-git` bash fast-path
 
-`groove-utilities-memory-log-git/SKILL.sh`:
+`groove-utilities-memory-log-git/scripts/log-git.sh`:
 ```bash
 #!/usr/bin/env bash
 # groove-utilities-memory-log-git — append today's git activity to memory
@@ -120,7 +120,7 @@ echo "groove: git memory written → $outfile"
 
 ### Phase 4 — `groove-admin-doctor` hybrid
 
-Doctor is a checklist — bash can run all the checks and report pass/fail. The markdown skill becomes the fallback for platforms without bash. Add `SKILL.sh` that runs all checks and exits 0 if healthy, non-zero if any check fails. Output is parseable by CI.
+Doctor is a checklist — bash can run all the checks and report pass/fail. The markdown skill becomes the fallback for platforms without bash. Add `scripts/doctor.sh` that runs all checks and exits 0 if healthy, non-zero if any check fails. Output is parseable by CI.
 
 ---
 
@@ -129,8 +129,8 @@ Doctor is a checklist — bash can run all the checks and report pass/fail. The 
 | Case | Handling |
 |---|---|
 | Platform does not support bash | SKILL.md fallback is always present |
-| `python3` not available in SKILL.sh | Graceful degradation — bash scripts that need JSON parsing check for python3 first |
-| SKILL.sh and SKILL.md diverge | SKILL.md is source of truth; SKILL.sh is optimisation; document this explicitly in CONTRIBUTING.md |
+| `python3` not available in scripts/ | Graceful degradation — bash scripts that need JSON parsing check for python3 first |
+| scripts/ and SKILL.md diverge | SKILL.md is source of truth; scripts/ is optimisation; document this explicitly in CONTRIBUTING.md |
 | Windows users | Bash scripts run via Git Bash or WSL; note in platform compatibility table |
 | `date -v` vs `date -d` (macOS vs Linux) | Use portable `date` idioms or check `$OSTYPE` |
 
