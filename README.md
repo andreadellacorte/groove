@@ -133,7 +133,7 @@ Settings live in `.groove/index.md` frontmatter — created on first run by `/gr
 
 ```yaml
 ---
-groove-version: 0.12.16
+groove-version: 0.12.0
 tasks: beans               # beans | linear | github | none
 memory: .groove/memory/
 recent_memory_days: 5      # days of daily memory to review at startup
