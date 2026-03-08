@@ -20,7 +20,7 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | 0.9.4 | 0.10.0 | 0.9.4-to-0.10.0.md | Standalone `daily`, `work`, `task`, `memory` skills removed. All workflow commands now individual `groove-*` skills. No `.groove/index.md` config changes needed. |
 | 0.10.0 | 0.10.1 | 0.10.0-to-0.10.1.md | Add `recent_memory_days: 5` to `.groove/index.md`; update `AGENTS.md` prime stub to `/groove-utilities-prime`. |
 | 0.11.4 | 0.11.5 | 0.11.4-to-0.11.5.md | Add optional `task.list_limit` and `task.analyse_limit` to `.groove/index.md` for task-list and task-analyse. |
-| 0.11.6 | 0.12.0 | 0.11.6-to-0.12.0.md | Create `<memory>/learned/`; add `specs:` and `groovebook:` config keys if absent. |
+| 0.11.7 | 0.12.0 | 0.11.7-to-0.12.0.md | Create `<memory>/learned/`; add `specs:` (required) and `groovebook:` (default andreadellacorte/groovebook) if absent. |
 
 ## Notes
 
