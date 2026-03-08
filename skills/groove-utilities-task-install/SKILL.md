@@ -34,6 +34,7 @@ The configured task backend is installed and verified reachable. User is informe
   - Run `beans init` to initialise the task store and generate `.beans.yml` with beans defaults
   - Derive `[PROJECT_PREFIX]` from the git repo name (last path component of `git remote get-url origin`, stripped of `.git`, uppercased, non-alphanumeric stripped) — e.g. `groove` → `GRV`; fall back to the directory name if no remote
   - Update the `prefix:` field in the generated `.beans.yml` to the derived prefix (e.g. `GRV-`)
+  - Set `path:` in `.beans.yml` to `.groove/tasks` so the task store lives under groove (aligned with `git.tasks` and `.groove/.gitignore`). Create `.groove/tasks` if it does not exist. If the default `.beans` directory was created and is non-empty, move its contents into `.groove/tasks` and remove the empty `.beans` directory.
   - Report the path written and the prefix used
 - If `tasks: beans`: write a minimal stub to `AGENTS.md` at git root:
   - Wrap in `<!-- groove:task:start -->` / `<!-- groove:task:end -->` fenced section
