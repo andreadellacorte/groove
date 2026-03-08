@@ -23,7 +23,7 @@ Findings are categorized by action:
 ## Constraints
 
 - Sanitize topic (if provided) for safe use — strip path separators, special characters, and traversal patterns (`../`)
-- Read `memory:` from `.groove/index.md` for base path; reference specs from `<memory>/specs/`
+- Read `memory:` and `specs:` from `.groove/index.md`; resolve spec directory as `<specs>` if `specs:` key is present, otherwise `<memory>/specs/`
 - Gather context: branch diff, relevant specs
 - Run analysis in isolated context (use general-purpose agent)
 - Fall back to direct review if subagent fails

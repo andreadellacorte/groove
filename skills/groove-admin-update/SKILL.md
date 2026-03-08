@@ -40,6 +40,14 @@ All pending migrations are applied to the user's local groove state in version o
    c. Update `groove-version:` in `.groove/index.md` to the `To` version
    d. Report "✓ <from> → <to> applied"
 10. Report summary: N migrations applied, now at v<version>
+11. Re-sync platform symlinks after update:
+    - For each directory in `.agents/skills/` that starts with `groove`:
+      - Ensure `.claude/skills/<name>` is a symlink → `../../.agents/skills/<name>` (create or update if stale)
+      - Ensure `.cursor/skills/<name>` is a symlink → `../../.agents/skills/<name>` if `.cursor/skills/` exists
+    - Remove any `.claude/skills/groove-*` or `.cursor/skills/groove-*` entries that no longer exist in `.agents/skills/` (stale symlinks from removed skills)
+    - Run: `for skill in .agents/skills/groove*; do name=$(basename "$skill"); ln -sfn "../../.agents/skills/$name" ".claude/skills/$name"; done`
+    - Use `ln -sfn` (no-dereference) to avoid creating nested symlinks inside existing directory symlinks
+    - Report: "✓ platform symlinks refreshed"
 
 ## Constraints
 

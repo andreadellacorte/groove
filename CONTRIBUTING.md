@@ -1,5 +1,53 @@
 # Contributing to groove
 
+## Bash fast-path skills
+
+Some groove skills are purely mechanical — they read a config key, call an API, write a line. These do not need the model. A `scripts/` subdirectory alongside `SKILL.md` marks a skill as having a bash fast-path.
+
+### Convention
+
+Per the [Agent Skills specification](https://agentskills.io/specification), scripts go in a `scripts/` subdirectory alongside `SKILL.md`:
+
+```
+groove-utilities-check/
+├── SKILL.md          # Source of truth — always present, always the fallback
+└── scripts/
+    └── check.sh      # Bash fast-path — identical outcome, no model round-trip
+```
+
+The agent tries the bash script first:
+```
+bash .agents/skills/<skill-name>/scripts/<script>.sh
+```
+If it exits 0: report its stdout and stop. If it exits non-zero or bash is unavailable: fall through to SKILL.md steps.
+
+### Frontmatter flag
+
+Mark skills with a bash fast-path using `bash: true` in SKILL.md metadata:
+```yaml
+metadata:
+  author: andreadellacorte
+  bash: true
+```
+
+### When to add scripts/
+
+- The skill does no user prompting, no synthesis, no codebase reasoning
+- It reads config, calls an external command or API, writes a file
+- It would produce identical output on every run given the same inputs
+
+### When NOT to add scripts/
+
+- The skill prompts the user (`AskUserQuestion`)
+- The skill synthesises content from session context (daily logs, compound learnings)
+- The skill requires reading and reasoning about arbitrary files
+
+### Reference implementation
+
+`groove-utilities-check/scripts/check.sh` — version check against GitHub releases API.
+
+---
+
 ## Versioning
 
 groove uses [semantic versioning](https://semver.org). The version lives in two places:

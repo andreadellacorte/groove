@@ -2,14 +2,25 @@
 name: groove-utilities-check
 description: "Check if a newer version of groove is available on GitHub."
 license: MIT
-allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) AskUserQuestion
+allowed-tools: Read Write Edit Glob Grep Bash(git:*) Bash(beans:*) Bash(gh:*) Bash(linear:*) Bash(npx:*) Bash(mkdir:*) Bash(curl:*) Bash(python3:*) Bash(chmod:*) AskUserQuestion
 metadata:
   author: andreadellacorte
+  bash: true
 ---
 
 <!-- groove:managed — do not edit; changes will be overwritten by groove update -->
 
 # groove-utilities-check
+
+## Bash fast-path
+
+This skill has a bash script at `scripts/check.sh`. Run it directly for faster, model-free execution:
+
+```bash
+bash .agents/skills/groove-utilities-check/scripts/check.sh
+```
+
+If the script exits 0, report its stdout and stop — do not continue with the steps below. If it exits non-zero or bash is unavailable, continue with the markdown steps.
 
 ## Outcome
 

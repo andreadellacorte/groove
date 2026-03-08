@@ -35,12 +35,49 @@ Run in order:
    - **agent-browser** (downloaded): check `ls .agents/skills/agent-browser/SKILL.md`; if absent: `npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser`
    - **pdf-to-markdown** (embedded): check `ls .agents/skills/pdf-to-markdown/SKILL.md`; if absent: `npx skills add andreadellacorte/groove --skill pdf-to-markdown`
    - Report each as installed / already-present / failed
-5. Scaffold hooks and cache directories:
-   - Create `.groove/hooks/` if it does not exist (with a `.gitkeep`)
+5. Sync platform skill directories via symlinks:
+   - For each directory in `.agents/skills/` that starts with `groove`:
+     - Create `.claude/skills/<name>` as a symlink → `../../.agents/skills/<name>` if not already a symlink
+     - Create `.cursor/skills/<name>` as a symlink → `../../.agents/skills/<name>` if `.cursor/skills/` exists and entry is not already a symlink
+   - Create `.cursor/skills/` if it does not exist (future-proof; no-op if Cursor is not in use)
+   - Run: `for skill in .agents/skills/groove*; do name=$(basename "$skill"); ln -sfn "../../.agents/skills/$name" ".claude/skills/$name"; done`
+   - Run: `mkdir -p .cursor/skills && for skill in .agents/skills/groove*; do name=$(basename "$skill"); ln -sfn "../../.agents/skills/$name" ".cursor/skills/$name"; done`
+   - Note: use `ln -sfn` (no-dereference) — `ln -sf` on an existing directory symlink follows the symlink and creates a nested symlink inside the target directory
+   - Report: "✓ platform symlinks updated (.claude/skills/, .cursor/skills/)"
+6. Scaffold hooks and cache directories:
+   - Create `.groove/hooks/` if it does not exist
    - Create `.groove/.cache/` if it does not exist (with a `.gitkeep`)
-   - Report each as created / already-present
-6. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `/groove-admin-config` for rules)
-7. Write the session bootstrap to `AGENTS.md`:
+   - If `.groove/hooks/start.md` does not exist, create it with:
+     ```markdown
+     # Hook: Session Start
+
+     Runs automatically at the end of `/groove-daily-start`.
+     Add items to `## Actions` to automate session-start tasks.
+
+     ## Actions
+
+     <!-- Add actions here, one per line. Examples:
+     - Run `git fetch --all` to refresh remote refs
+     - Print "Good morning — groove is ready"
+     -->
+     ```
+   - If `.groove/hooks/end.md` does not exist, create it with:
+     ```markdown
+     # Hook: Session End
+
+     Runs automatically at the end of `/groove-daily-end`.
+     Add items to `## Actions` to automate session-end tasks.
+
+     ## Actions
+
+     <!-- Add actions here, one per line. Examples:
+     - Run `git push` to push today's commits
+     - Print "Session closed — see you tomorrow"
+     -->
+     ```
+   - Report hooks: created / already-present
+7. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `/groove-admin-config` for rules)
+8. Write the session bootstrap to `AGENTS.md`:
    - Replace any existing `<!-- groove:prime:start -->` / `<!-- groove:prime:end -->` section with:
      ```
      <!-- groove:prime:start -->
@@ -49,7 +86,7 @@ Run in order:
      <!-- groove:prime:end -->
      ```
    - If section absent, append to end of `AGENTS.md`; preserve all other content
-8. `/groove-utilities-task-install` already wrote the `<!-- groove:task:start -->` stub in step 2 — no additional AGENTS.md write needed here
+9. `/groove-utilities-task-install` already wrote the `<!-- groove:task:start -->` stub in step 2 — no additional AGENTS.md write needed here
 
 ## Constraints
 

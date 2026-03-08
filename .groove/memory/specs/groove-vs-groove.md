@@ -50,11 +50,12 @@ Ordered by signal strength (how many comparisons surfaced it) and alignment with
 
 ### Tier 1 — High priority (cross-cutting, in scope)
 
-**A. Context window awareness**
+**A. Context window awareness** ~~[REJECTED 2026-03-07]~~
 
 - Bonfire warns at 20K tokens and recommends archiving; PAI has a statusline showing context %; night-market leverages native compaction
 - Groove doesn't address this at all — long sessions degrade synthesis quality silently
-- **groove-scoped implementation**: In `memory session end` and `work compound`, check git log breadth and session length; if the session started long ago or many files changed, warn: "This session may be approaching context limits — consider closing and resuming in a new session." No hooks needed; can be implemented as a constraint in existing commands.
+- ~~**groove-scoped implementation**: In `memory session end` and `work compound`, check git log breadth and session length; if the session started long ago or many files changed, warn: "This session may be approaching context limits — consider closing and resuming in a new session." No hooks needed; can be implemented as a constraint in existing commands.~~
+- **Rejected**: git commit count is a poor proxy for context window usage. A session with 20 commits touching small files may be well within limits; a session with 2 commits touching 10 large files may not. Without actual token count access, the heuristic produces noise — warnings that are wrong often enough to be ignored. Out of scope until a reliable signal is available.
 
 **B. Blindspot review / branch-diff analysis**
 
@@ -125,7 +126,7 @@ groove is not: a personal AI OS (PAI), a plugin marketplace (night-market), or a
 
 | Version | Feature | Tier |
 |---|---|---|
-| v0.9.0 | Context window awareness in `session end` + `work compound` | 1A |
+| ~~v0.9.0~~ | ~~Context window awareness in `session end` + `work compound`~~ | 1A — **rejected** |
 | v0.9.1 | Branch-diff analysis in `work review` (Fix Now / Needs Spec / Create Issues) | 1B |
 | v0.9.2 | Session health check in `memory session end` (orphaned specs, long-running sessions) | 1C |
 | v0.9.3 | Configurable `specs:` and `docs:` paths in `.groove/index.md` | 1D |
