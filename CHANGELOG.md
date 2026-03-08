@@ -32,7 +32,7 @@ All notable changes to groove will be documented in this file.
 
 - `groove-admin-config` — always writes `specs:` and `groovebook:` keys explicitly — no absent-means-default ambiguity.
 - `groove-admin-install` — hook scaffolding — creates `start.md` and `end.md` with `## Actions` and commented examples so the hook system is discoverable on first install.
-- Migration `0.11.5 → 0.12.0` — creates `learned/` directory for users upgrading from v0.11.x.
+- Migration `0.11.6 → 0.12.0` — creates `learned/` directory; adds `specs:` and `groovebook:` config keys to `.groove/index.md`.
 - Config template updated — all keys explicit with default values.
 
 ### 🏛️ Platform
