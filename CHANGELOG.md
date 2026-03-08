@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.1] - 2026-03-08
+
+### 🐞 Fixes
+
+- `groove-utilities-task-install` — configure beans `path:` to `.groove/tasks` after `beans init` so the task store lives under groove (aligned with `git.tasks` and `.groove/.gitignore`). Create `.groove/tasks` if needed; migrate any existing `.beans` content. Previously the store stayed at the default `.beans` at repo root.
+
 ## [0.12.0] - 2026-03-07
 
 ### ✨ New Skills
