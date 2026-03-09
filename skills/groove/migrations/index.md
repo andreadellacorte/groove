@@ -24,6 +24,7 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | 0.13.0 | 0.14.0 | 0.13.0-to-0.14.0.md | Restructure config: `tasks:` → `tasks.backend`, `task.*` → `tasks.*`, `recent_memory_days:` → `memory.review_days`, remove `memory:` and `specs:` (hardcoded). |
 | 0.14.0 | 0.15.0 | 0.14.0-to-0.15.0.md | Run `/groove-admin-claude-hooks` to add `context-reprime` hook; run `/groove-admin-cursor-hooks` if `.cursor/` exists. |
 | 0.16.1 | 0.17.0 | 0.16.1-to-0.17.0.md | Remove `groove:prime` and `groove:task` AGENTS.md stubs — session bootstrap now handled by native platform hooks. |
+| 0.17.0 | 0.18.0 | 0.17.0-to-0.18.0.md | Reinstall Claude/Cursor hooks — fix SessionStart to run prime script directly, add version-check hook, remove stale context-reprime.sh. |
 
 ## Notes
 
