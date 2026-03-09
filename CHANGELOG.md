@@ -2,6 +2,13 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.15.1] - 2026-03-09
+
+### 🐞 Fixes
+
+- **Migration `0.14.0 → 0.15.0`** — added missing migration that runs `/groove-admin-claude-hooks` to install `context-reprime` hook and `/groove-admin-cursor-hooks` if `.cursor/` exists. Previously updating to 0.15.0 did not install the new hooks automatically.
+- **`groove-admin-update`** — clarified that `npx skills add` is mandatory every time and must never be skipped, even if skills were recently installed.
+
 ## [0.15.0] - 2026-03-09
 
 ### ✨ New Skills
