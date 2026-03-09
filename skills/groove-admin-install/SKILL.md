@@ -19,9 +19,7 @@ All groove backends are installed in dependency order, groove-wide companion ski
 
 - Task and memory backends installed
 - Companion skills installed (find-skills, agent-browser, pdf-to-markdown)
-- `AGENTS.md` contains the `<!-- groove:prime:start -->` session bootstrap
-- `AGENTS.md` contains a `<!-- groove:task:start -->` stub (if `tasks.backend: beans`)
-- User sees a summary of what was installed and what was written
+- User sees a summary of what was installed
 
 ## Steps
 
@@ -77,16 +75,6 @@ Run in order:
      ```
    - Report hooks: created / already-present
 7. Apply git strategy — write `.groove/.gitignore` from `git.*` sub-keys in `.groove/index.md` (see `/groove-admin-config` for rules)
-8. Write the session bootstrap to `AGENTS.md`:
-   - Replace any existing `<!-- groove:prime:start -->` / `<!-- groove:prime:end -->` section with:
-     ```
-     <!-- groove:prime:start -->
-     **Run at the start of every session:**
-     `/groove-utilities-prime` — loads groove workflow context into the conversation
-     <!-- groove:prime:end -->
-     ```
-   - If section absent, append to end of `AGENTS.md`; preserve all other content
-9. `/groove-utilities-task-install` already wrote the `<!-- groove:task:start -->` stub in step 2 — no additional AGENTS.md write needed here
 
 ## Constraints
 
@@ -105,5 +93,4 @@ Run in order:
   ✓ companion: agent-browser
   ✓ companion: pdf-to-markdown
   ✓ hooks: .groove/hooks/ ready
-  ✓ AGENTS.md updated (groove:prime, groove:task)
   ```

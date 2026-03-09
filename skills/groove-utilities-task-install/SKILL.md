@@ -18,8 +18,6 @@ The configured task backend is installed and verified reachable. User is informe
 - Backend CLI is available in PATH after install
 - User is shown a confirmation with the installed version or a reachability check
 - No-op if `tasks.backend: none`
-- If `tasks.backend: beans`: `AGENTS.md` contains a `<!-- groove:task:start -->` stub pointing to `beans prime`
-
 ## Constraints
 
 - Read `tasks.backend` from `.groove/index.md` to determine backend
@@ -36,12 +34,3 @@ The configured task backend is installed and verified reachable. User is informe
   - Update the `prefix:` field in the generated `.beans.yml` to the derived prefix (e.g. `GRV-`)
   - Set `path:` in `.beans.yml` to `.groove/tasks` so the task store lives under groove (aligned with `git.tasks` and `.groove/.gitignore`). Create `.groove/tasks` if it does not exist. If the default `.beans` directory was created and is non-empty, move its contents into `.groove/tasks` and remove the empty `.beans` directory.
   - Report the path written and the prefix used
-- If `tasks: beans`: write a minimal stub to `AGENTS.md` at git root:
-  - Wrap in `<!-- groove:task:start -->` / `<!-- groove:task:end -->` fenced section
-  - Stub content:
-    ```
-    Task backend: beans — use `/groove-utilities-task-*` skills for all task management.
-    Run `beans prime` to load the full beans CLI reference.
-    ```
-  - Replace section if it already exists; append if not; preserve all other `AGENTS.md` content
-  - Report the path written

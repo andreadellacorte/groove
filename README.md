@@ -193,14 +193,12 @@ Shell hooks wired into Claude Code's `.claude/settings.json` — run outside the
 
 ## Platform compatibility
 
-groove runs inside any AI coding assistant that supports Claude Code-style slash commands (`.claude/skills/` or `.agents/skills/` directories).
+groove targets **Claude Code** and **Cursor**. Session bootstrap and deterministic behaviour rely on native platform hooks (SessionStart, PreToolUse, etc.) which these platforms support.
 
 | Platform | Status | Notes |
 |---|---|---|
-| Claude Code | Verified | Primary target; fully tested |
-| Cursor | Unverified | Skills directory format compatible; not tested |
-| Cline | Unverified | `.agents/skills/` path recognised; not tested |
-| Amp | Unverified | Skills directory supported; not tested |
+| Claude Code | Supported | Primary target; fully tested with native hooks |
+| Cursor | Supported | Native hooks via `.cursor/hooks.json` |
 
 ## Requirements
 

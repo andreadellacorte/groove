@@ -23,6 +23,7 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | 0.11.7 | 0.12.0 | 0.11.7-to-0.12.0.md | Create `<memory>/learned/`; add `specs:` (required) and `groovebook:` (default andreadellacorte/groovebook) if absent. |
 | 0.13.0 | 0.14.0 | 0.13.0-to-0.14.0.md | Restructure config: `tasks:` → `tasks.backend`, `task.*` → `tasks.*`, `recent_memory_days:` → `memory.review_days`, remove `memory:` and `specs:` (hardcoded). |
 | 0.14.0 | 0.15.0 | 0.14.0-to-0.15.0.md | Run `/groove-admin-claude-hooks` to add `context-reprime` hook; run `/groove-admin-cursor-hooks` if `.cursor/` exists. |
+| 0.16.1 | 0.17.0 | 0.16.1-to-0.17.0.md | Remove `groove:prime` and `groove:task` AGENTS.md stubs — session bootstrap now handled by native platform hooks. |
 
 ## Notes
 

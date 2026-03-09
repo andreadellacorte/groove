@@ -1,16 +1,5 @@
-<!-- groove:prime:start -->
-**Run at the start of every session:**
-`/groove-utilities-prime` — loads groove workflow context into the conversation
-<!-- groove:prime:end -->
-
-<!-- groove:task:start -->
-**Run at the start of every session:**
-Task backend: beans — use `/groove-utilities-task-*` skills for all task management.
-Run `beans prime` to load the full beans CLI reference.
-<!-- groove:task:end -->
-
-Do not edit `.agents/skills` folder - that's the folder installed via `npx skills`.
+Do not edit `.agents/skills/groove-*` — managed by groove update; to modify, propose PRs to andreadellacorte/groove; to update, run `/groove-admin-update`.
 
 Do not edit `skills-lock.json` — it is managed exclusively by `npx skills add` and `groove update`.
 
-Only add content to `.groove` - don't edit the structure (that's done by groove).
+`.groove/` is the user zone — config, hooks, memory, and learned insights are safe to edit. Don't change its structure (that's done by groove).
