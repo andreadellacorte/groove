@@ -6,9 +6,17 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INDEX=".groove/index.md"
+JSON_MODE=false
+if [ "${1:-}" = "--json" ]; then
+  JSON_MODE=true
+fi
 
 if [ ! -f "$INDEX" ]; then
-  echo "groove: .groove/index.md not found — run /groove-admin-install to set up groove."
+  if [ "$JSON_MODE" = true ]; then
+    echo '{"additional_context": "groove: .groove/index.md not found — run /groove-admin-install to set up groove."}'
+  else
+    echo "groove: .groove/index.md not found — run /groove-admin-install to set up groove."
+  fi
   exit 0
 fi
 
@@ -34,6 +42,17 @@ groovebook=$(extract "groovebook" "")
 git_memory=$(sed -n '/^git:/,/^[a-z]/p' "$INDEX" | grep 'memory:' | head -1 | sed 's/.*memory:[[:space:]]*//' | tr -d '[:space:]')
 git_tasks=$(sed -n '/^git:/,/^[a-z]/p' "$INDEX" | grep 'tasks:' | head -1 | sed 's/.*tasks:[[:space:]]*//' | tr -d '[:space:]')
 git_hooks=$(sed -n '/^git:/,/^[a-z]/p' "$INDEX" | grep 'hooks:' | head -1 | sed 's/.*hooks:[[:space:]]*//' | tr -d '[:space:]')
+
+# In JSON mode, capture all output and wrap in additional_context
+if [ "$JSON_MODE" = true ]; then
+  _tmpfile=$(mktemp)
+  trap 'rm -f "$_tmpfile"' EXIT
+  _emit_output() {
+    _do_output
+  } > "$_tmpfile"
+fi
+
+_do_output() {
 
 # Version check
 bash "$SCRIPT_DIR/../../groove-utilities-check/scripts/check.sh" 2>/dev/null || true
@@ -119,3 +138,14 @@ bash "$SCRIPT_DIR/groove-utilities-task-prime.sh" 2>/dev/null || true
 # Memory prime
 echo ""
 bash "$SCRIPT_DIR/groove-utilities-memory-prime.sh" 2>/dev/null || true
+
+}
+
+if [ "$JSON_MODE" = true ]; then
+  _do_output > "$_tmpfile" 2>/dev/null
+  # Escape for JSON: backslashes, quotes, newlines, tabs
+  escaped=$(sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/	/\\t/g' "$_tmpfile" | awk '{printf "%s\\n", $0}' | sed 's/\\n$//')
+  printf '{"additional_context": "%s"}\n' "$escaped"
+else
+  _do_output
+fi

@@ -13,6 +13,11 @@
         "hooks": [
           { "type": "command", "command": "bash .groove/hooks/claude/git-activity-buffer.sh" }
         ]
+      },
+      {
+        "hooks": [
+          { "type": "command", "command": "bash .groove/hooks/claude/version-check.sh" }
+        ]
       }
     ],
     "PreToolUse": [

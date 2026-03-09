@@ -23,10 +23,11 @@ Selected hooks are registered in `.cursor/hooks.json` and shell scripts are writ
 
 | Name | Event | Matcher | What it does |
 |---|---|---|---|
-| `context-reprime` | `sessionStart` | — | Reads `.groove/index.md` and outputs full prime context as `additional_context` — ensures workflow context is loaded after every session start and compaction |
+| `context-reprime` | `sessionStart` | — | Runs the prime script with `--json` — ensures full workflow context is loaded after every session start and compaction |
 | `daily-end-reminder` | `stop` | — | If hour is 16–21 local time and `.groove/index.md` exists, prints a reminder to run `/groove-daily-end` |
 | `git-activity-buffer` | `postToolUse` | `Shell` | If the command contains `git commit`, appends a timestamped line to `.groove/.cache/git-activity-buffer.txt` |
 | `block-managed-paths` | `preToolUse` | `Write` | If `file_path` starts with `.agents/skills/groove` or `skills/groove`, exits with code 2 to block the write with an explanatory message |
+| `version-check` | `postToolUse` | — | Checks for a new groove version once per hour; calls `groove-utilities-check` |
 
 ## Steps
 
@@ -40,9 +41,9 @@ Remove the named hook's entry from `.cursor/hooks.json` (leave the script in pla
 
 ### Default (install)
 
-1. Ask which hooks to enable (default: all four):
+1. Ask which hooks to enable (default: all five):
    ```
-   Which hooks to install? (all / comma-separated: context-reprime, daily-end-reminder, git-activity-buffer, block-managed-paths)
+   Which hooks to install? (all / comma-separated: context-reprime, daily-end-reminder, git-activity-buffer, block-managed-paths, version-check)
    Press enter for all.
    ```
 
@@ -56,29 +57,17 @@ Remove the named hook's entry from `.cursor/hooks.json` (leave the script in pla
 
 6. Report summary:
    ```
-   ✓ context-reprime     — sessionStart hook → .groove/hooks/cursor/context-reprime.sh
+   ✓ context-reprime     — sessionStart hook → groove-utilities-prime.sh --json
    ✓ daily-end-reminder  — stop hook → .groove/hooks/cursor/daily-end-reminder.sh
    ✓ git-activity-buffer — postToolUse/Shell hook → .groove/hooks/cursor/git-activity-buffer.sh
    ✓ block-managed-paths — preToolUse/Write hook → .groove/hooks/cursor/block-managed-paths.sh
+   ✓ version-check       — postToolUse hook → .groove/hooks/cursor/version-check.sh
    ✓ .cursor/hooks.json updated
    ```
 
 ## Shell script templates
 
 Write these verbatim to `.groove/hooks/cursor/`. Never overwrite an existing script without showing a diff and confirming.
-
-### `context-reprime.sh`
-
-```bash
-#!/usr/bin/env bash
-# groove: sessionStart hook — inject workflow context after session start / compaction
-if [ -f ".groove/index.md" ]; then
-  # Extract key config values from frontmatter
-  echo '{"additional_context": "groove: run /groove-utilities-prime to load workflow context. This ensures conventions, config, and CLI reference are available in this session."}'
-else
-  echo '{"additional_context": "groove: .groove/index.md not found — run /groove-admin-install to set up groove."}'
-fi
-```
 
 ### `daily-end-reminder.sh`
 
@@ -118,6 +107,23 @@ if echo "$path" | grep -qE '^(\.agents/skills/groove|skills/groove)'; then
 fi
 ```
 
+### `version-check.sh`
+
+```bash
+#!/usr/bin/env bash
+# groove: postToolUse hook — check for new groove version (once per hour)
+CACHE=".groove/.cache/last-version-check-ts"
+mkdir -p .groove/.cache
+now=$(date +%s)
+if [ -f "$CACHE" ]; then
+  last=$(cat "$CACHE")
+  diff=$((now - last))
+  [ "$diff" -lt 3600 ] && exit 0
+fi
+echo "$now" > "$CACHE"
+bash .agents/skills/groove-utilities-check/scripts/check.sh 2>/dev/null || true
+```
+
 ## `.cursor/hooks.json` template
 
 Merge these into the `hooks` key. Preserve all other keys.
@@ -128,7 +134,7 @@ Merge these into the `hooks` key. Preserve all other keys.
   "hooks": {
     "sessionStart": [
       {
-        "command": "bash .groove/hooks/cursor/context-reprime.sh"
+        "command": "bash .agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh --json"
       }
     ],
     "stop": [
@@ -140,6 +146,9 @@ Merge these into the `hooks` key. Preserve all other keys.
       {
         "matcher": "Shell",
         "command": "bash .groove/hooks/cursor/git-activity-buffer.sh"
+      },
+      {
+        "command": "bash .groove/hooks/cursor/version-check.sh"
       }
     ],
     "preToolUse": [

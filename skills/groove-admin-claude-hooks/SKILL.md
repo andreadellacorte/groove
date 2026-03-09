@@ -26,7 +26,8 @@ Selected hooks are registered in `.claude/settings.json` and shell scripts are w
 | `daily-end-reminder` | `Stop` | — | If hour is 16–21 local time and `.groove/index.md` exists, prints a reminder to run `/groove-daily-end` |
 | `git-activity-buffer` | `PostToolUse` | `Bash` | If the Bash command contains `git commit`, appends a timestamped line to `.groove/.cache/git-activity-buffer.txt` |
 | `block-managed-paths` | `PreToolUse` | `Write`, `Edit` | If `file_path` starts with `.agents/skills/groove` or `skills/groove`, exits non-zero to block the write with an explanatory message |
-| `context-reprime` | `SessionStart` | `startup\|compact` | Outputs re-prime instruction as context Claude sees — ensures `/groove-utilities-prime` runs after every session start and compaction |
+| `context-reprime` | `SessionStart` | `startup\|compact` | Runs the prime script directly — ensures full workflow context is loaded after every session start and compaction |
+| `version-check` | `PostToolUse` | — | Checks for a new groove version once per hour; calls `groove-utilities-check` |
 
 ## Steps
 
@@ -40,9 +41,9 @@ Remove the named hook's entry from `.claude/settings.json` (leave the script in 
 
 ### Default (install)
 
-1. Ask which hooks to enable (default: all four):
+1. Ask which hooks to enable (default: all five):
    ```
-   Which hooks to install? (all / comma-separated: daily-end-reminder, git-activity-buffer, block-managed-paths, context-reprime)
+   Which hooks to install? (all / comma-separated: daily-end-reminder, git-activity-buffer, block-managed-paths, context-reprime, version-check)
    Press enter for all.
    ```
 
@@ -59,7 +60,8 @@ Remove the named hook's entry from `.claude/settings.json` (leave the script in 
    ✓ daily-end-reminder  — Stop hook → .groove/hooks/claude/daily-end-reminder.sh
    ✓ git-activity-buffer — PostToolUse/Bash hook → .groove/hooks/claude/git-activity-buffer.sh
    ✓ block-managed-paths — PreToolUse/Write+Edit hook → .groove/hooks/claude/block-managed-paths.sh
-   ✓ context-reprime     — SessionStart hook (inline echo)
+   ✓ context-reprime     — SessionStart hook → groove-utilities-prime.sh
+   ✓ version-check       — PostToolUse hook → .groove/hooks/claude/version-check.sh
    ✓ .claude/settings.json updated
    ```
 
@@ -105,6 +107,23 @@ if echo "$path" | grep -qE '^(\.agents/skills/groove|skills/groove)'; then
 fi
 ```
 
+### `version-check.sh`
+
+```bash
+#!/usr/bin/env bash
+# groove: PostToolUse hook — check for new groove version (once per hour)
+CACHE=".groove/.cache/last-version-check-ts"
+mkdir -p .groove/.cache
+now=$(date +%s)
+if [ -f "$CACHE" ]; then
+  last=$(cat "$CACHE")
+  diff=$((now - last))
+  [ "$diff" -lt 3600 ] && exit 0
+fi
+echo "$now" > "$CACHE"
+bash .agents/skills/groove-utilities-check/scripts/check.sh 2>/dev/null || true
+```
+
 ## `.claude/settings.json` entries
 
 Merge these into the `hooks` key. Preserve all other keys.
@@ -124,6 +143,11 @@ Merge these into the `hooks` key. Preserve all other keys.
         "matcher": "Bash",
         "hooks": [
           { "type": "command", "command": "bash .groove/hooks/claude/git-activity-buffer.sh" }
+        ]
+      },
+      {
+        "hooks": [
+          { "type": "command", "command": "bash .groove/hooks/claude/version-check.sh" }
         ]
       }
     ],
@@ -147,7 +171,7 @@ Merge these into the `hooks` key. Preserve all other keys.
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'groove: run /groove-utilities-prime to load workflow context'"
+            "command": "bash .agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh"
           }
         ]
       }

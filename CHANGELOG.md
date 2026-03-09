@@ -2,6 +2,14 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.18.0] - 2026-03-09
+
+### 🔧 Enhanced Skills
+
+- `groove-admin-claude-hooks` — `SessionStart` hook now runs the prime script directly instead of echoing a reminder. New `version-check` hook (`PostToolUse`, no matcher) checks for groove updates once per hour. Now 5 hooks total.
+- `groove-admin-cursor-hooks` — `sessionStart` hook now runs the prime script with `--json` instead of a separate `context-reprime.sh` script. New `version-check` hook (`postToolUse`, no matcher) checks for groove updates once per hour. Removed `context-reprime.sh` shell script template. Now 5 hooks total.
+- `groove-utilities-prime` — new `--json` flag wraps all output in `{"additional_context": "..."}` for Cursor hook compatibility. Plain text output (Claude behaviour) unchanged.
+
 ## [0.15.1] - 2026-03-09
 
 ### 🐞 Fixes
