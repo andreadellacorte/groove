@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.13.0] - 2026-03-09
+
+### ✨ New Skills
+
+- `groove-admin-claude-statusline` — install a rich single-line Claude Code statusline showing model, repo@branch, token usage, effort level, 5h/7d rate-limit utilisation, and active `/loop` count with next-fire time. Scripts in `scripts/` per Agent Skills spec. Supports `--list` and `--uninstall`.
+
 ## [0.12.2] - 2026-03-09
 
 ### 🐞 Fixes
