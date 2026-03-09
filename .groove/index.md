@@ -1,5 +1,5 @@
 ---
-groove-version: 0.16.0
+groove-version: 0.16.1
 groovebook: andreadellacorte/groovebook
 tasks:
   backend: beans

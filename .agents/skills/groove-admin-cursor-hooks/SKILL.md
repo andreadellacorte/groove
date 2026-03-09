@@ -23,7 +23,7 @@ Selected hooks are registered in `.cursor/hooks.json` and shell scripts are writ
 
 | Name | Event | Matcher | What it does |
 |---|---|---|---|
-| `context-reprime` | `sessionStart` | — | Runs the prime script and outputs full groove workflow context as `additional_context` — ensures config, commands, and conventions are loaded after every session start and compaction |
+| `context-reprime` | `sessionStart` | — | Reads `.groove/index.md` and outputs full prime context as `additional_context` — ensures workflow context is loaded after every session start and compaction |
 | `daily-end-reminder` | `stop` | — | If hour is 16–21 local time and `.groove/index.md` exists, prints a reminder to run `/groove-daily-end` |
 | `git-activity-buffer` | `postToolUse` | `Shell` | If the command contains `git commit`, appends a timestamped line to `.groove/.cache/git-activity-buffer.txt` |
 | `block-managed-paths` | `preToolUse` | `Write` | If `file_path` starts with `.agents/skills/groove` or `skills/groove`, exits with code 2 to block the write with an explanatory message |
@@ -73,10 +73,8 @@ Write these verbatim to `.groove/hooks/cursor/`. Never overwrite an existing scr
 #!/usr/bin/env bash
 # groove: sessionStart hook — inject workflow context after session start / compaction
 if [ -f ".groove/index.md" ]; then
-  context=$(bash .agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh 2>/dev/null || echo "groove: prime script failed — run /groove-utilities-prime manually")
-  # Escape for JSON
-  escaped=$(echo "$context" | python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))" 2>/dev/null | sed 's/^"//;s/"$//')
-  echo "{\"additional_context\": \"${escaped}\"}"
+  # Extract key config values from frontmatter
+  echo '{"additional_context": "groove: run /groove-utilities-prime to load workflow context. This ensures conventions, config, and CLI reference are available in this session."}'
 else
   echo '{"additional_context": "groove: .groove/index.md not found — run /groove-admin-install to set up groove."}'
 fi

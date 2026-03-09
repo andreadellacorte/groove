@@ -25,11 +25,11 @@ All pending migrations are applied to the user's local groove state in version o
 
 ## Steps
 
-1. **Always run** `npx skills add andreadellacorte/groove --yes` — this is mandatory every time, even if skills were recently installed. It pulls latest groove skill files and refreshes the lock entry. Never skip this step. Note: the CLI may install a cached or default-branch copy rather than the latest release tag; step 4 verifies against GitHub.
-   - After this step, **re-read this SKILL.md (`skills/groove-admin-update/SKILL.md`) from disk** before continuing — the skill refresh may have updated the update command itself, and the remainder of these steps must reflect the latest version
-2. Read `groove-version:` from `.groove/index.md` — if key absent, assume `0.1.0` and write it
-3. Read installed version from `version:` in `skills/groove/SKILL.md`
-4. **Verify against latest release**: Fetch `https://api.github.com/repos/andreadellacorte/groove/releases/latest` (tag_name, strip leading `v`). If the request succeeds, compare installed with latest using semver. If installed is less than latest: do **not** report "up to date" even if local and installed match; instead report: "Installed skill is v<installed> but latest release is v<latest>. The add step may have used a cached or default-branch copy. Run: `npx skills add andreadellacorte/groove@v<latest> --yes` then run `/groove-admin-update` again." and exit. If the API call fails (network, rate limit), continue without this check.
+1. **Fetch latest release tag** from `https://api.github.com/repos/andreadellacorte/groove/releases/latest` (tag_name). This is the target version.
+2. **Install with retry**: Run `npx skills add andreadellacorte/groove@<tag> --yes` (e.g. `@v0.16.1`). After it completes, read `version:` from `skills/groove/SKILL.md` and compare to the target. If the installed version is still older than the target, wait 5 seconds and retry. Repeat up to 3 times total. If all attempts fail to install the target version, report: "Failed to install v<target> after 3 attempts — `npx skills add` may be caching an older version. Try again later or install manually with `npx skills add andreadellacorte/groove@v<target> --yes`." and exit.
+   - After a successful install, **re-read this SKILL.md (`skills/groove-admin-update/SKILL.md`) from disk** before continuing — the skill refresh may have updated the update command itself, and the remainder of these steps must reflect the latest version
+3. Read `groove-version:` from `.groove/index.md` — if key absent, assume `0.1.0` and write it
+4. Read installed version from `version:` in `skills/groove/SKILL.md` (already confirmed to match target in step 2)
 5. If local and installed versions match: report "groove is up to date (v<version>)" and exit
 6. Read `skills/groove/migrations/index.md` — parse the migration table
 7. Filter rows where `To` > local version AND `To` <= installed version, in table order — the `From` field is informational only and does not gate execution
@@ -51,7 +51,7 @@ All pending migrations are applied to the user's local groove state in version o
 
 ## Constraints
 
-- **Source of truth for "latest" is GitHub releases** — `npx skills add` can leave an older version on disk (cached clone, default branch). Comparing only `.groove/index.md` with installed `SKILL.md` can falsely report "up to date". Step 4 must verify installed vs `releases/latest` and warn when they differ.
+- **Source of truth for "latest" is GitHub releases** — `npx skills add` can cache older versions. Step 1-2 fetches the latest release tag and retries installation up to 3 times to ensure the correct version is installed.
 - Never skip a migration — apply every matching migration in table order even if `From` does not match local version exactly
 - Update `groove-version:` after each individual migration, not only at the end
 - If a migration fails: stop, report the failure and current version, do not continue
