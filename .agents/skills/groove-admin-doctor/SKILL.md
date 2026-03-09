@@ -54,10 +54,6 @@ platform symlinks
   ✓ .claude/skills/groove → ../../.agents/skills/groove
   ✗ .cursor/skills/ missing — run: /groove-admin-install
 
-AGENTS.md
-  ✓ groove:prime section present
-  ✗ groove:task section missing — run: /groove-admin-install
-
 ─────────────────────────────────────
 1 issue found. Run the suggested commands above to fix.
 ```
@@ -100,7 +96,6 @@ AGENTS.md
     - If absent: `ℹ .cursor/hooks.json not present — run /groove-admin-cursor-hooks to install native hooks (optional)`
     - All present: `✓ Cursor native hooks (context-reprime, daily-end-reminder, git-activity-buffer, block-managed-paths)`
   - If `.cursor/` absent: skip silently (Cursor not in use)
-- Also check `AGENTS.md` for presence of `<!-- groove:prime:start -->` and `<!-- groove:task:start -->` sections
 - Collect all results before printing — do not interleave output with check progress
 - Each `✗` item must include a concrete remediation command on the same line
 - Exit with a clear "all healthy" message if no issues found
