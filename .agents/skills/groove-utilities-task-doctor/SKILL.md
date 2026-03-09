@@ -25,7 +25,7 @@ All task backend health checks pass. User knows if the task backend is correctly
 2. `tasks.backend` key is present and has a valid value (`beans`, `linear`, `github`, or `none`)
 3. If `tasks.backend: none` — report no-op and exit (all green)
 4. Backend CLI is installed:
-   - `beans`: `beans --version`
+   - `beans`: `beans version`
    - `linear`: `linear --version`
    - `github`: `gh --version`
 5. Backend-specific config file exists:
