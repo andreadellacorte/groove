@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "bash .groove/hooks/cursor/context-reprime.sh"
+      }
+    ],
+    "stop": [
+      {
+        "command": "bash .groove/hooks/cursor/daily-end-reminder.sh"
+      }
+    ],
+    "postToolUse": [
+      {
+        "matcher": "Shell",
+        "command": "bash .groove/hooks/cursor/git-activity-buffer.sh"
+      }
+    ],
+    "preToolUse": [
+      {
+        "matcher": "Write",
+        "command": "bash .groove/hooks/cursor/block-managed-paths.sh"
+      }
+    ]
+  }
+}

@@ -26,6 +26,7 @@ All memory health checks pass. User knows if the memory file structure is correc
 3. Memory log subdirectories exist: `daily/`, `weekly/`, `monthly/`, `git/`
 4. Specs directory exists: `.groove/memory/specs/` (used by `/groove-work-spec`)
 5. `learned/` directory exists: `.groove/memory/learned/` (warm memory tier)
+6. `docs/` directory exists: `.groove/memory/docs/` (reference documentation)
 
 ## Remediation hints
 
@@ -36,6 +37,7 @@ All memory health checks pass. User knows if the memory file structure is correc
 | Log subdirectory missing | `/groove-utilities-memory-log-daily` |
 | Specs directory missing | `/groove-utilities-memory-install` |
 | `learned/` missing | `/groove-admin-update` (migration 0.11.5→0.12.0 creates it) |
+| `docs/` missing | `/groove-utilities-memory-install` |
 
 ## Constraints
 

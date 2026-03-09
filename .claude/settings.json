@@ -28,6 +28,17 @@
           { "type": "command", "command": "bash .groove/hooks/claude/block-managed-paths.sh" }
         ]
       }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh"
+          }
+        ]
+      }
     ]
   }
 }
