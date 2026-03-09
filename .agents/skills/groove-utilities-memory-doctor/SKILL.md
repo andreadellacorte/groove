@@ -22,11 +22,10 @@ All memory health checks pass. User knows if the memory file structure is correc
 ## Checks (run in order)
 
 1. `.groove/index.md` exists at git root
-2. `memory:` key is present and has a valid path
-3. Memory base path exists (e.g. `.groove/memory/`)
-4. Memory log subdirectories exist: `daily/`, `weekly/`, `monthly/`, `git/`
-5. Specs directory exists: `specs/` (used by `/groove-work-spec`)
-6. `learned/` directory exists (v0.12.x — warm memory tier)
+2. Memory base path exists (`.groove/memory/`)
+3. Memory log subdirectories exist: `daily/`, `weekly/`, `monthly/`, `git/`
+4. Specs directory exists: `.groove/memory/specs/` (used by `/groove-work-spec`)
+5. `learned/` directory exists: `.groove/memory/learned/` (warm memory tier)
 
 ## Remediation hints
 

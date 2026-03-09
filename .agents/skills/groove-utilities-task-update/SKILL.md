@@ -22,8 +22,8 @@ A task's status, body, or metadata is updated in the configured backend. Progres
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` to determine backend
-- If `tasks: none`, no-op with friendly message
+- Read `tasks.backend` from `.groove/index.md` to determine backend
+- If `tasks.backend: none`, no-op with friendly message
 - Never mark a task completed without a resolution section in the body
 - Ask user to provide resolution if task body has none
 - User must explicitly confirm completion — do not auto-complete

@@ -11,11 +11,11 @@ metadata:
 
 ## Outcome
 
-`<memory>/monthly/YYYY-MM.md` is created or updated with a roll-up of the month's daily files. Sections cover themes, key outcomes, and learnings at monthly scope.
+`.groove/memory/monthly/YYYY-MM.md` is created or updated with a roll-up of the month's daily files. Sections cover themes, key outcomes, and learnings at monthly scope.
 
 ## Acceptance Criteria
 
-- File exists at `<memory>/monthly/YYYY-MM.md` after command completes
+- File exists at `.groove/memory/monthly/YYYY-MM.md` after command completes
 - Themes section identifies major recurring topics from the month
 - Key outcomes section lists significant completions and milestones
 - Learnings section synthesises patterns and insights across the month
@@ -23,9 +23,9 @@ metadata:
 
 ## Constraints
 
-- Use `memory:` path from `.groove/index.md` frontmatter
+- Memory path is always `.groove/memory/`
 - Only run on the last weekday of the month, or when user explicitly requests
-- Roll up from that month's daily files in `<memory>/daily/`
+- Roll up from that month's daily files in `.groove/memory/daily/`
 - If no daily files exist for the month, note that and exit gracefully
 - Use template at `skills/groove-utilities-memory-log-monthly/templates/monthly.md` for file structure
 - If file already exists, update rather than overwrite

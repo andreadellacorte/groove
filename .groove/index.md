@@ -1,13 +1,12 @@
 ---
-groove-version: 0.12.1
-tasks: beans
-task:
+groove-version: 0.15.0
+groovebook: andreadellacorte/groovebook
+tasks:
+  backend: beans
   list_limit: 15
   analyse_limit: 30
-memory: .groove/memory/
-recent_memory_days: 5
-specs: .groove/memory/specs/
-groovebook: andreadellacorte/groovebook
+memory:
+  review_days: 5
 git:
   memory: commit-all
   tasks: commit-all

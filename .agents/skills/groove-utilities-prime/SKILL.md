@@ -31,12 +31,15 @@ Output the following to the conversation (do not write to any file):
 groove is installed in this repo. Use `/groove-*` skills for all workflow commands.
 
 ## Config
-tasks:      <tasks value>
-memory:     <memory value>
-specs:      <specs value, or "(default: <memory>/specs/)" if absent>
-git.memory: <git.memory value>
-git.tasks:  <git.tasks value>
-git.hooks:  <git.hooks value>
+tasks.backend:      <tasks.backend value>
+tasks.list_limit:   <tasks.list_limit value>
+tasks.analyse_limit:<tasks.analyse_limit value>
+memory.review_days: <memory.review_days value>
+memory path:        .groove/memory/ (hardcoded)
+specs path:         .groove/memory/specs/ (hardcoded)
+git.memory:         <git.memory value>
+git.tasks:          <git.tasks value>
+git.hooks:          <git.hooks value>
 
 ## Key commands
 /groove-daily-start           — start the workday
@@ -59,7 +62,7 @@ git.hooks:  <git.hooks value>
 
 ## Conventions
 - Stage tasks: "YYYY-MM-DD, <Stage>" (no numbers; e.g. 2026-02-28, Brainstorm; 2026-02-28, Compound — topic)
-- Memory logs: <memory value>daily/, weekly/, monthly/, git/
+- Memory logs: .groove/memory/daily/, weekly/, monthly/, git/
 - Task completion requires "Summary of Changes" in body before marking done
 - Archive is always user-triggered — never automatic during end
 - 80% of compound loop value is in plan and review — do not skip them
@@ -110,6 +113,6 @@ The identity section is free-form — output the file contents verbatim. This gi
 
 ## Constraints
 
-- Read `.groove/index.md` frontmatter to substitute `tasks:`, `memory:`, and `git.*` placeholders
+- Read `.groove/index.md` frontmatter to substitute `tasks.*`, `memory.*`, and `git.*` placeholders; memory path is always `.groove/memory/`, specs is always `.groove/memory/specs/`
 - Output to conversation only — do not write to AGENTS.md or any other file (except updating `.groove/.cache/last-version-check`)
 - Version check runs at most once per day — gate on `.groove/.cache/last-version-check` date

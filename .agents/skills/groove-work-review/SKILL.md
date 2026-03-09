@@ -43,11 +43,11 @@ The artifact is reviewed for correctness, quality, and fit to plan. Lessons are 
 
 6. **Append review notes** to the task body.
 
-7. **Create stage task** via `/groove-utilities-task-create` if `tasks != none` (title `YYYY-MM-DD, Review`).
+7. **Create stage task** via `/groove-utilities-task-create` if `tasks.backend != none` (title `YYYY-MM-DD, Review`).
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` to determine backend
+- Read `tasks.backend` from `.groove/index.md` to determine backend
 - Be thorough — 80% of compound loop value is here and in plan
 - If rework: note specific gaps and link back to which plan step was missed or unclear
 - If accept: still note what worked well and what could be improved next time

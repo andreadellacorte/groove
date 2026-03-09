@@ -22,8 +22,8 @@ All task backend health checks pass. User knows if the task backend is correctly
 ## Checks (run in order)
 
 1. `.groove/index.md` exists at git root
-2. `tasks:` key is present and has a valid value (`beans`, `linear`, `github`, or `none`)
-3. If `tasks: none` — report no-op and exit (all green)
+2. `tasks.backend` key is present and has a valid value (`beans`, `linear`, `github`, or `none`)
+3. If `tasks.backend: none` — report no-op and exit (all green)
 4. Backend CLI is installed:
    - `beans`: `beans --version`
    - `linear`: `linear --version`

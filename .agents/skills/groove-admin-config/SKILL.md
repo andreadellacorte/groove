@@ -32,9 +32,10 @@ Otherwise, walk the user through each config key in order. For each key: show th
 
 | Key | Default | Options | Question to ask |
 |---|---|---|---|
-| `tasks` | `beans` | `beans \| linear \| github \| none` | "Which task backend? beans tracks tasks as markdown files in your repo." |
-| `memory` | `.groove/memory/` | any path | "Where should groove store memory logs? (default: .groove/memory/)" |
-| `specs` | `<memory>/specs/` (e.g. `.groove/memory/specs/`) | any path | "Specs directory (required). Default: .groove/memory/specs/. Set to e.g. `specs/` for project-root visibility." |
+| `tasks.backend` | `beans` | `beans \| linear \| github \| none` | "Which task backend? beans tracks tasks as markdown files in your repo." |
+| `tasks.list_limit` | `15` | positive integer | "Max tasks shown by task-list? (default: 15)" |
+| `tasks.analyse_limit` | `30` | positive integer | "Max tasks shown by task-analyse? (default: 30)" |
+| `memory.review_days` | `5` | positive integer | "How many recent business days to review at daily start? (default: 5)" |
 | `git.memory` | `ignore-all` | `ignore-all \| hybrid \| commit-all` | "Git strategy for memory logs? ignore-all keeps them local, hybrid commits logs but ignores sessions, commit-all commits everything." |
 | `git.tasks` | `ignore-all` | `ignore-all \| commit-all` | "Git strategy for task files (.groove/tasks/)? ignore-all keeps them local, commit-all tracks them in git." |
 | `git.hooks` | `commit-all` | `ignore-all \| commit-all` | "Git strategy for hooks (.groove/hooks/)? commit-all shares hooks with the team, ignore-all keeps them local." |
@@ -50,7 +51,7 @@ After all keys are confirmed:
 ## Constraints
 
 - If `.groove/index.md` already exists, pre-fill each question with the current value
-- Always write `specs:` with a non-empty value (default `<memory>/specs/`, e.g. `.groove/memory/specs/`) — if absent, config is broken. Always write `groovebook:` (default `andreadellacorte/groovebook`; blank = disabled).
+- Always write `groovebook:` (default `andreadellacorte/groovebook`; blank = disabled). Memory path (`.groove/memory/`) and specs path (`.groove/memory/specs/`) are hardcoded — do not prompt for them.
 - If `--defaults` is passed, apply all defaults without any prompting — used by `groove-admin-install` for zero-friction first-time setup
 - If other arguments are provided (e.g. `tasks=linear git.memory=hybrid`), apply them without prompting and use defaults for any unspecified keys
 - Always write `groove-version:` matching the installed version from `skills/groove/SKILL.md`

@@ -25,7 +25,7 @@ A period retrospective is output to the conversation: session rating trend, recu
 
 ## Steps
 
-1. Read `memory:` from `.groove/index.md` (default: `.groove/memory/`)
+1. Memory path is always `.groove/memory/`
 
 2. Determine date range from $ARGUMENTS:
    - `week`: last 7 days (today - 7)
@@ -33,7 +33,7 @@ A period retrospective is output to the conversation: session rating trend, recu
    - `all`: all available data
    - Default if absent: `week`
 
-3. **Session ratings** — read `<memory>/learned/signals.md` if it exists:
+3. **Session ratings** — read `.groove/memory/learned/signals.md` if it exists:
    - Parse table rows matching the date range: `| YYYY-MM-DD | N/5 | context |`
    - Compute: count, average rating, trend (last 3 vs first 3 if enough data)
    - If no data: note "No session ratings recorded yet"
@@ -44,7 +44,7 @@ A period retrospective is output to the conversation: session rating trend, recu
    - Count total resolved vs open incidents
    - If no task backend or no data: note "No incidents recorded yet"
 
-5. **Learnings** — glob `<memory>/learned/*.md` (exclude `signals.md`):
+5. **Learnings** — glob `.groove/memory/learned/*.md` (exclude `signals.md`):
    - For each file: read and collect dated entries (`## YYYY-MM-DD` headings) within the date range
    - Group by topic (filename stem)
    - Count entries per topic; show the most recent bullet per topic as a sample

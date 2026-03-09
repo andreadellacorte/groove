@@ -21,8 +21,8 @@ All completed and scrapped tasks are archived in the configured backend. The cou
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` to determine backend
-- If `tasks: none`, no-op with friendly message
+- Read `tasks.backend` from `.groove/index.md` to determine backend
+- If `tasks.backend: none`, no-op with friendly message
 - Always show user what will be archived and ask for confirmation before proceeding
 - Never run automatically during daily end — only when user explicitly requests
 - Backend mappings:

@@ -25,7 +25,7 @@ Deferred items from a session are captured before they are forgotten, or existin
 
 ## Task backend
 
-Read `tasks:` from `.groove/index.md`. Promises are tracked as tasks in the configured backend. If no task backend is configured (`tasks: none`), tell the user to run `/groove-utilities-task-install` first.
+Read `tasks.backend` from `.groove/index.md`. Promises are tracked as tasks in the configured backend. If no task backend is configured (`tasks.backend: none`), tell the user to run `/groove-utilities-task-install` first.
 
 Promises are stored as tasks under a shared "Groove Memory" milestone → "Promises" epic hierarchy. This keeps them organised and out of the main work task list.
 
@@ -65,8 +65,8 @@ Use the Promises epic ID as `<parent-id>` for all promise tasks.
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` at the start of every invocation
-- Requires a configured task backend — if `tasks: none`, prompt user to install one
+- Read `tasks.backend` from `.groove/index.md` at the start of every invocation
+- Requires a configured task backend — if `tasks.backend: none`, prompt user to install one
 - Never auto-capture promises without user confirmation — always explicit
 - Milestone/epic parent hierarchy is idempotent — always check before creating; never create duplicates
 - Use `-s todo` for open, `-s completed` for resolved; `-p deferred` to signal not active work
