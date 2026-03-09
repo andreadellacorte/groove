@@ -22,17 +22,18 @@ The workday is prepared: recent days are reviewed, today's daily memory file is 
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks:`, `memory:`, and `recent_memory_days:` config
+- Read `.groove/index.md` for `tasks.backend` and `memory.review_days` config
+- Memory path is always `.groove/memory/`
 - Call `/groove-utilities-task-analyse` to get current task state
-- **Review recent days:** If `<memory>/daily/` is empty (no files exist), skip this step entirely and note "Fresh install — no prior logs." Otherwise, identify the last `recent_memory_days` business days (Mon–Fri) counting back from yesterday (skip Saturday and Sunday). For each date:
-  - Check `<memory>/daily/YYYY-MM-DD.md`:
+- **Review recent days:** If `.groove/memory/daily/` is empty (no files exist), skip this step entirely and note "Fresh install — no prior logs." Otherwise, identify the last `memory.review_days` business days (Mon–Fri) counting back from yesterday (skip Saturday and Sunday). For each date:
+  - Check `.groove/memory/daily/YYYY-MM-DD.md`:
     - `✓ YYYY-MM-DD — start + end logged` if both start-of-day and end sections exist
     - `~ YYYY-MM-DD — start only, no end logged` if only start section present
     - `✗ YYYY-MM-DD — missing` if file does not exist
     - Show a one-line context from the file if present (e.g. first bullet from "Done today" or plan intent)
   - Show git activity: run `git log --oneline --after="YYYY-MM-DD 00:00" --before="YYYY-MM-DD 23:59:59"` — display commit count and first few titles; skip silently if not in a git repo or no commits
   - Do NOT block start if files are missing or incomplete — just report
-- **Create new day memory:** Create today's file at `<memory>/daily/YYYY-MM-DD.md` using the template at `skills/groove-daily-start/templates/daily-start.md`. If the file already exists, skip (idempotent). Create `<memory>/daily/` if missing.
+- **Create new day memory:** Create today's file at `.groove/memory/daily/YYYY-MM-DD.md` using the template at `skills/groove-daily-start/templates/daily-start.md`. If the file already exists, skip (idempotent). Create `.groove/memory/daily/` if missing.
 - After the recent-days review, check for open promises via `/groove-utilities-memory-promises --list`:
   - If open promises: show inline note: `→ N open promise(s) — run /groove-utilities-memory-promises --list to review`
   - If none: skip silently

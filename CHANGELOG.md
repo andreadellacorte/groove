@@ -2,6 +2,17 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.14.0] - 2026-03-09
+
+### ⚠️ Breaking Changes
+
+- **Config restructure** — `.groove/index.md` schema changed:
+  - `tasks: beans` → `tasks.backend: beans` (grouped under `tasks:` with `list_limit` and `analyse_limit`)
+  - `task.list_limit` / `task.analyse_limit` → `tasks.list_limit` / `tasks.analyse_limit`
+  - `recent_memory_days: 5` → `memory.review_days: 5`
+  - `memory:` and `specs:` keys removed — paths are now hardcoded to `.groove/memory/` and `.groove/memory/specs/`
+- Migration `0.13.0 → 0.14.0` handles all key renames automatically via `/groove-admin-update`
+
 ## [0.13.0] - 2026-03-09
 
 ### ✨ New Skills

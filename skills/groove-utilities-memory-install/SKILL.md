@@ -15,16 +15,16 @@ Memory directories are created and ready for use.
 
 ## Acceptance Criteria
 
-- `<memory>/daily/`, `<memory>/weekly/`, `<memory>/monthly/`, `<memory>/git/` exist
-- `<memory>/specs/` directory exists (outcome specs; used by `/groove-work-spec`)
-- `<memory>/learned/` directory exists
+- `.groove/memory/daily/`, `.groove/memory/weekly/`, `.groove/memory/monthly/`, `.groove/memory/git/` exist
+- `.groove/memory/specs/` directory exists (outcome specs; used by `/groove-work-spec`)
+- `.groove/memory/learned/` directory exists
 - User is shown the initialized paths
 
 ## Constraints
 
-- Read `memory:` from `.groove/index.md` frontmatter (default: `.groove/memory/`)
+- Memory path is always `.groove/memory/`
 - Create directories if they do not exist:
   ```bash
-  mkdir -p <memory>/daily <memory>/weekly <memory>/monthly <memory>/git <memory>/specs <memory>/learned
+  mkdir -p .groove/memory/daily .groove/memory/weekly .groove/memory/monthly .groove/memory/git .groove/memory/specs .groove/memory/learned
   ```
 - Report the initialized paths to user

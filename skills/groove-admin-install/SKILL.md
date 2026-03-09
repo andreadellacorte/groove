@@ -20,7 +20,7 @@ All groove backends are installed in dependency order, groove-wide companion ski
 - Task and memory backends installed
 - Companion skills installed (find-skills, agent-browser, pdf-to-markdown)
 - `AGENTS.md` contains the `<!-- groove:prime:start -->` session bootstrap
-- `AGENTS.md` contains a `<!-- groove:task:start -->` stub (if `tasks: beans`)
+- `AGENTS.md` contains a `<!-- groove:task:start -->` stub (if `tasks.backend: beans`)
 - User sees a summary of what was installed and what was written
 
 ## Steps
@@ -90,7 +90,7 @@ Run in order:
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks:` and `git.*` config before running
+- Read `.groove/index.md` for `tasks.backend` and `git.*` config before running
 - If `.groove/index.md` does not exist, `/groove-admin-config` is run first (step 1) to create it
 - Dependency order for backends must be respected: task → memory → companions
 - Each step reports installed / already-present / failed

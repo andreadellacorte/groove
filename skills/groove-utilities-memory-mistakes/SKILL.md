@@ -13,7 +13,7 @@ Use $ARGUMENTS as the mistake description if provided (e.g. `--list` to show ope
 
 ## Outcome
 
-The workflow mistake is logged, its root cause is fixed in the relevant memory or learned file, and the lesson is graduated to `<memory>/learned/<topic>.md`. The incident is closed.
+The workflow mistake is logged, its root cause is fixed in the relevant memory or learned file, and the lesson is graduated to `.groove/memory/learned/<topic>.md`. The incident is closed.
 
 ## Acceptance Criteria
 
@@ -23,7 +23,7 @@ The workflow mistake is logged, its root cause is fixed in the relevant memory o
 
 ## Task backend
 
-Read `tasks:` from `.groove/index.md`. Incidents are tracked as tasks in the configured backend. If no task backend is configured (`tasks: none`), tell the user to run `/groove-utilities-task-install` first.
+Read `tasks.backend` from `.groove/index.md`. Incidents are tracked as tasks in the configured backend. If no task backend is configured (`tasks.backend: none`), tell the user to run `/groove-utilities-task-install` first.
 
 Incidents are stored as bugs under a shared "Groove Memory" milestone → "Mistakes" epic.
 
@@ -52,14 +52,14 @@ Before any operation, resolve or create the parent epic:
 5. `beans create "<description>" -t bug --parent <parent-id> -s in-progress`
 6. Apply the fix immediately (edit the relevant file)
 7. Ask: "Which learned topic? (e.g. `anti-patterns`, `tools`)" — suggest based on root cause
-8. Append lesson to `<memory>/learned/<topic>.md` under `## YYYY-MM-DD` heading
+8. Append lesson to `.groove/memory/learned/<topic>.md` under `## YYYY-MM-DD` heading
 9. `beans update <id> -s completed`
 10. Report: "Incident resolved → learned/<topic>.md"
 
 ## Constraints
 
-- Read `tasks:` and `memory:` from `.groove/index.md`
-- Requires a configured task backend — if `tasks: none`, prompt user to install one
+- Read `tasks.backend` from `.groove/index.md`; memory path is always `.groove/memory/`
+- Requires a configured task backend — if `tasks.backend: none`, prompt user to install one
 - Never auto-create incidents without user confirmation
 - Root cause is required before resolving — do not skip the audit step
 - Parent hierarchy is idempotent — always check before creating

@@ -22,8 +22,8 @@ A task is created in the configured backend with a title, type, status, optional
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` to determine backend
-- If `tasks: none`, no-op with friendly message
+- Read `tasks.backend` from `.groove/index.md` to determine backend
+- If `tasks.backend: none`, no-op with friendly message
 - If title not provided in arguments, ask user for title and type before proceeding
 - Infer parent from current context (open tasks, recent work) and confirm with user if ambiguous
 - Default status is `in-progress` (not `todo`) — tasks are created when work is being done

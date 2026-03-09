@@ -36,13 +36,13 @@ groove
 
 task
   ✓ .groove/index.md present
-  ✓ tasks: beans
+  ✓ tasks.backend: beans
   ✓ beans installed (v0.x.x)
   ✓ .beans.yml present
   ✓ beans reachable
 
 memory
-  ✓ memory path exists (.groove/memory/)
+  ✓ memory path exists (.groove/memory/) [hardcoded]
   ✓ memory dirs exist (.groove/memory/daily/, weekly/, monthly/, git/)
 
 companions

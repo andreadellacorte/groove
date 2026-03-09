@@ -9,7 +9,7 @@ metadata:
 
 # groove-utilities-memory-graduate
 
-Promote a stable workflow insight from `<memory>/learned/` into `AGENTS.md` as a permanent constraint — visible to every agent session without needing to run prime.
+Promote a stable workflow insight from `.groove/memory/learned/` into `AGENTS.md` as a permanent constraint — visible to every agent session without needing to run prime.
 
 Use $ARGUMENTS as the topic or insight text if provided.
 
@@ -26,8 +26,8 @@ The lesson is appended to a `<!-- groove:learned:start -->` / `<!-- groove:learn
 
 ## Steps
 
-1. Read `memory:` from `.groove/index.md`
-2. If $ARGUMENTS names a topic, read `<memory>/learned/<topic>.md` and show its entries. Otherwise, list all `*.md` files in `<memory>/learned/` and ask which topic to graduate from.
+1. Memory path is always `.groove/memory/`
+2. If $ARGUMENTS names a topic, read `.groove/memory/learned/<topic>.md` and show its entries. Otherwise, list all `*.md` files in `.groove/memory/learned/` and ask which topic to graduate from.
 3. Show the file contents; ask: "Which entry should be graduated? (paste or describe it)"
 4. Show the exact text that will be written to AGENTS.md; ask: "Confirm? (yes / edit / skip)"
 5. If confirmed: write to AGENTS.md (see section management below)

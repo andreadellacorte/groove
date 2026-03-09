@@ -133,18 +133,22 @@ Settings live in `.groove/index.md` frontmatter — created on first run by `/gr
 
 ```yaml
 ---
-groove-version: 0.12.0
-tasks: beans               # beans | linear | github | none
-memory: .groove/memory/
-recent_memory_days: 5      # days of daily memory to review at startup
-specs: .groove/memory/specs/  # where specs are saved; set to specs/ for project-root visibility
-groovebook:                # owner/repo of shared learning commons; leave blank to disable
+groove-version: 0.14.0
+groovebook: andreadellacorte/groovebook
+tasks:
+  backend: beans           # beans | linear | github | none
+  list_limit: 15
+  analyse_limit: 30
+memory:
+  review_days: 5           # business days reviewed at daily start
 git:
   memory: ignore-all       # ignore-all | hybrid | commit-all
   tasks: ignore-all        # ignore-all | commit-all
   hooks: commit-all        # ignore-all | commit-all
 ---
 ```
+
+Memory path (`.groove/memory/`) and specs path (`.groove/memory/specs/`) are hardcoded — not configurable.
 
 Per-component `git.*` keys control what gets committed and what `.groove/.gitignore` ignores.
 

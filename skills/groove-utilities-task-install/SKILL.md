@@ -17,13 +17,13 @@ The configured task backend is installed and verified reachable. User is informe
 
 - Backend CLI is available in PATH after install
 - User is shown a confirmation with the installed version or a reachability check
-- No-op if `tasks: none`
-- If `tasks: beans`: `AGENTS.md` contains a `<!-- groove:task:start -->` stub pointing to `beans prime`
+- No-op if `tasks.backend: none`
+- If `tasks.backend: beans`: `AGENTS.md` contains a `<!-- groove:task:start -->` stub pointing to `beans prime`
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` to determine backend
-- If `tasks: none`, print friendly no-op message and exit
+- Read `tasks.backend` from `.groove/index.md` to determine backend
+- If `tasks.backend: none`, print friendly no-op message and exit
 - Backend install guidance:
   - `beans`: link to https://github.com/hmans/beans for install instructions; verify with `beans version`
   - `linear`: link to https://linear.app/docs/cli for install instructions; verify with `linear --version` or MCP availability

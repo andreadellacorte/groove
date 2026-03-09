@@ -19,11 +19,11 @@ New contributors understand how groove works in this project: which commands to 
 
 - `GROOVE.md` exists at the project root with project-specific config values substituted
 - If `CONTRIBUTING.md` exists, it contains a "## Using groove" section linking to `GROOVE.md`
-- Content reflects actual configured values (memory path, task backend, specs path)
+- Content reflects actual configured values (task backend, git strategy)
 
 ## Steps
 
-1. Read `tasks:`, `memory:`, `specs:`, `git.*` from `.groove/index.md`
+1. Read `tasks.backend`, `memory.review_days`, `git.*` from `.groove/index.md`; memory is always `.groove/memory/`, specs is always `.groove/memory/specs/`
 2. Ask: "Any project-specific context to include? (e.g. which tasks to pick up, team conventions) — enter to skip"
 3. Write `GROOVE.md` from the template below, substituting live config values
 4. If `CONTRIBUTING.md` exists and does not already contain `<!-- groove:onboard -->`:
@@ -76,9 +76,9 @@ Then start every session with:
 
 | Key | Value |
 |---|---|
-| Task backend | `<tasks>` |
-| Memory path | `<memory>` |
-| Specs path | `<specs or (default: <memory>/specs/)>` |
+| Task backend | `<tasks.backend>` |
+| Memory path | `.groove/memory/` |
+| Specs path | `.groove/memory/specs/` |
 | Git strategy (memory) | `<git.memory>` |
 
 ## Conventions
@@ -90,9 +90,9 @@ Then start every session with:
 ## Where things live
 
 - **Config**: `.groove/index.md`
-- **Daily logs**: `<memory>daily/`
-- **Learned insights**: `<memory>learned/`
-- **Specs**: `<specs or (default: <memory>/specs/)>`
+- **Daily logs**: `.groove/memory/daily/`
+- **Learned insights**: `.groove/memory/learned/`
+- **Specs**: `.groove/memory/specs/`
 - **Hooks**: `.groove/hooks/` (start.md, end.md)
 
 <custom-context>
@@ -101,7 +101,7 @@ Then start every session with:
 
 ## Constraints
 
-- Read `.groove/index.md` and substitute all `<placeholder>` values before writing
+- Read `.groove/index.md` and substitute all placeholder values before writing
 - If `GROOVE.md` already exists: ask "GROOVE.md exists — overwrite, update, or skip?" before touching it
 - The `<custom-context>` block is replaced with user-provided context or removed if none
 - Do not create `CONTRIBUTING.md` if it doesn't exist — only append to existing files

@@ -21,6 +21,7 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | 0.10.0 | 0.10.1 | 0.10.0-to-0.10.1.md | Add `recent_memory_days: 5` to `.groove/index.md`; update `AGENTS.md` prime stub to `/groove-utilities-prime`. |
 | 0.11.4 | 0.11.5 | 0.11.4-to-0.11.5.md | Add optional `task.list_limit` and `task.analyse_limit` to `.groove/index.md` for task-list and task-analyse. |
 | 0.11.7 | 0.12.0 | 0.11.7-to-0.12.0.md | Create `<memory>/learned/`; add `specs:` (required) and `groovebook:` (default andreadellacorte/groovebook) if absent. |
+| 0.13.0 | 0.14.0 | 0.13.0-to-0.14.0.md | Restructure config: `tasks:` → `tasks.backend`, `task.*` → `tasks.*`, `recent_memory_days:` → `memory.review_days`, remove `memory:` and `specs:` (hardcoded). |
 
 ## Notes
 

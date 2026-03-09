@@ -11,19 +11,19 @@ metadata:
 
 ## Outcome
 
-`<memory>/git/YYYY-MM-DD-GIT-N.md` is created with a git summary for the current session. N is auto-incremented based on existing files for that date.
+`.groove/memory/git/YYYY-MM-DD-GIT-N.md` is created with a git summary for the current session. N is auto-incremented based on existing files for that date.
 
 ## Acceptance Criteria
 
-- File created at `<memory>/git/YYYY-MM-DD-GIT-N.md` with correct N
+- File created at `.groove/memory/git/YYYY-MM-DD-GIT-N.md` with correct N
 - Content includes commits since midnight, git status, and diff stats
 - N does not collide with existing files for the same date
 - File is suitable for inclusion in the same commit it describes
 
 ## Constraints
 
-- Use `memory:` path from `.groove/index.md` frontmatter
-- Always list existing files in `<memory>/git/` before writing to determine correct N
+- Memory path is always `.groove/memory/`
+- Always list existing files in `.groove/memory/git/` before writing to determine correct N
 - N starts at 1 for the first file of the day, increments for subsequent
 - Git data to include:
   - `git log --since=midnight --oneline` for commits

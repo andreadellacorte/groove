@@ -35,7 +35,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 
 ## Constraints
 
-- Read `tasks:` and `memory:` from `.groove/index.md` to determine backend and memory base path
+- Read `tasks.backend` from `.groove/index.md`; memory path is always `.groove/memory/`
 - Before producing the compound actions checklist, check for open mistake incidents via `/groove-utilities-memory-mistakes --list`:
   - If open incidents exist: process each using the log → fix → audit → resolve cycle from `/groove-utilities-memory-mistakes` before moving on
   - Add to compound checklist: "mistakes: N incident(s) resolved → learned/<topic>" (done/pending)
@@ -44,7 +44,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 - Always run even if it seems like "nothing to capture" — capture that explicitly
 - Compound actions checklist must include why each action matters, not just what it is
 - If user showed repeated fixes, confusion, or rework: capture the pattern and its trigger
-- Create stage task in backend if `tasks != none` via `/groove-utilities-task-create` with a descriptive title so multiple compounds per day are distinct: `YYYY-MM-DD, Compound — <brief topic>` (topic from the work just closed, e.g. release, feature, or session summary). Do not number stages in task titles.
+- Create stage task in backend if `tasks.backend != none` via `/groove-utilities-task-create` with a descriptive title so multiple compounds per day are distinct: `YYYY-MM-DD, Compound — <brief topic>` (topic from the work just closed, e.g. release, feature, or session summary). Do not number stages in task titles.
 - After producing the compound actions checklist, identify any lesson that is about AI workflow,
   agent behaviour, tool usage, or engineering process — not specific to the codebase or product
 - If any such lesson is found:
@@ -60,6 +60,6 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 - After the workflow learning step, scan the conversation for deferred items — phrases like "we'll come back to", "do this later", "next time", "TODO", "skip for now", "won't fix today". If any are found: list them and ask "Capture any of these as promises? (numbers, or enter to skip)" — for each confirmed item, run `/groove-utilities-memory-promises <text>`. If none found: skip silently.
 - After the workflow learning step, prompt for an optional session rating:
   - Ask: "Rate this session (1–5): how well did the compound loop serve you? (enter to skip)"
-  - If the user provides a rating: append to `<memory>/learned/signals.md` under a table; create the file with a header and table header row if it does not exist
+  - If the user provides a rating: append to `.groove/memory/learned/signals.md` under a table; create the file with a header and table header row if it does not exist
   - Format: `| YYYY-MM-DD | <rating>/5 | <one-line context from the session topic> |`
   - If the user skips: do not mention it again

@@ -28,8 +28,8 @@ Doc file contains:
 ## Constraints
 
 - Sanitize topic for use as filename — strip path separators, special characters, and traversal patterns (`../`)
-- Read `memory:` and `specs:` from `.groove/index.md`; resolve docs directory as `<specs>/../docs/` if `specs:` key is present, otherwise `<memory>/docs/`
-- Ensure the resolved docs directory exists (create if missing)
+- Docs directory is always `.groove/memory/docs/`
+- Ensure the docs directory exists (create if missing)
 - Research the codebase thoroughly before writing (use Explore agent) — docs should reference actual file paths, not generic descriptions
 - Interview user if scope is ambiguous: "What's the audience — a new contributor, a future agent, or both?"
 - Write doc in isolated context (use general-purpose agent)

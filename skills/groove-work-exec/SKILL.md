@@ -22,8 +22,8 @@ Code, tests, and artifacts are written per the plan. The work task is created/up
 
 ## Constraints
 
-- Read `tasks:` from `.groove/index.md` to determine backend
+- Read `tasks.backend` from `.groove/index.md` to determine backend
 - If no prior plan exists, warn the user and ask them to confirm scope before proceeding
 - Append progress notes to task body as work proceeds — do not overwrite
 - Do not mark task as completed during this stage — that happens after review
-- Create stage task via `/groove-utilities-task-create` if `tasks != none` (title `YYYY-MM-DD, Work`)
+- Create stage task via `/groove-utilities-task-create` if `tasks.backend != none` (title `YYYY-MM-DD, Work`)
