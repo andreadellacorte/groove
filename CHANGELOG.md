@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.12.2] - 2026-03-09
+
+### 🐞 Fixes
+
+- Migration `0.11.7 → 0.12.0` — fixed stale `0.11.6` header in migration file content (filename was already correct).
+
 ## [0.12.1] - 2026-03-08
 
 ### 🐞 Fixes
