@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.18.1] - 2026-03-09
+
+### 🐞 Fixes
+
+- **`groove-utilities-task-doctor`** — corrected `beans --version` to `beans version` (beans CLI does not support `--version` flag).
+
 ## [0.18.0] - 2026-03-09
 
 ### 🔧 Enhanced Skills
