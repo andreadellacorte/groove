@@ -19,12 +19,12 @@
     "groove": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "78681cfd6fe9f6dd9c9a2daed397e53872ad0e49aed7275a4b39f44a8eebc387"
+      "computedHash": "4e84799563fcaca55a5aab5fc35efd9197977047ef63e5a7bcb93a53a1e57214"
     },
     "groove-admin-claude-hooks": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "1a28c323d919117e6cf5948133087b866240d1a7f0d89e1151d81269ad338ae7"
+      "computedHash": "4ddf1656eae96aece3f904736dfe77b609fe49b9d9c0130799545f92ea947e2b"
     },
     "groove-admin-claude-statusline": {
       "source": "andreadellacorte/groove",
@@ -39,7 +39,7 @@
     "groove-admin-cursor-hooks": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "ad63832988f313efbec3d035997adbf3e6b5981a645cf9bca518ebb7d0a3efbf"
+      "computedHash": "20ab0a2183e4e380488af8c171ecc65481bd4fd999755bb35758bf19496a3f52"
     },
     "groove-admin-doctor": {
       "source": "andreadellacorte/groove",
@@ -149,7 +149,7 @@
     "groove-utilities-prime": {
       "source": "andreadellacorte/groove",
       "sourceType": "github",
-      "computedHash": "6efd7bc3d082fabf4794fae08552acfbc8a5f1c44ab5b9b23abdf6638338570d"
+      "computedHash": "aa23b2e08051d5dcab4160355a553b8f7d0d1c44960311e19df1d4b83c7ea8ca"
     },
     "groove-utilities-task-analyse": {
       "source": "andreadellacorte/groove",
