@@ -91,7 +91,7 @@ git.hooks:          ${git_hooks}
 - Read before editing — understand existing code before proposing changes to it
 
 ## Constraints
-- Do not edit files under \`skills/\` or \`.agents/skills/\` — managed by groove update, changes will be overwritten
+- Do not edit files under \`.agents/skills/groove-*\` — managed by groove update, changes will be overwritten; to modify, propose PRs to andreadellacorte/groove; to update, run \`/groove-admin-update\`
 - User zone: \`.groove/\` is yours — config, hooks, memory, and learned insights are all safe to edit
 EOF
 
