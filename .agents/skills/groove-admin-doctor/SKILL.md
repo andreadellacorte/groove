@@ -36,13 +36,13 @@ groove
 
 task
   ✓ .groove/index.md present
-  ✓ tasks: beans
+  ✓ tasks.backend: beans
   ✓ beans installed (v0.x.x)
   ✓ .beans.yml present
   ✓ beans reachable
 
 memory
-  ✓ memory path exists (.groove/memory/)
+  ✓ memory path exists (.groove/memory/) [hardcoded]
   ✓ memory dirs exist (.groove/memory/daily/, weekly/, monthly/, git/)
 
 companions
@@ -87,10 +87,19 @@ AGENTS.md
   - All symlinks healthy: `✓ platform symlinks (.claude/, .cursor/)`
 - Claude Code native hooks check (after platform symlinks):
   - Check if `.claude/settings.json` exists
-  - If it exists: parse JSON and verify groove's hook entries are present (`daily-end-reminder`, `git-activity-buffer`, `block-managed-paths` commands in the `hooks` key)
+  - If it exists: parse JSON and verify groove's hook entries are present (`daily-end-reminder`, `git-activity-buffer`, `block-managed-paths`, `context-reprime` commands in the `hooks` key)
     - Each missing entry: `✗ .claude/settings.json missing groove hook <name> — run: /groove-admin-claude-hooks`
   - If absent: `ℹ .claude/settings.json not present — run /groove-admin-claude-hooks to install native hooks (optional)`
-  - All present: `✓ Claude Code native hooks (daily-end-reminder, git-activity-buffer, block-managed-paths)`
+  - All present: `✓ Claude Code native hooks (daily-end-reminder, git-activity-buffer, block-managed-paths, context-reprime)`
+- Cursor native hooks check (after Claude Code hooks):
+  - Check if `.cursor/` directory exists
+  - If `.cursor/` exists:
+    - Check if `.cursor/hooks.json` exists
+    - If it exists: parse JSON and verify groove's hook entries are present (`context-reprime`, `daily-end-reminder`, `git-activity-buffer`, `block-managed-paths` commands in the `hooks` key)
+      - Each missing entry: `✗ .cursor/hooks.json missing groove hook <name> — run: /groove-admin-cursor-hooks`
+    - If absent: `ℹ .cursor/hooks.json not present — run /groove-admin-cursor-hooks to install native hooks (optional)`
+    - All present: `✓ Cursor native hooks (context-reprime, daily-end-reminder, git-activity-buffer, block-managed-paths)`
+  - If `.cursor/` absent: skip silently (Cursor not in use)
 - Also check `AGENTS.md` for presence of `<!-- groove:prime:start -->` and `<!-- groove:task:start -->` sections
 - Collect all results before printing — do not interleave output with check progress
 - Each `✗` item must include a concrete remediation command on the same line

@@ -84,6 +84,7 @@ Then bootstrap your backends:
 | `/groove-admin-help` | Show all commands with live config |
 | `/groove-admin-doctor` | Run all health checks |
 | `/groove-admin-claude-hooks` | Install Claude Code native shell hooks into `.claude/settings.json` |
+| `/groove-admin-cursor-hooks` | Install Cursor native hooks into `.cursor/hooks.json` |
 
 **Groovebook** *(opt-in — requires `groovebook:` in config)*
 
@@ -185,6 +186,7 @@ Shell hooks wired into Claude Code's `.claude/settings.json` — run outside the
 
 | Hook | Event | What it does |
 |---|---|---|
+| `context-reprime` | `SessionStart` | Outputs re-prime instruction after startup/compaction — ensures `/groove-utilities-prime` runs reliably |
 | `daily-end-reminder` | `Stop` | Reminds about `/groove-daily-end` during work hours (16–21h) |
 | `git-activity-buffer` | `PostToolUse/Bash` | Buffers git commit messages for automatic memory logging |
 | `block-managed-paths` | `PreToolUse/Write+Edit` | Blocks edits to managed groove skill paths deterministically |

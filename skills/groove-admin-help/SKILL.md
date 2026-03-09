@@ -91,6 +91,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-admin-help` | Show this help |
 | `/groove-admin-doctor` | Run all health checks |
 | `/groove-admin-claude-hooks` | Install Claude Code native shell hooks into `.claude/settings.json` |
+| `/groove-admin-cursor-hooks` | Install Cursor native hooks into `.cursor/hooks.json` |
 
 **Groovebook** *(only shown if `groovebook:` is set in `.groove/index.md`)*
 

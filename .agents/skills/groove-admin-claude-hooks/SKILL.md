@@ -26,6 +26,7 @@ Selected hooks are registered in `.claude/settings.json` and shell scripts are w
 | `daily-end-reminder` | `Stop` | — | If hour is 16–21 local time and `.groove/index.md` exists, prints a reminder to run `/groove-daily-end` |
 | `git-activity-buffer` | `PostToolUse` | `Bash` | If the Bash command contains `git commit`, appends a timestamped line to `.groove/.cache/git-activity-buffer.txt` |
 | `block-managed-paths` | `PreToolUse` | `Write`, `Edit` | If `file_path` starts with `.agents/skills/groove` or `skills/groove`, exits non-zero to block the write with an explanatory message |
+| `context-reprime` | `SessionStart` | `startup\|compact` | Outputs re-prime instruction as context Claude sees — ensures `/groove-utilities-prime` runs after every session start and compaction |
 
 ## Steps
 
@@ -39,9 +40,9 @@ Remove the named hook's entry from `.claude/settings.json` (leave the script in 
 
 ### Default (install)
 
-1. Ask which hooks to enable (default: all three):
+1. Ask which hooks to enable (default: all four):
    ```
-   Which hooks to install? (all / comma-separated: daily-end-reminder, git-activity-buffer, block-managed-paths)
+   Which hooks to install? (all / comma-separated: daily-end-reminder, git-activity-buffer, block-managed-paths, context-reprime)
    Press enter for all.
    ```
 
@@ -58,6 +59,7 @@ Remove the named hook's entry from `.claude/settings.json` (leave the script in 
    ✓ daily-end-reminder  — Stop hook → .groove/hooks/claude/daily-end-reminder.sh
    ✓ git-activity-buffer — PostToolUse/Bash hook → .groove/hooks/claude/git-activity-buffer.sh
    ✓ block-managed-paths — PreToolUse/Write+Edit hook → .groove/hooks/claude/block-managed-paths.sh
+   ✓ context-reprime     — SessionStart hook (inline echo)
    ✓ .claude/settings.json updated
    ```
 
@@ -136,6 +138,17 @@ Merge these into the `hooks` key. Preserve all other keys.
         "matcher": "Edit",
         "hooks": [
           { "type": "command", "command": "bash .groove/hooks/claude/block-managed-paths.sh" }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'groove: run /groove-utilities-prime to load workflow context'"
+          }
         ]
       }
     ]

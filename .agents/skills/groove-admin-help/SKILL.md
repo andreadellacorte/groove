@@ -91,6 +91,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 | `/groove-admin-help` | Show this help |
 | `/groove-admin-doctor` | Run all health checks |
 | `/groove-admin-claude-hooks` | Install Claude Code native shell hooks into `.claude/settings.json` |
+| `/groove-admin-cursor-hooks` | Install Cursor native hooks into `.cursor/hooks.json` |
 
 **Groovebook** *(only shown if `groovebook:` is set in `.groove/index.md`)*
 
@@ -102,13 +103,16 @@ Print the following, substituting live config values from `.groove/index.md` whe
 **Config** (`.groove/index.md`)
 
 ```
-tasks:         <value>   — task backend (beans | linear | github | none)
-memory:        <value>   — memory log path
-specs:         <value>   — spec/doc directory (optional; default: <memory>/specs/)
-git.memory:    <value>   — memory commit strategy (ignore-all | hybrid | commit-all)
-git.tasks:     <value>   — tasks commit strategy (ignore-all | commit-all)
-git.hooks:     <value>   — hooks commit strategy (ignore-all | commit-all)
-groovebook:    <value>   — shared learning commons repo (optional)
+tasks.backend:       <value>   — task backend (beans | linear | github | none)
+tasks.list_limit:    <value>   — max tasks in task-list (default 15)
+tasks.analyse_limit: <value>   — max tasks in task-analyse (default 30)
+memory.review_days:  <value>   — business days to review at daily start (default 5)
+memory path:         .groove/memory/ (hardcoded)
+specs path:          .groove/memory/specs/ (hardcoded)
+git.memory:          <value>   — memory commit strategy (ignore-all | hybrid | commit-all)
+git.tasks:           <value>   — tasks commit strategy (ignore-all | commit-all)
+git.hooks:           <value>   — hooks commit strategy (ignore-all | commit-all)
+groovebook:          <value>   — shared learning commons repo (optional)
 ```
 
 ---

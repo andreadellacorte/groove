@@ -2,6 +2,18 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.15.0] - 2026-03-09
+
+### ✨ New Skills
+
+- `groove-admin-cursor-hooks` — install Cursor native hooks into `.cursor/hooks.json` — four hooks: `context-reprime` (sessionStart), `daily-end-reminder` (stop), `git-activity-buffer` (postToolUse/Shell), `block-managed-paths` (preToolUse/Write). Scripts in `.groove/hooks/cursor/`. Supports `--list` and `--disable`.
+
+### 🔧 Enhanced Skills
+
+- `groove-admin-claude-hooks` — new `context-reprime` hook (`SessionStart`, matcher `startup|compact`) — outputs re-prime instruction as context Claude sees after every session start and compaction. Now 4 hooks total.
+- `groove-admin-doctor` — checks `context-reprime` hook presence in Claude Code settings; checks Cursor hooks if `.cursor/` exists.
+- `groove-admin-help` — added `groove-admin-cursor-hooks` to Admin table.
+
 ## [0.14.0] - 2026-03-09
 
 ### ⚠️ Breaking Changes
