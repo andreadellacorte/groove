@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.18.2] - 2026-03-11
+
+### 🐞 Fixes
+
+- **`groove-admin-doctor`** — hook checks now verify all 5 hooks (`daily-end-reminder`, `git-activity-buffer`, `block-managed-paths`, `context-reprime`, `version-check`) instead of only 4.
+
 ## [0.18.1] - 2026-03-09
 
 ### 🐞 Fixes
