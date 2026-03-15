@@ -32,7 +32,7 @@ Otherwise, walk the user through each config key in order. For each key: show th
 
 | Key | Default | Options | Question to ask |
 |---|---|---|---|
-| `tasks.backend` | `beans` | `beans \| linear \| github \| none` | "Which task backend? beans tracks tasks as markdown files in your repo." |
+| `tasks.storage` | `beans` | `beans \| linear \| github \| none` | "Which task backend? beans tracks tasks as markdown files in your repo." |
 | `tasks.list_limit` | `15` | positive integer | "Max tasks shown by task-list? (default: 15)" |
 | `tasks.analyse_limit` | `30` | positive integer | "Max tasks shown by task-analyse? (default: 30)" |
 | `memory.review_days` | `5` | positive integer | "How many recent business days to review at daily start? (default: 5)" |

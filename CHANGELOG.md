@@ -2,6 +2,18 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.18.4] - 2026-03-15
+
+### 🐞 Fixes
+
+- **`groove-admin-claude-hooks`**, **`groove-admin-cursor-hooks`** — hook commands now use `$CLAUDE_PROJECT_DIR`-prefixed paths. Bare relative paths (e.g. `bash .groove/hooks/...`) fail when the shell's working directory is not the project root, which is the typical case for Claude Code and Cursor lifecycle hooks.
+
+## [0.18.3] - 2026-03-15
+
+### 🔧 Changes
+
+- **Config** — renamed `tasks.backend` → `tasks.storage` for clarity.
+
 ## [0.18.2] - 2026-03-11
 
 ### 🐞 Fixes

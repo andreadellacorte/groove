@@ -121,7 +121,7 @@ if [ -f "$CACHE" ]; then
   [ "$diff" -lt 3600 ] && exit 0
 fi
 echo "$now" > "$CACHE"
-bash .agents/skills/groove-utilities-check/scripts/check.sh 2>/dev/null || true
+bash "$CLAUDE_PROJECT_DIR/.agents/skills/groove-utilities-check/scripts/check.sh" 2>/dev/null || true
 ```
 
 ## `.claude/settings.json` entries
@@ -134,7 +134,7 @@ Merge these into the `hooks` key. Preserve all other keys.
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/daily-end-reminder.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/daily-end-reminder.sh" }
         ]
       }
     ],
@@ -142,12 +142,12 @@ Merge these into the `hooks` key. Preserve all other keys.
       {
         "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/git-activity-buffer.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/git-activity-buffer.sh" }
         ]
       },
       {
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/version-check.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/version-check.sh" }
         ]
       }
     ],
@@ -155,13 +155,13 @@ Merge these into the `hooks` key. Preserve all other keys.
       {
         "matcher": "Write",
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/block-managed-paths.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/block-managed-paths.sh" }
         ]
       },
       {
         "matcher": "Edit",
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/block-managed-paths.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/block-managed-paths.sh" }
         ]
       }
     ],
@@ -171,7 +171,7 @@ Merge these into the `hooks` key. Preserve all other keys.
         "hooks": [
           {
             "type": "command",
-            "command": "bash .agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh"
+            "command": "bash $CLAUDE_PROJECT_DIR/.agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh"
           }
         ]
       }
