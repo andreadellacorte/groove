@@ -7,7 +7,7 @@ Scaffold this file at `.groove/index.md` (relative to git root) on first run of 
 groove-version: 0.1.0
 groovebook: andreadellacorte/groovebook
 tasks:
-  backend: beans
+  storage: beans
   list_limit: 15
   analyse_limit: 30
 memory:
@@ -25,7 +25,7 @@ git:
 |---|---|---|---|
 | `groove-version` | `0.1.0` | semver string | Tracks which groove version this config was last migrated to |
 | `groovebook` | `andreadellacorte/groovebook` | `<owner>/<repo>` or blank | Shared learning commons repo; enables `groove-groovebook-publish` and `groove-groovebook-review`. Blank = disabled. |
-| `tasks.backend` | `beans` | `beans \| linear \| github \| none` | Task tracking backend |
+| `tasks.storage` | `beans` | `beans \| linear \| github \| none` | Task tracking backend |
 | `tasks.list_limit` | `15` | positive integer | Maximum tasks shown by `/groove-utilities-task-list` |
 | `tasks.analyse_limit` | `30` | positive integer | Maximum tasks shown by `/groove-utilities-task-analyse` |
 | `memory.review_days` | `5` | positive integer | Number of recent business days (Mon–Fri) reviewed at startup, including memory file status and git activity |

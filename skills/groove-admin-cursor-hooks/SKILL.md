@@ -121,7 +121,7 @@ if [ -f "$CACHE" ]; then
   [ "$diff" -lt 3600 ] && exit 0
 fi
 echo "$now" > "$CACHE"
-bash .agents/skills/groove-utilities-check/scripts/check.sh 2>/dev/null || true
+bash "$CLAUDE_PROJECT_DIR/.agents/skills/groove-utilities-check/scripts/check.sh" 2>/dev/null || true
 ```
 
 ## `.cursor/hooks.json` template
@@ -134,27 +134,27 @@ Merge these into the `hooks` key. Preserve all other keys.
   "hooks": {
     "sessionStart": [
       {
-        "command": "bash .agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh --json"
+        "command": "bash $CLAUDE_PROJECT_DIR/.agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh --json"
       }
     ],
     "stop": [
       {
-        "command": "bash .groove/hooks/cursor/daily-end-reminder.sh"
+        "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/cursor/daily-end-reminder.sh"
       }
     ],
     "postToolUse": [
       {
         "matcher": "Shell",
-        "command": "bash .groove/hooks/cursor/git-activity-buffer.sh"
+        "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/cursor/git-activity-buffer.sh"
       },
       {
-        "command": "bash .groove/hooks/cursor/version-check.sh"
+        "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/cursor/version-check.sh"
       }
     ],
     "preToolUse": [
       {
         "matcher": "Write",
-        "command": "bash .groove/hooks/cursor/block-managed-paths.sh"
+        "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/cursor/block-managed-paths.sh"
       }
     ]
   }
