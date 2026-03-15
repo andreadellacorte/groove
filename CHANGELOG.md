@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.18.5] - 2026-03-15
+
+### 🐞 Fixes
+
+- **`groove-admin-claude-hooks`**, **`groove-admin-cursor-hooks`** — shell script templates for `daily-end-reminder.sh`, `git-activity-buffer.sh`, and `version-check.sh` now use `$CLAUDE_PROJECT_DIR`-prefixed paths throughout. Previously only the hook command entries in `settings.json`/`hooks.json` were fixed (v0.18.4) but the script bodies still used relative paths.
+
 ## [0.18.4] - 2026-03-15
 
 ### 🐞 Fixes
