@@ -75,7 +75,7 @@ Write these verbatim to `.groove/hooks/cursor/`. Never overwrite an existing scr
 #!/usr/bin/env bash
 # groove: stop hook — remind about /groove-daily-end during work hours
 hour=$(date +%H)
-if [ -f "$CLAUDE_PROJECT_DIR/.groove/index.md" ] && [ "$hour" -ge 16 ] && [ "$hour" -le 21 ]; then
+if [ -f ".groove/index.md" ] && [ "$hour" -ge 16 ] && [ "$hour" -le 21 ]; then
   echo "groove: end of work hours — consider running /groove-daily-end"
 fi
 ```
@@ -89,8 +89,8 @@ input=$(cat)
 command=$(echo "$input" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('command',''))" 2>/dev/null)
 if echo "$command" | grep -q "git commit"; then
   msg=$(echo "$command" | grep -oP '(?<=-m ")[^"]+' | head -1)
-  mkdir -p "$CLAUDE_PROJECT_DIR/.groove/.cache"
-  echo "$(date '+%Y-%m-%d %H:%M') | ${msg:-<no message>}" >> "$CLAUDE_PROJECT_DIR/.groove/.cache/git-activity-buffer.txt"
+  mkdir -p .groove/.cache
+  echo "$(date '+%Y-%m-%d %H:%M') | ${msg:-<no message>}" >> .groove/.cache/git-activity-buffer.txt
 fi
 ```
 
@@ -112,8 +112,8 @@ fi
 ```bash
 #!/usr/bin/env bash
 # groove: postToolUse hook — check for new groove version (once per hour)
-CACHE="$CLAUDE_PROJECT_DIR/.groove/.cache/last-version-check-ts"
-mkdir -p "$CLAUDE_PROJECT_DIR/.groove/.cache"
+CACHE=".groove/.cache/last-version-check-ts"
+mkdir -p .groove/.cache
 now=$(date +%s)
 if [ -f "$CACHE" ]; then
   last=$(cat "$CACHE")
