@@ -1,8 +1,8 @@
 ---
-groove-version: 0.18.2
+groove-version: 0.18.5
 groovebook: andreadellacorte/groovebook
 tasks:
-  backend: beans
+  storage: beans
   list_limit: 15
   analyse_limit: 30
 memory:

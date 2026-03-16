@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # groove: postToolUse hook — check for new groove version (once per hour)
-CACHE=".groove/.cache/last-version-check-ts"
-mkdir -p .groove/.cache
+CACHE="$CLAUDE_PROJECT_DIR/.groove/.cache/last-version-check-ts"
+mkdir -p "$CLAUDE_PROJECT_DIR/.groove/.cache"
 now=$(date +%s)
 if [ -f "$CACHE" ]; then
   last=$(cat "$CACHE")
@@ -9,4 +9,4 @@ if [ -f "$CACHE" ]; then
   [ "$diff" -lt 3600 ] && exit 0
 fi
 echo "$now" > "$CACHE"
-bash .agents/skills/groove-utilities-check/scripts/check.sh 2>/dev/null || true
+bash "$CLAUDE_PROJECT_DIR/.agents/skills/groove-utilities-check/scripts/check.sh" 2>/dev/null || true

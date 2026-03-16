@@ -3,7 +3,7 @@
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/daily-end-reminder.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/daily-end-reminder.sh" }
         ]
       }
     ],
@@ -11,12 +11,12 @@
       {
         "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/git-activity-buffer.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/git-activity-buffer.sh" }
         ]
       },
       {
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/version-check.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/version-check.sh" }
         ]
       }
     ],
@@ -24,13 +24,13 @@
       {
         "matcher": "Write",
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/block-managed-paths.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/block-managed-paths.sh" }
         ]
       },
       {
         "matcher": "Edit",
         "hooks": [
-          { "type": "command", "command": "bash .groove/hooks/claude/block-managed-paths.sh" }
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/block-managed-paths.sh" }
         ]
       }
     ],
@@ -40,7 +40,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh"
+            "command": "bash $CLAUDE_PROJECT_DIR/.agents/skills/groove-utilities-prime/scripts/groove-utilities-prime.sh"
           }
         ]
       }
