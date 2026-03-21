@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.18.7] - 2026-03-21
+
+### 🔧 Changes
+
+- **`groove-utilities-task-install`** — require following upstream install docs (no inlined OS commands); read `tasks.storage` with legacy `tasks.backend` fallback; optional `AskUserQuestion` to pick a backend; **Linear** points to [schpet/linear-cli](https://github.com/schpet/linear-cli).
+
 ## [0.18.6] - 2026-03-21
 
 ### 🔧 Changes

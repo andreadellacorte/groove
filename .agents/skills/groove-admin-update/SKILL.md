@@ -11,6 +11,8 @@ metadata:
 
 # groove-admin-update
 
+**Maintainers (andreadellacorte/groove repo):** After publishing a new GitHub Release, run this from the **groove repo root** so checked-in `.agents/skills/groove*` matches what `npx skills add andreadellacorte/groove` installs — see `CONTRIBUTING.md` (“Publish release”). Do not use manual `rsync` from `skills/` for that.
+
 ## Outcome
 
 All pending migrations are applied to the user's local groove state in version order. `.groove/index.md` reflects the current installed groove version.
