@@ -27,6 +27,7 @@ Ordered registry of all groove migrations. Each entry maps a from-version to a t
 | 0.17.0 | 0.18.0 | 0.17.0-to-0.18.0.md | Reinstall Claude/Cursor hooks — fix SessionStart to run prime script directly, add version-check hook, remove stale context-reprime.sh. |
 | 0.18.2 | 0.18.3 | 0.18.2-to-0.18.3.md | Rename `tasks.backend` → `tasks.storage` in `.groove/index.md`. |
 | 0.18.3 | 0.18.4 | 0.18.3-to-0.18.4.md | Reinstall Claude/Cursor hooks — use `$CLAUDE_PROJECT_DIR`-prefixed paths so hooks work regardless of shell working directory. |
+| 0.18.5 | 0.18.6 | 0.18.5-to-0.18.6.md | Create `.groove/memory/docs/` for `/groove-work-doc` parity with fresh install. |
 
 ## Notes
 

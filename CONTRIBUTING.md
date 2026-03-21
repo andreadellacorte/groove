@@ -1,5 +1,11 @@
 # Contributing to groove
 
+## `skills/` vs `.agents/skills/` (read this first)
+
+- **Canonical source for changes is `skills/`.** Edit skill content, migrations, and scripts only under `skills/<skill-name>/`.
+- **`.agents/skills/` in this repo** is the same layout as after `npx skills add andreadellacorte/groove` — a checked-in snapshot for reference and tooling. **Do not modify it in pull requests.** At release time, maintainers copy updated `skills/groove*/` trees into `.agents/skills/groove*/` (per-skill rsync or equivalent). Do **not** run a blanket `rsync --delete` over all of `.agents/skills/`, because embedded companions (`find-skills`, `agent-browser`, `pdf-to-markdown`) exist only under `.agents/skills/` and are not in `skills/`.
+- Skills that reference paths use `.agents/skills/` because that is where agents execute from in user projects; that does not mean you edit `.agents/` here.
+
 ## Bash fast-path skills
 
 Some groove skills are purely mechanical — they read a config key, call an API, write a line. These do not need the model. A `scripts/` subdirectory alongside `SKILL.md` marks a skill as having a bash fast-path.
@@ -171,12 +177,13 @@ To add a groove-wide companion:
 groove/
 ├── CONTRIBUTING.md          ← you are here
 ├── CHANGELOG.md             ← update on every versioned release
-└── skills/
-    └── groove/
-        ├── SKILL.md         ← bump metadata.version here
-        └── migrations/
-            ├── index.md     ← register new migrations here
-            └── <from>-to-<to>.md   ← one file per version step
+├── skills/                  ← edit here only (canonical)
+│   └── groove/
+│       ├── SKILL.md         ← bump metadata.version here
+│       └── migrations/
+│           ├── index.md     ← register new migrations here
+│           └── <from>-to-<to>.md   ← one file per version step
+└── .agents/skills/          ← synced from skills/ at release — do not hand-edit in PRs
 ```
 
 > Migrations live inside `skills/groove/` so they are installed alongside the skill via `npx skills add`.

@@ -1,5 +1,5 @@
 ---
-groove-version: 0.18.5
+groove-version: 0.18.6
 groovebook: andreadellacorte/groovebook
 tasks:
   storage: beans

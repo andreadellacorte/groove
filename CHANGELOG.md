@@ -2,6 +2,14 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.18.6] - 2026-03-21
+
+### 🔧 Changes
+
+- **`groove-utilities-memory-install`** — creates `.groove/memory/docs/` alongside other memory directories, aligned with `/groove-work-doc`.
+- **Migration** — `0.18.5-to-0.18.6` creates `.groove/memory/docs/` for existing installs.
+- **CONTRIBUTING** — documents that contributors must edit only `skills/`; `.agents/skills/` is release-synced and must not be hand-edited in PRs.
+
 ## [0.18.5] - 2026-03-15
 
 ### 🐞 Fixes
