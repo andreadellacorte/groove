@@ -3,8 +3,12 @@
 ## `skills/` vs `.agents/skills/` (read this first)
 
 - **Canonical source for changes is `skills/`.** Edit skill content, migrations, and scripts only under `skills/<skill-name>/`.
-- **`.agents/skills/` in this repo** is the same layout as after `npx skills add andreadellacorte/groove` — a checked-in snapshot for reference and tooling. **Do not modify it in pull requests.** At release time, maintainers copy updated `skills/groove*/` trees into `.agents/skills/groove*/` (per-skill rsync or equivalent). Do **not** run a blanket `rsync --delete` over all of `.agents/skills/`, because embedded companions (`find-skills`, `agent-browser`, `pdf-to-markdown`) exist only under `.agents/skills/` and are not in `skills/`.
-- Skills that reference paths use `.agents/skills/` because that is where agents execute from in user projects; that does not mean you edit `.agents/` here.
+- **`.agents/skills/` in this repo** is the same layout as after `npx skills add andreadellacorte/groove` — a checked-in snapshot for reference and tooling. **Do not hand-edit it in pull requests.** Skills reference `.agents/skills/` paths because that is where agents load scripts in real projects; that does not mean you edit `.agents/` directly when changing behaviour — you edit `skills/` and ship a release.
+- **Refreshing `.agents/skills/groove*` after a release:** use **`/groove-admin-update`** from the **groove repository root** (same as any project: e.g. `scratch/groove` when you have the repo cloned). That skill runs `npx skills add andreadellacorte/groove --yes`, applies pending migrations to local `.groove/`, and re-syncs platform symlinks — the supported path for updating installed skills. **Do not** use manual `rsync` from `skills/` to `.agents/skills/` as a substitute; it bypasses the install path and can drift from what users get.
+- **When to run it:** only **after** the new version is the GitHub **`releases/latest`** target (tag + GitHub Release published). Until then, `npx skills add` may still resolve to the previous release.
+- **Companion skills** (`find-skills`, `agent-browser`, `pdf-to-markdown`) exist only under `.agents/skills/` in this repo; updating groove via `groove-admin-update` does not remove them.
+
+See `skills/groove-admin-update/SKILL.md` for the full step list.
 
 ## Bash fast-path skills
 
@@ -86,6 +90,7 @@ groove uses [semantic versioning](https://semver.org). The version lives in two 
 1. Commit and push.
 2. Create and push the tag: `git tag vX.Y.Z` then `git push origin vX.Y.Z`.
 3. Create a GitHub Release for that tag: **Releases → Draft a new release**, choose the tag, paste the relevant CHANGELOG section as release notes, publish. Or: `gh release create vX.Y.Z --notes "<paste from CHANGELOG>"`.
+4. **Sync committed `.agents/skills/groove*` in this repository** so it matches what users install: from the groove repo root, run **`/groove-admin-update`** (installs via `npx skills add`, applies migrations, refreshes symlinks). Then commit and push any updates under `.agents/skills/groove*`. This step comes **after** the GitHub Release exists so `releases/latest` matches the new tag.
 
 Release notes: copy from `CHANGELOG.md` from `## [X.Y.Z]` down to (but not including) the next `## [`.
 
@@ -183,7 +188,7 @@ groove/
 │       └── migrations/
 │           ├── index.md     ← register new migrations here
 │           └── <from>-to-<to>.md   ← one file per version step
-└── .agents/skills/          ← synced from skills/ at release — do not hand-edit in PRs
+└── .agents/skills/          ← refreshed via /groove-admin-update after publish — do not hand-edit in PRs
 ```
 
 > Migrations live inside `skills/groove/` so they are installed alongside the skill via `npx skills add`.
