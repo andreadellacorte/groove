@@ -2,6 +2,12 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.18.8] - 2026-03-22
+
+### 🔧 Changes
+
+- **`groove-admin-install`** — Companion skills and `groove-*` symlinks under `.claude/skills/` and `.cursor/skills/` are **required** for a successful install; first bootstrap must not finish without them. Creates `.claude/skills/` when missing (was only `mkdir` for `.cursor/skills/`, which broke fresh Claude symlink steps). Single loop for both platforms; stronger verification and retry guidance for `npx skills add`.
+
 ## [0.18.7] - 2026-03-21
 
 ### 🔧 Changes
