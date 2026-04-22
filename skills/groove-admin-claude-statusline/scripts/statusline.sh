@@ -231,7 +231,7 @@ if [ -n "$usage_data" ] && echo "$usage_data" | jq -e . >/dev/null 2>&1; then
         extra_limit=$(echo "$usage_data" | jq -r '.extra_usage.monthly_limit // 0' | LC_NUMERIC=C awk '{printf "%.2f", $1/100}')
         if [ -n "$extra_used" ] && [ -n "$extra_limit" ] && [[ "$extra_used" != *'* ]] && [[ "$extra_limit" != *'* ]]; then
             extra_color=$(usage_color "$extra_pct")
-            out+="${sep}${white}extra${reset} ${extra_color}\${extra_used}/\${extra_limit}${reset}"
+            out+="${sep}${white}extra${reset} ${extra_color}${extra_used}/${extra_limit}${reset}"
         else
             out+="${sep}${white}extra${reset} ${green}enabled${reset}"
         fi
