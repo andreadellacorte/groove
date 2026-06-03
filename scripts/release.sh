@@ -147,14 +147,18 @@ if [ "$MODE" = "backfill" ]; then
   released=$(gh release list -L 500 --repo "$REPO" 2>/dev/null | awk '{print $1}' | sort)
   missing=$(comm -23 <(git tag -l 'v*' | sort) <(echo "$released") | sort -V)
   [ -n "$missing" ] || { info "no tags missing a release — nothing to backfill"; exit 0; }
+  # Only the overall-highest tag may be 'latest'; backfilling an older tag must
+  # not demote releases/latest away from a newer release that already exists.
+  highest=$(git tag -l 'v*' | sort -V | tail -1)
   info "tags missing a GitHub release (ascending):"
   while IFS= read -r tag; do
     [ -n "$tag" ] || continue
     ver="${tag#v}"
     notes=$(extract_notes "$ver")
     [ -n "$notes" ] || notes="Release $tag"
-    echo "  - $tag"
-    run gh release create "$tag" --repo "$REPO" --title "$tag" --notes "$notes"
+    if [ "$tag" = "$highest" ]; then latest_flag="--latest"; else latest_flag="--latest=false"; fi
+    echo "  - $tag ($latest_flag)"
+    run gh release create "$tag" --repo "$REPO" --title "$tag" --notes "$notes" "$latest_flag"
   done <<< "$missing"
   info "backfill complete"
   exit 0

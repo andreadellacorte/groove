@@ -6,6 +6,10 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+### 🐞 Fixes
+
+- **Release tooling** — `scripts/release.sh backfill` now marks only the overall-highest tag as `latest`, so creating a release for an older tag no longer demotes `releases/latest` away from a newer release.
+
 ## [0.19.2] - 2026-06-03
 
 ### 🔧 Changes
