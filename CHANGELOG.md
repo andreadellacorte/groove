@@ -6,6 +6,8 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+## [0.20.0] - 2026-06-03
+
 ### ✨ New Skills
 
 - **`groove-utilities-stats`** — a read-only compound-loop dashboard. Quantifies whether the workflow is compounding: the **funnel** (lessons captured vs graduated to AGENTS.md + graduation rate), **adherence** (daily-log coverage over the last `memory.review_days` business days, current streak, weekly/monthly rollup freshness, session ratings), and **velocity** (task open/closed, commits). Bash fast-path (`scripts/stats.sh`) computes everything deterministically for `beans`/`none` backends; `linear`/`github` fall back to the model. Complements (and cross-links) `/groove-utilities-memory-retrospective`. Run with `week` (default), `month`, or `all`.
