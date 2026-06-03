@@ -2,6 +2,14 @@
 
 All notable changes to groove will be documented in this file.
 
+Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` promotes that section to a dated version heading on release.
+
+## [Unreleased]
+
+### 🔧 Changes
+
+- **Release tooling** — added `scripts/release.sh`, a single maintainer command that bumps `skills/groove/SKILL.md`, promotes the `## [Unreleased]` changelog section to a dated version heading, commits, tags, pushes, and publishes the GitHub Release with notes extracted from the changelog — keeping SKILL.md, the git tag, and the release in lockstep. Includes `--dry-run`, a `release-only` recovery mode, and a `backfill` mode for tags missing a release.
+
 ## [0.19.1] - 2026-06-03
 
 ### 🐞 Fixes

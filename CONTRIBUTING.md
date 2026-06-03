@@ -77,23 +77,39 @@ groove uses [semantic versioning](https://semver.org). The version lives in two 
 
 ### How to bump
 
-1. Update `metadata.version` in `skills/groove/SKILL.md`
-2. Add an entry to `CHANGELOG.md`
-3. If a migration is needed, write it (see below)
+1. Draft your changelog entries under the `## [Unreleased]` heading in `CHANGELOG.md` as you work (use the emoji subsections — `### ✨ New Skills`, `### 🔧 Changes`, `### 🐞 Fixes`, `### ⚠️ Breaking Changes`).
+2. If a migration is needed, write it (see below).
+3. Run the release script (next section) — it bumps `metadata.version`, dates the changelog, tags, and publishes in one step.
 
 ### Publish release
 
-`groove check`, `groove prime`, and `groove update` use GitHub's `releases/latest` API as the source of truth for "latest version". A tag alone does not create a release; without a release, version checks can be wrong or fail. After bumping, publish both a tag and a GitHub Release:
+`groove check`, `groove prime`, and `groove update` use GitHub's `releases/latest` API as the source of truth for "latest version". A tag alone does not create a release; without a release, version checks can be wrong or fail. The three version surfaces — `skills/groove/SKILL.md` `metadata.version`, the git tag, and the GitHub Release — must stay in lockstep.
 
-1. Commit and push.
-2. Create and push the tag: `git tag vX.Y.Z` then `git push origin vX.Y.Z`.
-3. Create a GitHub Release for that tag: **Releases → Draft a new release**, choose the tag, paste the relevant CHANGELOG section as release notes, publish. Or: `gh release create vX.Y.Z --notes "<paste from CHANGELOG>"`.
+**Use the release script** — it does all of it from the repo root:
 
-Once the GitHub Release is the `releases/latest` target, consumer projects pick it up via `npx skills add andreadellacorte/groove` / `groove update`. This repo keeps no checked-in install snapshot, so there is nothing further to sync here.
+```bash
+scripts/release.sh patch              # or: minor | major | X.Y.Z
+scripts/release.sh patch --dry-run    # preview the bump, changelog promotion, and notes — changes nothing
+```
 
-Release notes: copy from `CHANGELOG.md` from `## [X.Y.Z]` down to (but not including) the next `## [`.
+It runs preconditions (clean tree, on `main`, `gh` authenticated, tag not already taken), bumps `metadata.version`, promotes `## [Unreleased]` → `## [X.Y.Z] - <today>` (and re-seeds an empty `## [Unreleased]`), commits `chore(release): vX.Y.Z`, pushes, tags, and creates the GitHub Release with notes extracted from the changelog. The highest version is published last, so it becomes `releases/latest` and consumer projects pick it up via `npx skills add andreadellacorte/groove` / `groove update`.
 
-**Backfilling existing tags:** If you have tags that never got a GitHub Release, create a release for each: list tags without a release (e.g. compare `gh release list` with `git tag -l 'v*'`), then for each missing one run `gh release create <tag> --notes "<paste from CHANGELOG>"` or use the Releases UI. Do them in ascending version order (oldest first) so the highest version is published last and becomes `releases/latest`.
+Recovery and backfill:
+
+```bash
+scripts/release.sh release-only       # tag was pushed but the GitHub Release failed — publish it from the existing tag
+scripts/release.sh backfill           # create releases for any tags that never got one, ascending (--dry-run to preview)
+```
+
+<details>
+<summary>Manual fallback (if the script can't run)</summary>
+
+1. Update `metadata.version` in `skills/groove/SKILL.md`; date the `## [Unreleased]` heading to `## [X.Y.Z] - <today>`.
+2. Commit and push. Create and push the tag: `git tag vX.Y.Z` then `git push origin vX.Y.Z`.
+3. Create the GitHub Release: `gh release create vX.Y.Z --notes "<paste from CHANGELOG>"`. Release notes are the lines from `## [X.Y.Z]` down to (but not including) the next `## [`.
+
+For backfilling: compare `gh release list` with `git tag -l 'v*'`, then `gh release create <tag> --notes "<paste from CHANGELOG>"` for each missing one, in ascending order.
+</details>
 
 ---
 
