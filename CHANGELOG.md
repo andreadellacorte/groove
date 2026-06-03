@@ -6,6 +6,10 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+### ✨ New Skills
+
+- **`groove-utilities-stats`** — a read-only compound-loop dashboard. Quantifies whether the workflow is compounding: the **funnel** (lessons captured vs graduated to AGENTS.md + graduation rate), **adherence** (daily-log coverage over the last `memory.review_days` business days, current streak, weekly/monthly rollup freshness, session ratings), and **velocity** (task open/closed, commits). Bash fast-path (`scripts/stats.sh`) computes everything deterministically for `beans`/`none` backends; `linear`/`github` fall back to the model. Complements (and cross-links) `/groove-utilities-memory-retrospective`. Run with `week` (default), `month`, or `all`.
+
 ### 🐞 Fixes
 
 - **Release tooling** — `scripts/release.sh backfill` now marks only the overall-highest tag as `latest`, so creating a release for an older tag no longer demotes `releases/latest` away from a newer release.

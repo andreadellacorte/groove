@@ -22,7 +22,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 **groove** — compound engineering workflow
 
 ```
-/groove   /groove-admin-help   /groove-utilities-prime   /groove-admin-install   /groove-admin-config   /groove-admin-update   /groove-utilities-check   /groove-admin-doctor
+/groove   /groove-admin-help   /groove-utilities-prime   /groove-admin-install   /groove-admin-config   /groove-admin-update   /groove-utilities-check   /groove-utilities-stats   /groove-admin-doctor
 ```
 
 **Daily**
@@ -79,6 +79,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 |---|---|
 | `/groove-utilities-prime` | Load workflow context into conversation |
 | `/groove-utilities-check` | Check if a newer version is available |
+| `/groove-utilities-stats` | Compound-loop metrics dashboard |
 | `/groove-utilities-onboard` | Generate GROOVE.md onboarding guide for contributors |
 
 **Admin**

@@ -22,4 +22,5 @@ Groove engineering workflow system. Use the individual skills directly:
 | Update | `/groove-admin-update` |
 | Check | `/groove-utilities-check` |
 | Prime | `/groove-utilities-prime` |
+| Stats | `/groove-utilities-stats` |
 | Doctor | `/groove-admin-doctor` |
