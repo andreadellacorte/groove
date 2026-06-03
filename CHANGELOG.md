@@ -6,6 +6,8 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+## [0.19.2] - 2026-06-03
+
 ### 🔧 Changes
 
 - **Release tooling** — added `scripts/release.sh`, a single maintainer command that bumps `skills/groove/SKILL.md`, promotes the `## [Unreleased]` changelog section to a dated version heading, commits, tags, pushes, and publishes the GitHub Release with notes extracted from the changelog — keeping SKILL.md, the git tag, and the release in lockstep. Includes `--dry-run`, a `release-only` recovery mode, and a `backfill` mode for tags missing a release.
