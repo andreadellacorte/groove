@@ -1,6 +1,6 @@
 ---
 name: groove-admin-claude-hooks
-description: "Install groove's Claude Code native shell hooks into .claude/settings.json. Enables deterministic session-end reminders, git activity capture, and managed-path protection."
+description: "Install groove's Claude Code native shell hooks into .claude/settings.json. Enables deterministic session-end reminders, git activity capture, automatic session-capture drafts, and managed-path protection."
 license: MIT
 allowed-tools: Read Write Edit Glob Bash(git:*) Bash(mkdir:*) Bash(chmod:*) AskUserQuestion
 metadata:
@@ -28,6 +28,7 @@ Selected hooks are registered in `.claude/settings.json` and shell scripts are w
 | `block-managed-paths` | `PreToolUse` | `Write`, `Edit` | If `file_path` starts with `.agents/skills/groove` or `skills/groove`, exits non-zero to block the write with an explanatory message |
 | `context-reprime` | `SessionStart` | `startup\|compact` | Runs the prime script directly — ensures full workflow context is loaded after every session start and compaction |
 | `version-check` | `PostToolUse` | — | Checks for a new groove version once per hour; calls `groove-utilities-check` |
+| `session-capture` | `Stop` | — | If there is git activity this session (commits since midnight, working changes, or buffered commits), stages a capture draft to `.groove/.cache/pending-capture.md` for next-session review. Silent. |
 
 ## Steps
 
@@ -41,9 +42,9 @@ Remove the named hook's entry from `.claude/settings.json` (leave the script in 
 
 ### Default (install)
 
-1. Ask which hooks to enable (default: all five):
+1. Ask which hooks to enable (default: all six):
    ```
-   Which hooks to install? (all / comma-separated: daily-end-reminder, git-activity-buffer, block-managed-paths, context-reprime, version-check)
+   Which hooks to install? (all / comma-separated: daily-end-reminder, git-activity-buffer, block-managed-paths, context-reprime, version-check, session-capture)
    Press enter for all.
    ```
 
@@ -62,6 +63,7 @@ Remove the named hook's entry from `.claude/settings.json` (leave the script in 
    ✓ block-managed-paths — PreToolUse/Write+Edit hook → .groove/hooks/claude/block-managed-paths.sh
    ✓ context-reprime     — SessionStart hook → groove-utilities-prime.sh
    ✓ version-check       — PostToolUse hook → .groove/hooks/claude/version-check.sh
+   ✓ session-capture     — Stop hook → .groove/hooks/claude/session-capture.sh
    ✓ .claude/settings.json updated
    ```
 
@@ -124,6 +126,48 @@ echo "$now" > "$CACHE"
 bash "$CLAUDE_PROJECT_DIR/.agents/skills/groove-utilities-check/scripts/check.sh" 2>/dev/null || true
 ```
 
+### `session-capture.sh`
+
+```bash
+#!/usr/bin/env bash
+# groove: Stop hook — stage a session capture draft from git activity for next-session review
+ROOT="${CLAUDE_PROJECT_DIR:-$PWD}"
+[ -f "$ROOT/.groove/index.md" ] || exit 0
+command -v git >/dev/null 2>&1 || exit 0
+git -C "$ROOT" rev-parse --git-dir >/dev/null 2>&1 || exit 0
+
+CACHE="$ROOT/.groove/.cache"
+PENDING="$CACHE/pending-capture.md"
+BUFFER="$CACHE/git-activity-buffer.txt"
+
+commits=$(git -C "$ROOT" log --since=midnight --oneline 2>/dev/null)
+changes=$(git -C "$ROOT" diff --stat HEAD 2>/dev/null)
+buffered=""
+[ -s "$BUFFER" ] && buffered=$(cat "$BUFFER")
+
+# No activity → clear any stale draft and stay silent.
+if [ -z "$commits" ] && [ -z "$changes" ] && [ -z "$buffered" ]; then
+  rm -f "$PENDING"
+  exit 0
+fi
+
+mkdir -p "$CACHE"
+{
+  echo "# Pending capture — $(date '+%Y-%m-%d %H:%M')"
+  echo
+  echo "## Commits since midnight"
+  echo "${commits:-(none)}"
+  echo
+  echo "## Working changes"
+  echo "${changes:-(none)}"
+  if [ -n "$buffered" ]; then
+    echo
+    echo "## Buffered commit messages"
+    echo "$buffered"
+  fi
+} > "$PENDING"
+```
+
 ## `.claude/settings.json` entries
 
 Merge these into the `hooks` key. Preserve all other keys.
@@ -135,6 +179,11 @@ Merge these into the `hooks` key. Preserve all other keys.
       {
         "hooks": [
           { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/daily-end-reminder.sh" }
+        ]
+      },
+      {
+        "hooks": [
+          { "type": "command", "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/claude/session-capture.sh" }
         ]
       }
     ],

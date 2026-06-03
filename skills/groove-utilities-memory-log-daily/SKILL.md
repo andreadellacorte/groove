@@ -28,6 +28,7 @@ metadata:
 - Memory path is always `.groove/memory/`
 - Write at daily end only — never called at daily start. File may already exist from daily start; append closeout sections rather than overwriting.
 - "Done today" must be sourced from: completed tasks (date-matched) and `git diff` output — not from incomplete work
+- **Pending capture**: if `.groove/.cache/pending-capture.md` exists (staged by the `session-capture` Stop hook), use it to pre-fill the "Done today" and "Git" sections — its commits/working-changes are the raw material, so the user reviews and edits a draft rather than starting blank. After the daily log is written successfully, delete `.groove/.cache/pending-capture.md`.
 - If a completed task has no resolution in its body, ask user for a summary before writing the bullet
 - Use template at `skills/groove-utilities-memory-log-daily/templates/daily.md` for file structure
 - If the directory `.groove/memory/daily/` does not exist, create it before writing

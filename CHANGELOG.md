@@ -6,6 +6,14 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+### ✨ Enhanced Skills
+
+- **`groove` (conversational router)** — `/groove <natural-language intent>` now routes to the best-matching skill and invokes it, so you no longer have to memorise the ~44 command names (e.g. `/groove start my day`, `/groove plan the auth refactor`, `/groove how are we doing`). Asks to disambiguate when the match is unclear, confirms before destructive/outward skills, and respects the `groovebook:` config. `/groove` with no arguments prints the grouped catalog.
+
+### 🔧 Changes
+
+- **Automatic capture** — a new `session-capture` Stop hook deterministically stages a draft (commits since midnight, working changes, buffered commit messages) to `.groove/.cache/pending-capture.md` whenever there's git activity, so a session's work is never lost even if you forget to log it. `/groove-utilities-prime` surfaces a nudge next session, and `/groove-work-compound` + `/groove-utilities-memory-log-daily` pre-fill from the draft and clear it on save. Installed via `/groove-admin-claude-hooks` / `/groove-admin-cursor-hooks` (now six hooks); `/groove-admin-doctor` verifies it. Non-intrusive — silent, never blocks session end.
+
 ## [0.20.0] - 2026-06-03
 
 ### ✨ New Skills

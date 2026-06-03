@@ -1,6 +1,6 @@
 ---
 name: groove-admin-cursor-hooks
-description: "Install groove's Cursor native hooks into .cursor/hooks.json. Enables compaction-safe re-priming, session-end reminders, git activity capture, and managed-path protection."
+description: "Install groove's Cursor native hooks into .cursor/hooks.json. Enables compaction-safe re-priming, session-end reminders, git activity capture, automatic session-capture drafts, and managed-path protection."
 license: MIT
 allowed-tools: Read Write Edit Glob Bash(git:*) Bash(mkdir:*) Bash(chmod:*) Bash(python3:*) AskUserQuestion
 metadata:
@@ -28,6 +28,7 @@ Selected hooks are registered in `.cursor/hooks.json` and shell scripts are writ
 | `git-activity-buffer` | `postToolUse` | `Shell` | If the command contains `git commit`, appends a timestamped line to `.groove/.cache/git-activity-buffer.txt` |
 | `block-managed-paths` | `preToolUse` | `Write` | If `file_path` starts with `.agents/skills/groove` or `skills/groove`, exits with code 2 to block the write with an explanatory message |
 | `version-check` | `postToolUse` | — | Checks for a new groove version once per hour; calls `groove-utilities-check` |
+| `session-capture` | `stop` | — | If there is git activity this session (commits since midnight, working changes, or buffered commits), stages a capture draft to `.groove/.cache/pending-capture.md` for next-session review. Silent. |
 
 ## Steps
 
@@ -41,9 +42,9 @@ Remove the named hook's entry from `.cursor/hooks.json` (leave the script in pla
 
 ### Default (install)
 
-1. Ask which hooks to enable (default: all five):
+1. Ask which hooks to enable (default: all six):
    ```
-   Which hooks to install? (all / comma-separated: context-reprime, daily-end-reminder, git-activity-buffer, block-managed-paths, version-check)
+   Which hooks to install? (all / comma-separated: context-reprime, daily-end-reminder, git-activity-buffer, block-managed-paths, version-check, session-capture)
    Press enter for all.
    ```
 
@@ -62,6 +63,7 @@ Remove the named hook's entry from `.cursor/hooks.json` (leave the script in pla
    ✓ git-activity-buffer — postToolUse/Shell hook → .groove/hooks/cursor/git-activity-buffer.sh
    ✓ block-managed-paths — preToolUse/Write hook → .groove/hooks/cursor/block-managed-paths.sh
    ✓ version-check       — postToolUse hook → .groove/hooks/cursor/version-check.sh
+   ✓ session-capture     — stop hook → .groove/hooks/cursor/session-capture.sh
    ✓ .cursor/hooks.json updated
    ```
 
@@ -124,6 +126,48 @@ echo "$now" > "$CACHE"
 bash "$CLAUDE_PROJECT_DIR/.agents/skills/groove-utilities-check/scripts/check.sh" 2>/dev/null || true
 ```
 
+### `session-capture.sh`
+
+```bash
+#!/usr/bin/env bash
+# groove: stop hook — stage a session capture draft from git activity for next-session review
+ROOT="${CLAUDE_PROJECT_DIR:-$PWD}"
+[ -f "$ROOT/.groove/index.md" ] || exit 0
+command -v git >/dev/null 2>&1 || exit 0
+git -C "$ROOT" rev-parse --git-dir >/dev/null 2>&1 || exit 0
+
+CACHE="$ROOT/.groove/.cache"
+PENDING="$CACHE/pending-capture.md"
+BUFFER="$CACHE/git-activity-buffer.txt"
+
+commits=$(git -C "$ROOT" log --since=midnight --oneline 2>/dev/null)
+changes=$(git -C "$ROOT" diff --stat HEAD 2>/dev/null)
+buffered=""
+[ -s "$BUFFER" ] && buffered=$(cat "$BUFFER")
+
+# No activity → clear any stale draft and stay silent.
+if [ -z "$commits" ] && [ -z "$changes" ] && [ -z "$buffered" ]; then
+  rm -f "$PENDING"
+  exit 0
+fi
+
+mkdir -p "$CACHE"
+{
+  echo "# Pending capture — $(date '+%Y-%m-%d %H:%M')"
+  echo
+  echo "## Commits since midnight"
+  echo "${commits:-(none)}"
+  echo
+  echo "## Working changes"
+  echo "${changes:-(none)}"
+  if [ -n "$buffered" ]; then
+    echo
+    echo "## Buffered commit messages"
+    echo "$buffered"
+  fi
+} > "$PENDING"
+```
+
 ## `.cursor/hooks.json` template
 
 Merge these into the `hooks` key. Preserve all other keys.
@@ -140,6 +184,9 @@ Merge these into the `hooks` key. Preserve all other keys.
     "stop": [
       {
         "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/cursor/daily-end-reminder.sh"
+      },
+      {
+        "command": "bash $CLAUDE_PROJECT_DIR/.groove/hooks/cursor/session-capture.sh"
       }
     ],
     "postToolUse": [

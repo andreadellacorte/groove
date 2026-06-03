@@ -36,6 +36,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 ## Constraints
 
 - Read `tasks.backend` from `.groove/index.md`; memory path is always `.groove/memory/`
+- **Pending capture**: if `.groove/.cache/pending-capture.md` exists (staged by the `session-capture` Stop hook), read it first and use its commits/working-changes as ground-truth source material for the lessons and the git context — so a forgotten or compacted session is not lost. After the compound stage is recorded, delete `.groove/.cache/pending-capture.md`.
 - Before producing the compound actions checklist, check for open mistake incidents via `/groove-utilities-memory-mistakes --list`:
   - If open incidents exist: process each using the log → fix → audit → resolve cycle from `/groove-utilities-memory-mistakes` before moving on
   - Add to compound checklist: "mistakes: N incident(s) resolved → learned/<topic>" (done/pending)

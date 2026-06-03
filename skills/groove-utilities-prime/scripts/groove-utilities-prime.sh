@@ -132,6 +132,14 @@ if [ -f ".groove/IDENTITY.md" ]; then
   cat ".groove/IDENTITY.md"
 fi
 
+# Pending capture (staged by the session-capture Stop hook)
+if [ -s ".groove/.cache/pending-capture.md" ]; then
+  cap_date=$(sed -n 's/^# Pending capture — //p' ".groove/.cache/pending-capture.md" | head -1)
+  echo ""
+  echo "## Pending capture"
+  echo "📝 Unsaved session capture from ${cap_date:-a previous session} — run /groove-work-compound or /groove-utilities-memory-log-daily to review and save it (drafts from git activity are staged in .groove/.cache/pending-capture.md)."
+fi
+
 # Task prime
 bash "$SCRIPT_DIR/groove-utilities-task-prime.sh" 2>/dev/null || true
 

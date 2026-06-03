@@ -14,6 +14,16 @@ Then bootstrap your backends:
 /groove-admin-install
 ```
 
+**Don't memorise the commands** — just type what you want:
+
+```bash
+/groove start my day
+/groove plan the auth refactor
+/groove how are we doing
+```
+
+`/groove <intent>` routes to the right skill and runs it (and `/groove` with no arguments prints the full catalog).
+
 ---
 
 ## Skills
@@ -191,6 +201,8 @@ Shell hooks wired into Claude Code's `.claude/settings.json` — run outside the
 | `daily-end-reminder` | `Stop` | Reminds about `/groove-daily-end` during work hours (16–21h) |
 | `git-activity-buffer` | `PostToolUse/Bash` | Buffers git commit messages for automatic memory logging |
 | `block-managed-paths` | `PreToolUse/Write+Edit` | Blocks edits to managed groove skill paths deterministically |
+| `version-check` | `PostToolUse` | Checks for a newer groove version at most once per hour |
+| `session-capture` | `Stop` | Stages a capture draft from git activity (commits, diff, buffered commits) to `.groove/.cache/pending-capture.md` for next-session review; surfaced by prime and consumed by `/groove-work-compound` and `/groove-utilities-memory-log-daily` |
 
 ## Platform compatibility
 
