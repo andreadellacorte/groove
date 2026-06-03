@@ -2,6 +2,18 @@
 
 All notable changes to groove will be documented in this file.
 
+## [0.19.1] - 2026-06-03
+
+### 🐞 Fixes
+
+- **`groove-admin-claude-statusline`** — effort indicator now reflects the **live session** effort instead of always showing the static `settings.json` value. The statusline script reads `.effort.level` from the hook's stdin JSON first (falling back to `CLAUDE_CODE_EFFORT_LEVEL`, then `settings.json`), so changing effort mid-session updates the display. Also renders the higher tiers `xhigh` and `max` distinctly instead of collapsing them to `high`.
+
+## [0.19.0] - 2026-04-22
+
+### 🐞 Fixes
+
+- **`groove-admin-claude-statusline`** — resolve extra-usage variables in the statusline script so the `extra` usage segment renders correctly.
+
 ## [0.18.8] - 2026-03-22
 
 ### 🔧 Changes
