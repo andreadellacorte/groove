@@ -6,6 +6,8 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+## [0.21.0] - 2026-06-03
+
 ### ✨ Enhanced Skills
 
 - **`groove` (conversational router)** — `/groove <natural-language intent>` now routes to the best-matching skill and invokes it, so you no longer have to memorise the ~44 command names (e.g. `/groove start my day`, `/groove plan the auth refactor`, `/groove how are we doing`). Asks to disambiguate when the match is unclear, confirms before destructive/outward skills, and respects the `groovebook:` config. `/groove` with no arguments prints the grouped catalog.
