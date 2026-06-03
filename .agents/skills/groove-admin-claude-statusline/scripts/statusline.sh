@@ -61,10 +61,14 @@ else
     pct_used=0
 fi
 
-# Check effort level
+# Check effort level — prefer the live session value from stdin JSON,
+# then env override, then static settings.json as a last resort.
 settings_path="$HOME/.claude/settings.json"
 effort_level="high"
-if [ -n "$CLAUDE_CODE_EFFORT_LEVEL" ]; then
+effort_live=$(echo "$input" | jq -r '.effort.level // empty')
+if [ -n "$effort_live" ]; then
+    effort_level="$effort_live"
+elif [ -n "$CLAUDE_CODE_EFFORT_LEVEL" ]; then
     effort_level="$CLAUDE_CODE_EFFORT_LEVEL"
 elif [ -f "$settings_path" ]; then
     effort_val=$(jq -r '.effortLevel // empty' "$settings_path" 2>/dev/null)
@@ -97,7 +101,10 @@ out+="effort: "
 case "$effort_level" in
     low)    out+="${dim}low${reset}" ;;
     medium) out+="${orange}med${reset}" ;;
-    *)      out+="${green}high${reset}" ;;
+    high)   out+="${green}high${reset}" ;;
+    xhigh)  out+="${cyan}xhigh${reset}" ;;
+    max)    out+="${cyan}max${reset}" ;;
+    *)      out+="${green}${effort_level}${reset}" ;;
 esac
 
 # ===== OAuth token =====
