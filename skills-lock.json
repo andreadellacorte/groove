@@ -17,7 +17,7 @@
       "source": "andreadellacorte/groove",
       "sourceType": "github",
       "skillPath": "skills/groove/SKILL.md",
-      "computedHash": "229698b74054301a955dc69c3cd2b2b8c8d7cb1f651f449a8a5a5f7dc3e4415e"
+      "computedHash": "0c4c890e4f44e08b3e7bd9599184122dd1d27ca7d2b0c3be35bb74f923421ec3"
     },
     "groove-admin-claude-hooks": {
       "source": "andreadellacorte/groove",
@@ -209,7 +209,7 @@
       "source": "andreadellacorte/groove",
       "sourceType": "github",
       "skillPath": "skills/groove-utilities-task-install/SKILL.md",
-      "computedHash": "5ecc1d01305f85afb2ec1a6f032d8f489006e6492a974ed79c1fdebaa2b5c7fc"
+      "computedHash": "1f8cfb9d8794e1306203b392b9053b2f7e9ee6438fd0498040c8ca98b9991595"
     },
     "groove-utilities-task-list": {
       "source": "andreadellacorte/groove",
