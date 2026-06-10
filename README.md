@@ -5,7 +5,7 @@
 Compound engineering workflow skills for AI productivity — daily rhythm, task tracking, memory logs, solid tools and compound engineering loop.
 
 ```bash
-npx skills add andreadellacorte/groove
+npx skills add andreadellacorte/groove --all
 ```
 
 Then bootstrap your backends:
