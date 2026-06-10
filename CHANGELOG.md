@@ -6,6 +6,8 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+## [0.21.1] - 2026-06-10
+
 ### 🐞 Fixes
 
 - **`groove-utilities-task-install` (beans template)** — dropped the non-mainline `tui.exclude_archived` key from the scaffolded `.beans.yml`. That option only existed in a downstream beans fork; on mainline [`hmans/beans`](https://github.com/hmans/beans) it is a no-op. groove already achieves the same tidy working view with native lingo — `beans list --no-status completed --no-status scrapped` in the task/stats views, plus `beans archive` (via `/groove-utilities-task-archive`) to move terminal beans into `.beans/archive/` — so no config key is needed. New installs now scaffold a clean, mainline-compatible config.
