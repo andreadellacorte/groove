@@ -6,6 +6,10 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+### 🐞 Fixes
+
+- **`groove-admin-claude-statusline`** — faster and more robust rendering. The stdin payload and usage JSON are each parsed in a single `jq` pass (~2× faster warm render); the 5h/7d usage limits now refresh in the background with an atomic cache write, so a stale cache never blocks the render on the up-to-10s API call; the git counter uses `git diff HEAD` to include staged **+** unstaged changes (matching the documented "staged diff" behaviour); and the `@reset` time now shows on Linux (the macOS `date` branch previously masked the GNU fallback via the pipeline exit status). Also fixes a field-alignment bug where an absent effort value shifted the repo column.
+
 ## [0.21.1] - 2026-06-10
 
 ### 🐞 Fixes
