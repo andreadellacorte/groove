@@ -41,15 +41,22 @@ usage_color() {
     fi
 }
 
-# ===== Extract data from JSON =====
-model_name=$(echo "$input" | jq -r '.model.display_name // "Claude"')
+# ===== Extract data from JSON (single jq pass) =====
+# Unit separator (\x1f) — non-whitespace, so `read` preserves empty fields.
+IFS=$'\037' read -r model_name size input_tokens cache_create cache_read effort_live cwd < <(
+    jq -r '[
+        .model.display_name // "Claude",
+        (.context_window.context_window_size // 200000),
+        (.context_window.current_usage.input_tokens // 0),
+        (.context_window.current_usage.cache_creation_input_tokens // 0),
+        (.context_window.current_usage.cache_read_input_tokens // 0),
+        (.effort.level // ""),
+        (.cwd // "")
+    ] | map(tostring) | join("\u001f")' <<<"$input"
+)
 
-size=$(echo "$input" | jq -r '.context_window.context_window_size // 200000')
+[ -z "$size" ] && size=200000
 [ "$size" -eq 0 ] 2>/dev/null && size=200000
-
-input_tokens=$(echo "$input" | jq -r '.context_window.current_usage.input_tokens // 0')
-cache_create=$(echo "$input" | jq -r '.context_window.current_usage.cache_creation_input_tokens // 0')
-cache_read=$(echo "$input" | jq -r '.context_window.current_usage.cache_read_input_tokens // 0')
 current=$(( input_tokens + cache_create + cache_read ))
 
 used_tokens=$(format_tokens $current)
@@ -61,11 +68,10 @@ else
     pct_used=0
 fi
 
-# Check effort level — prefer the live session value from stdin JSON,
+# Effort level — prefer the live session value from stdin JSON,
 # then env override, then static settings.json as a last resort.
 settings_path="$HOME/.claude/settings.json"
 effort_level="high"
-effort_live=$(echo "$input" | jq -r '.effort.level // empty')
 if [ -n "$effort_live" ]; then
     effort_level="$effort_live"
 elif [ -n "$CLAUDE_CODE_EFFORT_LEVEL" ]; then
@@ -79,7 +85,6 @@ fi
 out=""
 out+="${blue}${model_name}${reset}"
 
-cwd=$(echo "$input" | jq -r '.cwd // empty')
 if [ -n "$cwd" ]; then
     display_dir="${cwd##*/}"
     git_branch=$(git -C "${cwd}" rev-parse --abbrev-ref HEAD 2>/dev/null)
@@ -87,7 +92,8 @@ if [ -n "$cwd" ]; then
     out+="${cyan}${display_dir}${reset}"
     if [ -n "$git_branch" ]; then
         out+="${dim}@${reset}${green}${git_branch}${reset}"
-        git_stat=$(git -C "${cwd}" diff --numstat 2>/dev/null | awk '{a+=$1; d+=$2} END {if (a+d>0) printf "+%d -%d", a, d}')
+        # Staged + unstaged changes vs HEAD (falls back to empty if no commits yet)
+        git_stat=$(git -C "${cwd}" diff HEAD --numstat 2>/dev/null | awk '{a+=$1; d+=$2} END {if (a+d>0) printf "+%d -%d", a, d}')
         [ -n "$git_stat" ] && out+=" ${dim}(${reset}${green}${git_stat%% *}${reset} ${red}${git_stat##* }${reset}${dim})${reset}"
     fi
 fi
@@ -147,15 +153,17 @@ if [ -f "$cache_file" ]; then
     cache_mtime=$(stat -c %Y "$cache_file" 2>/dev/null || stat -f %m "$cache_file" 2>/dev/null)
     now=$(date +%s)
     cache_age=$(( now - cache_mtime ))
-    if [ "$cache_age" -lt "$cache_max_age" ]; then
-        needs_refresh=false
-        usage_data=$(cat "$cache_file" 2>/dev/null)
-    fi
+    [ "$cache_age" -lt "$cache_max_age" ] && needs_refresh=false
+    usage_data=$(cat "$cache_file" 2>/dev/null)
 fi
 
+# Refresh in the background so the render never blocks on the network.
+# This turn uses whatever is cached (possibly stale/empty); the fresh
+# value lands in the cache atomically and shows up on a later render.
 if $needs_refresh; then
-    token=$(get_oauth_token)
-    if [ -n "$token" ] && [ "$token" != "null" ]; then
+    (
+        token=$(get_oauth_token)
+        [ -z "$token" ] || [ "$token" = "null" ] && exit 0
         response=$(curl -s --max-time 10 \
             -H "Accept: application/json" \
             -H "Content-Type: application/json" \
@@ -163,14 +171,11 @@ if $needs_refresh; then
             -H "anthropic-beta: oauth-2025-04-20" \
             -H "User-Agent: claude-code/2.1.34" \
             "https://api.anthropic.com/api/oauth/usage" 2>/dev/null)
-        if [ -n "$response" ] && echo "$response" | jq . >/dev/null 2>&1; then
-            usage_data="$response"
-            echo "$response" > "$cache_file"
+        if [ -n "$response" ] && jq -e . >/dev/null 2>&1 <<<"$response"; then
+            tmp=$(mktemp "${cache_file}.XXXXXX" 2>/dev/null) || exit 0
+            printf '%s' "$response" > "$tmp" && mv -f "$tmp" "$cache_file"
         fi
-    fi
-    if [ -z "$usage_data" ] && [ -f "$cache_file" ]; then
-        usage_data=$(cat "$cache_file" 2>/dev/null)
-    fi
+    ) >/dev/null 2>&1 &
 fi
 
 iso_to_epoch() {
@@ -198,45 +203,53 @@ format_reset_time() {
     local epoch
     epoch=$(iso_to_epoch "$iso_str")
     [ -z "$epoch" ] && return
+
+    # GNU (Linux) and BSD/macOS use different flags and format modifiers.
+    # Try GNU `date -d @epoch` first, then fall back to BSD `date -r epoch`.
+    # Check the output is non-empty rather than the pipeline exit status
+    # (a trailing `| tr` always exits 0 even when `date` produced nothing).
+    local gnu_fmt bsd_fmt out
     case "$style" in
-        time)
-            date -j -r "$epoch" +"%l:%M%p" 2>/dev/null | sed 's/^ //' | tr '[:upper:]' '[:lower:]' || \
-            date -d "@$epoch" +"%l:%M%P" 2>/dev/null | sed 's/^ //'
-            ;;
-        datetime)
-            date -j -r "$epoch" +"%b %-d, %l:%M%p" 2>/dev/null | sed 's/  / /g; s/^ //' | tr '[:upper:]' '[:lower:]' || \
-            date -d "@$epoch" +"%b %-d, %l:%M%P" 2>/dev/null | sed 's/  / /g; s/^ //'
-            ;;
-        *)
-            date -j -r "$epoch" +"%b %-d" 2>/dev/null | tr '[:upper:]' '[:lower:]' || \
-            date -d "@$epoch" +"%b %-d" 2>/dev/null
-            ;;
+        time)     gnu_fmt="%-l:%M%P";         bsd_fmt="%l:%M%p" ;;
+        datetime) gnu_fmt="%b %-d, %-l:%M%P"; bsd_fmt="%b %-d, %l:%M%p" ;;
+        *)        gnu_fmt="%b %-d";           bsd_fmt="%b %-d" ;;
     esac
+
+    out=$(date -d "@$epoch" +"$gnu_fmt" 2>/dev/null)
+    [ -z "$out" ] && out=$(date -r "$epoch" +"$bsd_fmt" 2>/dev/null)
+    [ -z "$out" ] && return
+    echo "$out" | sed 's/  */ /g; s/^ //' | tr '[:upper:]' '[:lower:]'
 }
 
-if [ -n "$usage_data" ] && echo "$usage_data" | jq -e . >/dev/null 2>&1; then
-    five_hour_pct=$(echo "$usage_data" | jq -r '.five_hour.utilization // 0' | awk '{printf "%.0f", $1}')
-    five_hour_reset_iso=$(echo "$usage_data" | jq -r '.five_hour.resets_at // empty')
+if [ -n "$usage_data" ] && jq -e . >/dev/null 2>&1 <<<"$usage_data"; then
+    IFS=$'\037' read -r five_hour_pct five_hour_reset_iso seven_day_pct seven_day_reset_iso \
+        extra_enabled extra_pct extra_used_raw extra_limit_raw < <(
+        jq -r '[
+            (.five_hour.utilization // 0 | . + 0.5 | floor),
+            (.five_hour.resets_at // ""),
+            (.seven_day.utilization // 0 | . + 0.5 | floor),
+            (.seven_day.resets_at // ""),
+            (.extra_usage.is_enabled // false),
+            (.extra_usage.utilization // 0 | . + 0.5 | floor),
+            (.extra_usage.used_credits // 0),
+            (.extra_usage.monthly_limit // 0)
+        ] | map(tostring) | join("\u001f")' <<<"$usage_data"
+    )
+
     five_hour_reset=$(format_reset_time "$five_hour_reset_iso" "time")
     five_hour_color=$(usage_color "$five_hour_pct")
-
     out+="${sep}${white}5h${reset} ${five_hour_color}${five_hour_pct}%${reset}"
     [ -n "$five_hour_reset" ] && out+=" ${dim}@${five_hour_reset}${reset}"
 
-    seven_day_pct=$(echo "$usage_data" | jq -r '.seven_day.utilization // 0' | awk '{printf "%.0f", $1}')
-    seven_day_reset_iso=$(echo "$usage_data" | jq -r '.seven_day.resets_at // empty')
     seven_day_reset=$(format_reset_time "$seven_day_reset_iso" "datetime")
     seven_day_color=$(usage_color "$seven_day_pct")
-
     out+="${sep}${white}7d${reset} ${seven_day_color}${seven_day_pct}%${reset}"
     [ -n "$seven_day_reset" ] && out+=" ${dim}@${seven_day_reset}${reset}"
 
-    extra_enabled=$(echo "$usage_data" | jq -r '.extra_usage.is_enabled // false')
     if [ "$extra_enabled" = "true" ]; then
-        extra_pct=$(echo "$usage_data" | jq -r '.extra_usage.utilization // 0' | awk '{printf "%.0f", $1}')
-        extra_used=$(echo "$usage_data" | jq -r '.extra_usage.used_credits // 0' | LC_NUMERIC=C awk '{printf "%.2f", $1/100}')
-        extra_limit=$(echo "$usage_data" | jq -r '.extra_usage.monthly_limit // 0' | LC_NUMERIC=C awk '{printf "%.2f", $1/100}')
-        if [ -n "$extra_used" ] && [ -n "$extra_limit" ] && [[ "$extra_used" != *'* ]] && [[ "$extra_limit" != *'* ]]; then
+        extra_used=$(LC_NUMERIC=C awk "BEGIN{printf \"%.2f\", ${extra_used_raw:-0}/100}" 2>/dev/null)
+        extra_limit=$(LC_NUMERIC=C awk "BEGIN{printf \"%.2f\", ${extra_limit_raw:-0}/100}" 2>/dev/null)
+        if [ -n "$extra_used" ] && [ -n "$extra_limit" ]; then
             extra_color=$(usage_color "$extra_pct")
             out+="${sep}${white}extra${reset} ${extra_color}${extra_used}/${extra_limit}${reset}"
         else
@@ -248,7 +261,7 @@ fi
 # ===== Loop info =====
 loops_file="/tmp/claude/loops.json"
 if [ -f "$loops_file" ]; then
-    file_mtime=$(stat -f %m "$loops_file" 2>/dev/null || stat -c %Y "$loops_file" 2>/dev/null)
+    file_mtime=$(stat -c %Y "$loops_file" 2>/dev/null || stat -f %m "$loops_file" 2>/dev/null)
     now_ts=$(date +%s)
     file_age=$(( now_ts - file_mtime ))
 
