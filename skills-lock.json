@@ -17,7 +17,7 @@
       "source": "andreadellacorte/groove",
       "sourceType": "github",
       "skillPath": "skills/groove/SKILL.md",
-      "computedHash": "0c4c890e4f44e08b3e7bd9599184122dd1d27ca7d2b0c3be35bb74f923421ec3"
+      "computedHash": "1efeb6c595f9ccc3cab7f8e0be6bf8b8054067d755e434855f295c13db863804"
     },
     "groove-admin-claude-hooks": {
       "source": "andreadellacorte/groove",
@@ -29,7 +29,7 @@
       "source": "andreadellacorte/groove",
       "sourceType": "github",
       "skillPath": "skills/groove-admin-claude-statusline/SKILL.md",
-      "computedHash": "be4299a699c0523c228b58ff84906a14d5efeef45cd2977d3f6f390b2f09fd75"
+      "computedHash": "80f8b81f954a646be309ed7b214399b3c1b147783fc8a05db3e63cd0b9904bec"
     },
     "groove-admin-config": {
       "source": "andreadellacorte/groove",
