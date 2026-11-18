@@ -91,8 +91,8 @@ input=$(cat)
 command=$(echo "$input" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('command',''))" 2>/dev/null)
 if echo "$command" | grep -q "git commit"; then
   # sed -E, not grep -P: BSD grep (macOS) has no -P, so every message logged as <no message>.
-  # Takes the first line of -m "...", so multi-line messages work too.
-  msg=$(printf '%s\n' "$command" | sed -nE 's/.*-m[[:space:]]+"([^"]*).*/\1/p' | head -1)
+  # Takes the first line of -m "..." (or -am "..."), only on the line that runs commit, so multi-line messages work.
+  msg=$(printf '%s\n' "$command" | sed -nE 's/.*commit[^;&|]*[[:space:]]-[a-zA-Z]*m[[:space:]]+"([^"]*).*/\1/p' | head -1)
   case "$msg" in '$('*) msg="" ;; esac  # -m "$(cat <<EOF ...)" has no inline text
   # Otherwise use git's own "[branch abc1234] subject" line; absent if the commit failed or ran with -q
   [ -z "$msg" ] && msg=$(echo "$input" | python3 -c "import sys,json; r=json.load(sys.stdin).get('tool_response') or {}; print(r.get('stdout','') if isinstance(r,dict) else r)" 2>/dev/null | sed -nE 's/^\[[^]]+ [0-9a-f]{7,}\] (.*)/\1/p' | head -1)
