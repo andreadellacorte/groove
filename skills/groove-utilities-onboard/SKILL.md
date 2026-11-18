@@ -23,7 +23,7 @@ New contributors understand how groove works in this project: which commands to 
 
 ## Steps
 
-1. Read `tasks.backend`, `memory.review_days`, `git.*` from `.groove/index.md`; memory is always `.groove/memory/`, specs is always `.groove/memory/specs/`
+1. Read `tasks.storage` (legacy key: `tasks.backend`), `memory.review_days`, `git.*` from `.groove/index.md`; memory is always `.groove/memory/`, specs is always `.groove/memory/specs/`
 2. Ask: "Any project-specific context to include? (e.g. which tasks to pick up, team conventions) — enter to skip"
 3. Write `GROOVE.md` from the template below, substituting live config values
 4. If `CONTRIBUTING.md` exists and does not already contain `<!-- groove:onboard -->`:
@@ -76,7 +76,7 @@ Then start every session with:
 
 | Key | Value |
 |---|---|
-| Task backend | `<tasks.backend>` |
+| Task backend | `<tasks.storage>` |
 | Memory path | `.groove/memory/` |
 | Specs path | `.groove/memory/specs/` |
 | Git strategy (memory) | `<git.memory>` |

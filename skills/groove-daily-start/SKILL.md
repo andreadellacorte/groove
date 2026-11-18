@@ -22,7 +22,7 @@ The workday is prepared: recent days are reviewed, today's daily memory file is 
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks.backend` and `memory.review_days` config
+- Read `.groove/index.md` for `tasks.storage` (legacy key: `tasks.backend`) and `memory.review_days` config
 - Memory path is always `.groove/memory/`
 - Call `/groove-utilities-task-analyse` to get current task state
 - **Review recent days:** If `.groove/memory/daily/` is empty (no files exist), skip this step entirely and note "Fresh install — no prior logs." Otherwise, identify the last `memory.review_days` business days (Mon–Fri) counting back from yesterday (skip Saturday and Sunday). For each date:

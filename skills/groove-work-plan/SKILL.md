@@ -23,7 +23,7 @@ The codebase is researched for relevant patterns and constraints. A concrete imp
 
 ## Constraints
 
-- Read `tasks.backend` from `.groove/index.md` to determine backend
+- Read `tasks.storage` (legacy key: `tasks.backend`) from `.groove/index.md` to determine backend
 - Use Explore agent for codebase research before writing the plan
 - Use template at `skills/groove-work-plan/templates/plan-doc.md` for doc output
 - Warn if no prior brainstorm exists — ask user to confirm scope before proceeding
