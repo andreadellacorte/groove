@@ -6,6 +6,8 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+## [0.21.3] - 2026-11-18
+
 ### 🐞 Fixes
 
 - **`tasks.storage` rename finished** — v0.18.3 renamed `tasks.backend` → `tasks.storage` (with a migration), but the prime scripts and most skills kept reading `tasks.backend`. On any install configured or migrated since then, `/groove-utilities-prime` reported `tasks.backend: none` and skipped `beans prime`, and skills that branch on the backend saw nothing. `groove-utilities-prime.sh` and `groove-utilities-task-prime.sh` now read `tasks.storage` and fall back to the legacy `tasks.backend` key (the pattern `stats.sh` already used); all skills, `/groove-admin-help`, `/groove-admin-doctor` and the README now name `tasks.storage`; `/groove-utilities-task-config` writes `tasks.storage` and renames a lone legacy key when it writes. No migration needed.
