@@ -35,7 +35,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 
 ## Constraints
 
-- Read `tasks.backend` from `.groove/index.md`; memory path is always `.groove/memory/`
+- Read `tasks.storage` (legacy key: `tasks.backend`) from `.groove/index.md`; memory path is always `.groove/memory/`
 - **Pending capture**: if `.groove/.cache/pending-capture.md` exists (staged by the `session-capture` Stop hook), read it first and use its commits/working-changes as ground-truth source material for the lessons and the git context — so a forgotten or compacted session is not lost. After the compound stage is recorded, delete `.groove/.cache/pending-capture.md`.
 - Before producing the compound actions checklist, check for open mistake incidents via `/groove-utilities-memory-mistakes --list`:
   - If open incidents exist: process each using the log → fix → audit → resolve cycle from `/groove-utilities-memory-mistakes` before moving on
@@ -45,7 +45,7 @@ Lessons, root causes, and fixes are documented. Relevant project files are updat
 - Always run even if it seems like "nothing to capture" — capture that explicitly
 - Compound actions checklist must include why each action matters, not just what it is
 - If user showed repeated fixes, confusion, or rework: capture the pattern and its trigger
-- Create stage task in backend if `tasks.backend != none` via `/groove-utilities-task-create` with a descriptive title so multiple compounds per day are distinct: `YYYY-MM-DD, Compound — <brief topic>` (topic from the work just closed, e.g. release, feature, or session summary). Do not number stages in task titles.
+- Create stage task in backend if `tasks.storage != none` via `/groove-utilities-task-create` with a descriptive title so multiple compounds per day are distinct: `YYYY-MM-DD, Compound — <brief topic>` (topic from the work just closed, e.g. release, feature, or session summary). Do not number stages in task titles.
 - After producing the compound actions checklist, identify any lesson that is about AI workflow,
   agent behaviour, tool usage, or engineering process — not specific to the codebase or product
 - If any such lesson is found:

@@ -104,7 +104,7 @@ Print the following, substituting live config values from `.groove/index.md` whe
 **Config** (`.groove/index.md`)
 
 ```
-tasks.backend:       <value>   — task backend (beans | linear | github | none)
+tasks.storage:       <value>   — task backend (beans | linear | github | none)
 tasks.list_limit:    <value>   — max tasks in task-list (default 15)
 tasks.analyse_limit: <value>   — max tasks in task-analyse (default 30)
 memory.review_days:  <value>   — business days to review at daily start (default 5)

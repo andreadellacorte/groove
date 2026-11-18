@@ -8,8 +8,12 @@ if [ ! -f "$INDEX" ]; then
   exit 0
 fi
 
-# Extract tasks.backend from frontmatter
-backend=$(sed -n '/^---$/,/^---$/p' "$INDEX" | grep 'backend:' | head -1 | sed 's/.*backend:[[:space:]]*//' | tr -d '[:space:]')
+# Extract tasks.storage from frontmatter (falls back to the pre-0.18.3 key tasks.backend)
+extract() {
+  sed -n '/^---$/,/^---$/p' "$INDEX" | grep "$1:" | head -1 | sed "s/.*$1:[[:space:]]*//" | tr -d '[:space:]'
+}
+backend=$(extract storage)
+[ -n "$backend" ] || backend=$(extract backend)
 
 if [ -z "$backend" ] || [ "$backend" = "none" ]; then
   exit 0

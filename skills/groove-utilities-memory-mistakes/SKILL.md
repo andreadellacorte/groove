@@ -23,7 +23,7 @@ The workflow mistake is logged, its root cause is fixed in the relevant memory o
 
 ## Task backend
 
-Read `tasks.backend` from `.groove/index.md`. Incidents are tracked as tasks in the configured backend. If no task backend is configured (`tasks.backend: none`), tell the user to run `/groove-utilities-task-install` first.
+Read `tasks.storage` (legacy key: `tasks.backend`) from `.groove/index.md`. Incidents are tracked as tasks in the configured backend. If no task backend is configured (`tasks.storage: none`), tell the user to run `/groove-utilities-task-install` first.
 
 Incidents are stored as bugs under a shared "Groove Memory" milestone → "Mistakes" epic.
 
@@ -58,8 +58,8 @@ Before any operation, resolve or create the parent epic:
 
 ## Constraints
 
-- Read `tasks.backend` from `.groove/index.md`; memory path is always `.groove/memory/`
-- Requires a configured task backend — if `tasks.backend: none`, prompt user to install one
+- Read `tasks.storage` from `.groove/index.md`; memory path is always `.groove/memory/`
+- Requires a configured task backend — if `tasks.storage: none`, prompt user to install one
 - Never auto-create incidents without user confirmation
 - Root cause is required before resolving — do not skip the audit step
 - Parent hierarchy is idempotent — always check before creating

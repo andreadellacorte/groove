@@ -23,7 +23,7 @@ The workday is wrapped up: git changes are analysed, memory files are written in
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks.backend` and `git.*` config; memory path is always `.groove/memory/`
+- Read `.groove/index.md` for `tasks.storage` (legacy key: `tasks.backend`) and `git.*` config; memory path is always `.groove/memory/`
 - Call `/groove-utilities-task-analyse` to get task summary for daily memory population
 - Memory population order (must follow this sequence):
   1. `/groove-utilities-memory-log-git`

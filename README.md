@@ -148,7 +148,7 @@ Settings live in `.groove/index.md` frontmatter — created on first run by `/gr
 groove-version: 0.14.0
 groovebook: andreadellacorte/groovebook
 tasks:
-  backend: beans           # beans | linear | github | none
+  storage: beans           # beans | linear | github | none
   list_limit: 15
   analyse_limit: 30
 memory:

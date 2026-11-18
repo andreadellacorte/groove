@@ -36,7 +36,7 @@ groove
 
 task
   ✓ .groove/index.md present
-  ✓ tasks.backend: beans
+  ✓ tasks.storage: beans
   ✓ beans installed (v0.x.x)
   ✓ .beans.yml present
   ✓ beans reachable

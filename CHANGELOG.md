@@ -6,6 +6,13 @@ Unreleased changes are drafted under `## [Unreleased]`; `scripts/release.sh` pro
 
 ## [Unreleased]
 
+### 🐞 Fixes
+
+- **`tasks.storage` rename finished** — v0.18.3 renamed `tasks.backend` → `tasks.storage` (with a migration), but the prime scripts and most skills kept reading `tasks.backend`. On any install configured or migrated since then, `/groove-utilities-prime` reported `tasks.backend: none` and skipped `beans prime`, and skills that branch on the backend saw nothing. `groove-utilities-prime.sh` and `groove-utilities-task-prime.sh` now read `tasks.storage` and fall back to the legacy `tasks.backend` key (the pattern `stats.sh` already used); all skills, `/groove-admin-help`, `/groove-admin-doctor` and the README now name `tasks.storage`; `/groove-utilities-task-config` writes `tasks.storage` and renames a lone legacy key when it writes. No migration needed.
+- **`git-activity-buffer` hook (Claude + Cursor)** — every commit was buffered as `<no message>` on macOS: the template used `grep -oP`, and BSD grep has no `-P`. Now uses `sed -E` and takes the first line of `-m "..."`, so multi-line messages work. When there's no inline text (heredoc, `-F`), it reads the subject from git's `[branch sha] subject` output in the tool response. A failed or `-q` commit logs `<no message>`, not a guess.
+- **`session-capture` hook (Claude + Cursor)** — the draft's "Working changes" used `git diff --stat HEAD`, which ignores untracked files, so new notes never showed up. Now uses `git status --short`.
+- Existing installs keep their old hook scripts until you re-run `/groove-admin-claude-hooks` (or `/groove-admin-cursor-hooks`), which shows the diff and asks before overwriting.
+
 ## [0.21.2] - 2026-07-05
 
 ### 🐞 Fixes

@@ -22,8 +22,8 @@ A consolidated view of active, ready tasks from the configured backend is displa
 
 ## Constraints
 
-- Read `.groove/index.md` frontmatter to determine `tasks.backend` and `tasks.list_limit` (default 15)
-- If `tasks.backend: none`, print a friendly no-op message and exit
+- Read `.groove/index.md` frontmatter to determine `tasks.storage` (legacy key: `tasks.backend`) and `tasks.list_limit` (default 15)
+- If `tasks.storage: none`, print a friendly no-op message and exit
 - Backend mappings:
   - `beans`: run `skills/groove-utilities-task-list/scripts/list-tasks-by-priority.sh [LIMIT]` with LIMIT from `tasks.list_limit` (or 15), then parse and format output (group by status: in-progress, todo, blocked)
   - `linear`: use linear CLI or MCP to fetch assigned, active issues

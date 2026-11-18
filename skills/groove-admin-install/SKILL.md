@@ -80,7 +80,7 @@ Run in order:
 
 ## Constraints
 
-- Read `.groove/index.md` for `tasks.backend` and `git.*` config before running
+- Read `.groove/index.md` for `tasks.storage` (legacy key: `tasks.backend`) and `git.*` config before running
 - If `.groove/index.md` does not exist, `/groove-admin-config` is run first (step 1) to create it
 - Dependency order for backends must be respected: task → memory → companions
 - Each step reports installed / already-present / failed

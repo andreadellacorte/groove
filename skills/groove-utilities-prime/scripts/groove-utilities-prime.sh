@@ -29,7 +29,8 @@ extract() {
   echo "${val:-$default}"
 }
 
-tasks_backend=$(extract "backend" "none")
+tasks_storage=$(extract "storage" "")
+[ -n "$tasks_storage" ] || tasks_storage=$(extract "backend" "none")   # legacy key (pre-0.18.3)
 list_limit=$(extract "list_limit" "15")
 analyse_limit=$(extract "analyse_limit" "30")
 review_days=$(extract "review_days" "5")
@@ -65,7 +66,7 @@ cat <<EOF
 groove is installed in this repo. Use \`/groove-*\` skills for all workflow commands.
 
 ## Config
-tasks.backend:      ${tasks_backend}
+tasks.storage:      ${tasks_storage}
 tasks.list_limit:   ${list_limit}
 tasks.analyse_limit:${analyse_limit}
 memory.review_days: ${review_days}
