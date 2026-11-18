@@ -90,7 +90,10 @@ fi
 input=$(cat)
 command=$(echo "$input" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('command',''))" 2>/dev/null)
 if echo "$command" | grep -q "git commit"; then
-  msg=$(echo "$command" | grep -oP '(?<=-m ")[^"]+' | head -1)
+  # sed -E, not grep -P: BSD grep (macOS) has no -P, so every message logged as <no message>
+  msg=$(printf '%s' "$command" | sed -nE 's/.*-m[[:space:]]+"([^"]+)".*/\1/p' | head -1)
+  # heredoc / -F / editor commits: fall back to the subject of the commit just made
+  [ -z "$msg" ] && msg=$(git -C "$CLAUDE_PROJECT_DIR" log -1 --format=%s 2>/dev/null)
   mkdir -p "$CLAUDE_PROJECT_DIR/.groove/.cache"
   echo "$(date '+%Y-%m-%d %H:%M') | ${msg:-<no message>}" >> "$CLAUDE_PROJECT_DIR/.groove/.cache/git-activity-buffer.txt"
 fi
@@ -141,7 +144,8 @@ PENDING="$CACHE/pending-capture.md"
 BUFFER="$CACHE/git-activity-buffer.txt"
 
 commits=$(git -C "$ROOT" log --since=midnight --oneline 2>/dev/null)
-changes=$(git -C "$ROOT" diff --stat HEAD 2>/dev/null)
+# status --short, not diff --stat HEAD: the latter misses untracked (new) files
+changes=$(git -C "$ROOT" status --short 2>/dev/null)
 buffered=""
 [ -s "$BUFFER" ] && buffered=$(cat "$BUFFER")
 
